@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-048",
+  "title": "Test Data Management",
+  "slug": "test-data",
+  "track": "selenium",
+  "category": "intermediate",
+  "description": "Master Test Data Management in Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q481", "type": "multiple-choice", "question": "What is Test Data Management used for?", "options": ["Basic testing", "Advanced scenarios", "Configuration", "All purposes"], "correctAnswer": 1, "explanation": "Test Data Management is essential for handling advanced testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["intermediate", "test-data"]},
+    {"id": "quiz-sel-q482", "type": "code-completion", "question": "Implement Test Data Management:", "codeTemplate": "// Implementation template", "correctAnswer": "// Correct solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates proper Test Data Management usage.", "difficulty": "medium", "points": 15, "tags": ["code", "implementation"]},
+    {"id": "quiz-sel-q483", "type": "true-false", "question": "Test Data Management is part of Selenium WebDriver.", "correctAnswer": true, "explanation": "Test Data Management is a built-in WebDriver feature.", "difficulty": "medium", "points": 5, "tags": ["webdriver", "features"]},
+    {"id": "quiz-sel-q484", "type": "multiple-choice", "question": "When should you use Test Data Management?", "options": ["Always", "For specific scenarios", "Never", "Only in production"], "correctAnswer": 1, "explanation": "Test Data Management is best suited for specific testing needs.", "difficulty": "medium", "points": 10, "tags": ["best-practices", "usage"]},
+    {"id": "quiz-sel-q485", "type": "code-completion", "question": "Complete the Test Data Management pattern:", "codeTemplate": "// Pattern code", "correctAnswer": "// Complete pattern", "acceptedAnswers": ["pattern"], "explanation": "This is a common Test Data Management pattern.", "difficulty": "medium", "points": 15, "tags": ["patterns", "code"]},
+    {"id": "quiz-sel-q486", "type": "multiple-choice", "question": "What are Test Data Management limitations?", "options": ["Performance", "Browser support", "Complexity", "Varies by context"], "correctAnswer": 3, "explanation": "Test Data Management limitations depend on the specific use case.", "difficulty": "medium", "points": 10, "tags": ["limitations", "considerations"]},
+    {"id": "quiz-sel-q487", "type": "debugging", "question": "Fix this Test Data Management issue:", "code": "// Code with issue", "options": ["Syntax fix", "Logic fix", "Configuration fix", "Multiple fixes needed"], "correctAnswer": 1, "explanation": "The main issue is with Test Data Management logic.", "difficulty": "medium", "points": 20, "tags": ["debugging", "troubleshooting"]},
+    {"id": "quiz-sel-q488", "type": "true-false", "question": "Test Data Management works across all browsers.", "correctAnswer": true, "explanation": "Test Data Management is supported by all major browsers.", "difficulty": "medium", "points": 5, "tags": ["compatibility", "browsers"]},
+    {"id": "quiz-sel-q489", "type": "multiple-choice", "question": "How do you optimize Test Data Management?", "options": ["Caching", "Parallel execution", "Smart waits", "All techniques"], "correctAnswer": 3, "explanation": "Multiple optimization techniques can improve Test Data Management.", "difficulty": "medium", "points": 10, "tags": ["optimization", "performance"]},
+    {"id": "quiz-sel-q480", "type": "code-output", "question": "What is the result of this Test Data Management code?", "code": "// Code example", "options": ["Output A", "Output B", "Exception", "Depends on state"], "correctAnswer": 1, "explanation": "This code produces a specific result for Test Data Management.", "difficulty": "medium", "points": 15, "tags": ["behavior", "output"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-048",
+  "prerequisites": ["quiz-sel-047"],
+  "xpReward": 200,
+  "coinReward": 40
+}

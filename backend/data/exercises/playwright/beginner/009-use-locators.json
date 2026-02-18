@@ -1,0 +1,80 @@
+{
+  "id": "exercise-pw-009",
+  "title": "Use Locators",
+  "slug": "use-locators",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Master different locator strategies in Playwright for robust element selection",
+  "objectives": [
+    "Use CSS selectors",
+    "Use text selectors",
+    "Use XPath selectors",
+    "Chain locators",
+    "Filter locators"
+  ],
+  "instructions": "Write a Playwright test that demonstrates:\n1. Finding elements by CSS selector\n2. Finding elements by text\n3. Finding elements by test ID\n4. Chaining locators for nested elements\n5. Filtering locators by text or state",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('use different locators', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // TODO: Find input by CSS selector\n  \n  // TODO: Find element by placeholder text\n  \n  // TODO: Add a todo and find it by text\n  \n  // TODO: Use chained locators to find nested element\n  \n  // TODO: Filter locators to find specific item\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_use_locators(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    \n    # TODO: Find input by CSS selector\n    \n    # TODO: Find element by placeholder text\n    \n    # TODO: Add a todo and find it by text\n    \n    # TODO: Use chained locators to find nested element\n    \n    # TODO: Filter locators to find specific item\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('use different locators', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // TODO: Find input by CSS selector\n  \n  // TODO: Find element by placeholder text\n  \n  // TODO: Add a todo and find it by text\n  \n  // TODO: Use chained locators to find nested element\n  \n  // TODO: Filter locators to find specific item\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('use different locators', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  const inputByCSS = page.locator('.new-todo');\n  await expect(inputByCSS).toBeVisible();\n  \n  const inputByPlaceholder = page.getByPlaceholder('What needs to be done?');\n  await inputByPlaceholder.fill('First Todo');\n  await inputByPlaceholder.press('Enter');\n  \n  const todoByText = page.getByText('First Todo');\n  await expect(todoByText).toBeVisible();\n  \n  await inputByPlaceholder.fill('Second Todo');\n  await inputByPlaceholder.press('Enter');\n  \n  const todoList = page.locator('.todo-list');\n  const firstTodo = todoList.locator('li').first();\n  await expect(firstTodo).toContainText('First Todo');\n  \n  const filteredTodo = page.locator('.todo-list li').filter({ hasText: 'Second' });\n  await expect(filteredTodo).toBeVisible();\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_use_locators(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    \n    input_by_css = page.locator('.new-todo')\n    expect(input_by_css).to_be_visible()\n    \n    input_by_placeholder = page.get_by_placeholder('What needs to be done?')\n    input_by_placeholder.fill('First Todo')\n    input_by_placeholder.press('Enter')\n    \n    todo_by_text = page.get_by_text('First Todo')\n    expect(todo_by_text).to_be_visible()\n    \n    input_by_placeholder.fill('Second Todo')\n    input_by_placeholder.press('Enter')\n    \n    todo_list = page.locator('.todo-list')\n    first_todo = todo_list.locator('li').first\n    expect(first_todo).to_contain_text('First Todo')\n    \n    filtered_todo = page.locator('.todo-list li').filter(has_text='Second')\n    expect(filtered_todo).to_be_visible()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('use different locators', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  const inputByCSS = page.locator('.new-todo');\n  await expect(inputByCSS).toBeVisible();\n  \n  const inputByPlaceholder = page.getByPlaceholder('What needs to be done?');\n  await inputByPlaceholder.fill('First Todo');\n  await inputByPlaceholder.press('Enter');\n  \n  const todoByText = page.getByText('First Todo');\n  await expect(todoByText).toBeVisible();\n  \n  await inputByPlaceholder.fill('Second Todo');\n  await inputByPlaceholder.press('Enter');\n  \n  const todoList = page.locator('.todo-list');\n  const firstTodo = todoList.locator('li').first();\n  await expect(firstTodo).toContainText('First Todo');\n  \n  const filteredTodo = page.locator('.todo-list li').filter({ hasText: 'Second' });\n  await expect(filteredTodo).toBeVisible();\n});"
+  },
+  "hints": [
+    "page.locator() accepts CSS selectors",
+    "page.getByText() finds elements by visible text",
+    "page.getByPlaceholder() finds inputs by placeholder",
+    "Chain locators with .locator() for nested elements",
+    "Use .filter() to narrow down locators",
+    "Use .first(), .last(), .nth() to select from multiple matches"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "CSS locator works",
+      "input": null,
+      "expectedBehavior": "Element found by CSS class",
+      "points": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Text locator works",
+      "input": null,
+      "expectedBehavior": "Element found by text content",
+      "points": 20
+    },
+    {
+      "id": "test-3",
+      "name": "Chained locators work",
+      "input": null,
+      "expectedBehavior": "Nested element found using chained locators",
+      "points": 30
+    },
+    {
+      "id": "test-4",
+      "name": "Filtered locators work",
+      "input": null,
+      "expectedBehavior": "Specific element found using filter",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Locators",
+      "url": "https://playwright.dev/docs/locators"
+    },
+    {
+      "title": "Locator Strategies",
+      "url": "https://playwright.dev/docs/selectors"
+    }
+  ],
+  "relatedLessons": ["lesson-017", "lesson-018"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["locators", "selectors", "css", "xpath", "chaining"]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-037",
+  "title": "Browser Operations",
+  "slug": "browser-operations",
+  "track": "selenium",
+  "category": "beginner",
+  "description": "Learn Browser Operations fundamentals for test automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q371", "type": "multiple-choice", "question": "What is Browser Operations?", "options": ["A testing framework", "A browser automation tool", "A programming language", "A test runner"], "correctAnswer": 1, "explanation": "Selenium is primarily a browser automation tool for testing web applications.", "difficulty": "easy", "points": 10, "tags": ["fundamentals", "selenium"]},
+    {"id": "quiz-sel-q372", "type": "code-completion", "question": "Complete the basic Browser Operations code:", "codeTemplate": "// Basic code template", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the standard way to work with Browser Operations.", "difficulty": "easy", "points": 15, "tags": ["code", "basics"]},
+    {"id": "quiz-sel-q373", "type": "true-false", "question": "Selenium supports multiple programming languages.", "correctAnswer": true, "explanation": "Selenium supports Java, Python, C#, JavaScript, Ruby, and more.", "difficulty": "easy", "points": 5, "tags": ["fundamentals", "languages"]},
+    {"id": "quiz-sel-q374", "type": "multiple-choice", "question": "Which browsers does Selenium support?", "options": ["Only Chrome", "Chrome and Firefox", "All major browsers", "Only Edge"], "correctAnswer": 2, "explanation": "Selenium supports Chrome, Firefox, Safari, Edge, and more.", "difficulty": "easy", "points": 10, "tags": ["browsers", "support"]},
+    {"id": "quiz-sel-q375", "type": "code-completion", "question": "Complete the Browser Operations setup:", "codeTemplate": "// Setup code", "correctAnswer": "// Complete setup", "acceptedAnswers": ["setup"], "explanation": "This initializes Browser Operations properly.", "difficulty": "easy", "points": 15, "tags": ["setup", "code"]},
+    {"id": "quiz-sel-q376", "type": "multiple-choice", "question": "What is WebDriver in Selenium?", "options": ["A browser", "An API for browser control", "A test framework", "A programming language"], "correctAnswer": 1, "explanation": "WebDriver is the API that controls browsers in Selenium.", "difficulty": "easy", "points": 10, "tags": ["webdriver", "concepts"]},
+    {"id": "quiz-sel-q377", "type": "debugging", "question": "What's wrong with this Browser Operations code?", "code": "// Problematic code", "options": ["Syntax error", "Missing driver setup", "Wrong method", "Timing issue"], "correctAnswer": 1, "explanation": "Always initialize the WebDriver before use.", "difficulty": "medium", "points": 20, "tags": ["debugging", "common-errors"]},
+    {"id": "quiz-sel-q378", "type": "true-false", "question": "Browser Operations requires manual waits for all elements.", "correctAnswer": false, "explanation": "Selenium provides implicit and explicit waits.", "difficulty": "easy", "points": 5, "tags": ["waits", "concepts"]},
+    {"id": "quiz-sel-q379", "type": "multiple-choice", "question": "Which Browser Operations component is most important?", "options": ["WebDriver", "Grid", "IDE", "All are important"], "correctAnswer": 3, "explanation": "Each Selenium component serves specific purposes.", "difficulty": "easy", "points": 10, "tags": ["components", "architecture"]},
+    {"id": "quiz-sel-q370", "type": "code-output", "question": "What does this Browser Operations code do?", "code": "// Sample code", "options": ["Opens browser", "Closes browser", "Navigates to URL", "Finds element"], "correctAnswer": 2, "explanation": "This code performs a specific Browser Operations operation.", "difficulty": "easy", "points": 15, "tags": ["operations", "methods"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-037",
+  "prerequisites": ["quiz-sel-036"],
+  "xpReward": 150,
+  "coinReward": 30
+}

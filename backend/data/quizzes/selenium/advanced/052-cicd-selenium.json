@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-052",
+  "title": "CI/CD with Selenium",
+  "slug": "cicd-selenium",
+  "track": "selenium",
+  "category": "advanced",
+  "description": "Advanced CI/CD with Selenium for enterprise Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q521", "type": "multiple-choice", "question": "What makes CI/CD with Selenium advanced?", "options": ["Complexity", "Scalability needs", "Enterprise requirements", "All factors"], "correctAnswer": 3, "explanation": "CI/CD with Selenium addresses complex enterprise automation challenges.", "difficulty": "hard", "points": 10, "tags": ["advanced", "cicd-selenium"]},
+    {"id": "quiz-sel-q522", "type": "code-completion", "question": "Implement advanced CI/CD with Selenium:", "codeTemplate": "// Advanced template", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This shows advanced CI/CD with Selenium implementation.", "difficulty": "hard", "points": 15, "tags": ["advanced", "implementation"]},
+    {"id": "quiz-sel-q523", "type": "true-false", "question": "CI/CD with Selenium requires deep architectural knowledge.", "correctAnswer": true, "explanation": "CI/CD with Selenium involves complex architectural decisions.", "difficulty": "hard", "points": 5, "tags": ["architecture", "expertise"]},
+    {"id": "quiz-sel-q524", "type": "multiple-choice", "question": "How does CI/CD with Selenium scale?", "options": ["Horizontally", "Vertically", "Both ways", "Depends on architecture"], "correctAnswer": 3, "explanation": "CI/CD with Selenium scaling depends on infrastructure and design.", "difficulty": "hard", "points": 10, "tags": ["scalability", "architecture"]},
+    {"id": "quiz-sel-q525", "type": "code-completion", "question": "Optimize CI/CD with Selenium for production:", "codeTemplate": "// Production code", "correctAnswer": "// Production-ready solution", "acceptedAnswers": ["solution"], "explanation": "This optimization is crucial for CI/CD with Selenium in production.", "difficulty": "hard", "points": 15, "tags": ["production", "optimization"]},
+    {"id": "quiz-sel-q526", "type": "multiple-choice", "question": "What are CI/CD with Selenium tradeoffs?", "options": ["Cost vs performance", "Complexity vs maintainability", "Speed vs reliability", "Multiple tradeoffs exist"], "correctAnswer": 3, "explanation": "CI/CD with Selenium involves balancing various concerns.", "difficulty": "hard", "points": 10, "tags": ["tradeoffs", "decisions"]},
+    {"id": "quiz-sel-q527", "type": "debugging", "question": "Diagnose this CI/CD with Selenium production issue:", "code": "// Complex production issue", "options": ["Infrastructure", "Code", "Configuration", "Requires deep analysis"], "correctAnswer": 3, "explanation": "Production CI/CD with Selenium issues need comprehensive analysis.", "difficulty": "hard", "points": 20, "tags": ["debugging", "production"]},
+    {"id": "quiz-sel-q528", "type": "true-false", "question": "CI/CD with Selenium is suitable for all projects.", "correctAnswer": false, "explanation": "CI/CD with Selenium is most valuable for large-scale projects.", "difficulty": "hard", "points": 5, "tags": ["suitability", "assessment"]},
+    {"id": "quiz-sel-q529", "type": "multiple-choice", "question": "How do you architect CI/CD with Selenium?", "options": ["Monolithic", "Microservices", "Hybrid", "Context-dependent"], "correctAnswer": 3, "explanation": "CI/CD with Selenium architecture should match project needs.", "difficulty": "hard", "points": 10, "tags": ["architecture", "design"]},
+    {"id": "quiz-sel-q520", "type": "code-output", "question": "Analyze this CI/CD with Selenium architecture:", "code": "// Architecture code", "options": ["Good design", "Anti-pattern", "Needs refinement", "Depends on requirements"], "correctAnswer": 2, "explanation": "This CI/CD with Selenium architecture has room for improvement.", "difficulty": "hard", "points": 15, "tags": ["architecture", "analysis"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-052",
+  "prerequisites": ["quiz-sel-051"],
+  "xpReward": 250,
+  "coinReward": 50
+}

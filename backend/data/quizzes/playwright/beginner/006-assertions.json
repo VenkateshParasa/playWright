@@ -1,0 +1,164 @@
+{
+  "id": "quiz-pw-006",
+  "title": "Assertions in Playwright",
+  "slug": "assertions",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Master assertions and expectations in Playwright tests",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q051",
+      "type": "multiple-choice",
+      "question": "Which assertion checks if an element is visible?",
+      "options": [
+        "expect(element).isVisible()",
+        "expect(element).toBeVisible()",
+        "expect(element).toShow()",
+        "expect(element).visible()"
+      ],
+      "correctAnswer": 1,
+      "explanation": "toBeVisible() is the correct assertion to check if an element is visible on the page.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["assertions", "visibility"]
+    },
+    {
+      "id": "quiz-pw-q052",
+      "type": "code-completion",
+      "question": "Complete the assertion to verify page title:",
+      "codeTemplate": "await expect(page).____('My Page Title');",
+      "correctAnswer": "await expect(page).toHaveTitle('My Page Title');",
+      "acceptedAnswers": [
+        "toHaveTitle"
+      ],
+      "explanation": "toHaveTitle() verifies the page title matches the expected value.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["assertions", "page", "code"]
+    },
+    {
+      "id": "quiz-pw-q053",
+      "type": "true-false",
+      "question": "Playwright assertions automatically retry until the condition is met or timeout occurs.",
+      "correctAnswer": true,
+      "explanation": "Playwright's expect assertions have built-in auto-retry functionality for better reliability.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["assertions", "auto-retry"]
+    },
+    {
+      "id": "quiz-pw-q054",
+      "type": "multiple-choice",
+      "question": "Which assertion verifies the current URL?",
+      "options": [
+        "expect(page).toHaveURL()",
+        "expect(page).toMatchURL()",
+        "expect(page).urlToBe()",
+        "expect(page).checkURL()"
+      ],
+      "correctAnswer": 0,
+      "explanation": "toHaveURL() is used to verify the current page URL matches the expected value.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["assertions", "navigation"]
+    },
+    {
+      "id": "quiz-pw-q055",
+      "type": "code-completion",
+      "question": "Complete the assertion to check element text:",
+      "codeTemplate": "await expect(page.getByRole('heading')).____('Welcome');",
+      "correctAnswer": "await expect(page.getByRole('heading')).toHaveText('Welcome');",
+      "acceptedAnswers": [
+        "toHaveText",
+        "toContainText"
+      ],
+      "explanation": "toHaveText() verifies exact text content, toContainText() checks if text is included.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["assertions", "text", "code"]
+    },
+    {
+      "id": "quiz-pw-q056",
+      "type": "multiple-choice",
+      "question": "How do you assert that an element is disabled?",
+      "options": [
+        "expect(element).toBeDisabled()",
+        "expect(element).isDisabled()",
+        "expect(element).disabled()",
+        "expect(element).notEnabled()"
+      ],
+      "correctAnswer": 0,
+      "explanation": "toBeDisabled() checks if an element has the disabled attribute or state.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["assertions", "state"]
+    },
+    {
+      "id": "quiz-pw-q057",
+      "type": "debugging",
+      "question": "What's wrong with this assertion?",
+      "code": "expect(page.getByText('Submit')).toBeVisible();",
+      "options": [
+        "Missing await keyword",
+        "Wrong assertion method",
+        "Incorrect locator",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Playwright assertions return Promises and must be awaited.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["assertions", "debugging", "async"]
+    },
+    {
+      "id": "quiz-pw-q058",
+      "type": "true-false",
+      "question": "The not modifier can be used to negate assertions in Playwright.",
+      "correctAnswer": true,
+      "explanation": "You can use .not before assertions like expect(element).not.toBeVisible() to negate them.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["assertions", "negation"]
+    },
+    {
+      "id": "quiz-pw-q059",
+      "type": "multiple-choice",
+      "question": "Which assertion checks if an input has a specific value?",
+      "options": [
+        "expect(input).toHaveValue()",
+        "expect(input).value()",
+        "expect(input).toContainValue()",
+        "expect(input).valueEquals()"
+      ],
+      "correctAnswer": 0,
+      "explanation": "toHaveValue() verifies that an input element has the expected value.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["assertions", "forms"]
+    },
+    {
+      "id": "quiz-pw-q060",
+      "type": "code-output",
+      "question": "What does this assertion check?",
+      "code": "await expect(page.getByRole('button')).toHaveCount(3);",
+      "options": [
+        "Button has value of 3",
+        "There are exactly 3 buttons",
+        "Button was clicked 3 times",
+        "Button has 3 child elements"
+      ],
+      "correctAnswer": 1,
+      "explanation": "toHaveCount() verifies that exactly 3 elements match the locator.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["assertions", "count"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-006",
+  "prerequisites": ["quiz-pw-005"],
+  "xpReward": 150,
+  "coinReward": 30
+}

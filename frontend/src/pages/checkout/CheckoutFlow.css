@@ -1,0 +1,383 @@
+.checkout-flow {
+  min-height: 100vh;
+  background: #f9fafb;
+  padding: 40px 20px;
+}
+
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.checkout-header {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.checkout-steps {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.step.active .step-number {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.step-label {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.step.active .step-label {
+  color: #1a1a1a;
+}
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 30px;
+}
+
+.checkout-main,
+.checkout-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-summary,
+.payment-methods,
+.price-breakdown,
+.guarantee {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h2,
+.payment-methods h3,
+.price-breakdown h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.item-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #1a1a1a;
+}
+
+.item-type {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.item-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.quantity-info {
+  padding: 15px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.coupon-section {
+  margin-top: 20px;
+}
+
+.coupon-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.coupon-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.coupon-input-group input {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.coupon-input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.coupon-input-group button {
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.coupon-input-group button:hover:not(:disabled) {
+  background: #764ba2;
+}
+
+.coupon-input-group button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.coupon-applied {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #d1fae5;
+  border: 2px solid #10b981;
+  border-radius: 8px;
+}
+
+.coupon-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.coupon-code {
+  font-weight: 700;
+  color: #065f46;
+  font-size: 1rem;
+}
+
+.coupon-discount {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.remove-coupon {
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid #10b981;
+  color: #10b981;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.coupon-error {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  color: #b91c1c;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.payment-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+  border-color: #667eea;
+  background: #f9fafb;
+}
+
+.payment-option img {
+  width: 32px;
+  height: 32px;
+}
+
+.payment-option span {
+  font-weight: 600;
+  color: #374151;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.breakdown-row.discount {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.breakdown-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 15px 0;
+}
+
+.breakdown-row.total {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkout-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.checkout-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.security-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.security-badges img {
+  width: 20px;
+  height: 20px;
+}
+
+.guarantee {
+  border: 2px solid #10b981;
+  background: #d1fae5;
+}
+
+.guarantee h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #065f46;
+}
+
+.guarantee p {
+  color: #047857;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.error {
+  color: #ef4444;
+}
+
+@media (max-width: 968px) {
+  .checkout-content {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-sidebar {
+    order: -1;
+  }
+
+  .checkout-steps {
+    gap: 20px;
+  }
+
+  .step-label {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .payment-options {
+    grid-template-columns: 1fr;
+  }
+}

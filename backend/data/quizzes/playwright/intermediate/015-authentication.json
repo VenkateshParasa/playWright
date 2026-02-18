@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-015",
+  "title": "Authentication",
+  "slug": "authentication",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master Authentication concepts in Playwright testing",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q151", "type": "multiple-choice", "question": "What is the primary benefit of Authentication in Playwright?", "options": ["Faster execution", "Better test isolation", "Easier debugging", "All of the above"], "correctAnswer": 3, "explanation": "Authentication improves test reliability, isolation, and maintainability.", "difficulty": "medium", "points": 10, "tags": ["auth", "concepts"]},
+    {"id": "quiz-pw-q152", "type": "code-completion", "question": "Complete the code for Authentication:", "codeTemplate": "// Code template for auth", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the correct way to implement Authentication.", "difficulty": "medium", "points": 15, "tags": ["auth", "code"]},
+    {"id": "quiz-pw-q153", "type": "true-false", "question": "Authentication can improve test performance.", "correctAnswer": true, "explanation": "Authentication is designed to optimize test execution and reliability.", "difficulty": "medium", "points": 5, "tags": ["auth", "performance"]},
+    {"id": "quiz-pw-q154", "type": "multiple-choice", "question": "When should you use Authentication?", "options": ["Always", "Only in CI/CD", "For complex scenarios", "Never"], "correctAnswer": 2, "explanation": "Authentication is most beneficial for complex testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["auth", "best-practices"]},
+    {"id": "quiz-pw-q155", "type": "code-completion", "question": "Complete the advanced Authentication pattern:", "codeTemplate": "// Advanced pattern", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates an advanced use case for Authentication.", "difficulty": "medium", "points": 15, "tags": ["auth", "advanced"]},
+    {"id": "quiz-pw-q156", "type": "multiple-choice", "question": "What are common Authentication pitfalls?", "options": ["Resource leaks", "Race conditions", "Configuration errors", "All of the above"], "correctAnswer": 3, "explanation": "Be aware of these common issues when working with Authentication.", "difficulty": "medium", "points": 10, "tags": ["auth", "troubleshooting"]},
+    {"id": "quiz-pw-q157", "type": "debugging", "question": "What's wrong with this Authentication implementation?", "code": "// Problematic code", "options": ["Missing configuration", "Incorrect usage", "Performance issue", "All could be issues"], "correctAnswer": 1, "explanation": "This code doesn't follow Authentication best practices.", "difficulty": "medium", "points": 20, "tags": ["auth", "debugging"]},
+    {"id": "quiz-pw-q158", "type": "true-false", "question": "Authentication requires additional dependencies.", "correctAnswer": false, "explanation": "Authentication is built into Playwright without extra dependencies.", "difficulty": "medium", "points": 5, "tags": ["auth", "dependencies"]},
+    {"id": "quiz-pw-q159", "type": "multiple-choice", "question": "How do you configure Authentication in playwright.config?", "options": ["In use section", "In projects", "At root level", "Depends on use case"], "correctAnswer": 3, "explanation": "Authentication configuration location depends on your specific needs.", "difficulty": "medium", "points": 10, "tags": ["auth", "configuration"]},
+    {"id": "quiz-pw-q150", "type": "code-output", "question": "What does this Authentication code produce?", "code": "// Sample code", "options": ["Expected result A", "Expected result B", "Error", "Depends on context"], "correctAnswer": 1, "explanation": "This code demonstrates a key Authentication behavior.", "difficulty": "medium", "points": 15, "tags": ["auth", "behavior"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-015",
+  "prerequisites": ["quiz-pw-014"],
+  "xpReward": 200,
+  "coinReward": 40
+}

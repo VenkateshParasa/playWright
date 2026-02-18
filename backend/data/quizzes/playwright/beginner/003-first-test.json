@@ -1,0 +1,164 @@
+{
+  "id": "quiz-pw-003",
+  "title": "Writing Your First Test",
+  "slug": "first-test",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Learn the basics of writing and structuring Playwright tests",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q021",
+      "type": "code-completion",
+      "question": "Complete the basic test structure:",
+      "codeTemplate": "import { test, expect } from '@playwright/test';\n\ntest('basic test', async ({ ____ }) => {\n  // test code\n});",
+      "correctAnswer": "import { test, expect } from '@playwright/test';\n\ntest('basic test', async ({ page }) => {\n  // test code\n});",
+      "acceptedAnswers": [
+        "page"
+      ],
+      "explanation": "The 'page' fixture is automatically provided by Playwright and is used to interact with the browser page.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["test-structure", "fixtures", "code"]
+    },
+    {
+      "id": "quiz-pw-q022",
+      "type": "multiple-choice",
+      "question": "Which method navigates to a URL in Playwright?",
+      "options": [
+        "page.open()",
+        "page.navigate()",
+        "page.goto()",
+        "page.visit()"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The page.goto() method is used to navigate to a URL in Playwright.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["navigation", "methods"]
+    },
+    {
+      "id": "quiz-pw-q023",
+      "type": "true-false",
+      "question": "Playwright test functions must be declared as async.",
+      "correctAnswer": true,
+      "explanation": "Playwright test functions must be async because most Playwright methods return Promises that need to be awaited.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["async", "test-structure"]
+    },
+    {
+      "id": "quiz-pw-q024",
+      "type": "code-completion",
+      "question": "Complete the code to navigate to a website:",
+      "codeTemplate": "____ page.goto('https://example.com');",
+      "correctAnswer": "await page.goto('https://example.com');",
+      "acceptedAnswers": [
+        "await page.goto('https://example.com');",
+        "await page.goto(\"https://example.com\");"
+      ],
+      "explanation": "The 'await' keyword is required because page.goto() is an async operation that returns a Promise.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["navigation", "async", "code"]
+    },
+    {
+      "id": "quiz-pw-q025",
+      "type": "multiple-choice",
+      "question": "What is the purpose of the 'expect' function in Playwright?",
+      "options": [
+        "To wait for elements",
+        "To make assertions",
+        "To navigate pages",
+        "To click elements"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The 'expect' function is used to make assertions and verify expected conditions in tests.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["assertions", "expect"]
+    },
+    {
+      "id": "quiz-pw-q026",
+      "type": "debugging",
+      "question": "What's wrong with this test?",
+      "code": "test('my test', ({ page }) => {\n  page.goto('https://example.com');\n  page.click('button');\n});",
+      "options": [
+        "Missing async keyword",
+        "Missing await keywords",
+        "Both A and B",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The test function must be async, and page.goto() and page.click() must be awaited.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["debugging", "async", "common-errors"]
+    },
+    {
+      "id": "quiz-pw-q027",
+      "type": "true-false",
+      "question": "You need to manually close the browser after each test in Playwright.",
+      "correctAnswer": false,
+      "explanation": "Playwright automatically manages browser lifecycle, creating and closing browser contexts for each test.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["test-structure", "lifecycle"]
+    },
+    {
+      "id": "quiz-pw-q028",
+      "type": "multiple-choice",
+      "question": "Which import statement is correct for Playwright Test?",
+      "options": [
+        "import { test, expect } from 'playwright';",
+        "import { test, expect } from '@playwright/test';",
+        "import playwright from '@playwright/test';",
+        "const { test, expect } = require('playwright');"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The correct ES6 import for Playwright Test is: import { test, expect } from '@playwright/test';",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["imports", "test-structure"]
+    },
+    {
+      "id": "quiz-pw-q029",
+      "type": "code-output",
+      "question": "What does this code do?",
+      "code": "await expect(page).toHaveTitle('Example Domain');",
+      "options": [
+        "Clicks on the title",
+        "Verifies the page title",
+        "Changes the page title",
+        "Waits for the title to appear"
+      ],
+      "correctAnswer": 1,
+      "explanation": "This assertion verifies that the page title matches 'Example Domain'.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["assertions", "expect"]
+    },
+    {
+      "id": "quiz-pw-q030",
+      "type": "multiple-choice",
+      "question": "What is the recommended file extension for Playwright tests?",
+      "options": [
+        ".test.js or .test.ts",
+        ".spec.js or .spec.ts",
+        ".playwright.js",
+        "Both A and B"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Playwright supports both .test.js/.test.ts and .spec.js/.spec.ts file extensions for test files.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["test-structure", "conventions"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-003",
+  "prerequisites": ["quiz-pw-002"],
+  "xpReward": 150,
+  "coinReward": 30
+}

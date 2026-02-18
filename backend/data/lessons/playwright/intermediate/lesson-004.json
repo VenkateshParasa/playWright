@@ -1,0 +1,69 @@
+{
+  "id": "pw-intermediate-004",
+  "title": "API Testing with Playwright",
+  "slug": "api-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "order": 4,
+  "duration": 30,
+  "description": "Use Playwright for API testing alongside UI tests.",
+  "objectives": [
+    "Make HTTP requests",
+    "Test REST APIs",
+    "Combine API and UI testing",
+    "Handle authentication tokens"
+  ],
+  "prerequisites": [
+    "pw-intermediate-003"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to API Testing with Playwright",
+        "type": "text",
+        "content": "# API Testing with Playwright\n\nLeverage Playwright's API testing capabilities for comprehensive test coverage.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for API Testing with Playwright\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of API Testing with Playwright concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, api testing with playwright is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for API Testing with Playwright\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "API Testing with Playwright is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master API Testing with Playwright for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "API Testing with Playwright Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-intermediate-quiz-004",
+  "nextLesson": "pw-intermediate-005",
+  "estimatedXP": 200,
+  "tags": [
+    "playwright",
+    "intermediate",
+    "api",
+    "automation",
+    "testing"
+  ]
+}

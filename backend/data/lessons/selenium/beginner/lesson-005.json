@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-005",
+  "title": "WebDriver Commands",
+  "slug": "webdriver-commands",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 5,
+  "duration": 25,
+  "description": "Learn essential WebDriver commands for browser control and interaction.",
+  "objectives": [
+    "Navigate pages",
+    "Click and type",
+    "Get element properties",
+    "Execute JavaScript"
+  ],
+  "prerequisites": [
+    "sel-beginner-004"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to WebDriver Commands",
+        "type": "text",
+        "content": "# WebDriver Commands\n\nMaster the core WebDriver API for browser automation.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for WebDriver Commands\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of WebDriver Commands concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, webdriver commands is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for WebDriver Commands\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "WebDriver Commands is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master WebDriver Commands for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "WebDriver Commands Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-005",
+  "nextLesson": "sel-beginner-006",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "webdriver",
+    "automation",
+    "testing"
+  ]
+}

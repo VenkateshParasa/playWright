@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-050",
+  "title": "Selenium Grid",
+  "slug": "selenium-grid",
+  "track": "selenium",
+  "category": "intermediate",
+  "description": "Master Selenium Grid in Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q501", "type": "multiple-choice", "question": "What is Selenium Grid used for?", "options": ["Basic testing", "Advanced scenarios", "Configuration", "All purposes"], "correctAnswer": 1, "explanation": "Selenium Grid is essential for handling advanced testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["intermediate", "selenium-grid"]},
+    {"id": "quiz-sel-q502", "type": "code-completion", "question": "Implement Selenium Grid:", "codeTemplate": "// Implementation template", "correctAnswer": "// Correct solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates proper Selenium Grid usage.", "difficulty": "medium", "points": 15, "tags": ["code", "implementation"]},
+    {"id": "quiz-sel-q503", "type": "true-false", "question": "Selenium Grid is part of Selenium WebDriver.", "correctAnswer": true, "explanation": "Selenium Grid is a built-in WebDriver feature.", "difficulty": "medium", "points": 5, "tags": ["webdriver", "features"]},
+    {"id": "quiz-sel-q504", "type": "multiple-choice", "question": "When should you use Selenium Grid?", "options": ["Always", "For specific scenarios", "Never", "Only in production"], "correctAnswer": 1, "explanation": "Selenium Grid is best suited for specific testing needs.", "difficulty": "medium", "points": 10, "tags": ["best-practices", "usage"]},
+    {"id": "quiz-sel-q505", "type": "code-completion", "question": "Complete the Selenium Grid pattern:", "codeTemplate": "// Pattern code", "correctAnswer": "// Complete pattern", "acceptedAnswers": ["pattern"], "explanation": "This is a common Selenium Grid pattern.", "difficulty": "medium", "points": 15, "tags": ["patterns", "code"]},
+    {"id": "quiz-sel-q506", "type": "multiple-choice", "question": "What are Selenium Grid limitations?", "options": ["Performance", "Browser support", "Complexity", "Varies by context"], "correctAnswer": 3, "explanation": "Selenium Grid limitations depend on the specific use case.", "difficulty": "medium", "points": 10, "tags": ["limitations", "considerations"]},
+    {"id": "quiz-sel-q507", "type": "debugging", "question": "Fix this Selenium Grid issue:", "code": "// Code with issue", "options": ["Syntax fix", "Logic fix", "Configuration fix", "Multiple fixes needed"], "correctAnswer": 1, "explanation": "The main issue is with Selenium Grid logic.", "difficulty": "medium", "points": 20, "tags": ["debugging", "troubleshooting"]},
+    {"id": "quiz-sel-q508", "type": "true-false", "question": "Selenium Grid works across all browsers.", "correctAnswer": true, "explanation": "Selenium Grid is supported by all major browsers.", "difficulty": "medium", "points": 5, "tags": ["compatibility", "browsers"]},
+    {"id": "quiz-sel-q509", "type": "multiple-choice", "question": "How do you optimize Selenium Grid?", "options": ["Caching", "Parallel execution", "Smart waits", "All techniques"], "correctAnswer": 3, "explanation": "Multiple optimization techniques can improve Selenium Grid.", "difficulty": "medium", "points": 10, "tags": ["optimization", "performance"]},
+    {"id": "quiz-sel-q500", "type": "code-output", "question": "What is the result of this Selenium Grid code?", "code": "// Code example", "options": ["Output A", "Output B", "Exception", "Depends on state"], "correctAnswer": 1, "explanation": "This code produces a specific result for Selenium Grid.", "difficulty": "medium", "points": 15, "tags": ["behavior", "output"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-050",
+  "prerequisites": ["quiz-sel-049"],
+  "xpReward": 200,
+  "coinReward": 40
+}

@@ -1,0 +1,69 @@
+{
+  "id": "sel-advanced-006",
+  "title": "Log4j Integration",
+  "slug": "log4j-integration",
+  "track": "selenium",
+  "category": "advanced",
+  "order": 6,
+  "duration": 35,
+  "description": "Implement comprehensive logging for better debugging and monitoring.",
+  "objectives": [
+    "Configure Log4j",
+    "Add logging statements",
+    "Manage log levels",
+    "Analyze logs"
+  ],
+  "prerequisites": [
+    "sel-advanced-005"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Log4j Integration",
+        "type": "text",
+        "content": "# Log4j Integration\n\nMaster logging for effective test debugging.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Log4j Integration\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Log4j Integration concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, log4j integration is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Log4j Integration\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Log4j Integration is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Log4j Integration for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Log4j Integration Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-advanced-quiz-006",
+  "nextLesson": "sel-advanced-007",
+  "estimatedXP": 250,
+  "tags": [
+    "selenium",
+    "advanced",
+    "log4j",
+    "automation",
+    "testing"
+  ]
+}

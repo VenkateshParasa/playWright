@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-021",
+  "title": "Visual Regression",
+  "slug": "visual-regression",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced Visual Regression techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q211", "type": "multiple-choice", "question": "What is Visual Regression in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "Visual Regression encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "visual-regression"]},
+    {"id": "quiz-pw-q212", "type": "code-completion", "question": "Implement Visual Regression:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for Visual Regression.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q213", "type": "true-false", "question": "Visual Regression requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "Visual Regression is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q214", "type": "multiple-choice", "question": "When is Visual Regression most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "Visual Regression provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q215", "type": "code-completion", "question": "Optimize Visual Regression:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves Visual Regression performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q216", "type": "multiple-choice", "question": "What are Visual Regression challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "Visual Regression involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q217", "type": "debugging", "question": "Debug this Visual Regression issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q218", "type": "true-false", "question": "Visual Regression scales well for large test suites.", "correctAnswer": true, "explanation": "Visual Regression is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q219", "type": "multiple-choice", "question": "How do you architect Visual Regression?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q210", "type": "code-output", "question": "Analyze this Visual Regression pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-021",
+  "prerequisites": ["quiz-pw-020"],
+  "xpReward": 250,
+  "coinReward": 50
+}

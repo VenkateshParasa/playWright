@@ -1,0 +1,67 @@
+{
+  "id": "pw-beginner-007",
+  "title": "Page Object Model Basics",
+  "slug": "page-object-model-basics",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 7,
+  "duration": 30,
+  "description": "Learn the Page Object Model (POM) design pattern to create maintainable and reusable test code.",
+  "objectives": [
+    "Understand the Page Object Model pattern",
+    "Create page object classes for web pages",
+    "Implement reusable methods and locators",
+    "Organize test code for better maintainability"
+  ],
+  "prerequisites": [
+    "pw-beginner-006"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "What is Page Object Model?",
+        "type": "text",
+        "content": "# Page Object Model (POM)\n\nPage Object Model is a design pattern that creates an object repository for web elements. Instead of writing locators directly in tests, you encapsulate them in page classes.\n\n## Benefits\n\n**Maintainability**: If a locator changes, update it in one place\n**Reusability**: Share page methods across multiple tests\n**Readability**: Tests read like business requirements\n**Separation**: Separate test logic from page structure\n\n## Without POM\n\n```typescript\ntest('login', async ({ page }) => {\n  await page.goto('https://example.com/login');\n  await page.fill('#email', 'user@test.com');\n  await page.fill('#password', 'password');\n  await page.click('button[type=\"submit\"]');\n  await expect(page).toHaveURL('/dashboard');\n});\n```\n\n## With POM\n\n```typescript\ntest('login', async ({ page }) => {\n  const loginPage = new LoginPage(page);\n  await loginPage.goto();\n  await loginPage.login('user@test.com', 'password');\n  await expect(page).toHaveURL('/dashboard');\n});\n```\n\nMuch cleaner and more maintainable!"
+      },
+      {
+        "title": "Creating a Page Object",
+        "type": "code",
+        "language": "typescript",
+        "code": "// pages/LoginPage.ts\nimport { Page, Locator } from '@playwright/test';\n\nexport class LoginPage {\n  readonly page: Page;\n  readonly emailInput: Locator;\n  readonly passwordInput: Locator;\n  readonly submitButton: Locator;\n  readonly errorMessage: Locator;\n\n  constructor(page: Page) {\n    this.page = page;\n    this.emailInput = page.locator('#email');\n    this.passwordInput = page.locator('#password');\n    this.submitButton = page.locator('button[type=\"submit\"]');\n    this.errorMessage = page.locator('.error-message');\n  }\n\n  async goto() {\n    await this.page.goto('/login');\n  }\n\n  async login(email: string, password: string) {\n    await this.emailInput.fill(email);\n    await this.passwordInput.fill(password);\n    await this.submitButton.click();\n  }\n\n  async getErrorMessage() {\n    return await this.errorMessage.textContent();\n  }\n}",
+        "explanation": "A page object encapsulates locators and actions for a specific page. All page interactions go through these methods."
+      },
+      {
+        "title": "Using Page Objects in Tests",
+        "type": "code",
+        "language": "typescript",
+        "code": "// tests/login.spec.ts\nimport { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\n\ntest.describe('Login Tests', () => {\n  test('successful login', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.goto();\n    await loginPage.login('user@example.com', 'password123');\n    await expect(page).toHaveURL('/dashboard');\n  });\n\n  test('login with invalid credentials', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.goto();\n    await loginPage.login('user@example.com', 'wrongpassword');\n    \n    const error = await loginPage.getErrorMessage();\n    expect(error).toContain('Invalid credentials');\n  });\n\n  test('login with empty fields', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.goto();\n    await loginPage.login('', '');\n    \n    await expect(loginPage.errorMessage).toBeVisible();\n  });\n});",
+        "explanation": "Tests become much simpler and more readable. They describe what you're testing, not how."
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Page Object Model separates page structure from test logic",
+    "Locators and actions are encapsulated in page classes",
+    "Tests become more readable and maintainable",
+    "Changes to UI only require updates in one place",
+    "Page objects promote code reuse across tests",
+    "Each page should have its own class",
+    "Methods should represent user actions on the page"
+  ],
+  "resources": [
+    {
+      "title": "Page Object Model",
+      "url": "https://playwright.dev/docs/pom",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-007",
+  "nextLesson": "pw-beginner-008",
+  "estimatedXP": 200,
+  "tags": [
+    "playwright",
+    "pom",
+    "page-object-model",
+    "design-pattern"
+  ]
+}

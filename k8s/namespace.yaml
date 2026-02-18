@@ -1,0 +1,8 @@
+# Namespace for the application
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: playwright-learning
+  labels:
+    name: playwright-learning
+    environment: production

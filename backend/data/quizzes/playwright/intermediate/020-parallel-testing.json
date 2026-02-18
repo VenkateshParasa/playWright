@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-020",
+  "title": "Parallel Testing",
+  "slug": "parallel-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master Parallel Testing concepts in Playwright testing",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q201", "type": "multiple-choice", "question": "What is the primary benefit of Parallel Testing in Playwright?", "options": ["Faster execution", "Better test isolation", "Easier debugging", "All of the above"], "correctAnswer": 3, "explanation": "Parallel Testing improves test reliability, isolation, and maintainability.", "difficulty": "medium", "points": 10, "tags": ["parallel", "concepts"]},
+    {"id": "quiz-pw-q202", "type": "code-completion", "question": "Complete the code for Parallel Testing:", "codeTemplate": "// Code template for parallel", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the correct way to implement Parallel Testing.", "difficulty": "medium", "points": 15, "tags": ["parallel", "code"]},
+    {"id": "quiz-pw-q203", "type": "true-false", "question": "Parallel Testing can improve test performance.", "correctAnswer": true, "explanation": "Parallel Testing is designed to optimize test execution and reliability.", "difficulty": "medium", "points": 5, "tags": ["parallel", "performance"]},
+    {"id": "quiz-pw-q204", "type": "multiple-choice", "question": "When should you use Parallel Testing?", "options": ["Always", "Only in CI/CD", "For complex scenarios", "Never"], "correctAnswer": 2, "explanation": "Parallel Testing is most beneficial for complex testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["parallel", "best-practices"]},
+    {"id": "quiz-pw-q205", "type": "code-completion", "question": "Complete the advanced Parallel Testing pattern:", "codeTemplate": "// Advanced pattern", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates an advanced use case for Parallel Testing.", "difficulty": "medium", "points": 15, "tags": ["parallel", "advanced"]},
+    {"id": "quiz-pw-q206", "type": "multiple-choice", "question": "What are common Parallel Testing pitfalls?", "options": ["Resource leaks", "Race conditions", "Configuration errors", "All of the above"], "correctAnswer": 3, "explanation": "Be aware of these common issues when working with Parallel Testing.", "difficulty": "medium", "points": 10, "tags": ["parallel", "troubleshooting"]},
+    {"id": "quiz-pw-q207", "type": "debugging", "question": "What's wrong with this Parallel Testing implementation?", "code": "// Problematic code", "options": ["Missing configuration", "Incorrect usage", "Performance issue", "All could be issues"], "correctAnswer": 1, "explanation": "This code doesn't follow Parallel Testing best practices.", "difficulty": "medium", "points": 20, "tags": ["parallel", "debugging"]},
+    {"id": "quiz-pw-q208", "type": "true-false", "question": "Parallel Testing requires additional dependencies.", "correctAnswer": false, "explanation": "Parallel Testing is built into Playwright without extra dependencies.", "difficulty": "medium", "points": 5, "tags": ["parallel", "dependencies"]},
+    {"id": "quiz-pw-q209", "type": "multiple-choice", "question": "How do you configure Parallel Testing in playwright.config?", "options": ["In use section", "In projects", "At root level", "Depends on use case"], "correctAnswer": 3, "explanation": "Parallel Testing configuration location depends on your specific needs.", "difficulty": "medium", "points": 10, "tags": ["parallel", "configuration"]},
+    {"id": "quiz-pw-q200", "type": "code-output", "question": "What does this Parallel Testing code produce?", "code": "// Sample code", "options": ["Expected result A", "Expected result B", "Error", "Depends on context"], "correctAnswer": 1, "explanation": "This code demonstrates a key Parallel Testing behavior.", "difficulty": "medium", "points": 15, "tags": ["parallel", "behavior"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-020",
+  "prerequisites": ["quiz-pw-019"],
+  "xpReward": 200,
+  "coinReward": 40
+}

@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // Root alias
+      "@/*": ["src/*"],
+
+      // Backend Path Aliases
+      "@/config/*": ["src/config/*"],
+      "@/models/*": ["src/models/*"],
+      "@/controllers/*": ["src/controllers/*"],
+      "@/services/*": ["src/services/*"],
+      "@/middleware/*": ["src/middleware/*"],
+      "@/routes/*": ["src/routes/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/types/*": ["src/types/*"],
+      "@/workers/*": ["src/workers/*"],
+      "@/integrations/*": ["src/integrations/*"],
+      "@/ml/*": ["src/ml/*"],
+      "@/data/*": ["src/data/*"],
+
+      // Frontend Path Aliases
+      "@/components/*": ["src/components/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/stores/*": ["src/stores/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/services/*": ["src/services/*"],
+      "@/lib/*": ["src/lib/*"],
+      "@/constants/*": ["src/constants/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/i18n/*": ["src/i18n/*"],
+      "@/locales/*": ["src/locales/*"],
+      "@/data/*": ["src/data/*"],
+      "@/examples/*": ["src/examples/*"],
+      "@/assets/*": ["src/assets/*"]
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-029",
+  "title": "Trace Viewer",
+  "slug": "trace-viewer",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 30,
+  "description": "Master trace viewer in Playwright",
+  "objectives": [
+    "Enable tracing",
+    "Capture traces",
+    "View traces",
+    "Debug with traces",
+    "Trace options"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Enable tracing\n2. Capture traces\n3. View traces\n4. Debug with traces\n5. Trace options",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('trace-viewer', async ({ page }) => {\n  // TODO: Implement Trace Viewer\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_trace_viewer(page: Page):\n    # TODO: Implement Trace Viewer\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('trace-viewer', async ({ page }) => {\n  // TODO: Implement Trace Viewer\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Trace Viewer\ntest('trace-viewer', async ({ page }) => {\n  // Implementation demonstrates enable tracing\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Trace Viewer\ndef test_trace_viewer(page: Page):\n    # Implementation demonstrates enable tracing\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Trace Viewer\ntest('trace-viewer', async ({ page }) => {\n  // Implementation demonstrates enable tracing\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by enable tracing",
+    "Remember to capture traces",
+    "Use appropriate methods for view traces",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Enable tracing",
+      "input": null,
+      "expectedBehavior": "Enable tracing works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Capture traces",
+      "input": null,
+      "expectedBehavior": "Capture traces works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "View traces",
+      "input": null,
+      "expectedBehavior": "View traces works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Trace Viewer Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-029",
+    "lesson-030"
+  ],
+  "xpReward": 300,
+  "coinReward": 75,
+  "tags": [
+    "tracing",
+    "debugging",
+    "traces",
+    "viewer"
+  ]
+}

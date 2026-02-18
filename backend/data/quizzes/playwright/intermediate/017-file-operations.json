@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-017",
+  "title": "File Operations",
+  "slug": "file-operations",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master File Operations concepts in Playwright testing",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q171", "type": "multiple-choice", "question": "What is the primary benefit of File Operations in Playwright?", "options": ["Faster execution", "Better test isolation", "Easier debugging", "All of the above"], "correctAnswer": 3, "explanation": "File Operations improves test reliability, isolation, and maintainability.", "difficulty": "medium", "points": 10, "tags": ["files", "concepts"]},
+    {"id": "quiz-pw-q172", "type": "code-completion", "question": "Complete the code for File Operations:", "codeTemplate": "// Code template for files", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the correct way to implement File Operations.", "difficulty": "medium", "points": 15, "tags": ["files", "code"]},
+    {"id": "quiz-pw-q173", "type": "true-false", "question": "File Operations can improve test performance.", "correctAnswer": true, "explanation": "File Operations is designed to optimize test execution and reliability.", "difficulty": "medium", "points": 5, "tags": ["files", "performance"]},
+    {"id": "quiz-pw-q174", "type": "multiple-choice", "question": "When should you use File Operations?", "options": ["Always", "Only in CI/CD", "For complex scenarios", "Never"], "correctAnswer": 2, "explanation": "File Operations is most beneficial for complex testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["files", "best-practices"]},
+    {"id": "quiz-pw-q175", "type": "code-completion", "question": "Complete the advanced File Operations pattern:", "codeTemplate": "// Advanced pattern", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates an advanced use case for File Operations.", "difficulty": "medium", "points": 15, "tags": ["files", "advanced"]},
+    {"id": "quiz-pw-q176", "type": "multiple-choice", "question": "What are common File Operations pitfalls?", "options": ["Resource leaks", "Race conditions", "Configuration errors", "All of the above"], "correctAnswer": 3, "explanation": "Be aware of these common issues when working with File Operations.", "difficulty": "medium", "points": 10, "tags": ["files", "troubleshooting"]},
+    {"id": "quiz-pw-q177", "type": "debugging", "question": "What's wrong with this File Operations implementation?", "code": "// Problematic code", "options": ["Missing configuration", "Incorrect usage", "Performance issue", "All could be issues"], "correctAnswer": 1, "explanation": "This code doesn't follow File Operations best practices.", "difficulty": "medium", "points": 20, "tags": ["files", "debugging"]},
+    {"id": "quiz-pw-q178", "type": "true-false", "question": "File Operations requires additional dependencies.", "correctAnswer": false, "explanation": "File Operations is built into Playwright without extra dependencies.", "difficulty": "medium", "points": 5, "tags": ["files", "dependencies"]},
+    {"id": "quiz-pw-q179", "type": "multiple-choice", "question": "How do you configure File Operations in playwright.config?", "options": ["In use section", "In projects", "At root level", "Depends on use case"], "correctAnswer": 3, "explanation": "File Operations configuration location depends on your specific needs.", "difficulty": "medium", "points": 10, "tags": ["files", "configuration"]},
+    {"id": "quiz-pw-q170", "type": "code-output", "question": "What does this File Operations code produce?", "code": "// Sample code", "options": ["Expected result A", "Expected result B", "Error", "Depends on context"], "correctAnswer": 1, "explanation": "This code demonstrates a key File Operations behavior.", "difficulty": "medium", "points": 15, "tags": ["files", "behavior"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-017",
+  "prerequisites": ["quiz-pw-016"],
+  "xpReward": 200,
+  "coinReward": 40
+}

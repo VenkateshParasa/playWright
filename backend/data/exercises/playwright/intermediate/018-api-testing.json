@@ -1,0 +1,78 @@
+{
+  "id": "exercise-pw-018",
+  "title": "API Testing with Playwright",
+  "slug": "api-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 35,
+  "description": "Learn to perform API testing using Playwright's request context",
+  "objectives": [
+    "Make GET requests",
+    "Make POST requests",
+    "Handle authentication",
+    "Validate responses",
+    "Test REST APIs"
+  ],
+  "instructions": "Write tests that:\n1. Make GET API requests\n2. Make POST requests with JSON body\n3. Handle API authentication\n4. Validate response status and body\n5. Chain multiple API calls",
+  "xpReward": 350,
+  "coinReward": 85,
+  "tags": [
+    "api",
+    "rest",
+    "http",
+    "requests"
+  ],
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('api-testing', async ({ page }) => {\n  // TODO: Implement API Testing with Playwright\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_api_testing(page: Page):\n    # TODO: Implement API Testing with Playwright\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('api-testing', async ({ page }) => {\n  // TODO: Implement API Testing with Playwright\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for API Testing with Playwright\ntest('api-testing', async ({ page }) => {\n  // Implementation here\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for API Testing with Playwright\ndef test_api_testing(page: Page):\n    # Implementation here\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for API Testing with Playwright\ntest('api-testing', async ({ page }) => {\n  // Implementation here\n});"
+  },
+  "hints": [
+    "Focus on make get requests",
+    "Remember to handle make post requests",
+    "Use appropriate methods for handle authentication"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Make GET requests",
+      "input": null,
+      "expectedBehavior": "Make GET requests works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Make POST requests",
+      "input": null,
+      "expectedBehavior": "Make POST requests works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Handle authentication",
+      "input": null,
+      "expectedBehavior": "Handle authentication works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "API Testing with Playwright Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-018",
+    "lesson-019"
+  ]
+}

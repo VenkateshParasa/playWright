@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-025",
+  "title": "Data-Driven Testing",
+  "slug": "data-driven-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 40,
+  "description": "Master data-driven testing in Playwright",
+  "objectives": [
+    "Parameterized tests",
+    "CSV data source",
+    "JSON data source",
+    "Test.each usage",
+    "Dynamic test generation"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Parameterized tests\n2. CSV data source\n3. JSON data source\n4. Test.each usage\n5. Dynamic test generation",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('data-driven-testing', async ({ page }) => {\n  // TODO: Implement Data-Driven Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_data_driven_testing(page: Page):\n    # TODO: Implement Data-Driven Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('data-driven-testing', async ({ page }) => {\n  // TODO: Implement Data-Driven Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Data-Driven Testing\ntest('data-driven-testing', async ({ page }) => {\n  // Implementation demonstrates parameterized tests\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Data-Driven Testing\ndef test_data_driven_testing(page: Page):\n    # Implementation demonstrates parameterized tests\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Data-Driven Testing\ntest('data-driven-testing', async ({ page }) => {\n  // Implementation demonstrates parameterized tests\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by parameterized tests",
+    "Remember to csv data source",
+    "Use appropriate methods for json data source",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Parameterized tests",
+      "input": null,
+      "expectedBehavior": "Parameterized tests works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "CSV data source",
+      "input": null,
+      "expectedBehavior": "CSV data source works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "JSON data source",
+      "input": null,
+      "expectedBehavior": "JSON data source works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Data-Driven Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-025",
+    "lesson-026"
+  ],
+  "xpReward": 400,
+  "coinReward": 100,
+  "tags": [
+    "data-driven",
+    "parameterized",
+    "csv",
+    "json"
+  ]
+}

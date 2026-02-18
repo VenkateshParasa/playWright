@@ -1,0 +1,179 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-17",
+  "totalExercises": 80,
+  "tracks": {
+    "playwright": {
+      "total": 40,
+      "beginner": 15,
+      "intermediate": 15,
+      "advanced": 10,
+      "languages": ["javascript", "python", "typescript"],
+      "categories": {
+        "beginner": {
+          "count": 15,
+          "exercises": [
+            "001-navigate-url",
+            "002-click-button",
+            "003-fill-form",
+            "004-find-elements-role",
+            "005-simple-assertions",
+            "006-handle-multiple-pages",
+            "007-take-screenshot",
+            "008-wait-elements",
+            "009-use-locators",
+            "010-basic-test-structure",
+            "011-handle-dropdowns",
+            "012-checkboxes-radio",
+            "013-handle-alerts",
+            "014-work-with-iframes",
+            "015-keyboard-mouse-actions"
+          ]
+        },
+        "intermediate": {
+          "count": 15,
+          "exercises": [
+            "016-page-object-model",
+            "017-handle-dynamic-content",
+            "018-api-testing",
+            "019-network-interception",
+            "020-authentication-flow",
+            "021-file-upload-download",
+            "022-work-with-tables",
+            "023-browser-contexts",
+            "024-custom-fixtures",
+            "025-data-driven-testing",
+            "026-geolocation-permissions",
+            "027-device-emulation",
+            "028-video-recording",
+            "029-trace-viewer",
+            "030-test-reporters"
+          ]
+        },
+        "advanced": {
+          "count": 10,
+          "exercises": [
+            "031-visual-regression",
+            "032-component-testing",
+            "033-accessibility-testing",
+            "034-performance-testing",
+            "035-mobile-testing",
+            "036-cicd-integration",
+            "037-custom-reporter",
+            "038-complex-user-flows",
+            "039-test-retry-strategy",
+            "040-framework-architecture"
+          ]
+        }
+      }
+    },
+    "selenium": {
+      "total": 40,
+      "beginner": 15,
+      "intermediate": 15,
+      "advanced": 10,
+      "languages": ["java", "python", "javascript"],
+      "categories": {
+        "beginner": {
+          "count": 15,
+          "exercises": [
+            "001-setup-webdriver",
+            "002-navigate-click",
+            "003-form-interaction",
+            "004-element-location",
+            "005-basic-assertions",
+            "006-handle-alerts",
+            "007-work-with-frames",
+            "008-waits",
+            "009-multiple-windows",
+            "010-testng-structure",
+            "011-handle-dropdowns",
+            "012-checkboxes-radio",
+            "013-take-screenshots",
+            "014-browser-navigation",
+            "015-element-properties"
+          ]
+        },
+        "intermediate": {
+          "count": 15,
+          "exercises": [
+            "016-page-object-model",
+            "017-actions-class",
+            "018-javascript-executor",
+            "019-advanced-select",
+            "020-dynamic-waits",
+            "021-handle-cookies",
+            "022-advanced-screenshots",
+            "023-testng-configuration",
+            "024-data-driven-testing",
+            "025-advanced-actions",
+            "026-file-upload",
+            "027-working-with-tables",
+            "028-headless-testing",
+            "029-browser-options",
+            "030-log4j-integration"
+          ]
+        },
+        "advanced": {
+          "count": 10,
+          "exercises": [
+            "031-selenium-grid",
+            "032-cross-browser-testing",
+            "033-cucumber-bdd",
+            "034-extent-reports",
+            "035-docker-integration",
+            "036-cloud-testing",
+            "037-framework-architecture",
+            "038-performance-testing",
+            "039-cicd-integration",
+            "040-best-practices"
+          ]
+        }
+      }
+    }
+  },
+  "statistics": {
+    "totalExercises": 80,
+    "totalXP": 26850,
+    "totalCoins": 6710,
+    "averageTimeMinutes": 32,
+    "difficultyDistribution": {
+      "easy": 30,
+      "medium": 30,
+      "hard": 20
+    }
+  },
+  "learningPaths": [
+    {
+      "name": "Playwright Beginner Path",
+      "exercises": ["exercise-pw-001", "exercise-pw-002", "exercise-pw-003", "exercise-pw-004", "exercise-pw-005"],
+      "estimatedHours": 2
+    },
+    {
+      "name": "Playwright Intermediate Path",
+      "exercises": ["exercise-pw-016", "exercise-pw-017", "exercise-pw-018", "exercise-pw-019", "exercise-pw-020"],
+      "estimatedHours": 3
+    },
+    {
+      "name": "Selenium Beginner Path",
+      "exercises": ["exercise-se-001", "exercise-se-002", "exercise-se-003", "exercise-se-004", "exercise-se-005"],
+      "estimatedHours": 2
+    },
+    {
+      "name": "Complete Playwright Track",
+      "trackId": "playwright",
+      "estimatedHours": 22
+    },
+    {
+      "name": "Complete Selenium Track",
+      "trackId": "selenium",
+      "estimatedHours": 22
+    }
+  ],
+  "tags": [
+    "navigation", "click", "locators", "assertions", "forms",
+    "waits", "pom", "api", "network", "authentication",
+    "visual-regression", "accessibility", "performance", "cicd",
+    "selenium-grid", "cucumber", "docker", "cloud-testing"
+  ]
+}

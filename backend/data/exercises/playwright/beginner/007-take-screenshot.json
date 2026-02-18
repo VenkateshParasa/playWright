@@ -1,0 +1,71 @@
+{
+  "id": "exercise-pw-007",
+  "title": "Take a Screenshot",
+  "slug": "take-screenshot",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 15,
+  "description": "Learn to capture screenshots of pages and elements for debugging and documentation",
+  "objectives": [
+    "Take full page screenshot",
+    "Take element screenshot",
+    "Configure screenshot options",
+    "Save screenshots to files"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Navigates to a webpage\n2. Takes a full page screenshot\n3. Takes a screenshot of a specific element\n4. Saves screenshots with custom names\n5. Uses different screenshot options",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\nimport path from 'path';\n\ntest('take screenshots', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  // TODO: Take a full page screenshot\n  \n  // TODO: Take a screenshot of the main heading\n  \n  // TODO: Take a screenshot with custom options\n});",
+    "python": "from playwright.sync_api import Page, expect\nimport os\n\ndef test_screenshots(page: Page):\n    page.goto('https://playwright.dev')\n    \n    # TODO: Take a full page screenshot\n    \n    # TODO: Take a screenshot of the main heading\n    \n    # TODO: Take a screenshot with custom options\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\nimport path from 'path';\n\ntest('take screenshots', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  // TODO: Take a full page screenshot\n  \n  // TODO: Take a screenshot of the main heading\n  \n  // TODO: Take a screenshot with custom options\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\nimport path from 'path';\n\ntest('take screenshots', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  await page.screenshot({ \n    path: 'screenshots/full-page.png', \n    fullPage: true \n  });\n  \n  const heading = page.getByRole('heading', { level: 1 }).first();\n  await heading.screenshot({ path: 'screenshots/heading.png' });\n  \n  await page.screenshot({ \n    path: 'screenshots/viewport.png',\n    clip: { x: 0, y: 0, width: 800, height: 600 }\n  });\n});",
+    "python": "from playwright.sync_api import Page, expect\nimport os\n\ndef test_screenshots(page: Page):\n    page.goto('https://playwright.dev')\n    \n    page.screenshot(\n        path='screenshots/full-page.png',\n        full_page=True\n    )\n    \n    heading = page.get_by_role('heading', level=1).first\n    heading.screenshot(path='screenshots/heading.png')\n    \n    page.screenshot(\n        path='screenshots/viewport.png',\n        clip={'x': 0, 'y': 0, 'width': 800, 'height': 600}\n    )",
+    "typescript": "import { test, expect } from '@playwright/test';\nimport path from 'path';\n\ntest('take screenshots', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  await page.screenshot({ \n    path: 'screenshots/full-page.png', \n    fullPage: true \n  });\n  \n  const heading = page.getByRole('heading', { level: 1 }).first();\n  await heading.screenshot({ path: 'screenshots/heading.png' });\n  \n  await page.screenshot({ \n    path: 'screenshots/viewport.png',\n    clip: { x: 0, y: 0, width: 800, height: 600 }\n  });\n});"
+  },
+  "hints": [
+    "Use page.screenshot() for full page screenshots",
+    "Use element.screenshot() for specific elements",
+    "Set fullPage: true to capture entire scrollable page",
+    "Use clip option to capture specific regions",
+    "Screenshots are automatically saved as PNG files"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Full page screenshot created",
+      "input": null,
+      "expectedBehavior": "Full page screenshot file exists",
+      "points": 30
+    },
+    {
+      "id": "test-2",
+      "name": "Element screenshot created",
+      "input": null,
+      "expectedBehavior": "Element screenshot file exists",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Custom screenshot created",
+      "input": null,
+      "expectedBehavior": "Custom region screenshot file exists",
+      "points": 35
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Screenshots",
+      "url": "https://playwright.dev/docs/screenshots"
+    },
+    {
+      "title": "Visual Comparisons",
+      "url": "https://playwright.dev/docs/test-snapshots"
+    }
+  ],
+  "relatedLessons": ["lesson-013", "lesson-014"],
+  "xpReward": 150,
+  "coinReward": 40,
+  "tags": ["screenshots", "debugging", "visual", "capture"]
+}

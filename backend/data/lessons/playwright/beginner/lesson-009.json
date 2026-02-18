@@ -1,0 +1,74 @@
+{
+  "id": "pw-beginner-009",
+  "title": "Debugging Tests",
+  "slug": "debugging-tests",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 9,
+  "duration": 30,
+  "description": "Learn essential debugging techniques and tools to troubleshoot and fix failing tests effectively.",
+  "objectives": [
+    "Use Playwright Inspector for step-by-step debugging",
+    "Leverage VS Code debugging capabilities",
+    "Utilize trace viewer for post-mortem analysis",
+    "Apply debugging best practices"
+  ],
+  "prerequisites": [
+    "pw-beginner-008"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Playwright Inspector",
+        "type": "code",
+        "language": "bash",
+        "code": "# Open Playwright Inspector\nnpx playwright test --debug\n\n# Debug specific test\nnpx playwright test login.spec.ts --debug\n\n# Debug from specific line\nnpx playwright test login.spec.ts:25 --debug\n\n# Inspector features:\n# - Step through test line by line\n# - Pause and resume execution\n# - Explore page state at each step\n# - Test locators interactively\n# - See screenshots and logs\n# - Time travel through test execution",
+        "explanation": "Playwright Inspector is your primary debugging tool. It provides a visual interface to step through tests."
+      },
+      {
+        "title": "Using page.pause()",
+        "type": "code",
+        "language": "typescript",
+        "code": "import { test } from '@playwright/test';\n\ntest('debug with pause', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Pause here - Inspector opens automatically\n  await page.pause();\n  \n  // Continue with test after inspecting\n  await page.click('button');\n  \n  // Pause again at a different point\n  await page.pause();\n  \n  await page.fill('input', 'text');\n});\n\n// Pro tip: Remove page.pause() before committing!",
+        "explanation": "page.pause() stops test execution and opens the Inspector. Great for debugging specific sections."
+      },
+      {
+        "title": "Trace Viewer",
+        "type": "code",
+        "language": "typescript",
+        "code": "// playwright.config.ts - Enable traces\nexport default defineConfig({\n  use: {\n    // Capture trace on first retry\n    trace: 'on-first-retry',\n    \n    // Or always capture (slower)\n    trace: 'on',\n    \n    // Or only on failure\n    trace: 'retain-on-failure',\n  },\n});\n\n// View trace after test\n// npx playwright show-trace trace.zip\n\n// Trace viewer shows:\n// - Timeline of all actions\n// - Screenshots at each step\n// - Network requests\n// - Console logs\n// - DOM snapshots\n// - Source code",
+        "explanation": "Traces provide complete test execution history. Perfect for debugging CI failures."
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Use --debug flag to open Playwright Inspector",
+    "page.pause() stops execution and opens Inspector",
+    "Trace Viewer provides post-mortem analysis of test runs",
+    "Enable traces in config for automatic capture on failure",
+    "VS Code extension provides integrated debugging",
+    "Screenshots and videos help diagnose visual issues",
+    "Console logs and network requests aid in troubleshooting"
+  ],
+  "resources": [
+    {
+      "title": "Debugging Guide",
+      "url": "https://playwright.dev/docs/debug",
+      "type": "documentation"
+    },
+    {
+      "title": "Trace Viewer",
+      "url": "https://playwright.dev/docs/trace-viewer",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-009",
+  "nextLesson": "pw-beginner-010",
+  "estimatedXP": 200,
+  "tags": [
+    "playwright",
+    "debugging",
+    "inspector",
+    "trace-viewer"
+  ]
+}

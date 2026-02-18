@@ -1,0 +1,164 @@
+{
+  "id": "quiz-pw-004",
+  "title": "Locators in Playwright",
+  "slug": "locators",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Master the art of locating elements using Playwright's powerful locator strategies",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q031",
+      "type": "multiple-choice",
+      "question": "Which method is recommended for locating a button in Playwright?",
+      "options": [
+        "page.locator('#button-id')",
+        "page.getByRole('button')",
+        "page.$('#button-id')",
+        "page.querySelector('button')"
+      ],
+      "correctAnswer": 1,
+      "explanation": "getByRole() is recommended as it's more resilient to changes and aligns with how users interact with the page.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["locators", "best-practices"]
+    },
+    {
+      "id": "quiz-pw-q032",
+      "type": "code-completion",
+      "question": "Complete the code to find an element by text:",
+      "codeTemplate": "await page.____('Submit').click();",
+      "correctAnswer": "await page.getByText('Submit').click();",
+      "acceptedAnswers": [
+        "getByText",
+        "getByRole('button', { name: 'Submit' })"
+      ],
+      "explanation": "getByText() locates elements by their visible text content.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["locators", "code"]
+    },
+    {
+      "id": "quiz-pw-q033",
+      "type": "true-false",
+      "question": "Playwright's getBy* methods automatically wait for elements to be available.",
+      "correctAnswer": true,
+      "explanation": "All Playwright locators have auto-waiting behavior built-in, eliminating the need for explicit waits.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["locators", "auto-wait"]
+    },
+    {
+      "id": "quiz-pw-q034",
+      "type": "multiple-choice",
+      "question": "Which locator method finds elements by their accessible role?",
+      "options": [
+        "page.getByLabel()",
+        "page.getByRole()",
+        "page.getByTestId()",
+        "page.getByTitle()"
+      ],
+      "correctAnswer": 1,
+      "explanation": "getByRole() locates elements by their ARIA role, making tests more accessible and maintainable.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["locators", "accessibility"]
+    },
+    {
+      "id": "quiz-pw-q035",
+      "type": "code-completion",
+      "question": "Complete the code to locate an input by its label:",
+      "codeTemplate": "await page.____('Email').fill('test@example.com');",
+      "correctAnswer": "await page.getByLabel('Email').fill('test@example.com');",
+      "acceptedAnswers": [
+        "getByLabel"
+      ],
+      "explanation": "getByLabel() finds input elements by their associated label text.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["locators", "forms", "code"]
+    },
+    {
+      "id": "quiz-pw-q036",
+      "type": "multiple-choice",
+      "question": "What does page.getByTestId('submit-btn') do?",
+      "options": [
+        "Finds element by ID attribute",
+        "Finds element by data-testid attribute",
+        "Finds element by class name",
+        "Finds element by name attribute"
+      ],
+      "correctAnswer": 1,
+      "explanation": "getByTestId() locates elements by their data-testid attribute, which is useful for testing purposes.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["locators", "test-ids"]
+    },
+    {
+      "id": "quiz-pw-q037",
+      "type": "debugging",
+      "question": "What's the issue with this locator?",
+      "code": "await page.$('#submit-button').click();",
+      "options": [
+        "Using deprecated $ selector",
+        "Should use getByRole or getByTestId",
+        "Both A and B are better practices",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 2,
+      "explanation": "While $ works, Playwright recommends using getBy* methods for better reliability and maintainability.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["locators", "debugging", "best-practices"]
+    },
+    {
+      "id": "quiz-pw-q038",
+      "type": "true-false",
+      "question": "page.locator() returns a single element immediately.",
+      "correctAnswer": false,
+      "explanation": "page.locator() returns a Locator object that can match multiple elements and is evaluated lazily when an action is performed.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["locators", "behavior"]
+    },
+    {
+      "id": "quiz-pw-q039",
+      "type": "multiple-choice",
+      "question": "Which method would you use to find a placeholder text?",
+      "options": [
+        "page.getByText()",
+        "page.getByPlaceholder()",
+        "page.getByLabel()",
+        "page.getByTitle()"
+      ],
+      "correctAnswer": 1,
+      "explanation": "getByPlaceholder() locates input elements by their placeholder attribute value.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["locators", "forms"]
+    },
+    {
+      "id": "quiz-pw-q040",
+      "type": "code-output",
+      "question": "What does this code return?",
+      "code": "await page.locator('button').count();",
+      "options": [
+        "An array of buttons",
+        "The number of button elements",
+        "The first button element",
+        "A Promise<Element>"
+      ],
+      "correctAnswer": 1,
+      "explanation": "count() returns the number of elements matching the locator.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["locators", "methods"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-004",
+  "prerequisites": ["quiz-pw-003"],
+  "xpReward": 150,
+  "coinReward": 30
+}

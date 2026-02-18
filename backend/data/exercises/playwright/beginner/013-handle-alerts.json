@@ -1,0 +1,69 @@
+{
+  "id": "exercise-pw-013",
+  "title": "Handle Alerts and Dialogs",
+  "slug": "handle-alerts-dialogs",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Learn to handle JavaScript alerts, confirms, and prompts in Playwright",
+  "objectives": [
+    "Accept alerts",
+    "Dismiss confirms",
+    "Handle prompts with input",
+    "Get dialog message",
+    "Set up dialog handlers"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Sets up a dialog handler before triggering\n2. Accepts an alert dialog\n3. Dismisses a confirm dialog\n4. Handles a prompt with custom input\n5. Verifies the results",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle alerts and dialogs', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/js-dialogs');\n  \n  // TODO: Handle alert dialog\n  \n  // TODO: Handle confirm dialog\n  \n  // TODO: Handle prompt dialog\n  \n  // TODO: Verify results\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_handle_dialogs(page: Page):\n    page.goto('https://practice.expandtesting.com/js-dialogs')\n    \n    # TODO: Handle alert dialog\n    \n    # TODO: Handle confirm dialog\n    \n    # TODO: Handle prompt dialog\n    \n    # TODO: Verify results\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle alerts and dialogs', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/js-dialogs');\n  \n  // TODO: Handle alert dialog\n  \n  // TODO: Handle confirm dialog\n  \n  // TODO: Handle prompt dialog\n  \n  // TODO: Verify results\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle alerts and dialogs', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/js-dialogs');\n  \n  // Handle alert\n  page.on('dialog', dialog => {\n    expect(dialog.type()).toBe('alert');\n    expect(dialog.message()).toContain('alert');\n    dialog.accept();\n  });\n  await page.click('#js-alert');\n  \n  // Handle confirm - accept\n  page.once('dialog', dialog => {\n    expect(dialog.type()).toBe('confirm');\n    dialog.accept();\n  });\n  await page.click('#js-confirm');\n  await expect(page.locator('#dialog-response')).toContainText('OK');\n  \n  // Handle prompt with input\n  page.once('dialog', dialog => {\n    expect(dialog.type()).toBe('prompt');\n    dialog.accept('Playwright Test');\n  });\n  await page.click('#js-prompt');\n  await expect(page.locator('#dialog-response')).toContainText('Playwright Test');\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_handle_dialogs(page: Page):\n    page.goto('https://practice.expandtesting.com/js-dialogs')\n    \n    # Handle alert\n    def handle_alert(dialog):\n        assert dialog.type == 'alert'\n        assert 'alert' in dialog.message\n        dialog.accept()\n    \n    page.on('dialog', handle_alert)\n    page.click('#js-alert')\n    page.remove_listener('dialog', handle_alert)\n    \n    # Handle confirm - accept\n    page.once('dialog', lambda dialog: dialog.accept())\n    page.click('#js-confirm')\n    expect(page.locator('#dialog-response')).to_contain_text('OK')\n    \n    # Handle prompt with input\n    page.once('dialog', lambda dialog: dialog.accept('Playwright Test'))\n    page.click('#js-prompt')\n    expect(page.locator('#dialog-response')).to_contain_text('Playwright Test')",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle alerts and dialogs', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/js-dialogs');\n  \n  // Handle alert\n  page.on('dialog', dialog => {\n    expect(dialog.type()).toBe('alert');\n    expect(dialog.message()).toContain('alert');\n    dialog.accept();\n  });\n  await page.click('#js-alert');\n  \n  // Handle confirm - accept\n  page.once('dialog', dialog => {\n    expect(dialog.type()).toBe('confirm');\n    dialog.accept();\n  });\n  await page.click('#js-confirm');\n  await expect(page.locator('#dialog-response')).toContainText('OK');\n  \n  // Handle prompt with input\n  page.once('dialog', dialog => {\n    expect(dialog.type()).toBe('prompt');\n    dialog.accept('Playwright Test');\n  });\n  await page.click('#js-prompt');\n  await expect(page.locator('#dialog-response')).toContainText('Playwright Test');\n});"
+  },
+  "hints": [
+    "Use page.on('dialog') to set up dialog handlers",
+    "Call dialog.accept() to accept the dialog",
+    "Call dialog.dismiss() to cancel the dialog",
+    "Use dialog.accept('text') to enter text in prompts",
+    "Get message with dialog.message()",
+    "Use page.once() for one-time handlers"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Alert is handled",
+      "input": null,
+      "expectedBehavior": "Alert dialog is accepted",
+      "points": 30
+    },
+    {
+      "id": "test-2",
+      "name": "Confirm is handled",
+      "input": null,
+      "expectedBehavior": "Confirm dialog is accepted and result verified",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Prompt with input",
+      "input": "Playwright Test",
+      "expectedBehavior": "Prompt accepts custom text",
+      "points": 35
+    }
+  ],
+  "resources": [
+    {
+      "title": "Dialogs",
+      "url": "https://playwright.dev/docs/dialogs"
+    }
+  ],
+  "relatedLessons": ["lesson-025", "lesson-026"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["alerts", "dialogs", "popups", "confirm", "prompt"]
+}

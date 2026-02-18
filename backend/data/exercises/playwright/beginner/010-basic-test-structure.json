@@ -1,0 +1,73 @@
+{
+  "id": "exercise-pw-010",
+  "title": "Basic Test Structure",
+  "slug": "basic-test-structure",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 25,
+  "description": "Learn to organize tests using describe blocks, hooks, and best practices",
+  "objectives": [
+    "Use describe blocks to group tests",
+    "Use beforeEach and afterEach hooks",
+    "Use beforeAll and afterAll hooks",
+    "Share data between tests",
+    "Follow test naming conventions"
+  ],
+  "instructions": "Write a Playwright test suite that:\n1. Groups related tests in describe blocks\n2. Uses beforeEach hook for setup\n3. Uses afterEach hook for cleanup\n4. Demonstrates proper test isolation\n5. Uses descriptive test names",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// TODO: Create a describe block for todo tests\n\n  // TODO: Add beforeEach hook to navigate to page\n  \n  // TODO: Add afterEach hook for cleanup\n  \n  // TODO: Test 1: Add a todo\n  \n  // TODO: Test 2: Complete a todo\n  \n  // TODO: Test 3: Delete a todo",
+    "python": "from playwright.sync_api import Page, expect\nimport pytest\n\n# TODO: Create a test class for todo tests\n\n    # TODO: Add setup fixture\n    \n    # TODO: Test 1: Add a todo\n    \n    # TODO: Test 2: Complete a todo\n    \n    # TODO: Test 3: Delete a todo",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// TODO: Create a describe block for todo tests\n\n  // TODO: Add beforeEach hook to navigate to page\n  \n  // TODO: Add afterEach hook for cleanup\n  \n  // TODO: Test 1: Add a todo\n  \n  // TODO: Test 2: Complete a todo\n  \n  // TODO: Test 3: Delete a todo"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest.describe('Todo Application Tests', () => {\n  \n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://demo.playwright.dev/todomvc');\n  });\n  \n  test.afterEach(async ({ page }) => {\n    await page.close();\n  });\n  \n  test('should add a new todo', async ({ page }) => {\n    const input = page.getByPlaceholder('What needs to be done?');\n    await input.fill('Learn Playwright');\n    await input.press('Enter');\n    await expect(page.getByText('Learn Playwright')).toBeVisible();\n  });\n  \n  test('should complete a todo', async ({ page }) => {\n    const input = page.getByPlaceholder('What needs to be done?');\n    await input.fill('Complete this task');\n    await input.press('Enter');\n    \n    const todo = page.locator('.todo-list li');\n    await todo.locator('.toggle').check();\n    await expect(todo).toHaveClass(/completed/);\n  });\n  \n  test('should delete a todo', async ({ page }) => {\n    const input = page.getByPlaceholder('What needs to be done?');\n    await input.fill('Delete this task');\n    await input.press('Enter');\n    \n    const todo = page.locator('.todo-list li');\n    await todo.hover();\n    await todo.locator('.destroy').click();\n    await expect(todo).not.toBeVisible();\n  });\n});",
+    "python": "from playwright.sync_api import Page, expect\nimport pytest\n\nclass TestTodoApplication:\n    \n    @pytest.fixture(autouse=True)\n    def setup(self, page: Page):\n        page.goto('https://demo.playwright.dev/todomvc')\n        yield\n        page.close()\n    \n    def test_should_add_new_todo(self, page: Page):\n        input_field = page.get_by_placeholder('What needs to be done?')\n        input_field.fill('Learn Playwright')\n        input_field.press('Enter')\n        expect(page.get_by_text('Learn Playwright')).to_be_visible()\n    \n    def test_should_complete_todo(self, page: Page):\n        input_field = page.get_by_placeholder('What needs to be done?')\n        input_field.fill('Complete this task')\n        input_field.press('Enter')\n        \n        todo = page.locator('.todo-list li')\n        todo.locator('.toggle').check()\n        expect(todo).to_have_class(re.compile('completed'))\n    \n    def test_should_delete_todo(self, page: Page):\n        input_field = page.get_by_placeholder('What needs to be done?')\n        input_field.fill('Delete this task')\n        input_field.press('Enter')\n        \n        todo = page.locator('.todo-list li')\n        todo.hover()\n        todo.locator('.destroy').click()\n        expect(todo).not_to_be_visible()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest.describe('Todo Application Tests', () => {\n  \n  test.beforeEach(async ({ page }) => {\n    await page.goto('https://demo.playwright.dev/todomvc');\n  });\n  \n  test.afterEach(async ({ page }) => {\n    await page.close();\n  });\n  \n  test('should add a new todo', async ({ page }) => {\n    const input = page.getByPlaceholder('What needs to be done?');\n    await input.fill('Learn Playwright');\n    await input.press('Enter');\n    await expect(page.getByText('Learn Playwright')).toBeVisible();\n  });\n  \n  test('should complete a todo', async ({ page }) => {\n    const input = page.getByPlaceholder('What needs to be done?');\n    await input.fill('Complete this task');\n    await input.press('Enter');\n    \n    const todo = page.locator('.todo-list li');\n    await todo.locator('.toggle').check();\n    await expect(todo).toHaveClass(/completed/);\n  });\n  \n  test('should delete a todo', async ({ page }) => {\n    const input = page.getByPlaceholder('What needs to be done?');\n    await input.fill('Delete this task');\n    await input.press('Enter');\n    \n    const todo = page.locator('.todo-list li');\n    await todo.hover();\n    await todo.locator('.destroy').click();\n    await expect(todo).not.toBeVisible();\n  });\n});"
+  },
+  "hints": [
+    "Use test.describe() to group related tests",
+    "beforeEach runs before every test in the group",
+    "afterEach runs after every test completes",
+    "Each test should be independent and isolated",
+    "Use descriptive test names starting with 'should'",
+    "Keep setup code DRY using hooks"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Tests are grouped properly",
+      "input": null,
+      "expectedBehavior": "Tests are in a describe block",
+      "points": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Hooks are implemented",
+      "input": null,
+      "expectedBehavior": "beforeEach and afterEach hooks work",
+      "points": 30
+    },
+    {
+      "id": "test-3",
+      "name": "All tests pass",
+      "input": null,
+      "expectedBehavior": "All three todo tests execute successfully",
+      "points": 50
+    }
+  ],
+  "resources": [
+    {
+      "title": "Test Organization",
+      "url": "https://playwright.dev/docs/api/class-test"
+    },
+    {
+      "title": "Test Hooks",
+      "url": "https://playwright.dev/docs/api/class-test#test-before-each"
+    }
+  ],
+  "relatedLessons": ["lesson-019", "lesson-020"],
+  "xpReward": 250,
+  "coinReward": 60,
+  "tags": ["test-structure", "hooks", "organization", "describe"]
+}

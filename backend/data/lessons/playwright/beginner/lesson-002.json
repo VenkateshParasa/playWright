@@ -1,0 +1,97 @@
+{
+  "id": "pw-beginner-002",
+  "title": "Installation and Setup",
+  "slug": "installation-and-setup",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 2,
+  "duration": 20,
+  "description": "Learn how to install Playwright, set up your development environment, and configure your first testing project.",
+  "objectives": [
+    "Install Playwright in a Node.js project",
+    "Understand the project structure and configuration files",
+    "Configure browsers and test settings",
+    "Set up your IDE for optimal Playwright development"
+  ],
+  "prerequisites": ["pw-beginner-001"],
+  "content": {
+    "sections": [
+      {
+        "title": "Prerequisites",
+        "type": "text",
+        "content": "# Prerequisites\n\nBefore installing Playwright, ensure you have:\n\n## Node.js\n\nPlaywright requires Node.js version 16 or higher. Check your version:\n\n```bash\nnode --version\n```\n\nIf you need to install or update Node.js, download it from [nodejs.org](https://nodejs.org/).\n\n## Package Manager\n\nYou'll need either npm (comes with Node.js), yarn, or pnpm. We'll use npm in our examples, but any package manager works.\n\n## Text Editor or IDE\n\nWe recommend:\n- **Visual Studio Code** (with Playwright Test extension)\n- WebStorm\n- Any editor with TypeScript support\n\n## System Requirements\n\n- **Windows**: Windows 10 or higher\n- **macOS**: macOS 11 or higher\n- **Linux**: Debian-based (Ubuntu, etc.) or Fedora-based distributions\n- At least 2GB of free disk space for browser binaries"
+      },
+      {
+        "title": "Installation Methods",
+        "type": "text",
+        "content": "# Installing Playwright\n\nThere are several ways to install Playwright, depending on your needs.\n\n## Method 1: Create a New Project (Recommended)\n\nThe easiest way to get started is using Playwright's init command:\n\n```bash\nnpm init playwright@latest\n```\n\nThis interactive command will:\n1. Install Playwright and its dependencies\n2. Create a basic project structure\n3. Add example tests\n4. Set up configuration files\n5. Install browser binaries\n\nDuring initialization, you'll be asked:\n- Where to put your tests (default: `tests` or `e2e`)\n- Whether to add a GitHub Actions workflow\n- Whether to install Playwright browsers\n\n**Pro Tip**: Answer 'yes' to installing browsers - this downloads Chromium, Firefox, and WebKit.\n\n## Method 2: Add to Existing Project\n\nIf you already have a Node.js project:\n\n```bash\nnpm install --save-dev @playwright/test\nnpx playwright install\n```\n\nThe first command installs the Playwright test runner, and the second downloads browser binaries.\n\n## Method 3: Install Specific Components\n\nFor more control:\n\n```bash\n# Install test runner\nnpm install --save-dev @playwright/test\n\n# Install only specific browsers\nnpx playwright install chromium\nnpx playwright install firefox\nnpx playwright install webkit\n\n# Install with dependencies (on Linux)\nnpx playwright install --with-deps\n```\n\n## Verify Installation\n\nCheck that Playwright is installed correctly:\n\n```bash\nnpx playwright --version\n```\n\nYou should see the Playwright version number."
+      },
+      {
+        "title": "Installation Example",
+        "type": "code",
+        "language": "bash",
+        "code": "# Step-by-step installation process\n\n# 1. Create a new directory for your project\nmkdir my-playwright-project\ncd my-playwright-project\n\n# 2. Initialize a new Node.js project\nnpm init -y\n\n# 3. Install Playwright\nnpm init playwright@latest\n\n# The installer will prompt you with questions:\n# ✔ Do you want to use TypeScript or JavaScript? · TypeScript\n# ✔ Where to put your end-to-end tests? · tests\n# ✔ Add a GitHub Actions workflow? · true\n# ✔ Install Playwright browsers? · true\n\n# 4. Verify installation\nnpx playwright --version\n\n# Output: Version 1.40.0 (or your installed version)",
+        "explanation": "This example shows the complete installation process from scratch. The init command creates a fully configured project ready for testing."
+      },
+      {
+        "title": "Project Structure",
+        "type": "text",
+        "content": "# Understanding the Project Structure\n\nAfter installation, your project will have this structure:\n\n```\nmy-playwright-project/\n├── node_modules/          # Dependencies\n├── tests/                 # Your test files\n│   └── example.spec.ts   # Example test\n├── tests-examples/        # More examples (optional)\n│   └── demo-todo-app.spec.ts\n├── playwright.config.ts   # Main configuration file\n├── package.json          # Node.js project file\n└── package-lock.json     # Dependency lock file\n```\n\n## Key Files\n\n### playwright.config.ts\n\nThis is the main configuration file where you define:\n- Test directory locations\n- Browser settings\n- Timeout values\n- Base URLs\n- Reporters\n- Parallel execution settings\n\n### tests/ directory\n\nYour test files go here. Test files should:\n- End with `.spec.ts` (TypeScript) or `.spec.js` (JavaScript)\n- Follow a logical organization (e.g., by feature or page)\n\n### package.json\n\nContains your project dependencies and scripts:\n\n```json\n{\n  \"scripts\": {\n    \"test\": \"playwright test\",\n    \"test:headed\": \"playwright test --headed\",\n    \"test:ui\": \"playwright test --ui\",\n    \"test:debug\": \"playwright test --debug\"\n  },\n  \"devDependencies\": {\n    \"@playwright/test\": \"^1.40.0\"\n  }\n}\n```"
+      },
+      {
+        "title": "Configuration File",
+        "type": "code",
+        "language": "typescript",
+        "code": "// playwright.config.ts - Understanding the configuration\nimport { defineConfig, devices } from '@playwright/test';\n\nexport default defineConfig({\n  // Directory where tests are located\n  testDir: './tests',\n  \n  // Maximum time one test can run\n  timeout: 30 * 1000,\n  \n  // Run tests in parallel\n  fullyParallel: true,\n  \n  // Fail the build on CI if you accidentally left test.only\n  forbidOnly: !!process.env.CI,\n  \n  // Retry on CI only\n  retries: process.env.CI ? 2 : 0,\n  \n  // Number of parallel workers\n  workers: process.env.CI ? 1 : undefined,\n  \n  // Reporter to use\n  reporter: 'html',\n  \n  // Shared settings for all tests\n  use: {\n    // Base URL for page.goto('/') type navigation\n    baseURL: 'http://localhost:3000',\n    \n    // Collect trace on test failure\n    trace: 'on-first-retry',\n    \n    // Take screenshot on failure\n    screenshot: 'only-on-failure',\n  },\n  \n  // Configure projects for different browsers\n  projects: [\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },\n  ],\n});",
+        "explanation": "This is a typical Playwright configuration file. Each setting is explained with comments. You can customize these values based on your project needs."
+      },
+      {
+        "title": "IDE Setup - VS Code",
+        "type": "text",
+        "content": "# Setting Up Visual Studio Code\n\nVS Code is the most popular editor for Playwright development. Here's how to set it up optimally:\n\n## Install the Playwright Extension\n\n1. Open VS Code\n2. Go to Extensions (Ctrl+Shift+X or Cmd+Shift+X)\n3. Search for \"Playwright Test for VSCode\"\n4. Install the official extension by Microsoft\n\n## Extension Features\n\nThe extension provides:\n\n**Test Explorer**: View and run tests from the sidebar\n- See all your tests in a tree view\n- Run individual tests or test files\n- Debug tests with breakpoints\n\n**Code Actions**: Quick actions in the editor\n- Run test at cursor\n- Debug test at cursor\n- Record new test\n\n**IntelliSense**: Auto-completion and type hints\n- Method signatures\n- Available locators\n- Configuration options\n\n## Recommended Settings\n\nAdd these to your `.vscode/settings.json`:\n\n```json\n{\n  \"playwright.reuseBrowser\": true,\n  \"playwright.showTrace\": true,\n  \"editor.formatOnSave\": true,\n  \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n}\n```\n\n## Useful Shortcuts\n\n- **Run Test at Cursor**: Click the green triangle next to test\n- **Debug Test**: Click the debug icon next to test\n- **Record Test**: Click the record button in Test Explorer\n- **Show Test Output**: View test results in the Output panel\n\n## Additional Extensions\n\nConsider installing:\n- **ESLint**: For code linting\n- **Prettier**: For code formatting\n- **Error Lens**: Inline error highlighting\n- **GitLens**: Enhanced Git integration"
+      },
+      {
+        "title": "First Test Run",
+        "type": "code",
+        "language": "bash",
+        "code": "# Running your first tests\n\n# 1. Run all tests\nnpx playwright test\n\n# 2. Run tests in headed mode (see the browser)\nnpx playwright test --headed\n\n# 3. Run a specific test file\nnpx playwright test tests/example.spec.ts\n\n# 4. Run tests in a specific browser\nnpx playwright test --project=chromium\n\n# 5. Run tests in UI mode (interactive)\nnpx playwright test --ui\n\n# 6. Run tests in debug mode\nnpx playwright test --debug\n\n# 7. Show test report after running\nnpx playwright show-report\n\n# Expected output:\n# Running 3 tests using 3 workers\n#   3 passed (2s)\n# \n# To open last HTML report run:\n#   npx playwright show-report",
+        "explanation": "These commands show different ways to run Playwright tests. Start with --ui mode to see what's happening, then move to headless for faster execution."
+      },
+      {
+        "title": "Common Setup Issues",
+        "type": "text",
+        "content": "# Troubleshooting Common Issues\n\n## Issue 1: Browser Installation Failed\n\n**Problem**: Browsers didn't install during setup\n\n**Solution**:\n```bash\nnpx playwright install\n# Or for specific browser:\nnpx playwright install chromium\n```\n\n## Issue 2: Permission Errors on Linux\n\n**Problem**: Missing system dependencies\n\n**Solution**:\n```bash\n# Install system dependencies\nnpx playwright install-deps\n# Or manually:\nsudo apt-get install libgstreamer-plugins-base1.0-0\n```\n\n## Issue 3: Port Already in Use\n\n**Problem**: baseURL port is occupied\n\n**Solution**: Change the port in `playwright.config.ts` or stop the conflicting process\n\n## Issue 4: Tests Timing Out\n\n**Problem**: Tests exceed timeout limits\n\n**Solution**: Increase timeout in config:\n```typescript\ntimeout: 60 * 1000, // 60 seconds\n```\n\n## Issue 5: VS Code Extension Not Working\n\n**Problem**: Extension doesn't recognize tests\n\n**Solution**:\n1. Reload VS Code (Cmd/Ctrl + Shift + P > \"Reload Window\")\n2. Check workspace settings\n3. Verify playwright.config.ts is in project root\n\n## Getting Help\n\nIf you encounter issues:\n1. Check [Playwright Documentation](https://playwright.dev/docs/intro)\n2. Search [GitHub Issues](https://github.com/microsoft/playwright/issues)\n3. Ask on [Discord](https://aka.ms/playwright/discord)\n4. Post on [Stack Overflow](https://stackoverflow.com/questions/tagged/playwright)"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Playwright requires Node.js 16+ and can be installed with npm init playwright@latest",
+    "The installation includes browser binaries for Chromium, Firefox, and WebKit",
+    "playwright.config.ts is the main configuration file for test settings",
+    "VS Code with the Playwright extension provides the best development experience",
+    "Tests should be placed in the tests/ directory with .spec.ts or .spec.js extension",
+    "Use npx playwright test --ui for interactive test running and debugging",
+    "The project structure is organized and includes example tests to get started"
+  ],
+  "resources": [
+    {
+      "title": "Installation Guide",
+      "url": "https://playwright.dev/docs/intro",
+      "type": "documentation"
+    },
+    {
+      "title": "VS Code Extension",
+      "url": "https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright",
+      "type": "tool"
+    },
+    {
+      "title": "Configuration Options",
+      "url": "https://playwright.dev/docs/test-configuration",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-002",
+  "nextLesson": "pw-beginner-003",
+  "estimatedXP": 150,
+  "tags": ["playwright", "installation", "setup", "configuration", "vscode"]
+}

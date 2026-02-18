@@ -1,0 +1,78 @@
+{
+  "id": "exercise-pw-020",
+  "title": "Authentication Flow Testing",
+  "slug": "authentication-flow",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 40,
+  "description": "Test complete authentication workflows including session management",
+  "objectives": [
+    "Test login flow",
+    "Handle cookies",
+    "Persist authentication",
+    "Test logout",
+    "Session management"
+  ],
+  "instructions": "Write tests that:\n1. Complete login workflow\n2. Save and reuse authentication state\n3. Handle cookies and local storage\n4. Test session timeout\n5. Implement reusable auth fixtures",
+  "xpReward": 400,
+  "coinReward": 100,
+  "tags": [
+    "authentication",
+    "login",
+    "session",
+    "cookies"
+  ],
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('authentication-flow', async ({ page }) => {\n  // TODO: Implement Authentication Flow Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_authentication_flow(page: Page):\n    # TODO: Implement Authentication Flow Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('authentication-flow', async ({ page }) => {\n  // TODO: Implement Authentication Flow Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Authentication Flow Testing\ntest('authentication-flow', async ({ page }) => {\n  // Implementation here\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Authentication Flow Testing\ndef test_authentication_flow(page: Page):\n    # Implementation here\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Authentication Flow Testing\ntest('authentication-flow', async ({ page }) => {\n  // Implementation here\n});"
+  },
+  "hints": [
+    "Focus on test login flow",
+    "Remember to handle handle cookies",
+    "Use appropriate methods for persist authentication"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Test login flow",
+      "input": null,
+      "expectedBehavior": "Test login flow works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Handle cookies",
+      "input": null,
+      "expectedBehavior": "Handle cookies works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Persist authentication",
+      "input": null,
+      "expectedBehavior": "Persist authentication works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Authentication Flow Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-020",
+    "lesson-021"
+  ]
+}

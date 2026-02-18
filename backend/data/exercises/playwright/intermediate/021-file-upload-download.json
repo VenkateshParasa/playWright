@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-021",
+  "title": "File Upload and Download",
+  "slug": "file-upload-download",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 30,
+  "description": "Master file upload and download in Playwright",
+  "objectives": [
+    "Upload files",
+    "Download files",
+    "Handle file dialogs",
+    "Verify downloads",
+    "Multiple file upload"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Upload files\n2. Download files\n3. Handle file dialogs\n4. Verify downloads\n5. Multiple file upload",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('file-upload-download', async ({ page }) => {\n  // TODO: Implement File Upload and Download\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_file_upload_download(page: Page):\n    # TODO: Implement File Upload and Download\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('file-upload-download', async ({ page }) => {\n  // TODO: Implement File Upload and Download\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for File Upload and Download\ntest('file-upload-download', async ({ page }) => {\n  // Implementation demonstrates upload files\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for File Upload and Download\ndef test_file_upload_download(page: Page):\n    # Implementation demonstrates upload files\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for File Upload and Download\ntest('file-upload-download', async ({ page }) => {\n  // Implementation demonstrates upload files\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by upload files",
+    "Remember to download files",
+    "Use appropriate methods for handle file dialogs",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Upload files",
+      "input": null,
+      "expectedBehavior": "Upload files works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Download files",
+      "input": null,
+      "expectedBehavior": "Download files works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Handle file dialogs",
+      "input": null,
+      "expectedBehavior": "Handle file dialogs works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "File Upload and Download Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-021",
+    "lesson-022"
+  ],
+  "xpReward": 350,
+  "coinReward": 85,
+  "tags": [
+    "files",
+    "upload",
+    "download",
+    "dialogs"
+  ]
+}

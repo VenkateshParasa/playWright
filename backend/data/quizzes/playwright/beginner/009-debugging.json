@@ -1,0 +1,156 @@
+{
+  "id": "quiz-pw-009",
+  "title": "Debugging Tests",
+  "slug": "debugging",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Master debugging techniques and tools in Playwright",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q081",
+      "type": "multiple-choice",
+      "question": "Which tool provides step-by-step debugging in Playwright?",
+      "options": [
+        "Chrome DevTools",
+        "Playwright Inspector",
+        "VS Code Debugger",
+        "All of the above"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Playwright supports debugging through Inspector, Chrome DevTools, and VS Code debugger.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["debugging", "tools"]
+    },
+    {
+      "id": "quiz-pw-q082",
+      "type": "code-completion",
+      "question": "Complete the code to pause test execution for debugging:",
+      "codeTemplate": "await page.____();",
+      "correctAnswer": "await page.pause();",
+      "acceptedAnswers": [
+        "pause"
+      ],
+      "explanation": "page.pause() pauses test execution and opens Playwright Inspector for debugging.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["debugging", "code", "pause"]
+    },
+    {
+      "id": "quiz-pw-q083",
+      "type": "true-false",
+      "question": "Playwright can capture screenshots and videos of test execution.",
+      "correctAnswer": true,
+      "explanation": "Playwright can automatically capture screenshots and videos, especially useful for debugging failures.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["debugging", "screenshots", "videos"]
+    },
+    {
+      "id": "quiz-pw-q084",
+      "type": "multiple-choice",
+      "question": "What does the --debug flag do?",
+      "options": [
+        "Runs tests slowly",
+        "Opens Playwright Inspector",
+        "Enables verbose logging",
+        "Generates debug report"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The --debug flag opens Playwright Inspector, allowing step-by-step test execution and inspection.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["debugging", "cli"]
+    },
+    {
+      "id": "quiz-pw-q085",
+      "type": "code-completion",
+      "question": "Complete the code to take a screenshot:",
+      "codeTemplate": "await page.____({ path: 'screenshot.png' });",
+      "correctAnswer": "await page.screenshot({ path: 'screenshot.png' });",
+      "acceptedAnswers": [
+        "screenshot"
+      ],
+      "explanation": "page.screenshot() captures a screenshot of the current page state.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["debugging", "screenshots", "code"]
+    },
+    {
+      "id": "quiz-pw-q086",
+      "type": "true-false",
+      "question": "The Trace Viewer allows you to replay test execution step by step.",
+      "correctAnswer": true,
+      "explanation": "Trace Viewer is a powerful tool that records and replays test execution with full details of each action.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["debugging", "trace-viewer"]
+    },
+    {
+      "id": "quiz-pw-q087",
+      "type": "multiple-choice",
+      "question": "How do you enable trace recording on test failure?",
+      "options": [
+        "trace: 'on'",
+        "trace: 'on-failure'",
+        "trace: 'retain-on-failure'",
+        "Both B and C"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Use 'on-failure' or 'retain-on-failure' in playwright.config to record traces only for failed tests.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["debugging", "trace", "configuration"]
+    },
+    {
+      "id": "quiz-pw-q088",
+      "type": "debugging",
+      "question": "What's the best way to debug this failing test?",
+      "code": "test('should login', async ({ page }) => {\n  await page.goto('https://example.com');\n  await page.click('button');\n  // Test fails here\n});",
+      "options": [
+        "Add page.pause() before the failing line",
+        "Run with --debug flag",
+        "Enable trace recording",
+        "All of the above"
+      ],
+      "correctAnswer": 3,
+      "explanation": "All methods are valid: pause() for interactive debugging, --debug for step-by-step, traces for post-mortem analysis.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["debugging", "troubleshooting"]
+    },
+    {
+      "id": "quiz-pw-q089",
+      "type": "multiple-choice",
+      "question": "Which configuration captures video of test execution?",
+      "options": [
+        "video: 'on'",
+        "video: 'retain-on-failure'",
+        "video: 'off'",
+        "Both A and B"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Video can be set to 'on' (always record), 'retain-on-failure' (only keep on failure), or 'off' (disabled).",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["debugging", "video", "configuration"]
+    },
+    {
+      "id": "quiz-pw-q090",
+      "type": "true-false",
+      "question": "You can use console.log() to debug Playwright tests.",
+      "correctAnswer": true,
+      "explanation": "While Playwright has better debugging tools, console.log() can still be used for simple debugging needs.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["debugging", "logging"]
+    }
+  ],
+  "totalPoints": 105,
+  "relatedLesson": "lesson-pw-009",
+  "prerequisites": ["quiz-pw-008"],
+  "xpReward": 150,
+  "coinReward": 30
+}

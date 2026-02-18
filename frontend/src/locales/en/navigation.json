@@ -1,0 +1,55 @@
+{
+  "menu": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "lessons": "Lessons",
+    "flashcards": "Flashcards",
+    "quizzes": "Quizzes",
+    "exercises": "Exercises",
+    "progress": "Progress",
+    "achievements": "Achievements",
+    "settings": "Settings",
+    "profile": "Profile",
+    "help": "Help",
+    "about": "About",
+    "contact": "Contact",
+    "logout": "Logout"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "lessons": "Lessons",
+    "lessonDetails": "Lesson Details",
+    "flashcards": "Flashcards",
+    "flashcardSet": "Flashcard Set",
+    "quizzes": "Quizzes",
+    "quiz": "Quiz",
+    "exercises": "Exercises",
+    "exercise": "Exercise",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "tabs": {
+    "overview": "Overview",
+    "content": "Content",
+    "details": "Details",
+    "history": "History",
+    "statistics": "Statistics",
+    "settings": "Settings"
+  },
+  "categories": {
+    "all": "All Categories",
+    "playwright": "Playwright",
+    "selenium": "Selenium",
+    "webDriver": "WebDriver",
+    "testFrameworks": "Test Frameworks",
+    "bestPractices": "Best Practices",
+    "advanced": "Advanced Topics",
+    "basics": "Basics"
+  },
+  "sidebar": {
+    "recentLessons": "Recent Lessons",
+    "popularTopics": "Popular Topics",
+    "quickLinks": "Quick Links",
+    "resources": "Resources"
+  }
+}

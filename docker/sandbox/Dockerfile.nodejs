@@ -1,0 +1,32 @@
+# Node.js Sandbox Environment
+FROM node:18-alpine
+
+# Install common tools
+RUN apk add --no-cache \
+    git \
+    curl \
+    wget \
+    bash \
+    vim \
+    nano
+
+# Create workspace directory
+WORKDIR /workspace
+
+# Install global packages
+RUN npm install -g \
+    typescript \
+    ts-node \
+    nodemon \
+    eslint \
+    prettier
+
+# Set up user permissions
+RUN addgroup -g 1000 sandbox && \
+    adduser -D -u 1000 -G sandbox sandbox && \
+    chown -R sandbox:sandbox /workspace
+
+USER sandbox
+
+# Keep container running
+CMD ["tail", "-f", "/dev/null"]

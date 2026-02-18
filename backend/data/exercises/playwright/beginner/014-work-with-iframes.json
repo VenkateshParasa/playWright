@@ -1,0 +1,68 @@
+{
+  "id": "exercise-pw-014",
+  "title": "Work with Iframes",
+  "slug": "work-with-iframes",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Learn to locate and interact with elements inside iframes",
+  "objectives": [
+    "Locate iframe elements",
+    "Switch to iframe context",
+    "Interact with iframe content",
+    "Switch back to main frame",
+    "Handle nested iframes"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Navigates to a page with iframes\n2. Locates an iframe\n3. Accesses elements inside the iframe\n4. Performs actions on iframe content\n5. Verifies the interactions",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('work with iframes', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/iframe');\n  \n  // TODO: Locate the iframe\n  \n  // TODO: Get frame locator\n  \n  // TODO: Interact with elements inside iframe\n  \n  // TODO: Verify content\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_work_with_iframes(page: Page):\n    page.goto('https://practice.expandtesting.com/iframe')\n    \n    # TODO: Locate the iframe\n    \n    # TODO: Get frame locator\n    \n    # TODO: Interact with elements inside iframe\n    \n    # TODO: Verify content\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('work with iframes', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/iframe');\n  \n  // TODO: Locate the iframe\n  \n  // TODO: Get frame locator\n  \n  // TODO: Interact with elements inside iframe\n  \n  // TODO: Verify content\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('work with iframes', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/iframe');\n  \n  const frame = page.frameLocator('#mce_0_ifr');\n  const editor = frame.locator('#tinymce');\n  \n  await editor.clear();\n  await editor.fill('Hello from Playwright!');\n  \n  await expect(editor).toContainText('Hello from Playwright!');\n  \n  // Alternative: using page.frame()\n  const frameElement = page.frame({ url: /.*iframe.*/ });\n  if (frameElement) {\n    const content = await frameElement.locator('#tinymce').textContent();\n    expect(content).toContain('Hello');\n  }\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_work_with_iframes(page: Page):\n    page.goto('https://practice.expandtesting.com/iframe')\n    \n    frame = page.frame_locator('#mce_0_ifr')\n    editor = frame.locator('#tinymce')\n    \n    editor.clear()\n    editor.fill('Hello from Playwright!')\n    \n    expect(editor).to_contain_text('Hello from Playwright!')\n    \n    # Alternative: using page.frame()\n    frame_element = page.frame(url=re.compile('.*iframe.*'))\n    if frame_element:\n        content = frame_element.locator('#tinymce').text_content()\n        assert 'Hello' in content",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('work with iframes', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/iframe');\n  \n  const frame = page.frameLocator('#mce_0_ifr');\n  const editor = frame.locator('#tinymce');\n  \n  await editor.clear();\n  await editor.fill('Hello from Playwright!');\n  \n  await expect(editor).toContainText('Hello from Playwright!');\n  \n  // Alternative: using page.frame()\n  const frameElement = page.frame({ url: /.*iframe.*/ });\n  if (frameElement) {\n    const content = await frameElement.locator('#tinymce').textContent();\n    expect(content).toContain('Hello');\n  }\n});"
+  },
+  "hints": [
+    "Use page.frameLocator() for iframe locators",
+    "Use page.frame() to get frame handle",
+    "frameLocator chains just like regular locators",
+    "No need to switch context explicitly",
+    "Can locate iframes by selector, name, or URL"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Iframe is located",
+      "input": null,
+      "expectedBehavior": "Iframe element is found",
+      "points": 25
+    },
+    {
+      "id": "test-2",
+      "name": "Iframe content is accessed",
+      "input": null,
+      "expectedBehavior": "Elements inside iframe are accessible",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Iframe interaction works",
+      "input": "Hello from Playwright!",
+      "expectedBehavior": "Text is entered in iframe editor",
+      "points": 40
+    }
+  ],
+  "resources": [
+    {
+      "title": "Frames",
+      "url": "https://playwright.dev/docs/frames"
+    }
+  ],
+  "relatedLessons": ["lesson-027", "lesson-028"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["iframes", "frames", "nested", "context"]
+}

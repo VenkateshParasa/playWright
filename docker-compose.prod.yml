@@ -1,0 +1,471 @@
+version: '3.8'
+
+services:
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.production
+      target: production
+    image: playwright-learning/api-gateway:latest
+    container_name: api-gateway
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGODB_URI: mongodb://mongodb-primary:27017,mongodb-secondary:27017,mongodb-arbiter:27017/playwright_learning?replicaSet=rs0
+      REDIS_CLUSTER_NODES: redis-1:6379,redis-2:6379,redis-3:6379,redis-4:6379,redis-5:6379,redis-6:6379
+      RABBITMQ_URL: amqp://rabbitmq:5672
+      KAFKA_BROKERS: kafka-1:9092,kafka-2:9092,kafka-3:9092
+    depends_on:
+      - mongodb-primary
+      - redis-1
+      - rabbitmq
+      - kafka-1
+    networks:
+      - app-network
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+  # Auth Service
+  auth-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.production
+      args:
+        SERVICE_NAME: auth-service
+    image: playwright-learning/auth-service:latest
+    container_name: auth-service
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      SERVICE_NAME: auth-service
+      MONGODB_URI: mongodb://mongodb-primary:27017/playwright_learning
+      REDIS_CLUSTER_NODES: redis-1:6379,redis-2:6379,redis-3:6379
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+    depends_on:
+      - mongodb-primary
+      - redis-1
+    networks:
+      - app-network
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 256M
+
+  # Content Service
+  content-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.production
+      args:
+        SERVICE_NAME: content-service
+    image: playwright-learning/content-service:latest
+    container_name: content-service
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3002
+      SERVICE_NAME: content-service
+      MONGODB_URI: mongodb://mongodb-primary:27017/playwright_learning
+      REDIS_CLUSTER_NODES: redis-1:6379,redis-2:6379,redis-3:6379
+      S3_BUCKET: ${S3_BUCKET}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      KAFKA_BROKERS: kafka-1:9092,kafka-2:9092,kafka-3:9092
+    depends_on:
+      - mongodb-primary
+      - redis-1
+      - kafka-1
+    networks:
+      - app-network
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.4'
+          memory: 512M
+
+  # Analytics Service
+  analytics-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.production
+      args:
+        SERVICE_NAME: analytics-service
+    image: playwright-learning/analytics-service:latest
+    container_name: analytics-service
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3003
+      SERVICE_NAME: analytics-service
+      MONGODB_URI: mongodb://mongodb-primary:27017/playwright_learning
+      REDIS_CLUSTER_NODES: redis-1:6379,redis-2:6379,redis-3:6379
+      KAFKA_BROKERS: kafka-1:9092,kafka-2:9092,kafka-3:9092
+      CLICKHOUSE_HOST: clickhouse:8123
+    depends_on:
+      - mongodb-primary
+      - redis-1
+      - kafka-1
+      - clickhouse
+    networks:
+      - app-network
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # Notification Service
+  notification-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.production
+      args:
+        SERVICE_NAME: notification-service
+    image: playwright-learning/notification-service:latest
+    container_name: notification-service
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3004
+      SERVICE_NAME: notification-service
+      MONGODB_URI: mongodb://mongodb-primary:27017/playwright_learning
+      REDIS_CLUSTER_NODES: redis-1:6379,redis-2:6379,redis-3:6379
+      RABBITMQ_URL: amqp://rabbitmq:5672
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+    depends_on:
+      - mongodb-primary
+      - redis-1
+      - rabbitmq
+    networks:
+      - app-network
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 256M
+
+  # MongoDB Primary
+  mongodb-primary:
+    image: mongo:7.0
+    container_name: mongodb-primary
+    restart: unless-stopped
+    command: mongod --replSet rs0 --bind_ip_all
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+    volumes:
+      - mongodb-primary-data:/data/db
+      - mongodb-primary-config:/data/configdb
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+
+  # MongoDB Secondary
+  mongodb-secondary:
+    image: mongo:7.0
+    container_name: mongodb-secondary
+    restart: unless-stopped
+    command: mongod --replSet rs0 --bind_ip_all
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+    volumes:
+      - mongodb-secondary-data:/data/db
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+
+  # Redis Cluster Nodes
+  redis-1:
+    image: redis:7-alpine
+    container_name: redis-1
+    restart: unless-stopped
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-1-data:/data
+    networks:
+      - app-network
+
+  redis-2:
+    image: redis:7-alpine
+    container_name: redis-2
+    restart: unless-stopped
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-2-data:/data
+    networks:
+      - app-network
+
+  redis-3:
+    image: redis:7-alpine
+    container_name: redis-3
+    restart: unless-stopped
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-3-data:/data
+    networks:
+      - app-network
+
+  redis-4:
+    image: redis:7-alpine
+    container_name: redis-4
+    restart: unless-stopped
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-4-data:/data
+    networks:
+      - app-network
+
+  redis-5:
+    image: redis:7-alpine
+    container_name: redis-5
+    restart: unless-stopped
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-5-data:/data
+    networks:
+      - app-network
+
+  redis-6:
+    image: redis:7-alpine
+    container_name: redis-6
+    restart: unless-stopped
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-6-data:/data
+    networks:
+      - app-network
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # Kafka Cluster
+  kafka-1:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka-1
+    restart: unless-stopped
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+    volumes:
+      - kafka-1-data:/var/lib/kafka/data
+    depends_on:
+      - zookeeper
+    networks:
+      - app-network
+
+  kafka-2:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka-2
+    restart: unless-stopped
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+    volumes:
+      - kafka-2-data:/var/lib/kafka/data
+    depends_on:
+      - zookeeper
+    networks:
+      - app-network
+
+  kafka-3:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka-3
+    restart: unless-stopped
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-3:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+    volumes:
+      - kafka-3-data:/var/lib/kafka/data
+    depends_on:
+      - zookeeper
+    networks:
+      - app-network
+
+  # Zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    restart: unless-stopped
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-logs:/var/lib/zookeeper/log
+    networks:
+      - app-network
+
+  # ClickHouse (Analytics Database)
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse
+    restart: unless-stopped
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+
+  # NGINX Load Balancer
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - nginx-cache:/var/cache/nginx
+    depends_on:
+      - api-gateway
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+
+  # Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=30d'
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - app-network
+
+  # Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards:ro
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - app-network
+
+  # Jaeger (Distributed Tracing)
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    restart: unless-stopped
+    environment:
+      COLLECTOR_ZIPKIN_HOST_PORT: :9411
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "14250:14250"
+      - "9411:9411"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  mongodb-primary-data:
+  mongodb-primary-config:
+  mongodb-secondary-data:
+  redis-1-data:
+  redis-2-data:
+  redis-3-data:
+  redis-4-data:
+  redis-5-data:
+  redis-6-data:
+  rabbitmq-data:
+  kafka-1-data:
+  kafka-2-data:
+  kafka-3-data:
+  zookeeper-data:
+  zookeeper-logs:
+  clickhouse-data:
+  nginx-cache:
+  prometheus-data:
+  grafana-data:

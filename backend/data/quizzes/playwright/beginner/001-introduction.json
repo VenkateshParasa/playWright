@@ -1,0 +1,153 @@
+{
+  "id": "quiz-pw-001",
+  "title": "Introduction to Playwright",
+  "slug": "intro-to-playwright",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Test your understanding of Playwright fundamentals and core concepts",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q001",
+      "type": "multiple-choice",
+      "question": "What is Playwright?",
+      "options": [
+        "A JavaScript runtime environment",
+        "A test automation framework for web applications",
+        "A web server",
+        "A database management system"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Playwright is a modern end-to-end test automation framework developed by Microsoft for testing web applications across different browsers.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["fundamentals", "overview"]
+    },
+    {
+      "id": "quiz-pw-q002",
+      "type": "true-false",
+      "question": "Playwright supports testing in multiple browsers including Chrome, Firefox, and Safari.",
+      "correctAnswer": true,
+      "explanation": "Playwright supports Chromium, Firefox, and WebKit (Safari) browsers out of the box, enabling cross-browser testing.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["fundamentals", "browsers"]
+    },
+    {
+      "id": "quiz-pw-q003",
+      "type": "multiple-choice",
+      "question": "Which company developed Playwright?",
+      "options": [
+        "Google",
+        "Facebook",
+        "Microsoft",
+        "Amazon"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Playwright was developed by Microsoft and is maintained as an open-source project.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["fundamentals", "history"]
+    },
+    {
+      "id": "quiz-pw-q004",
+      "type": "true-false",
+      "question": "Playwright only supports JavaScript for writing tests.",
+      "correctAnswer": false,
+      "explanation": "Playwright supports multiple languages including JavaScript, TypeScript, Python, Java, and .NET.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["fundamentals", "languages"]
+    },
+    {
+      "id": "quiz-pw-q005",
+      "type": "multiple-choice",
+      "question": "What is a key advantage of Playwright over older testing frameworks?",
+      "options": [
+        "It's cheaper",
+        "It has automatic waiting and retry mechanisms",
+        "It requires less code",
+        "It's easier to install"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Playwright includes built-in auto-waiting and retry mechanisms, making tests more reliable without explicit waits.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["fundamentals", "features"]
+    },
+    {
+      "id": "quiz-pw-q006",
+      "type": "multiple-choice",
+      "question": "Which of these is NOT a browser engine supported by Playwright?",
+      "options": [
+        "Chromium",
+        "WebKit",
+        "Firefox",
+        "Trident"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Playwright supports Chromium, Firefox (Gecko), and WebKit. Trident (Internet Explorer) is not supported.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["browsers", "fundamentals"]
+    },
+    {
+      "id": "quiz-pw-q007",
+      "type": "true-false",
+      "question": "Playwright can only test web applications, not APIs.",
+      "correctAnswer": false,
+      "explanation": "Playwright can test both web applications and APIs. It includes a powerful API testing feature.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["fundamentals", "capabilities"]
+    },
+    {
+      "id": "quiz-pw-q008",
+      "type": "multiple-choice",
+      "question": "What is the primary use case for Playwright?",
+      "options": [
+        "Building web applications",
+        "End-to-end testing",
+        "Database management",
+        "Server deployment"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Playwright is primarily designed for end-to-end testing of web applications, though it can also be used for API testing.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["fundamentals", "use-cases"]
+    },
+    {
+      "id": "quiz-pw-q009",
+      "type": "true-false",
+      "question": "Playwright requires a Selenium server to run tests.",
+      "correctAnswer": false,
+      "explanation": "Playwright does not require Selenium or any external server. It directly controls the browser through native browser protocols.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["fundamentals", "architecture"]
+    },
+    {
+      "id": "quiz-pw-q010",
+      "type": "multiple-choice",
+      "question": "Which feature makes Playwright tests more reliable?",
+      "options": [
+        "Manual waits only",
+        "Automatic waiting for elements to be ready",
+        "Requires explicit sleep statements",
+        "No error handling"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Playwright automatically waits for elements to be actionable before performing actions, eliminating the need for manual waits and reducing flakiness.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["fundamentals", "reliability", "auto-wait"]
+    }
+  ],
+  "totalPoints": 80,
+  "relatedLesson": "lesson-pw-001",
+  "prerequisites": [],
+  "xpReward": 150,
+  "coinReward": 30
+}

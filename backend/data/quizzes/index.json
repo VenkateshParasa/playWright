@@ -1,0 +1,176 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-17",
+  "totalQuizzes": 60,
+  "totalQuestions": 600,
+  "tracks": {
+    "playwright": {
+      "name": "Playwright",
+      "description": "Modern end-to-end testing framework",
+      "totalQuizzes": 30,
+      "totalQuestions": 300,
+      "categories": {
+        "beginner": {
+          "quizzes": 10,
+          "questions": 100,
+          "quizList": [
+            "quiz-pw-001",
+            "quiz-pw-002",
+            "quiz-pw-003",
+            "quiz-pw-004",
+            "quiz-pw-005",
+            "quiz-pw-006",
+            "quiz-pw-007",
+            "quiz-pw-008",
+            "quiz-pw-009",
+            "quiz-pw-010"
+          ]
+        },
+        "intermediate": {
+          "quizzes": 10,
+          "questions": 100,
+          "quizList": [
+            "quiz-pw-011",
+            "quiz-pw-012",
+            "quiz-pw-013",
+            "quiz-pw-014",
+            "quiz-pw-015",
+            "quiz-pw-016",
+            "quiz-pw-017",
+            "quiz-pw-018",
+            "quiz-pw-019",
+            "quiz-pw-020"
+          ]
+        },
+        "advanced": {
+          "quizzes": 10,
+          "questions": 100,
+          "quizList": [
+            "quiz-pw-021",
+            "quiz-pw-022",
+            "quiz-pw-023",
+            "quiz-pw-024",
+            "quiz-pw-025",
+            "quiz-pw-026",
+            "quiz-pw-027",
+            "quiz-pw-028",
+            "quiz-pw-029",
+            "quiz-pw-030"
+          ]
+        }
+      }
+    },
+    "selenium": {
+      "name": "Selenium",
+      "description": "Industry-standard browser automation",
+      "totalQuizzes": 30,
+      "totalQuestions": 300,
+      "categories": {
+        "beginner": {
+          "quizzes": 10,
+          "questions": 100,
+          "quizList": [
+            "quiz-sel-031",
+            "quiz-sel-032",
+            "quiz-sel-033",
+            "quiz-sel-034",
+            "quiz-sel-035",
+            "quiz-sel-036",
+            "quiz-sel-037",
+            "quiz-sel-038",
+            "quiz-sel-039",
+            "quiz-sel-040"
+          ]
+        },
+        "intermediate": {
+          "quizzes": 10,
+          "questions": 100,
+          "quizList": [
+            "quiz-sel-041",
+            "quiz-sel-042",
+            "quiz-sel-043",
+            "quiz-sel-044",
+            "quiz-sel-045",
+            "quiz-sel-046",
+            "quiz-sel-047",
+            "quiz-sel-048",
+            "quiz-sel-049",
+            "quiz-sel-050"
+          ]
+        },
+        "advanced": {
+          "quizzes": 10,
+          "questions": 100,
+          "quizList": [
+            "quiz-sel-051",
+            "quiz-sel-052",
+            "quiz-sel-053",
+            "quiz-sel-054",
+            "quiz-sel-055",
+            "quiz-sel-056",
+            "quiz-sel-057",
+            "quiz-sel-058",
+            "quiz-sel-059",
+            "quiz-sel-060"
+          ]
+        }
+      }
+    }
+  },
+  "questionTypes": {
+    "multiple-choice": {
+      "count": 240,
+      "percentage": 40
+    },
+    "true-false": {
+      "count": 120,
+      "percentage": 20
+    },
+    "code-completion": {
+      "count": 120,
+      "percentage": 20
+    },
+    "code-output": {
+      "count": 60,
+      "percentage": 10
+    },
+    "debugging": {
+      "count": 60,
+      "percentage": 10
+    }
+  },
+  "difficultyLevels": {
+    "easy": {
+      "count": 300,
+      "percentage": 50
+    },
+    "medium": {
+      "count": 240,
+      "percentage": 40
+    },
+    "hard": {
+      "count": 60,
+      "percentage": 10
+    }
+  },
+  "rewards": {
+    "beginner": {
+      "xp": 150,
+      "coins": 30
+    },
+    "intermediate": {
+      "xp": 200,
+      "coins": 40
+    },
+    "advanced": {
+      "xp": 250,
+      "coins": 50
+    }
+  },
+  "configuration": {
+    "timeLimit": 600,
+    "passingScore": 70,
+    "questionsPerQuiz": 10,
+    "pointsPerQuiz": 115
+  }
+}

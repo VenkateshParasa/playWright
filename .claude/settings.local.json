@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)",
+      "Bash(chmod:*)",
+      "Bash(node generate-remaining-quizzes.js:*)",
+      "Bash(python3:*)",
+      "Bash(wc:*)"
+    ]
+  }
+}

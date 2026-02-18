@@ -1,0 +1,96 @@
+{
+  "required": {
+    "field": "{{field}} is required",
+    "general": "This field is required"
+  },
+  "email": {
+    "invalid": "Please enter a valid email address",
+    "format": "Email format is incorrect",
+    "exists": "This email is already registered",
+    "notFound": "No account found with this email"
+  },
+  "password": {
+    "minLength": "Password must be at least {{min}} characters",
+    "maxLength": "Password must not exceed {{max}} characters",
+    "uppercase": "Password must contain at least one uppercase letter",
+    "lowercase": "Password must contain at least one lowercase letter",
+    "number": "Password must contain at least one number",
+    "special": "Password must contain at least one special character",
+    "weak": "Password is too weak",
+    "common": "This password is too common",
+    "match": "Passwords must match",
+    "incorrect": "Current password is incorrect"
+  },
+  "username": {
+    "minLength": "Username must be at least {{min}} characters",
+    "maxLength": "Username must not exceed {{max}} characters",
+    "invalid": "Username can only contain letters, numbers, and underscores",
+    "taken": "This username is already taken",
+    "reserved": "This username is reserved"
+  },
+  "name": {
+    "minLength": "Name must be at least {{min}} characters",
+    "maxLength": "Name must not exceed {{max}} characters",
+    "invalid": "Name contains invalid characters",
+    "required": "Name is required"
+  },
+  "phone": {
+    "invalid": "Please enter a valid phone number",
+    "format": "Phone number format is incorrect",
+    "exists": "This phone number is already registered"
+  },
+  "date": {
+    "invalid": "Please enter a valid date",
+    "format": "Date format must be {{format}}",
+    "past": "Date must be in the past",
+    "future": "Date must be in the future",
+    "range": "Date must be between {{min}} and {{max}}",
+    "minAge": "You must be at least {{age}} years old"
+  },
+  "number": {
+    "invalid": "Please enter a valid number",
+    "min": "Value must be at least {{min}}",
+    "max": "Value must not exceed {{max}}",
+    "range": "Value must be between {{min}} and {{max}}",
+    "positive": "Value must be positive",
+    "integer": "Value must be a whole number"
+  },
+  "url": {
+    "invalid": "Please enter a valid URL",
+    "format": "URL format is incorrect",
+    "protocol": "URL must start with http:// or https://"
+  },
+  "file": {
+    "required": "Please select a file",
+    "size": "File size must not exceed {{max}}",
+    "type": "Invalid file type. Allowed types: {{types}}",
+    "dimensions": "Image dimensions must be at least {{width}}x{{height}}",
+    "tooMany": "You can only upload {{max}} files"
+  },
+  "text": {
+    "minLength": "Must be at least {{min}} characters",
+    "maxLength": "Must not exceed {{max}} characters",
+    "pattern": "Format is invalid",
+    "alphanumeric": "Only letters and numbers are allowed",
+    "noSpaces": "Spaces are not allowed"
+  },
+  "selection": {
+    "required": "Please make a selection",
+    "min": "Please select at least {{min}} option",
+    "min_plural": "Please select at least {{min}} options",
+    "max": "You can select up to {{max}} option",
+    "max_plural": "You can select up to {{max}} options"
+  },
+  "code": {
+    "invalid": "Invalid code format",
+    "expired": "This code has expired",
+    "used": "This code has already been used",
+    "notFound": "Code not found"
+  },
+  "card": {
+    "number": "Invalid card number",
+    "expiry": "Invalid expiry date",
+    "cvv": "Invalid CVV/CVC",
+    "expired": "Card has expired"
+  }
+}

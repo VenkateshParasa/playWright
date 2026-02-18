@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-060",
+  "title": "Enterprise Best Practices",
+  "slug": "enterprise-practices",
+  "track": "selenium",
+  "category": "advanced",
+  "description": "Advanced Enterprise Best Practices for enterprise Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q601", "type": "multiple-choice", "question": "What makes Enterprise Best Practices advanced?", "options": ["Complexity", "Scalability needs", "Enterprise requirements", "All factors"], "correctAnswer": 3, "explanation": "Enterprise Best Practices addresses complex enterprise automation challenges.", "difficulty": "hard", "points": 10, "tags": ["advanced", "enterprise-practices"]},
+    {"id": "quiz-sel-q602", "type": "code-completion", "question": "Implement advanced Enterprise Best Practices:", "codeTemplate": "// Advanced template", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This shows advanced Enterprise Best Practices implementation.", "difficulty": "hard", "points": 15, "tags": ["advanced", "implementation"]},
+    {"id": "quiz-sel-q603", "type": "true-false", "question": "Enterprise Best Practices requires deep architectural knowledge.", "correctAnswer": true, "explanation": "Enterprise Best Practices involves complex architectural decisions.", "difficulty": "hard", "points": 5, "tags": ["architecture", "expertise"]},
+    {"id": "quiz-sel-q604", "type": "multiple-choice", "question": "How does Enterprise Best Practices scale?", "options": ["Horizontally", "Vertically", "Both ways", "Depends on architecture"], "correctAnswer": 3, "explanation": "Enterprise Best Practices scaling depends on infrastructure and design.", "difficulty": "hard", "points": 10, "tags": ["scalability", "architecture"]},
+    {"id": "quiz-sel-q605", "type": "code-completion", "question": "Optimize Enterprise Best Practices for production:", "codeTemplate": "// Production code", "correctAnswer": "// Production-ready solution", "acceptedAnswers": ["solution"], "explanation": "This optimization is crucial for Enterprise Best Practices in production.", "difficulty": "hard", "points": 15, "tags": ["production", "optimization"]},
+    {"id": "quiz-sel-q606", "type": "multiple-choice", "question": "What are Enterprise Best Practices tradeoffs?", "options": ["Cost vs performance", "Complexity vs maintainability", "Speed vs reliability", "Multiple tradeoffs exist"], "correctAnswer": 3, "explanation": "Enterprise Best Practices involves balancing various concerns.", "difficulty": "hard", "points": 10, "tags": ["tradeoffs", "decisions"]},
+    {"id": "quiz-sel-q607", "type": "debugging", "question": "Diagnose this Enterprise Best Practices production issue:", "code": "// Complex production issue", "options": ["Infrastructure", "Code", "Configuration", "Requires deep analysis"], "correctAnswer": 3, "explanation": "Production Enterprise Best Practices issues need comprehensive analysis.", "difficulty": "hard", "points": 20, "tags": ["debugging", "production"]},
+    {"id": "quiz-sel-q608", "type": "true-false", "question": "Enterprise Best Practices is suitable for all projects.", "correctAnswer": false, "explanation": "Enterprise Best Practices is most valuable for large-scale projects.", "difficulty": "hard", "points": 5, "tags": ["suitability", "assessment"]},
+    {"id": "quiz-sel-q609", "type": "multiple-choice", "question": "How do you architect Enterprise Best Practices?", "options": ["Monolithic", "Microservices", "Hybrid", "Context-dependent"], "correctAnswer": 3, "explanation": "Enterprise Best Practices architecture should match project needs.", "difficulty": "hard", "points": 10, "tags": ["architecture", "design"]},
+    {"id": "quiz-sel-q600", "type": "code-output", "question": "Analyze this Enterprise Best Practices architecture:", "code": "// Architecture code", "options": ["Good design", "Anti-pattern", "Needs refinement", "Depends on requirements"], "correctAnswer": 2, "explanation": "This Enterprise Best Practices architecture has room for improvement.", "difficulty": "hard", "points": 15, "tags": ["architecture", "analysis"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-060",
+  "prerequisites": ["quiz-sel-059"],
+  "xpReward": 250,
+  "coinReward": 50
+}

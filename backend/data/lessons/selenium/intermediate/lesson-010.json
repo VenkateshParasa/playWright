@@ -1,0 +1,69 @@
+{
+  "id": "sel-intermediate-010",
+  "title": "Data-Driven Testing",
+  "slug": "data-driven-testing",
+  "track": "selenium",
+  "category": "intermediate",
+  "order": 10,
+  "duration": 30,
+  "description": "Parameterize tests to run with different data sets.",
+  "objectives": [
+    "Read from Excel/CSV",
+    "Use TestNG DataProvider",
+    "Parameterize tests",
+    "Handle test data"
+  ],
+  "prerequisites": [
+    "sel-intermediate-009"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Data-Driven Testing",
+        "type": "text",
+        "content": "# Data-Driven Testing\n\nMaximize test coverage with data-driven approaches.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Data-Driven Testing\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Data-Driven Testing concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, data-driven testing is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Data-Driven Testing\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Data-Driven Testing is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Data-Driven Testing for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Data-Driven Testing Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-intermediate-quiz-010",
+  "nextLesson": "sel-advanced-001",
+  "estimatedXP": 200,
+  "tags": [
+    "selenium",
+    "intermediate",
+    "data",
+    "automation",
+    "testing"
+  ]
+}

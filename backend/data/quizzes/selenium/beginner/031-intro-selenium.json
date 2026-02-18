@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-031",
+  "title": "Introduction to Selenium",
+  "slug": "intro-selenium",
+  "track": "selenium",
+  "category": "beginner",
+  "description": "Learn Introduction to Selenium fundamentals for test automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q311", "type": "multiple-choice", "question": "What is Introduction to Selenium?", "options": ["A testing framework", "A browser automation tool", "A programming language", "A test runner"], "correctAnswer": 1, "explanation": "Selenium is primarily a browser automation tool for testing web applications.", "difficulty": "easy", "points": 10, "tags": ["fundamentals", "selenium"]},
+    {"id": "quiz-sel-q312", "type": "code-completion", "question": "Complete the basic Introduction to Selenium code:", "codeTemplate": "// Basic code template", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the standard way to work with Introduction to Selenium.", "difficulty": "easy", "points": 15, "tags": ["code", "basics"]},
+    {"id": "quiz-sel-q313", "type": "true-false", "question": "Selenium supports multiple programming languages.", "correctAnswer": true, "explanation": "Selenium supports Java, Python, C#, JavaScript, Ruby, and more.", "difficulty": "easy", "points": 5, "tags": ["fundamentals", "languages"]},
+    {"id": "quiz-sel-q314", "type": "multiple-choice", "question": "Which browsers does Selenium support?", "options": ["Only Chrome", "Chrome and Firefox", "All major browsers", "Only Edge"], "correctAnswer": 2, "explanation": "Selenium supports Chrome, Firefox, Safari, Edge, and more.", "difficulty": "easy", "points": 10, "tags": ["browsers", "support"]},
+    {"id": "quiz-sel-q315", "type": "code-completion", "question": "Complete the Introduction to Selenium setup:", "codeTemplate": "// Setup code", "correctAnswer": "// Complete setup", "acceptedAnswers": ["setup"], "explanation": "This initializes Introduction to Selenium properly.", "difficulty": "easy", "points": 15, "tags": ["setup", "code"]},
+    {"id": "quiz-sel-q316", "type": "multiple-choice", "question": "What is WebDriver in Selenium?", "options": ["A browser", "An API for browser control", "A test framework", "A programming language"], "correctAnswer": 1, "explanation": "WebDriver is the API that controls browsers in Selenium.", "difficulty": "easy", "points": 10, "tags": ["webdriver", "concepts"]},
+    {"id": "quiz-sel-q317", "type": "debugging", "question": "What's wrong with this Introduction to Selenium code?", "code": "// Problematic code", "options": ["Syntax error", "Missing driver setup", "Wrong method", "Timing issue"], "correctAnswer": 1, "explanation": "Always initialize the WebDriver before use.", "difficulty": "medium", "points": 20, "tags": ["debugging", "common-errors"]},
+    {"id": "quiz-sel-q318", "type": "true-false", "question": "Introduction to Selenium requires manual waits for all elements.", "correctAnswer": false, "explanation": "Selenium provides implicit and explicit waits.", "difficulty": "easy", "points": 5, "tags": ["waits", "concepts"]},
+    {"id": "quiz-sel-q319", "type": "multiple-choice", "question": "Which Introduction to Selenium component is most important?", "options": ["WebDriver", "Grid", "IDE", "All are important"], "correctAnswer": 3, "explanation": "Each Selenium component serves specific purposes.", "difficulty": "easy", "points": 10, "tags": ["components", "architecture"]},
+    {"id": "quiz-sel-q310", "type": "code-output", "question": "What does this Introduction to Selenium code do?", "code": "// Sample code", "options": ["Opens browser", "Closes browser", "Navigates to URL", "Finds element"], "correctAnswer": 2, "explanation": "This code performs a specific Introduction to Selenium operation.", "difficulty": "easy", "points": 15, "tags": ["operations", "methods"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-031",
+  "prerequisites": [],
+  "xpReward": 150,
+  "coinReward": 30
+}

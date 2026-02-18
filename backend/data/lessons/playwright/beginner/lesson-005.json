@@ -1,0 +1,95 @@
+{
+  "id": "pw-beginner-005",
+  "title": "Basic Interactions (click, type, etc.)",
+  "slug": "basic-interactions",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 5,
+  "duration": 25,
+  "description": "Learn how to perform common user interactions like clicking, typing, hovering, and form manipulation.",
+  "objectives": [
+    "Master click and type operations",
+    "Handle checkboxes, radio buttons, and dropdowns",
+    "Perform keyboard and mouse interactions",
+    "Work with file uploads and downloads"
+  ],
+  "prerequisites": ["pw-beginner-004"],
+  "content": {
+    "sections": [
+      {
+        "title": "Click Operations",
+        "type": "code",
+        "language": "typescript",
+        "code": "import { test, expect } from '@playwright/test';\n\ntest('different click operations', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Basic click\n  await page.click('button');\n  \n  // Click with locator\n  await page.locator('button').click();\n  \n  // Double click\n  await page.dblclick('.item');\n  \n  // Right click (context menu)\n  await page.click('.file', { button: 'right' });\n  \n  // Click with modifiers\n  await page.click('a', { modifiers: ['Control'] }); // Ctrl+Click\n  await page.click('a', { modifiers: ['Meta'] }); // Cmd+Click on Mac\n  await page.click('a', { modifiers: ['Shift'] });\n  \n  // Click at specific position\n  await page.click('canvas', { position: { x: 100, y: 200 } });\n  \n  // Force click (bypass actionability checks)\n  await page.click('button', { force: true });\n  \n  // Click with timeout\n  await page.click('button', { timeout: 10000 });\n  \n  // Multiple clicks\n  await page.click('button', { clickCount: 3 }); // Triple click\n});\n\ntest('click variations', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Click and wait for navigation\n  await Promise.all([\n    page.waitForNavigation(),\n    page.click('a[href=\"/about\"]')\n  ]);\n  \n  // Click if visible\n  const button = page.locator('button.optional');\n  if (await button.isVisible()) {\n    await button.click();\n  }\n});"
+      },
+      {
+        "title": "Text Input Operations",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('text input methods', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // fill() - Fastest method, clears then types\n  await page.fill('input[name=\"email\"]', 'user@example.com');\n  await page.locator('#email').fill('user@example.com');\n  \n  // type() - Types character by character (more realistic)\n  await page.type('input[name=\"search\"]', 'Playwright', { delay: 100 });\n  \n  // Clear field\n  await page.fill('input[name=\"email\"]', '');\n  \n  // Press specific keys\n  await page.press('input[name=\"search\"]', 'Enter');\n  await page.press('input', 'Control+A'); // Select all\n  await page.press('input', 'Backspace');\n  \n  // Type and press Enter\n  await page.fill('input[name=\"search\"]', 'test');\n  await page.press('input[name=\"search\"]', 'Enter');\n  \n  // Focus and type\n  await page.focus('input[name=\"username\"]');\n  await page.keyboard.type('testuser');\n});\n\ntest('textarea handling', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Multi-line text\n  await page.fill('textarea', 'Line 1\\nLine 2\\nLine 3');\n  \n  // Append text (focus first to avoid clearing)\n  await page.focus('textarea');\n  await page.keyboard.type('\\nLine 4');\n});"
+      },
+      {
+        "title": "Checkboxes and Radio Buttons",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('checkbox operations', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Check a checkbox\n  await page.check('input[type=\"checkbox\"]');\n  await page.locator('#agree').check();\n  \n  // Uncheck a checkbox\n  await page.uncheck('input[type=\"checkbox\"]');\n  \n  // Set to specific state\n  await page.setChecked('#agree', true);  // Check\n  await page.setChecked('#agree', false); // Uncheck\n  \n  // Verify checkbox state\n  const isChecked = await page.isChecked('#agree');\n  expect(isChecked).toBe(true);\n  \n  // Toggle checkbox\n  if (await page.isChecked('#agree')) {\n    await page.uncheck('#agree');\n  } else {\n    await page.check('#agree');\n  }\n});\n\ntest('radio button operations', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Select radio button\n  await page.check('input[value=\"male\"]');\n  await page.check('input[value=\"female\"]');\n  \n  // Using getByLabel\n  await page.getByLabel('Male').check();\n  \n  // Verify selected radio\n  expect(await page.isChecked('input[value=\"male\"]')).toBe(true);\n});"
+      },
+      {
+        "title": "Dropdown and Select",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('dropdown operations', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Select by value\n  await page.selectOption('select#country', 'usa');\n  \n  // Select by label\n  await page.selectOption('select#country', { label: 'United States' });\n  \n  // Select by index\n  await page.selectOption('select#country', { index: 2 });\n  \n  // Select multiple options\n  await page.selectOption('select[multiple]', ['option1', 'option2', 'option3']);\n  \n  // Using locator\n  await page.locator('select#country').selectOption('usa');\n  \n  // Get selected value\n  const value = await page.locator('select#country').inputValue();\n  console.log('Selected:', value);\n});\n\ntest('custom dropdown (not select)', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Custom dropdowns require click + select\n  await page.click('.custom-dropdown');\n  await page.click('text=Option 2');\n  \n  // Or with locators\n  await page.locator('.custom-dropdown').click();\n  await page.locator('.dropdown-menu').locator('text=Option 2').click();\n});"
+      },
+      {
+        "title": "Hover and Focus",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('hover operations', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Hover over element\n  await page.hover('.menu-item');\n  \n  // Hover and then click submenu\n  await page.hover('.menu-item');\n  await page.click('.submenu-item');\n  \n  // Hover with locator\n  await page.locator('.tooltip-trigger').hover();\n  \n  // Verify element visible after hover\n  await page.hover('.menu');\n  await expect(page.locator('.dropdown')).toBeVisible();\n});\n\ntest('focus operations', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Focus an element\n  await page.focus('input[name=\"email\"]');\n  \n  // Verify focus\n  const isFocused = await page.locator('input[name=\"email\"]').evaluate(\n    el => el === document.activeElement\n  );\n  expect(isFocused).toBe(true);\n  \n  // Tab through elements\n  await page.press('body', 'Tab');\n  await page.press('body', 'Tab');\n  \n  // Blur (remove focus)\n  await page.locator('input[name=\"email\"]').blur();\n});"
+      },
+      {
+        "title": "Keyboard Interactions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('keyboard operations', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Press single keys\n  await page.keyboard.press('Enter');\n  await page.keyboard.press('Escape');\n  await page.keyboard.press('Tab');\n  await page.keyboard.press('ArrowDown');\n  \n  // Keyboard shortcuts\n  await page.keyboard.press('Control+A'); // Select all\n  await page.keyboard.press('Control+C'); // Copy\n  await page.keyboard.press('Control+V'); // Paste\n  await page.keyboard.press('Meta+A'); // Cmd+A on Mac\n  \n  // Type text\n  await page.keyboard.type('Hello World');\n  \n  // Hold and release keys\n  await page.keyboard.down('Shift');\n  await page.keyboard.press('A'); // Types 'A'\n  await page.keyboard.up('Shift');\n  \n  // Insert text (paste)\n  await page.keyboard.insertText('Pasted text');\n});\n\ntest('keyboard navigation', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Navigate form with Tab\n  await page.keyboard.press('Tab');\n  await page.keyboard.type('username');\n  await page.keyboard.press('Tab');\n  await page.keyboard.type('password');\n  await page.keyboard.press('Enter'); // Submit\n});"
+      },
+      {
+        "title": "Mouse Operations",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('mouse operations', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Move mouse\n  await page.mouse.move(100, 200);\n  \n  // Click at current position\n  await page.mouse.click(100, 200);\n  \n  // Double click\n  await page.mouse.dblclick(100, 200);\n  \n  // Mouse down and up (for drag)\n  await page.mouse.move(100, 200);\n  await page.mouse.down();\n  await page.mouse.move(300, 400);\n  await page.mouse.up();\n  \n  // Wheel scroll\n  await page.mouse.wheel(0, 100); // Scroll down\n});\n\ntest('drag and drop', async ({ page }) => {\n  await page.goto('https://example.com/drag-drop');\n  \n  // Method 1: Using dragTo\n  await page.locator('.draggable').dragTo(page.locator('.dropzone'));\n  \n  // Method 2: Using mouse events\n  const source = await page.locator('.draggable').boundingBox();\n  const target = await page.locator('.dropzone').boundingBox();\n  \n  await page.mouse.move(source.x + source.width / 2, source.y + source.height / 2);\n  await page.mouse.down();\n  await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2);\n  await page.mouse.up();\n});"
+      },
+      {
+        "title": "File Upload and Download",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('file upload', async ({ page }) => {\n  await page.goto('https://example.com/upload');\n  \n  // Upload single file\n  await page.setInputFiles('input[type=\"file\"]', 'path/to/file.pdf');\n  \n  // Upload multiple files\n  await page.setInputFiles('input[type=\"file\"]', [\n    'path/to/file1.pdf',\n    'path/to/file2.jpg'\n  ]);\n  \n  // Upload with buffer\n  await page.setInputFiles('input[type=\"file\"]', {\n    name: 'file.txt',\n    mimeType: 'text/plain',\n    buffer: Buffer.from('File content')\n  });\n  \n  // Remove files\n  await page.setInputFiles('input[type=\"file\"]', []);\n  \n  // Using locator\n  await page.locator('input[type=\"file\"]').setInputFiles('file.pdf');\n});\n\ntest('file download', async ({ page }) => {\n  await page.goto('https://example.com/download');\n  \n  // Wait for download\n  const [download] = await Promise.all([\n    page.waitForEvent('download'),\n    page.click('a#download-link')\n  ]);\n  \n  // Save to specific path\n  await download.saveAs('downloads/' + download.suggestedFilename());\n  \n  // Get download info\n  console.log('Downloaded:', download.suggestedFilename());\n  console.log('Path:', await download.path());\n  \n  // Verify download\n  const path = await download.path();\n  expect(path).toBeTruthy();\n});"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "fill() is the fastest way to input text, type() simulates realistic typing",
+    "check() and uncheck() handle checkboxes and radio buttons",
+    "selectOption() works with standard dropdowns, custom dropdowns need click actions",
+    "hover() reveals hidden elements and menus",
+    "Keyboard shortcuts use press() with modifier keys like 'Control+A'",
+    "dragTo() simplifies drag and drop operations",
+    "setInputFiles() handles file uploads easily",
+    "All interactions auto-wait for elements to be actionable"
+  ],
+  "resources": [
+    {
+      "title": "Actions Documentation",
+      "url": "https://playwright.dev/docs/input",
+      "type": "documentation"
+    },
+    {
+      "title": "Mouse and Keyboard",
+      "url": "https://playwright.dev/docs/api/class-mouse",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-005",
+  "nextLesson": "pw-beginner-006",
+  "estimatedXP": 200,
+  "tags": ["playwright", "interactions", "click", "type", "keyboard", "mouse"]
+}

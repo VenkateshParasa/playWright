@@ -1,0 +1,69 @@
+{
+  "id": "sel-intermediate-007",
+  "title": "Taking Screenshots",
+  "slug": "taking-screenshots",
+  "track": "selenium",
+  "category": "intermediate",
+  "order": 7,
+  "duration": 30,
+  "description": "Capture screenshots for debugging and evidence collection.",
+  "objectives": [
+    "Take full page screenshots",
+    "Capture element screenshots",
+    "Save to files",
+    "Use in reporting"
+  ],
+  "prerequisites": [
+    "sel-intermediate-006"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Taking Screenshots",
+        "type": "text",
+        "content": "# Taking Screenshots\n\nDocument test execution with effective screenshots.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Taking Screenshots\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Taking Screenshots concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, taking screenshots is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Taking Screenshots\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Taking Screenshots is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Taking Screenshots for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Taking Screenshots Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-intermediate-quiz-007",
+  "nextLesson": "sel-intermediate-008",
+  "estimatedXP": 200,
+  "tags": [
+    "selenium",
+    "intermediate",
+    "taking",
+    "automation",
+    "testing"
+  ]
+}

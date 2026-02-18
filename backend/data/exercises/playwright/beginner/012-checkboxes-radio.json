@@ -1,0 +1,75 @@
+{
+  "id": "exercise-pw-012",
+  "title": "Work with Checkboxes and Radio Buttons",
+  "slug": "checkboxes-radio-buttons",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 15,
+  "description": "Learn to interact with checkboxes and radio buttons in forms",
+  "objectives": [
+    "Check and uncheck checkboxes",
+    "Select radio buttons",
+    "Verify checkbox state",
+    "Verify radio button selection",
+    "Handle multiple checkboxes"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Checks a checkbox\n2. Verifies checkbox is checked\n3. Unchecks the checkbox\n4. Selects a radio button\n5. Verifies radio button selection",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('checkboxes and radio buttons', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/checkboxes');\n  \n  // TODO: Check the first checkbox\n  \n  // TODO: Verify it's checked\n  \n  // TODO: Uncheck the checkbox\n  \n  // TODO: Work with radio buttons if available\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_checkboxes_radio(page: Page):\n    page.goto('https://practice.expandtesting.com/checkboxes')\n    \n    # TODO: Check the first checkbox\n    \n    # TODO: Verify it's checked\n    \n    # TODO: Uncheck the checkbox\n    \n    # TODO: Work with radio buttons if available\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('checkboxes and radio buttons', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/checkboxes');\n  \n  // TODO: Check the first checkbox\n  \n  // TODO: Verify it's checked\n  \n  // TODO: Uncheck the checkbox\n  \n  // TODO: Work with radio buttons if available\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('checkboxes and radio buttons', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/checkboxes');\n  \n  const checkbox1 = page.locator('#checkbox1');\n  await checkbox1.check();\n  await expect(checkbox1).toBeChecked();\n  \n  await checkbox1.uncheck();\n  await expect(checkbox1).not.toBeChecked();\n  \n  const checkbox2 = page.locator('#checkbox2');\n  await checkbox2.check();\n  await expect(checkbox2).toBeChecked();\n  \n  // Toggle using click\n  await checkbox2.click();\n  await expect(checkbox2).not.toBeChecked();\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_checkboxes_radio(page: Page):\n    page.goto('https://practice.expandtesting.com/checkboxes')\n    \n    checkbox1 = page.locator('#checkbox1')\n    checkbox1.check()\n    expect(checkbox1).to_be_checked()\n    \n    checkbox1.uncheck()\n    expect(checkbox1).not_to_be_checked()\n    \n    checkbox2 = page.locator('#checkbox2')\n    checkbox2.check()\n    expect(checkbox2).to_be_checked()\n    \n    # Toggle using click\n    checkbox2.click()\n    expect(checkbox2).not_to_be_checked()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('checkboxes and radio buttons', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/checkboxes');\n  \n  const checkbox1 = page.locator('#checkbox1');\n  await checkbox1.check();\n  await expect(checkbox1).toBeChecked();\n  \n  await checkbox1.uncheck();\n  await expect(checkbox1).not.toBeChecked();\n  \n  const checkbox2 = page.locator('#checkbox2');\n  await checkbox2.check();\n  await expect(checkbox2).toBeChecked();\n  \n  // Toggle using click\n  await checkbox2.click();\n  await expect(checkbox2).not.toBeChecked();\n});"
+  },
+  "hints": [
+    "Use .check() to check a checkbox",
+    "Use .uncheck() to uncheck a checkbox",
+    "Use .click() to toggle checkbox state",
+    "Use .isChecked() to get current state",
+    "Use expect().toBeChecked() for assertions"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Checkbox can be checked",
+      "input": null,
+      "expectedBehavior": "Checkbox becomes checked",
+      "points": 25
+    },
+    {
+      "id": "test-2",
+      "name": "Checkbox state is verified",
+      "input": null,
+      "expectedBehavior": "Checked state is confirmed",
+      "points": 25
+    },
+    {
+      "id": "test-3",
+      "name": "Checkbox can be unchecked",
+      "input": null,
+      "expectedBehavior": "Checkbox becomes unchecked",
+      "points": 25
+    },
+    {
+      "id": "test-4",
+      "name": "Toggle functionality works",
+      "input": null,
+      "expectedBehavior": "Click toggles checkbox state",
+      "points": 25
+    }
+  ],
+  "resources": [
+    {
+      "title": "Checkboxes and Radio Buttons",
+      "url": "https://playwright.dev/docs/input#checkboxes-and-radio-buttons"
+    }
+  ],
+  "relatedLessons": ["lesson-023", "lesson-024"],
+  "xpReward": 150,
+  "coinReward": 40,
+  "tags": ["checkbox", "radio", "forms", "input"]
+}

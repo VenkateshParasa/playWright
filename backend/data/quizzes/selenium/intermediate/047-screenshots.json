@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-047",
+  "title": "Screenshots",
+  "slug": "screenshots",
+  "track": "selenium",
+  "category": "intermediate",
+  "description": "Master Screenshots in Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q471", "type": "multiple-choice", "question": "What is Screenshots used for?", "options": ["Basic testing", "Advanced scenarios", "Configuration", "All purposes"], "correctAnswer": 1, "explanation": "Screenshots is essential for handling advanced testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["intermediate", "screenshots"]},
+    {"id": "quiz-sel-q472", "type": "code-completion", "question": "Implement Screenshots:", "codeTemplate": "// Implementation template", "correctAnswer": "// Correct solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates proper Screenshots usage.", "difficulty": "medium", "points": 15, "tags": ["code", "implementation"]},
+    {"id": "quiz-sel-q473", "type": "true-false", "question": "Screenshots is part of Selenium WebDriver.", "correctAnswer": true, "explanation": "Screenshots is a built-in WebDriver feature.", "difficulty": "medium", "points": 5, "tags": ["webdriver", "features"]},
+    {"id": "quiz-sel-q474", "type": "multiple-choice", "question": "When should you use Screenshots?", "options": ["Always", "For specific scenarios", "Never", "Only in production"], "correctAnswer": 1, "explanation": "Screenshots is best suited for specific testing needs.", "difficulty": "medium", "points": 10, "tags": ["best-practices", "usage"]},
+    {"id": "quiz-sel-q475", "type": "code-completion", "question": "Complete the Screenshots pattern:", "codeTemplate": "// Pattern code", "correctAnswer": "// Complete pattern", "acceptedAnswers": ["pattern"], "explanation": "This is a common Screenshots pattern.", "difficulty": "medium", "points": 15, "tags": ["patterns", "code"]},
+    {"id": "quiz-sel-q476", "type": "multiple-choice", "question": "What are Screenshots limitations?", "options": ["Performance", "Browser support", "Complexity", "Varies by context"], "correctAnswer": 3, "explanation": "Screenshots limitations depend on the specific use case.", "difficulty": "medium", "points": 10, "tags": ["limitations", "considerations"]},
+    {"id": "quiz-sel-q477", "type": "debugging", "question": "Fix this Screenshots issue:", "code": "// Code with issue", "options": ["Syntax fix", "Logic fix", "Configuration fix", "Multiple fixes needed"], "correctAnswer": 1, "explanation": "The main issue is with Screenshots logic.", "difficulty": "medium", "points": 20, "tags": ["debugging", "troubleshooting"]},
+    {"id": "quiz-sel-q478", "type": "true-false", "question": "Screenshots works across all browsers.", "correctAnswer": true, "explanation": "Screenshots is supported by all major browsers.", "difficulty": "medium", "points": 5, "tags": ["compatibility", "browsers"]},
+    {"id": "quiz-sel-q479", "type": "multiple-choice", "question": "How do you optimize Screenshots?", "options": ["Caching", "Parallel execution", "Smart waits", "All techniques"], "correctAnswer": 3, "explanation": "Multiple optimization techniques can improve Screenshots.", "difficulty": "medium", "points": 10, "tags": ["optimization", "performance"]},
+    {"id": "quiz-sel-q470", "type": "code-output", "question": "What is the result of this Screenshots code?", "code": "// Code example", "options": ["Output A", "Output B", "Exception", "Depends on state"], "correctAnswer": 1, "explanation": "This code produces a specific result for Screenshots.", "difficulty": "medium", "points": 15, "tags": ["behavior", "output"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-047",
+  "prerequisites": ["quiz-sel-046"],
+  "xpReward": 200,
+  "coinReward": 40
+}

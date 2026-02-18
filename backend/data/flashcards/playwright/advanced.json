@@ -1,0 +1,741 @@
+{
+  "deck": {
+    "id": "playwright-advanced",
+    "name": "Playwright Advanced",
+    "description": "Visual regression, component testing, accessibility testing, performance testing, mobile emulation, CI/CD integration, custom reporters, and best practices",
+    "track": "playwright",
+    "level": "advanced",
+    "cardCount": 75,
+    "estimatedTime": 60
+  },
+  "cards": [
+    {
+      "id": "pw-adv-001",
+      "type": "definition",
+      "deck": "playwright-advanced",
+      "front": "What is visual regression testing in Playwright?",
+      "back": "Visual regression testing compares screenshots of your application across test runs to detect unintended visual changes. Playwright provides expect(page).toHaveScreenshot() which automatically handles screenshot comparison, difference highlighting, and baseline management.",
+      "difficulty": "hard",
+      "tags": ["playwright", "visual-regression", "definition"]
+    },
+    {
+      "id": "pw-adv-002",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement visual regression testing in Playwright?",
+      "back": "```javascript\n// Full page screenshot comparison\nawait expect(page).toHaveScreenshot('homepage.png');\n// Element screenshot comparison\nawait expect(page.locator('.header')).toHaveScreenshot('header.png');\n// With threshold\nawait expect(page).toHaveScreenshot('page.png', {\n  maxDiffPixels: 100,\n  threshold: 0.2\n});\n// Update baselines\n// npx playwright test --update-snapshots\n```",
+      "explanation": "First run creates baseline. Subsequent runs compare against baseline. Use --update-snapshots to update baselines after intentional changes.",
+      "difficulty": "hard",
+      "tags": ["playwright", "visual-regression", "code"]
+    },
+    {
+      "id": "pw-adv-003",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you mask dynamic content in visual tests?",
+      "back": "```javascript\nawait expect(page).toHaveScreenshot({\n  mask: [page.locator('.timestamp'), page.locator('.dynamic-id')]\n});\n// Mask multiple elements\nawait expect(page).toHaveScreenshot({\n  mask: [page.locator('.ad'), page.locator('.cookie-banner')],\n  maskColor: '#FF00FF'\n});\n```",
+      "explanation": "Mask option hides dynamic content (timestamps, ads, random IDs) from comparison. Prevents false positives in visual tests.",
+      "difficulty": "hard",
+      "tags": ["playwright", "visual-regression", "masking"]
+    },
+    {
+      "id": "pw-adv-004",
+      "type": "definition",
+      "deck": "playwright-advanced",
+      "front": "What is Playwright Component Testing?",
+      "back": "Playwright Component Testing allows testing framework components (React, Vue, Svelte) in isolation without a full application. It mounts components in a real browser, provides the same Playwright API, and runs much faster than E2E tests while still using real browser rendering.",
+      "difficulty": "hard",
+      "tags": ["playwright", "component-testing", "definition"]
+    },
+    {
+      "id": "pw-adv-005",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you write a Playwright component test for React?",
+      "back": "```javascript\nimport { test, expect } from '@playwright/experimental-ct-react';\nimport { Button } from './Button';\n\ntest('button click', async ({ mount }) => {\n  let clicked = false;\n  const component = await mount(\n    <Button onClick={() => clicked = true}>Click me</Button>\n  );\n  await component.click();\n  expect(clicked).toBe(true);\n  await expect(component).toHaveText('Click me');\n});\n```",
+      "explanation": "Use @playwright/experimental-ct-react for React components. mount() renders component in browser. Use same Playwright locators and assertions.",
+      "difficulty": "hard",
+      "tags": ["playwright", "component-testing", "react"]
+    },
+    {
+      "id": "pw-adv-006",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test component props and state changes?",
+      "back": "```javascript\ntest('counter component', async ({ mount }) => {\n  const component = await mount(<Counter initialCount={5} />);\n  await expect(component.locator('.count')).toHaveText('5');\n  \n  await component.getByRole('button', { name: 'Increment' }).click();\n  await expect(component.locator('.count')).toHaveText('6');\n  \n  // Update props\n  await component.update(<Counter initialCount={10} />);\n  await expect(component.locator('.count')).toHaveText('10');\n});\n```",
+      "explanation": "Test props by passing them to mount(). Test interactions like E2E tests. Update props with component.update().",
+      "difficulty": "hard",
+      "tags": ["playwright", "component-testing", "state"]
+    },
+    {
+      "id": "pw-adv-007",
+      "type": "definition",
+      "deck": "playwright-advanced",
+      "front": "What is accessibility testing in Playwright?",
+      "back": "Accessibility testing ensures your application is usable by people with disabilities. Playwright integrates with axe-core to run automated accessibility scans, check ARIA attributes, test keyboard navigation, and verify screen reader compatibility.",
+      "difficulty": "hard",
+      "tags": ["playwright", "accessibility", "definition"]
+    },
+    {
+      "id": "pw-adv-008",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you run accessibility tests with Playwright?",
+      "back": "```javascript\nimport { test, expect } from '@playwright/test';\nimport AxeBuilder from '@axe-core/playwright';\n\ntest('accessibility scan', async ({ page }) => {\n  await page.goto('/home');\n  \n  const accessibilityScanResults = await new AxeBuilder({ page })\n    .analyze();\n  \n  expect(accessibilityScanResults.violations).toEqual([]);\n});\n```",
+      "explanation": "Install @axe-core/playwright. Run scans with AxeBuilder. Check violations array is empty. Provides detailed violation reports.",
+      "difficulty": "hard",
+      "tags": ["playwright", "accessibility", "axe"]
+    },
+    {
+      "id": "pw-adv-009",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test keyboard navigation in Playwright?",
+      "back": "```javascript\ntest('keyboard navigation', async ({ page }) => {\n  await page.goto('/form');\n  \n  // Tab through elements\n  await page.keyboard.press('Tab');\n  await expect(page.locator(':focus')).toHaveAttribute('name', 'username');\n  \n  await page.keyboard.press('Tab');\n  await expect(page.locator(':focus')).toHaveAttribute('name', 'password');\n  \n  // Submit with Enter\n  await page.keyboard.press('Enter');\n  await expect(page).toHaveURL('/dashboard');\n});\n```",
+      "explanation": "Use keyboard.press() to simulate keyboard navigation. Check :focus pseudo-class to verify focus management. Ensure keyboard-only interaction works.",
+      "difficulty": "hard",
+      "tags": ["playwright", "accessibility", "keyboard"]
+    },
+    {
+      "id": "pw-adv-010",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test ARIA attributes in Playwright?",
+      "back": "```javascript\ntest('ARIA attributes', async ({ page }) => {\n  await page.goto('/dashboard');\n  \n  // Check ARIA labels\n  await expect(page.getByRole('button', { name: 'Close' }))\n    .toHaveAttribute('aria-label', 'Close dialog');\n  \n  // Check ARIA states\n  await expect(page.getByRole('tab', { name: 'Profile' }))\n    .toHaveAttribute('aria-selected', 'true');\n  \n  // Check ARIA live regions\n  await expect(page.locator('[aria-live=\"polite\"]'))\n    .toHaveText('Success message');\n});\n```",
+      "explanation": "Use getByRole() which respects ARIA roles. Check ARIA attributes with toHaveAttribute(). Verify dynamic content in live regions.",
+      "difficulty": "hard",
+      "tags": ["playwright", "accessibility", "aria"]
+    },
+    {
+      "id": "pw-adv-011",
+      "type": "definition",
+      "deck": "playwright-advanced",
+      "front": "What performance metrics can you measure with Playwright?",
+      "back": "Playwright can measure: Core Web Vitals (LCP, FID, CLS), load times, Time to First Byte (TTFB), resource timing, custom performance marks, memory usage, and network waterfall. Use Performance API and Lighthouse integration for comprehensive performance testing.",
+      "difficulty": "hard",
+      "tags": ["playwright", "performance", "metrics"]
+    },
+    {
+      "id": "pw-adv-012",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you measure page load performance in Playwright?",
+      "back": "```javascript\ntest('performance metrics', async ({ page }) => {\n  await page.goto('/home');\n  \n  const timing = await page.evaluate(() => {\n    const perf = performance.getEntriesByType('navigation')[0];\n    return {\n      domContentLoaded: perf.domContentLoadedEventEnd - perf.fetchStart,\n      load: perf.loadEventEnd - perf.fetchStart,\n      ttfb: perf.responseStart - perf.requestStart\n    };\n  });\n  \n  expect(timing.load).toBeLessThan(3000);\n  expect(timing.ttfb).toBeLessThan(500);\n});\n```",
+      "explanation": "Use Performance API via evaluate(). Measure navigation timing metrics. Set performance budgets with assertions.",
+      "difficulty": "hard",
+      "tags": ["playwright", "performance", "metrics"]
+    },
+    {
+      "id": "pw-adv-013",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you measure Core Web Vitals in Playwright?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\n\ntest('core web vitals', async ({ page }) => {\n  await page.goto('/home');\n  \n  const webVitals = await page.evaluate(() => {\n    return new Promise((resolve) => {\n      let vitals = {};\n      new PerformanceObserver((list) => {\n        list.getEntries().forEach((entry) => {\n          if (entry.name === 'LCP') vitals.lcp = entry.value;\n          if (entry.name === 'FID') vitals.fid = entry.value;\n          if (entry.name === 'CLS') vitals.cls = entry.value;\n        });\n        if (vitals.lcp) resolve(vitals);\n      }).observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });\n    });\n  });\n  \n  expect(webVitals.lcp).toBeLessThan(2500); // Good: < 2.5s\n  expect(webVitals.cls).toBeLessThan(0.1);  // Good: < 0.1\n});\n```",
+      "explanation": "Use PerformanceObserver to capture Web Vitals. Set thresholds based on Google's recommendations. LCP < 2.5s, FID < 100ms, CLS < 0.1.",
+      "difficulty": "hard",
+      "tags": ["playwright", "performance", "web-vitals"]
+    },
+    {
+      "id": "pw-adv-014",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you integrate Lighthouse with Playwright?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\nimport { playAudit } from 'playwright-lighthouse';\n\ntest('lighthouse audit', async ({ page }) => {\n  await page.goto('/home');\n  \n  await playAudit({\n    page,\n    thresholds: {\n      performance: 90,\n      accessibility: 95,\n      'best-practices': 90,\n      seo: 90\n    },\n    port: 9222\n  });\n});\n```",
+      "explanation": "Use playwright-lighthouse package. Launch browser with debugging port. Run audits with score thresholds. Fails if scores below thresholds.",
+      "difficulty": "hard",
+      "tags": ["playwright", "lighthouse", "performance"]
+    },
+    {
+      "id": "pw-adv-015",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you measure resource timing in Playwright?",
+      "back": "```javascript\ntest('resource timing', async ({ page }) => {\n  await page.goto('/home');\n  \n  const resourceTiming = await page.evaluate(() => {\n    return performance.getEntriesByType('resource').map(entry => ({\n      name: entry.name,\n      duration: entry.duration,\n      size: entry.transferSize,\n      type: entry.initiatorType\n    }));\n  });\n  \n  // Find slow resources\n  const slowResources = resourceTiming.filter(r => r.duration > 1000);\n  expect(slowResources).toHaveLength(0);\n  \n  // Check total page weight\n  const totalSize = resourceTiming.reduce((sum, r) => sum + r.size, 0);\n  expect(totalSize).toBeLessThan(2 * 1024 * 1024); // 2MB\n});\n```",
+      "explanation": "Get resource timing data for all loaded resources. Analyze slow resources, page weight, and resource types. Set budgets.",
+      "difficulty": "hard",
+      "tags": ["playwright", "performance", "resources"]
+    },
+    {
+      "id": "pw-adv-016",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test with mobile emulation in Playwright?",
+      "back": "```javascript\nimport { test, devices } from '@playwright/test';\n\ntest.use({ ...devices['iPhone 13 Pro'] });\n\ntest('mobile test', async ({ page }) => {\n  await page.goto('/home');\n  \n  // Test touch\n  await page.locator('.menu-icon').tap();\n  await expect(page.locator('.mobile-menu')).toBeVisible();\n  \n  // Test swipe\n  await page.locator('.carousel').swipe({ direction: 'left' });\n  \n  // Check viewport\n  const viewport = page.viewportSize();\n  expect(viewport.width).toBe(390);\n});\n```",
+      "explanation": "Use devices preset for authentic mobile emulation. Includes viewport, user agent, touch support. Use tap() and swipe() for touch interactions.",
+      "difficulty": "hard",
+      "tags": ["playwright", "mobile", "emulation"]
+    },
+    {
+      "id": "pw-adv-017",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test device orientation in Playwright?",
+      "back": "```javascript\ntest('orientation test', async ({ page, context }) => {\n  await page.goto('/app');\n  \n  // Portrait mode\n  await expect(page.locator('.portrait-view')).toBeVisible();\n  \n  // Switch to landscape\n  await context.newPage({\n    viewport: { width: 812, height: 375 }\n  });\n  \n  // Or rotate existing page\n  await page.setViewportSize({ width: 812, height: 375 });\n  await expect(page.locator('.landscape-view')).toBeVisible();\n});\n```",
+      "explanation": "Change viewport dimensions to simulate rotation. Test responsive layouts in both orientations. Verify orientation-specific UI.",
+      "difficulty": "hard",
+      "tags": ["playwright", "mobile", "orientation"]
+    },
+    {
+      "id": "pw-adv-018",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test touch gestures in Playwright?",
+      "back": "```javascript\ntest('touch gestures', async ({ page }) => {\n  await page.goto('/map');\n  \n  // Tap\n  await page.locator('.marker').tap();\n  \n  // Double tap\n  await page.locator('.map').tap({ clickCount: 2 });\n  \n  // Long press\n  await page.locator('.item').tap({ delay: 1000 });\n  \n  // Swipe\n  const box = await page.locator('.carousel').boundingBox();\n  await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2);\n  await page.touchscreen.swipe({ x: box.x, y: box.y }, { x: box.x - 200, y: box.y });\n});\n```",
+      "explanation": "Use tap() for touch interactions. touchscreen API for complex gestures. Test touch-specific UI patterns.",
+      "difficulty": "hard",
+      "tags": ["playwright", "mobile", "gestures"]
+    },
+    {
+      "id": "pw-adv-019",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you configure Playwright for CI/CD?",
+      "back": "```javascript\n// playwright.config.ts\nimport { defineConfig } from '@playwright/test';\n\nexport default defineConfig({\n  workers: process.env.CI ? 2 : undefined,\n  retries: process.env.CI ? 2 : 0,\n  use: {\n    trace: 'on-first-retry',\n    video: 'retain-on-failure',\n    screenshot: 'only-on-failure'\n  },\n  reporter: [\n    ['html'],\n    ['junit', { outputFile: 'results.xml' }],\n    ['github'] // For GitHub Actions\n  ]\n});\n```",
+      "explanation": "Configure CI-specific settings: fewer workers, retries, traces on failure. Use appropriate reporters for CI system.",
+      "difficulty": "hard",
+      "tags": ["playwright", "ci-cd", "configuration"]
+    },
+    {
+      "id": "pw-adv-020",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you set up Playwright in GitHub Actions?",
+      "back": "```yaml\nname: Playwright Tests\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n        with:\n          node-version: 18\n      - name: Install dependencies\n        run: npm ci\n      - name: Install Playwright\n        run: npx playwright install --with-deps\n      - name: Run tests\n        run: npx playwright test\n      - uses: actions/upload-artifact@v3\n        if: always()\n        with:\n          name: playwright-report\n          path: playwright-report/\n```",
+      "explanation": "Install Node, dependencies, Playwright browsers. Run tests. Upload artifacts on failure. Use --with-deps for system dependencies.",
+      "difficulty": "hard",
+      "tags": ["playwright", "github-actions", "ci"]
+    },
+    {
+      "id": "pw-adv-021",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you create a custom reporter in Playwright?",
+      "back": "```javascript\n// my-reporter.ts\nimport { Reporter, TestCase, TestResult } from '@playwright/test/reporter';\n\nclass MyReporter implements Reporter {\n  onBegin(config, suite) {\n    console.log(`Starting ${suite.allTests().length} tests`);\n  }\n\n  onTestEnd(test: TestCase, result: TestResult) {\n    console.log(`${test.title}: ${result.status}`);\n  }\n\n  onEnd(result) {\n    console.log(`Finished: ${result.status}`);\n  }\n}\n\nexport default MyReporter;\n// In config: reporter: './my-reporter.ts'\n```",
+      "explanation": "Implement Reporter interface. Override lifecycle methods. Register in config. Useful for custom logging, metrics, or integrations.",
+      "difficulty": "hard",
+      "tags": ["playwright", "reporter", "custom"]
+    },
+    {
+      "id": "pw-adv-022",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you integrate Playwright with test management tools?",
+      "back": "```javascript\nimport { Reporter, TestCase, TestResult } from '@playwright/test/reporter';\n\nclass TestRailReporter implements Reporter {\n  async onTestEnd(test: TestCase, result: TestResult) {\n    const testId = this.extractTestId(test.title);\n    if (!testId) return;\n    \n    await fetch('https://testrail.com/api/add_result', {\n      method: 'POST',\n      headers: { 'Authorization': `Bearer ${process.env.TESTRAIL_TOKEN}` },\n      body: JSON.stringify({\n        test_id: testId,\n        status_id: result.status === 'passed' ? 1 : 5,\n        comment: result.error?.message\n      })\n    });\n  }\n\n  extractTestId(title: string) {\n    const match = title.match(/\\[C(\\d+)\\]/);\n    return match ? match[1] : null;\n  }\n}\n```",
+      "explanation": "Create custom reporter to push results to test management systems. Extract test IDs from test titles. Report status and errors.",
+      "difficulty": "hard",
+      "tags": ["playwright", "integration", "test-management"]
+    },
+    {
+      "id": "pw-adv-023",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you use Playwright's global setup and teardown?",
+      "back": "```javascript\n// global-setup.ts\nimport { chromium, FullConfig } from '@playwright/test';\n\nasync function globalSetup(config: FullConfig) {\n  const browser = await chromium.launch();\n  const page = await browser.newPage();\n  await page.goto('https://example.com/login');\n  await page.fill('[name=\"user\"]', 'admin');\n  await page.fill('[name=\"password\"]', 'password');\n  await page.click('button[type=\"submit\"]');\n  await page.context().storageState({ path: 'auth.json' });\n  await browser.close();\n}\n\nexport default globalSetup;\n// In config: globalSetup: './global-setup.ts'\n```",
+      "explanation": "Global setup runs once before all tests. Useful for authentication, database seeding, or service startup. Saves time by avoiding repeated setup.",
+      "difficulty": "hard",
+      "tags": ["playwright", "setup", "global"]
+    },
+    {
+      "id": "pw-adv-024",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement Page Object Model in Playwright?",
+      "back": "```javascript\n// pages/login.page.ts\nimport { Page } from '@playwright/test';\n\nexport class LoginPage {\n  constructor(private page: Page) {}\n\n  async goto() {\n    await this.page.goto('/login');\n  }\n\n  async login(username: string, password: string) {\n    await this.page.getByLabel('Username').fill(username);\n    await this.page.getByLabel('Password').fill(password);\n    await this.page.getByRole('button', { name: 'Login' }).click();\n  }\n\n  async getErrorMessage() {\n    return await this.page.locator('.error').textContent();\n  }\n}\n\n// In test\nconst loginPage = new LoginPage(page);\nawait loginPage.goto();\nawait loginPage.login('user', 'pass');\n```",
+      "explanation": "Encapsulate page interactions in classes. Improves maintainability and reusability. Separates test logic from page details.",
+      "difficulty": "hard",
+      "tags": ["playwright", "pom", "pattern"]
+    },
+    {
+      "id": "pw-adv-025",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement the Builder pattern for test data?",
+      "back": "```javascript\nclass UserBuilder {\n  private user = {\n    username: 'testuser',\n    email: 'test@example.com',\n    role: 'user'\n  };\n\n  withUsername(username: string) {\n    this.user.username = username;\n    return this;\n  }\n\n  withEmail(email: string) {\n    this.user.email = email;\n    return this;\n  }\n\n  asAdmin() {\n    this.user.role = 'admin';\n    return this;\n  }\n\n  build() {\n    return this.user;\n  }\n}\n\n// Usage\nconst admin = new UserBuilder().withUsername('admin').asAdmin().build();\nawait createUser(admin);\n```",
+      "explanation": "Builder pattern creates flexible test data. Chain methods for customization. Provides sensible defaults. Makes tests more readable.",
+      "difficulty": "hard",
+      "tags": ["playwright", "pattern", "builder"]
+    },
+    {
+      "id": "pw-adv-026",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement the Action pattern in Playwright?",
+      "back": "```javascript\n// actions/user.actions.ts\nimport { Page } from '@playwright/test';\n\nexport class UserActions {\n  static async createUser(page: Page, userData: any) {\n    await page.request.post('/api/users', { data: userData });\n  }\n\n  static async loginAs(page: Page, username: string) {\n    await page.goto('/login');\n    await page.getByLabel('Username').fill(username);\n    await page.getByLabel('Password').fill('password');\n    await page.getByRole('button', { name: 'Login' }).click();\n    await page.waitForURL('/dashboard');\n  }\n\n  static async deleteUser(page: Page, userId: string) {\n    await page.request.delete(`/api/users/${userId}`);\n  }\n}\n\n// In test\nawait UserActions.createUser(page, userData);\nawait UserActions.loginAs(page, 'testuser');\n```",
+      "explanation": "Action pattern encapsulates complex workflows. Static methods for reusable actions. Combines API and UI interactions.",
+      "difficulty": "hard",
+      "tags": ["playwright", "pattern", "actions"]
+    },
+    {
+      "id": "pw-adv-027",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement data-driven testing in Playwright?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\nimport testData from './test-data.json';\n\ntestData.users.forEach((user) => {\n  test(`login as ${user.role}`, async ({ page }) => {\n    await page.goto('/login');\n    await page.getByLabel('Username').fill(user.username);\n    await page.getByLabel('Password').fill(user.password);\n    await page.getByRole('button', { name: 'Login' }).click();\n    await expect(page).toHaveURL(user.expectedURL);\n  });\n});\n\n// Or with test.describe\nfor (const user of testData.users) {\n  test.describe(`${user.role} tests`, () => {\n    test('can access dashboard', async ({ page }) => {});\n  });\n}\n```",
+      "explanation": "Loop through test data to generate tests. Load data from JSON, CSV, or database. Each iteration creates separate test case.",
+      "difficulty": "hard",
+      "tags": ["playwright", "data-driven", "pattern"]
+    },
+    {
+      "id": "pw-adv-028",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement test sharding in Playwright?",
+      "back": "```bash\n# Run tests in 4 shards\nnpx playwright test --shard=1/4\nnpx playwright test --shard=2/4\nnpx playwright test --shard=3/4\nnpx playwright test --shard=4/4\n\n# In CI (GitHub Actions)\nstrategy:\n  matrix:\n    shardIndex: [1, 2, 3, 4]\n    shardTotal: [4]\nsteps:\n  - run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}\n```",
+      "explanation": "Sharding splits tests across multiple machines. Each shard runs subset of tests. Dramatically reduces total execution time in CI.",
+      "difficulty": "hard",
+      "tags": ["playwright", "sharding", "performance"]
+    },
+    {
+      "id": "pw-adv-029",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you handle test dependencies in Playwright?",
+      "back": "```javascript\nimport { test as base } from '@playwright/test';\n\nconst test = base.extend({\n  authenticatedPage: async ({ page }, use) => {\n    // Setup: login\n    await page.goto('/login');\n    await page.fill('[name=\"user\"]', 'testuser');\n    await page.fill('[name=\"pass\"]', 'password');\n    await page.click('button[type=\"submit\"]');\n    await page.waitForURL('/dashboard');\n    \n    await use(page);\n    \n    // Teardown: logout\n    await page.click('[data-testid=\"logout\"]');\n  }\n});\n\ntest('user dashboard', async ({ authenticatedPage }) => {\n  await expect(authenticatedPage.locator('.welcome')).toBeVisible();\n});\n```",
+      "explanation": "Use fixtures for test dependencies. Setup runs before test, teardown after. Ensures clean state and proper cleanup.",
+      "difficulty": "hard",
+      "tags": ["playwright", "dependencies", "fixtures"]
+    },
+    {
+      "id": "pw-adv-030",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement retry logic for flaky tests?",
+      "back": "```javascript\n// In config\nretries: {\n  retries: 2,\n  maxFailures: 5 // Stop retrying after 5 total failures\n},\n\n// Per test\ntest('flaky test', async ({ page }) => {\n  test.info().annotations.push({ type: 'issue', description: 'Flaky #123' });\n});\n\n// Custom retry logic\nlet attempts = 0;\nawait test.step('retry operation', async () => {\n  while (attempts < 3) {\n    try {\n      await page.getByRole('button').click();\n      break;\n    } catch (e) {\n      attempts++;\n      if (attempts === 3) throw e;\n      await page.waitForTimeout(1000);\n    }\n  }\n});\n```",
+      "explanation": "Configure retries globally or per test. Annotate flaky tests. Implement custom retry for specific operations. Track and fix flaky tests.",
+      "difficulty": "hard",
+      "tags": ["playwright", "retry", "flaky"]
+    },
+    {
+      "id": "pw-adv-031",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test progressive web apps (PWA) in Playwright?",
+      "back": "```javascript\ntest('PWA install', async ({ page, context }) => {\n  let installPrompt;\n  page.on('event', event => {\n    if (event.type === 'beforeinstallprompt') {\n      installPrompt = event;\n    }\n  });\n  \n  await page.goto('/app');\n  \n  // Check service worker registration\n  const swRegistered = await page.evaluate(() => \n    'serviceWorker' in navigator\n  );\n  expect(swRegistered).toBe(true);\n  \n  // Check manifest\n  const manifest = await page.evaluate(() => {\n    const link = document.querySelector('link[rel=\"manifest\"]');\n    return link?.href;\n  });\n  expect(manifest).toBeTruthy();\n});\n```",
+      "explanation": "Test PWA features: service worker, manifest, install prompt, offline mode. Verify PWA criteria are met.",
+      "difficulty": "hard",
+      "tags": ["playwright", "pwa", "advanced"]
+    },
+    {
+      "id": "pw-adv-032",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test Web Push notifications in Playwright?",
+      "back": "```javascript\ntest('push notifications', async ({ page, context }) => {\n  await context.grantPermissions(['notifications']);\n  \n  await page.goto('/app');\n  \n  // Subscribe to push\n  await page.getByRole('button', { name: 'Enable notifications' }).click();\n  \n  // Check subscription\n  const subscription = await page.evaluate(() => {\n    return navigator.serviceWorker.ready.then(reg => \n      reg.pushManager.getSubscription()\n    );\n  });\n  \n  expect(subscription).toBeTruthy();\n  \n  // Simulate notification\n  await page.evaluate(() => {\n    new Notification('Test', { body: 'Test notification' });\n  });\n});\n```",
+      "explanation": "Grant notification permissions. Test subscription flow. Simulate notifications in browser context. Verify push subscription.",
+      "difficulty": "hard",
+      "tags": ["playwright", "notifications", "push"]
+    },
+    {
+      "id": "pw-adv-033",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test WebRTC in Playwright?",
+      "back": "```javascript\ntest('WebRTC video call', async ({ page, context }) => {\n  await context.grantPermissions(['camera', 'microphone']);\n  \n  await page.goto('/video-call');\n  \n  // Start call\n  await page.getByRole('button', { name: 'Start call' }).click();\n  \n  // Check video element\n  const video = page.locator('video');\n  await expect(video).toBeVisible();\n  \n  // Check video is playing\n  const isPlaying = await video.evaluate((v: HTMLVideoElement) => {\n    return !v.paused && v.currentTime > 0 && v.readyState > 2;\n  });\n  \n  expect(isPlaying).toBe(true);\n});\n```",
+      "explanation": "Grant camera/microphone permissions. Test video/audio elements. Check media stream state. Verify WebRTC connection.",
+      "difficulty": "hard",
+      "tags": ["playwright", "webrtc", "media"]
+    },
+    {
+      "id": "pw-adv-034",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test Canvas and WebGL in Playwright?",
+      "back": "```javascript\ntest('canvas rendering', async ({ page }) => {\n  await page.goto('/canvas-app');\n  \n  // Check canvas exists\n  const canvas = page.locator('canvas');\n  await expect(canvas).toBeVisible();\n  \n  // Get canvas data\n  const imageData = await canvas.evaluate((c: HTMLCanvasElement) => {\n    const ctx = c.getContext('2d');\n    return ctx.getImageData(0, 0, c.width, c.height).data;\n  });\n  \n  // Check canvas is not blank\n  const hasContent = Array.from(imageData).some(pixel => pixel !== 0);\n  expect(hasContent).toBe(true);\n  \n  // Screenshot for visual testing\n  await expect(canvas).toHaveScreenshot('canvas-output.png');\n});\n```",
+      "explanation": "Test canvas rendering by checking pixel data. Use screenshots for visual verification. Verify WebGL context creation.",
+      "difficulty": "hard",
+      "tags": ["playwright", "canvas", "webgl"]
+    },
+    {
+      "id": "pw-adv-035",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you mock browser APIs in Playwright?",
+      "back": "```javascript\ntest('mock geolocation', async ({ page, context }) => {\n  await context.addInitScript(() => {\n    navigator.geolocation.getCurrentPosition = (success) => {\n      success({\n        coords: {\n          latitude: 51.5074,\n          longitude: -0.1278,\n          accuracy: 100\n        }\n      });\n    };\n  });\n  \n  await page.goto('/map');\n  \n  // Mock Date\n  await context.addInitScript(() => {\n    Date.now = () => 1609459200000; // Jan 1, 2021\n  });\n  \n  // Mock Math.random\n  await context.addInitScript(() => {\n    Math.random = () => 0.5;\n  });\n});\n```",
+      "explanation": "Use addInitScript to inject mocks before page loads. Mock browser APIs like geolocation, Date, random. Ensures deterministic tests.",
+      "difficulty": "hard",
+      "tags": ["playwright", "mocking", "browser-api"]
+    },
+    {
+      "id": "pw-adv-036",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test browser storage limits in Playwright?",
+      "back": "```javascript\ntest('storage quota', async ({ page }) => {\n  await page.goto('/app');\n  \n  // Check storage quota\n  const quota = await page.evaluate(async () => {\n    const estimate = await navigator.storage.estimate();\n    return {\n      usage: estimate.usage,\n      quota: estimate.quota,\n      percentage: (estimate.usage / estimate.quota) * 100\n    };\n  });\n  \n  expect(quota.percentage).toBeLessThan(80);\n  \n  // Test localStorage limit\n  await page.evaluate(() => {\n    try {\n      const huge = 'x'.repeat(10 * 1024 * 1024); // 10MB\n      localStorage.setItem('huge', huge);\n      return true;\n    } catch (e) {\n      return false;\n    }\n  });\n});\n```",
+      "explanation": "Use Storage API to check quota. Test storage limits and quota exceeded errors. Verify graceful handling of storage failures.",
+      "difficulty": "hard",
+      "tags": ["playwright", "storage", "quota"]
+    },
+    {
+      "id": "pw-adv-037",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test IndexedDB in Playwright?",
+      "back": "```javascript\ntest('IndexedDB operations', async ({ page }) => {\n  await page.goto('/app');\n  \n  // Add data to IndexedDB\n  await page.evaluate(() => {\n    return new Promise((resolve, reject) => {\n      const request = indexedDB.open('TestDB', 1);\n      request.onupgradeneeded = () => {\n        const db = request.result;\n        db.createObjectStore('users', { keyPath: 'id' });\n      };\n      request.onsuccess = () => {\n        const db = request.result;\n        const tx = db.transaction('users', 'readwrite');\n        tx.objectStore('users').add({ id: 1, name: 'John' });\n        tx.oncomplete = () => resolve(true);\n      };\n      request.onerror = () => reject(request.error);\n    });\n  });\n  \n  // Read data\n  const user = await page.evaluate(() => {\n    return new Promise(resolve => {\n      const request = indexedDB.open('TestDB');\n      request.onsuccess = () => {\n        const db = request.result;\n        const tx = db.transaction('users');\n        const getReq = tx.objectStore('users').get(1);\n        getReq.onsuccess = () => resolve(getReq.result);\n      };\n    });\n  });\n  \n  expect(user.name).toBe('John');\n});\n```",
+      "explanation": "Test IndexedDB CRUD operations via evaluate. Handle async database operations. Verify data persistence.",
+      "difficulty": "hard",
+      "tags": ["playwright", "indexeddb", "storage"]
+    },
+    {
+      "id": "pw-adv-038",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test Web Animations API in Playwright?",
+      "back": "```javascript\ntest('CSS animations', async ({ page }) => {\n  await page.goto('/animations');\n  \n  const element = page.locator('.animated');\n  \n  // Get animation state\n  const animationState = await element.evaluate(el => {\n    const animations = el.getAnimations();\n    return animations.map(anim => ({\n      playState: anim.playState,\n      currentTime: anim.currentTime,\n      duration: anim.effect.getTiming().duration\n    }));\n  });\n  \n  expect(animationState[0].playState).toBe('running');\n  \n  // Wait for animation to complete\n  await element.evaluate(el => {\n    const animation = el.getAnimations()[0];\n    return animation.finished;\n  });\n  \n  await expect(element).toHaveCSS('opacity', '1');\n});\n```",
+      "explanation": "Access Web Animations API via evaluate. Check animation state, timing, and completion. Wait for animations before assertions.",
+      "difficulty": "hard",
+      "tags": ["playwright", "animations", "web-api"]
+    },
+    {
+      "id": "pw-adv-039",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test Custom Elements (Web Components) in Playwright?",
+      "back": "```javascript\ntest('custom element', async ({ page }) => {\n  await page.goto('/components');\n  \n  // Access custom element\n  const customElement = page.locator('my-component');\n  await expect(customElement).toBeVisible();\n  \n  // Access shadow root\n  const shadowButton = customElement.locator('button');\n  await shadowButton.click();\n  \n  // Check custom element properties\n  const value = await customElement.evaluate((el: any) => {\n    return el.value;\n  });\n  \n  expect(value).toBe('clicked');\n  \n  // Set property\n  await customElement.evaluate((el: any) => {\n    el.setAttribute('data', 'test');\n  });\n});\n```",
+      "explanation": "Playwright pierces shadow DOM automatically. Access custom element properties via evaluate. Test like regular elements.",
+      "difficulty": "hard",
+      "tags": ["playwright", "web-components", "shadow-dom"]
+    },
+    {
+      "id": "pw-adv-040",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement test reporting with screenshots on failure?",
+      "back": "```javascript\nimport { test as base } from '@playwright/test';\n\nconst test = base.extend({\n  page: async ({ page }, use, testInfo) => {\n    await use(page);\n    \n    if (testInfo.status !== 'passed') {\n      const screenshot = await page.screenshot();\n      await testInfo.attach('screenshot', {\n        body: screenshot,\n        contentType: 'image/png'\n      });\n      \n      const trace = await page.context().tracing.stop();\n      await testInfo.attach('trace', {\n        path: trace,\n        contentType: 'application/zip'\n      });\n    }\n  }\n});\n```",
+      "explanation": "Extend page fixture to capture artifacts on failure. Use testInfo.attach() to add screenshots, traces, videos to report.",
+      "difficulty": "hard",
+      "tags": ["playwright", "reporting", "screenshots"]
+    },
+    {
+      "id": "pw-adv-041",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement conditional test execution in Playwright?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\n\nconst isFeatureEnabled = process.env.FEATURE_FLAG === 'true';\n\n(isFeatureEnabled ? test : test.skip)('feature test', async ({ page }) => {\n  // Test feature\n});\n\n// Or with custom condition\ntest('browser specific', async ({ page, browserName }) => {\n  test.skip(browserName === 'webkit', 'Not supported in WebKit');\n  // Test code\n});\n\n// Skip based on environment\ntest.skip(() => process.env.ENV === 'prod', 'test suite', () => {\n  test('test 1', async () => {});\n  test('test 2', async () => {});\n});\n```",
+      "explanation": "Use conditional test/test.skip for feature flags. Skip based on browser, environment, or runtime conditions. Organize with describe blocks.",
+      "difficulty": "hard",
+      "tags": ["playwright", "conditional", "execution"]
+    },
+    {
+      "id": "pw-adv-042",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test responsive images in Playwright?",
+      "back": "```javascript\ntest('responsive images', async ({ page }) => {\n  // Desktop viewport\n  await page.setViewportSize({ width: 1920, height: 1080 });\n  await page.goto('/gallery');\n  \n  let imgSrc = await page.locator('img').first().getAttribute('src');\n  expect(imgSrc).toContain('large');\n  \n  // Mobile viewport\n  await page.setViewportSize({ width: 375, height: 667 });\n  await page.reload();\n  \n  imgSrc = await page.locator('img').first().getAttribute('src');\n  expect(imgSrc).toContain('small');\n  \n  // Check srcset\n  const srcset = await page.locator('img').first().getAttribute('srcset');\n  expect(srcset).toMatch(/small\\.jpg.*480w.*medium\\.jpg.*800w/);\n});\n```",
+      "explanation": "Test responsive images across viewports. Verify correct image sources load. Check srcset and sizes attributes.",
+      "difficulty": "hard",
+      "tags": ["playwright", "responsive", "images"]
+    },
+    {
+      "id": "pw-adv-043",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test lazy loading in Playwright?",
+      "back": "```javascript\ntest('lazy loading', async ({ page }) => {\n  await page.goto('/long-page');\n  \n  // Image should not be loaded initially\n  const lazyImage = page.locator('img[loading=\"lazy\"]').last();\n  let src = await lazyImage.getAttribute('src');\n  expect(src).toBeFalsy();\n  \n  // Scroll to image\n  await lazyImage.scrollIntoViewIfNeeded();\n  \n  // Wait for image to load\n  await page.waitForFunction((img) => {\n    const element = document.querySelector(`img[loading=\"lazy\"]:last-of-type`);\n    return element && element.complete && element.naturalHeight > 0;\n  });\n  \n  // Image should now be loaded\n  src = await lazyImage.getAttribute('src');\n  expect(src).toBeTruthy();\n});\n```",
+      "explanation": "Verify lazy loading behavior. Check images don't load until scrolled into view. Wait for actual image load completion.",
+      "difficulty": "hard",
+      "tags": ["playwright", "lazy-loading", "performance"]
+    },
+    {
+      "id": "pw-adv-044",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test memory leaks in Playwright?",
+      "back": "```javascript\ntest('memory leak detection', async ({ page }) => {\n  await page.goto('/app');\n  \n  // Get baseline memory\n  let baseline = await page.evaluate(() => (performance as any).memory.usedJSHeapSize);\n  \n  // Perform operations that might leak\n  for (let i = 0; i < 10; i++) {\n    await page.getByRole('button', { name: 'Add items' }).click();\n    await page.getByRole('button', { name: 'Clear' }).click();\n  }\n  \n  // Force garbage collection (requires --js-flags=\"--expose-gc\")\n  await page.evaluate(() => (window as any).gc());\n  \n  // Check memory after operations\n  const final = await page.evaluate(() => (performance as any).memory.usedJSHeapSize);\n  \n  const increase = ((final - baseline) / baseline) * 100;\n  expect(increase).toBeLessThan(50); // Less than 50% increase\n});\n```",
+      "explanation": "Measure heap size before/after operations. Force GC to clear temporary objects. Detect significant memory growth indicating leaks.",
+      "difficulty": "hard",
+      "tags": ["playwright", "memory", "performance"]
+    },
+    {
+      "id": "pw-adv-045",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test SEO elements in Playwright?",
+      "back": "```javascript\ntest('SEO validation', async ({ page }) => {\n  await page.goto('/');\n  \n  // Check title\n  await expect(page).toHaveTitle(/My Site/);\n  \n  // Check meta description\n  const description = page.locator('meta[name=\"description\"]');\n  await expect(description).toHaveAttribute('content', /.{50,160}/);\n  \n  // Check Open Graph tags\n  await expect(page.locator('meta[property=\"og:title\"]')).toHaveAttribute('content', /.+/);\n  await expect(page.locator('meta[property=\"og:image\"]')).toHaveAttribute('content', /^https/);\n  \n  // Check canonical URL\n  const canonical = page.locator('link[rel=\"canonical\"]');\n  await expect(canonical).toHaveAttribute('href', /^https:/);\n  \n  // Check heading structure\n  const h1Count = await page.locator('h1').count();\n  expect(h1Count).toBe(1);\n  \n  // Check alt attributes\n  const imagesWithoutAlt = await page.locator('img:not([alt])').count();\n  expect(imagesWithoutAlt).toBe(0);\n});\n```",
+      "explanation": "Validate SEO meta tags, titles, descriptions. Check Open Graph tags. Verify heading structure and alt attributes.",
+      "difficulty": "hard",
+      "tags": ["playwright", "seo", "validation"]
+    },
+    {
+      "id": "pw-adv-046",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test multi-step forms with validation in Playwright?",
+      "back": "```javascript\ntest('multi-step form', async ({ page }) => {\n  await page.goto('/registration');\n  \n  // Step 1: Personal info\n  await page.getByLabel('First name').fill('John');\n  await page.getByLabel('Last name').fill('Doe');\n  await page.getByRole('button', { name: 'Next' }).click();\n  \n  // Verify step 2 is visible\n  await expect(page.getByText('Contact Information')).toBeVisible();\n  \n  // Step 2: Invalid email\n  await page.getByLabel('Email').fill('invalid');\n  await page.getByRole('button', { name: 'Next' }).click();\n  \n  // Check validation error\n  await expect(page.getByText('Invalid email')).toBeVisible();\n  \n  // Fix and continue\n  await page.getByLabel('Email').fill('john@example.com');\n  await page.getByRole('button', { name: 'Next' }).click();\n  \n  // Step 3: Review and submit\n  await expect(page.getByText('Review')).toBeVisible();\n  await expect(page.getByText('John Doe')).toBeVisible();\n  await page.getByRole('button', { name: 'Submit' }).click();\n  \n  await expect(page).toHaveURL('/success');\n});\n```",
+      "explanation": "Test each form step. Verify validation errors. Test forward/back navigation. Verify data persistence across steps.",
+      "difficulty": "hard",
+      "tags": ["playwright", "forms", "validation"]
+    },
+    {
+      "id": "pw-adv-047",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you test real-time collaboration features in Playwright?",
+      "back": "```javascript\ntest('real-time collaboration', async ({ browser }) => {\n  // Create two users\n  const user1Context = await browser.newContext();\n  const user1Page = await user1Context.newPage();\n  \n  const user2Context = await browser.newContext();\n  const user2Page = await user2Context.newPage();\n  \n  // Both join same document\n  await user1Page.goto('/doc/shared-123');\n  await user2Page.goto('/doc/shared-123');\n  \n  // User 1 types\n  await user1Page.getByRole('textbox').fill('Hello from user 1');\n  \n  // User 2 should see the change\n  await expect(user2Page.getByRole('textbox')).toHaveValue('Hello from user 1');\n  \n  // User 2 adds more text\n  await user2Page.getByRole('textbox').fill('Hello from user 1 and user 2');\n  \n  // User 1 should see both changes\n  await expect(user1Page.getByRole('textbox')).toHaveValue('Hello from user 1 and user 2');\n  \n  await user1Context.close();\n  await user2Context.close();\n});\n```",
+      "explanation": "Create multiple browser contexts for different users. Test real-time sync between users. Verify bidirectional updates.",
+      "difficulty": "hard",
+      "tags": ["playwright", "collaboration", "realtime"]
+    },
+    {
+      "id": "pw-adv-048",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "What are the best practices for visual regression testing?",
+      "back": "1. Mask dynamic content (timestamps, ads, random IDs)\n2. Use consistent viewport sizes\n3. Wait for animations to complete\n4. Disable animations in test mode\n5. Use maxDiffPixels threshold for minor changes\n6. Organize screenshots by feature/page\n7. Review diffs carefully before updating\n8. Run visual tests separately (slower)\n9. Use CI for baseline storage\n10. Document intentional visual changes",
+      "difficulty": "hard",
+      "tags": ["best-practice", "visual-regression", "testing"]
+    },
+    {
+      "id": "pw-adv-049",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "How should you structure tests for large applications?",
+      "back": "1. Organize by feature/module\n2. Use Page Object Model sparingly\n3. Create reusable fixtures\n4. Extract common actions\n5. Use test tags for filtering\n6. Separate API and UI tests\n7. Create test helper utilities\n8. Use global setup for auth\n9. Group related tests in describe blocks\n10. Keep test files focused (<300 lines)\n11. Use descriptive test names\n12. Document complex test scenarios",
+      "difficulty": "hard",
+      "tags": ["best-practice", "organization", "architecture"]
+    },
+    {
+      "id": "pw-adv-050",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "What's the optimal CI/CD pipeline strategy for Playwright?",
+      "back": "1. Run on PR and main branch\n2. Use test sharding for speed\n3. Run visual tests separately\n4. Upload artifacts on failure\n5. Use caching for dependencies\n6. Configure retries for flaky tests\n7. Run smoke tests first\n8. Parallel execution with matrix\n9. Store traces for failures\n10. Generate and publish reports\n11. Use status checks to block merges\n12. Monitor test execution time",
+      "difficulty": "hard",
+      "tags": ["best-practice", "ci-cd", "pipeline"]
+    },
+    {
+      "id": "pw-adv-051",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "How should you handle test data in Playwright?",
+      "back": "1. Use fixtures for setup\n2. Clean up test data after tests\n3. Use unique IDs for test data\n4. Avoid shared state between tests\n5. Use API for data setup when possible\n6. Store test data in JSON files\n7. Use factories/builders for complex data\n8. Mock external dependencies\n9. Use database snapshots for reset\n10. Isolate test data per test\n11. Don't rely on production data\n12. Use realistic test data",
+      "difficulty": "hard",
+      "tags": ["best-practice", "test-data", "management"]
+    },
+    {
+      "id": "pw-adv-052",
+      "type": "troubleshooting",
+      "deck": "playwright-advanced",
+      "front": "How do you debug tests that pass locally but fail in CI?",
+      "back": "1. Check CI environment differences (timezone, locale)\n2. Review trace from CI run\n3. Enable video recording in CI\n4. Check timing issues (slower CI)\n5. Verify dependencies and versions match\n6. Check viewport/screen size\n7. Increase timeouts for CI\n8. Check for race conditions\n9. Review resource limits\n10. Run tests with --repeat-each locally\n11. Use same browser versions\n12. Check network conditions",
+      "difficulty": "hard",
+      "tags": ["troubleshooting", "ci", "debugging"]
+    },
+    {
+      "id": "pw-adv-053",
+      "type": "troubleshooting",
+      "deck": "playwright-advanced",
+      "front": "How do you optimize slow Playwright tests?",
+      "back": "1. Use API for setup instead of UI\n2. Reuse authentication state\n3. Run tests in parallel\n4. Use test sharding\n5. Block unnecessary resources (images, fonts)\n6. Reduce explicit waits\n7. Use networkidle sparingly\n8. Optimize selectors (avoid XPath)\n9. Skip animations in test mode\n10. Use worker fixtures for expensive setup\n11. Profile test execution\n12. Remove redundant assertions",
+      "difficulty": "hard",
+      "tags": ["troubleshooting", "performance", "optimization"]
+    },
+    {
+      "id": "pw-adv-054",
+      "type": "comparison",
+      "deck": "playwright-advanced",
+      "front": "Compare E2E tests vs Component tests in Playwright",
+      "back": "E2E Tests:\n- Full application flow\n- Real backend integration\n- Slower execution\n- Catch integration issues\n- Test user journeys\n\nComponent Tests:\n- Isolated components\n- Mocked dependencies\n- Faster execution\n- Test component logic\n- Better for libraries\n\nStrategy: Use both - components for unit-level, E2E for critical paths.",
+      "difficulty": "hard",
+      "tags": ["comparison", "testing-strategy", "types"]
+    },
+    {
+      "id": "pw-adv-055",
+      "type": "comparison",
+      "deck": "playwright-advanced",
+      "front": "When to use Playwright vs Cypress for testing?",
+      "back": "Playwright advantages:\n- Multi-browser (Chrome, Firefox, WebKit)\n- Better API testing\n- Multiple tabs/contexts\n- Auto-wait with strict mode\n- Faster execution\n- Native mobile emulation\n\nCypress advantages:\n- Better time-travel debugging\n- More mature ecosystem\n- Better documentation\n- Easier for beginners\n\nChoose Playwright for: cross-browser, complex scenarios, API testing.\nChoose Cypress for: simple apps, team familiarity.",
+      "difficulty": "hard",
+      "tags": ["comparison", "playwright", "cypress"]
+    },
+    {
+      "id": "pw-adv-056",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement custom assertions in Playwright?",
+      "back": "```javascript\nimport { expect as baseExpect } from '@playwright/test';\n\nconst expect = baseExpect.extend({\n  async toHaveValidEmail(locator: Locator) {\n    const value = await locator.inputValue();\n    const isValid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value);\n    \n    return {\n      message: () => `expected ${value} to be a valid email`,\n      pass: isValid\n    };\n  },\n  \n  async toBeWithinRange(received: number, min: number, max: number) {\n    const pass = received >= min && received <= max;\n    return {\n      message: () => `expected ${received} to be between ${min} and ${max}`,\n      pass\n    };\n  }\n});\n\n// Usage\nawait expect(page.getByLabel('Email')).toHaveValidEmail();\nexpect(score).toBeWithinRange(0, 100);\n```",
+      "explanation": "Extend expect with custom matchers. Return message and pass. Use async for locator-based assertions. Improves test readability.",
+      "difficulty": "hard",
+      "tags": ["playwright", "assertions", "custom"]
+    },
+    {
+      "id": "pw-adv-057",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement test isolation with database transactions?",
+      "back": "```javascript\nimport { test as base } from '@playwright/test';\nimport { db } from './database';\n\nconst test = base.extend({\n  transactionalDB: async ({}, use) => {\n    // Start transaction\n    await db.query('BEGIN');\n    \n    try {\n      await use(db);\n    } finally {\n      // Rollback after test\n      await db.query('ROLLBACK');\n    }\n  }\n});\n\ntest('user creation', async ({ transactionalDB }) => {\n  await transactionalDB.query('INSERT INTO users ...');\n  // Test code\n  // Automatic rollback after test\n});\n```",
+      "explanation": "Use database transactions for test isolation. Begin transaction in fixture setup, rollback in cleanup. Ensures clean state.",
+      "difficulty": "hard",
+      "tags": ["playwright", "isolation", "database"]
+    },
+    {
+      "id": "pw-adv-058",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement screenshot comparison with custom differ?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\nimport pixelmatch from 'pixelmatch';\nimport { PNG } from 'pngjs';\n\ntest('custom visual diff', async ({ page }) => {\n  await page.goto('/page');\n  \n  const screenshot = await page.screenshot();\n  const baseline = PNG.sync.read(fs.readFileSync('baseline.png'));\n  const current = PNG.sync.read(screenshot);\n  \n  const { width, height } = baseline;\n  const diff = new PNG({ width, height });\n  \n  const numDiffPixels = pixelmatch(\n    baseline.data,\n    current.data,\n    diff.data,\n    width,\n    height,\n    { threshold: 0.1 }\n  );\n  \n  const diffPercentage = (numDiffPixels / (width * height)) * 100;\n  expect(diffPercentage).toBeLessThan(1); // Less than 1% different\n  \n  if (diffPercentage >= 1) {\n    fs.writeFileSync('diff.png', PNG.sync.write(diff));\n  }\n});\n```",
+      "explanation": "Implement custom screenshot comparison with pixelmatch. Control threshold and diff generation. Save diff images for review.",
+      "difficulty": "hard",
+      "tags": ["playwright", "visual", "custom-differ"]
+    },
+    {
+      "id": "pw-adv-059",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement distributed tracing for tests?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\nimport opentelemetry from '@opentelemetry/api';\n\nconst tracer = opentelemetry.trace.getTracer('playwright-tests');\n\ntest('traced test', async ({ page }) => {\n  const span = tracer.startSpan('user-login-flow');\n  \n  try {\n    await span.setAttribute('test.name', 'user login');\n    \n    const navSpan = tracer.startSpan('navigate', { parent: span });\n    await page.goto('/login');\n    navSpan.end();\n    \n    const loginSpan = tracer.startSpan('fill-form', { parent: span });\n    await page.getByLabel('Email').fill('user@test.com');\n    await page.getByLabel('Password').fill('password');\n    loginSpan.end();\n    \n    const submitSpan = tracer.startSpan('submit', { parent: span });\n    await page.getByRole('button', { name: 'Login' }).click();\n    submitSpan.end();\n    \n    span.setStatus({ code: opentelemetry.SpanStatusCode.OK });\n  } catch (error) {\n    span.recordException(error);\n    span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });\n    throw error;\n  } finally {\n    span.end();\n  }\n});\n```",
+      "explanation": "Integrate OpenTelemetry for distributed tracing. Track test execution spans. Useful for performance analysis and debugging.",
+      "difficulty": "hard",
+      "tags": ["playwright", "tracing", "observability"]
+    },
+    {
+      "id": "pw-adv-060",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement chaos engineering in Playwright tests?",
+      "back": "```javascript\ntest('resilience to network failures', async ({ page, context }) => {\n  await page.goto('/app');\n  \n  // Intermittent failures (20% of requests fail)\n  await context.route('**/api/**', route => {\n    if (Math.random() < 0.2) {\n      route.abort('failed');\n    } else {\n      route.continue();\n    }\n  });\n  \n  // Test app handles failures gracefully\n  await page.getByRole('button', { name: 'Load data' }).click();\n  \n  // Should show retry UI or error message\n  await expect(\n    page.getByText(/retry|error/i)\n  ).toBeVisible({ timeout: 5000 });\n  \n  // Slow responses (500ms-2s delay)\n  await context.route('**/api/**', async route => {\n    const delay = 500 + Math.random() * 1500;\n    await new Promise(resolve => setTimeout(resolve, delay));\n    await route.continue();\n  });\n  \n  // Test loading states\n  await page.reload();\n  await expect(page.locator('.loading')).toBeVisible();\n});\n```",
+      "explanation": "Simulate network failures and latency. Test application resilience. Verify error handling and retry logic.",
+      "difficulty": "hard",
+      "tags": ["playwright", "chaos", "resilience"]
+    },
+    {
+      "id": "pw-adv-061",
+      "type": "definition",
+      "deck": "playwright-advanced",
+      "front": "What is the Test Pyramid and how does it apply to Playwright?",
+      "back": "Test Pyramid: More unit tests at bottom, fewer E2E at top.\n\nWith Playwright:\n- Component tests (base): Fast, isolated component testing\n- Integration tests (middle): API + UI interactions\n- E2E tests (top): Critical user journeys only\n\nStrategy: Use component tests for logic, E2E for happy paths. Keep E2E focused on high-value scenarios. Balance speed vs coverage.",
+      "difficulty": "hard",
+      "tags": ["playwright", "strategy", "test-pyramid"]
+    },
+    {
+      "id": "pw-adv-062",
+      "type": "definition",
+      "deck": "playwright-advanced",
+      "front": "What is Browser Context isolation and why is it important?",
+      "back": "Browser Context isolation provides separate sessions with independent:\n- Cookies\n- localStorage\n- sessionStorage\n- Cache\n- Permissions\n\nImportance:\n1. True test isolation\n2. Parallel execution safety\n3. Different user sessions\n4. No test pollution\n5. Faster than browser restart\n\nEach Playwright test gets fresh context by default.",
+      "difficulty": "hard",
+      "tags": ["playwright", "isolation", "architecture"]
+    },
+    {
+      "id": "pw-adv-063",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "How should you handle test maintenance in Playwright?",
+      "back": "1. Regular updates of Playwright version\n2. Update browser versions\n3. Refactor duplicated code into fixtures\n4. Remove obsolete tests\n5. Update screenshots after UI changes\n6. Monitor and fix flaky tests\n7. Review test execution time\n8. Document test purposes\n9. Use test tags for organization\n10. Regular code reviews\n11. Keep dependencies updated\n12. Archive deprecated test suites",
+      "difficulty": "hard",
+      "tags": ["best-practice", "maintenance", "testing"]
+    },
+    {
+      "id": "pw-adv-064",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "What are the security best practices for Playwright tests?",
+      "back": "1. Never commit credentials\n2. Use environment variables for secrets\n3. Store auth states securely\n4. Don't log sensitive data\n5. Use .gitignore for test data\n6. Rotate test accounts regularly\n7. Limit test account permissions\n8. Sanitize screenshots/videos\n9. Secure CI/CD pipeline\n10. Use separate test environment\n11. Encrypt sensitive test data\n12. Review third-party dependencies",
+      "difficulty": "hard",
+      "tags": ["best-practice", "security", "testing"]
+    },
+    {
+      "id": "pw-adv-065",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "How do you handle test coverage with Playwright?",
+      "back": "1. Use Istanbul/NYC for code coverage\n2. Instrument application code\n3. Collect coverage during test runs\n4. Merge coverage from parallel runs\n5. Set coverage thresholds\n6. Track coverage trends\n7. Focus on critical paths\n8. Use coverage to find gaps\n9. Don't chase 100% coverage\n10. Combine with unit test coverage\n11. Review uncovered code\n12. Generate coverage reports",
+      "difficulty": "hard",
+      "tags": ["best-practice", "coverage", "testing"]
+    },
+    {
+      "id": "pw-adv-066",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement test data factories in Playwright?",
+      "back": "```javascript\n// factories/user.factory.ts\nimport { faker } from '@faker-js/faker';\n\nexport class UserFactory {\n  static create(overrides = {}) {\n    return {\n      id: faker.string.uuid(),\n      email: faker.internet.email(),\n      username: faker.internet.userName(),\n      firstName: faker.person.firstName(),\n      lastName: faker.person.lastName(),\n      age: faker.number.int({ min: 18, max: 80 }),\n      role: 'user',\n      createdAt: new Date().toISOString(),\n      ...overrides\n    };\n  }\n  \n  static createAdmin(overrides = {}) {\n    return this.create({ role: 'admin', ...overrides });\n  }\n  \n  static createMany(count: number, overrides = {}) {\n    return Array.from({ length: count }, () => this.create(overrides));\n  }\n}\n\n// Usage\nconst user = UserFactory.create({ email: 'test@example.com' });\nconst admins = UserFactory.createMany(5, { role: 'admin' });\n```",
+      "explanation": "Use factories with Faker for realistic test data. Provide sensible defaults and overrides. Support batch creation. Improves test data management.",
+      "difficulty": "hard",
+      "tags": ["playwright", "factories", "test-data"]
+    },
+    {
+      "id": "pw-adv-067",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement contract testing with Playwright?",
+      "back": "```javascript\nimport { test, expect } from '@playwright/test';\nimport { Pact } from '@pact-foundation/pact';\n\nconst provider = new Pact({\n  consumer: 'FrontendApp',\n  provider: 'BackendAPI',\n  port: 8080\n});\n\ntest.beforeAll(async () => {\n  await provider.setup();\n});\n\ntest.afterAll(async () => {\n  await provider.finalize();\n});\n\ntest('get user contract', async ({ page }) => {\n  await provider.addInteraction({\n    state: 'user exists',\n    uponReceiving: 'a request for user',\n    withRequest: {\n      method: 'GET',\n      path: '/api/users/123'\n    },\n    willRespondWith: {\n      status: 200,\n      body: {\n        id: '123',\n        name: 'John Doe'\n      }\n    }\n  });\n  \n  await page.goto('/users/123');\n  await expect(page.getByText('John Doe')).toBeVisible();\n  \n  await provider.verify();\n});\n```",
+      "explanation": "Use Pact for consumer-driven contract testing. Define API contracts. Verify both consumer and provider honor contracts.",
+      "difficulty": "hard",
+      "tags": ["playwright", "contract-testing", "pact"]
+    },
+    {
+      "id": "pw-adv-068",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement mutation testing awareness in Playwright?",
+      "back": "```javascript\n// While Playwright doesn't do mutation testing directly,\n// structure tests to catch mutations:\n\ntest('comprehensive button test', async ({ page }) => {\n  await page.goto('/form');\n  \n  const button = page.getByRole('button', { name: 'Submit' });\n  \n  // Test existence\n  await expect(button).toBeVisible();\n  \n  // Test initial state\n  await expect(button).toBeEnabled();\n  await expect(button).not.toHaveClass('loading');\n  \n  // Test interaction\n  await button.click();\n  \n  // Test state change\n  await expect(button).toBeDisabled();\n  await expect(button).toHaveClass('loading');\n  \n  // Test side effects\n  await expect(page.locator('.success')).toBeVisible();\n  \n  // Test final state\n  await expect(button).toBeEnabled();\n  await expect(button).not.toHaveClass('loading');\n});\n\n// Multiple assertions catch more mutations:\n// - Remove click handler\n// - Wrong state transitions\n// - Missing class changes\n// - Missing success message\n```",
+      "explanation": "Write comprehensive tests with multiple assertions. Test state changes, side effects, and edge cases. Catches more potential code mutations.",
+      "difficulty": "hard",
+      "tags": ["playwright", "mutation", "quality"]
+    },
+    {
+      "id": "pw-adv-069",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement visual regression testing with Percy?",
+      "back": "```javascript\nimport { test } from '@playwright/test';\nimport percySnapshot from '@percy/playwright';\n\ntest('visual regression with Percy', async ({ page }) => {\n  await page.goto('/dashboard');\n  \n  // Take Percy snapshot\n  await percySnapshot(page, 'Dashboard');\n  \n  // With options\n  await percySnapshot(page, 'Dashboard - Mobile', {\n    widths: [375, 768, 1280],\n    minHeight: 1024\n  });\n  \n  // Snapshot specific element\n  await percySnapshot(page, 'Header Component', {\n    scope: '.header'\n  });\n  \n  // With Percy CSS for masking\n  await percySnapshot(page, 'Profile Page', {\n    percyCSS: '.timestamp { visibility: hidden; }'\n  });\n});\n\n// Run with Percy: npx percy exec -- npx playwright test\n```",
+      "explanation": "Integrate Percy for visual testing. Supports multiple viewports, scoping, and CSS masking. Provides visual diff review platform.",
+      "difficulty": "hard",
+      "tags": ["playwright", "percy", "visual"]
+    },
+    {
+      "id": "pw-adv-070",
+      "type": "code",
+      "deck": "playwright-advanced",
+      "front": "How do you implement BDD-style testing with Playwright?",
+      "back": "```javascript\nimport { test, expect } from '@playwright/test';\n\n// Using test.step for BDD style\ntest('user registration', async ({ page }) => {\n  await test.step('Given I am on the registration page', async () => {\n    await page.goto('/register');\n  });\n  \n  await test.step('When I fill in the registration form', async () => {\n    await page.getByLabel('Email').fill('user@test.com');\n    await page.getByLabel('Password').fill('Password123!');\n    await page.getByLabel('Confirm Password').fill('Password123!');\n  });\n  \n  await test.step('And I submit the form', async () => {\n    await page.getByRole('button', { name: 'Register' }).click();\n  });\n  \n  await test.step('Then I should see the success message', async () => {\n    await expect(page.getByText('Registration successful')).toBeVisible();\n  });\n  \n  await test.step('And I should be redirected to dashboard', async () => {\n    await expect(page).toHaveURL('/dashboard');\n  });\n});\n```",
+      "explanation": "Use test.step() for BDD-style Given-When-Then. Improves readability and reports. Steps appear in trace viewer.",
+      "difficulty": "hard",
+      "tags": ["playwright", "bdd", "style"]
+    },
+    {
+      "id": "pw-adv-071",
+      "type": "troubleshooting",
+      "deck": "playwright-advanced",
+      "front": "How do you debug intermittent test failures?",
+      "back": "1. Run with --repeat-each=10 to reproduce\n2. Enable trace: 'on' to capture all runs\n3. Add strategic page.pause() breakpoints\n4. Check for race conditions\n5. Review network timing in trace\n6. Add logging for state checks\n7. Increase timeouts temporarily\n8. Check for external dependencies\n9. Review test order dependencies\n10. Use --workers=1 to test serially\n11. Check for memory leaks\n12. Review browser console logs",
+      "difficulty": "hard",
+      "tags": ["troubleshooting", "intermittent", "debugging"]
+    },
+    {
+      "id": "pw-adv-072",
+      "type": "troubleshooting",
+      "deck": "playwright-advanced",
+      "front": "How do you handle tests that work in headed but fail in headless mode?",
+      "back": "Common causes:\n1. Different viewport/screen size\n2. Missing fonts or resources\n3. Timing differences (headless is faster)\n4. Browser feature differences\n5. GPU-related issues\n\nSolutions:\n1. Match viewport size: { viewport: { width: 1920, height: 1080 } }\n2. Install system fonts in CI\n3. Add waits for animations\n4. Disable GPU acceleration if needed\n5. Use same browser version\n6. Check console for errors\n7. Compare screenshots headed vs headless",
+      "difficulty": "hard",
+      "tags": ["troubleshooting", "headless", "debugging"]
+    },
+    {
+      "id": "pw-adv-073",
+      "type": "comparison",
+      "deck": "playwright-advanced",
+      "front": "Compare Playwright Test Runner vs Jest + Playwright",
+      "back": "Playwright Test Runner:\n- Built for E2E testing\n- Browser-aware fixtures\n- Parallel by default\n- Built-in retry logic\n- Trace viewer integration\n- Better performance\n- Test isolation\n\nJest + Playwright:\n- More flexible\n- Familiar to React teams\n- Better for mixed testing\n- More plugins available\n- Manual browser management\n- More configuration needed\n\nRecommendation: Use Playwright Test Runner for E2E, Jest for unit tests.",
+      "difficulty": "hard",
+      "tags": ["comparison", "test-runner", "jest"]
+    },
+    {
+      "id": "pw-adv-074",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "What metrics should you track for test suite health?",
+      "back": "1. Execution time (total and per test)\n2. Flaky test rate\n3. Pass/fail rate trends\n4. Test coverage\n5. Number of tests\n6. Retry count\n7. CI build time\n8. Test maintenance cost\n9. Bug escape rate\n10. Time to diagnose failures\n11. Test creation rate\n12. ROI of tests\n\nSet up dashboards and alerts. Review metrics regularly. Take action on trends.",
+      "difficulty": "hard",
+      "tags": ["best-practice", "metrics", "monitoring"]
+    },
+    {
+      "id": "pw-adv-075",
+      "type": "best-practice",
+      "deck": "playwright-advanced",
+      "front": "How do you balance test speed vs test reliability?",
+      "back": "Speed optimizations:\n1. Use API for setup\n2. Parallel execution\n3. Block unnecessary resources\n4. Reuse authentication\n5. Skip animations\n\nReliability practices:\n1. Proper waits\n2. Stable selectors\n3. Retry configuration\n4. Test isolation\n5. Regular maintenance\n\nBalance:\n- Fast feedback loop (< 5 min)\n- Run critical tests first\n- Longer comprehensive suite nightly\n- Monitor flaky tests\n- Invest in infrastructure",
+      "difficulty": "hard",
+      "tags": ["best-practice", "performance", "reliability"]
+    }
+  ]
+}

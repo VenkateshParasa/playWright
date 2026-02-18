@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-023",
+  "title": "Multiple Browser Contexts",
+  "slug": "browser-contexts",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 35,
+  "description": "Master multiple browser contexts in Playwright",
+  "objectives": [
+    "Create contexts",
+    "Isolate sessions",
+    "Parallel testing",
+    "Context options",
+    "Clean up contexts"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Create contexts\n2. Isolate sessions\n3. Parallel testing\n4. Context options\n5. Clean up contexts",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('browser-contexts', async ({ page }) => {\n  // TODO: Implement Multiple Browser Contexts\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_browser_contexts(page: Page):\n    # TODO: Implement Multiple Browser Contexts\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('browser-contexts', async ({ page }) => {\n  // TODO: Implement Multiple Browser Contexts\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Multiple Browser Contexts\ntest('browser-contexts', async ({ page }) => {\n  // Implementation demonstrates create contexts\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Multiple Browser Contexts\ndef test_browser_contexts(page: Page):\n    # Implementation demonstrates create contexts\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Multiple Browser Contexts\ntest('browser-contexts', async ({ page }) => {\n  // Implementation demonstrates create contexts\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by create contexts",
+    "Remember to isolate sessions",
+    "Use appropriate methods for parallel testing",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Create contexts",
+      "input": null,
+      "expectedBehavior": "Create contexts works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Isolate sessions",
+      "input": null,
+      "expectedBehavior": "Isolate sessions works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Parallel testing",
+      "input": null,
+      "expectedBehavior": "Parallel testing works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Multiple Browser Contexts Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-023",
+    "lesson-024"
+  ],
+  "xpReward": 350,
+  "coinReward": 85,
+  "tags": [
+    "contexts",
+    "isolation",
+    "parallel",
+    "sessions"
+  ]
+}

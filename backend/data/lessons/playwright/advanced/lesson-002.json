@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-002",
+  "title": "Component Testing",
+  "slug": "component-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 2,
+  "duration": 35,
+  "description": "Test individual components in isolation with Playwright Component Testing.",
+  "objectives": [
+    "Set up component tests",
+    "Test React/Vue/Svelte components",
+    "Mock dependencies",
+    "Test component interactions"
+  ],
+  "prerequisites": [
+    "pw-advanced-001"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Component Testing",
+        "type": "text",
+        "content": "# Component Testing\n\nMaster component-level testing for faster feedback.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Component Testing\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Component Testing concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, component testing is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Component Testing\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Component Testing is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Component Testing for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Component Testing Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-002",
+  "nextLesson": "pw-advanced-003",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "component",
+    "automation",
+    "testing"
+  ]
+}

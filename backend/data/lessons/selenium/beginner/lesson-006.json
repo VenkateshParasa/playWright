@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-006",
+  "title": "Waits (Implicit, Explicit, Fluent)",
+  "slug": "selenium-waits",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 6,
+  "duration": 25,
+  "description": "Handle timing issues with different wait strategies in Selenium.",
+  "objectives": [
+    "Implement implicit waits",
+    "Use explicit waits",
+    "Create fluent waits",
+    "Handle dynamic content"
+  ],
+  "prerequisites": [
+    "sel-beginner-005"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Waits (Implicit, Explicit, Fluent)",
+        "type": "text",
+        "content": "# Waits (Implicit, Explicit, Fluent)\n\nMaster wait strategies to eliminate timing issues.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Waits (Implicit, Explicit, Fluent)\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Waits (Implicit, Explicit, Fluent) concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, waits (implicit, explicit, fluent) is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Waits (Implicit, Explicit, Fluent)\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Waits (Implicit, Explicit, Fluent) is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Waits (Implicit, Explicit, Fluent) for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Waits (Implicit, Explicit, Fluent) Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-006",
+  "nextLesson": "sel-beginner-007",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "selenium",
+    "automation",
+    "testing"
+  ]
+}

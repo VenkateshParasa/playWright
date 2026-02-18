@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-003",
+  "title": "Accessibility Testing",
+  "slug": "accessibility-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 3,
+  "duration": 35,
+  "description": "Ensure your application is accessible with automated accessibility testing.",
+  "objectives": [
+    "Run accessibility audits",
+    "Check ARIA attributes",
+    "Test keyboard navigation",
+    "Verify screen reader compatibility"
+  ],
+  "prerequisites": [
+    "pw-advanced-002"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Accessibility Testing",
+        "type": "text",
+        "content": "# Accessibility Testing\n\nBuild inclusive applications with comprehensive accessibility testing.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Accessibility Testing\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Accessibility Testing concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, accessibility testing is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Accessibility Testing\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Accessibility Testing is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Accessibility Testing for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Accessibility Testing Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-003",
+  "nextLesson": "pw-advanced-004",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "accessibility",
+    "automation",
+    "testing"
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "deck": {
+    "id": "selenium-basics",
+    "name": "Selenium Basics",
+    "description": "WebDriver fundamentals, element location, basic commands, waits, alerts, frames, and test structure",
+    "track": "selenium",
+    "level": "beginner",
+    "cardCount": 50,
+    "estimatedTime": 30
+  },
+  "cards": [
+    {
+      "id": "sel-basic-001",
+      "type": "definition",
+      "deck": "selenium-basics",
+      "front": "What is Selenium WebDriver?",
+      "back": "Selenium WebDriver is an open-source API for automating web browsers. It provides a programming interface to create and execute test scripts in multiple programming languages (Java, Python, C#, JavaScript) across different browsers.",
+      "difficulty": "easy",
+      "tags": ["selenium", "webdriver", "definition"]
+    },
+    {
+      "id": "sel-basic-002",
+      "type": "definition",
+      "deck": "selenium-basics",
+      "front": "What browsers does Selenium support?",
+      "back": "Selenium supports Chrome (ChromeDriver), Firefox (GeckoDriver), Safari (SafariDriver), Edge (EdgeDriver), and Internet Explorer (IEDriverServer). Each browser requires its specific driver.",
+      "difficulty": "easy",
+      "tags": ["selenium", "browsers", "basics"]
+    },
+    {
+      "id": "sel-basic-003",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you set up Selenium WebDriver in Java?",
+      "back": "```java\nimport org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.chrome.ChromeDriver;\n\npublic class SeleniumTest {\n    public static void main(String[] args) {\n        System.setProperty(\"webdriver.chrome.driver\", \"/path/to/chromedriver\");\n        WebDriver driver = new ChromeDriver();\n        driver.get(\"https://example.com\");\n        driver.quit();\n    }\n}\n```",
+      "explanation": "Set the driver path with System.setProperty, create driver instance, navigate with get(), and always call quit() to close browser.",
+      "difficulty": "easy",
+      "tags": ["selenium", "java", "setup"]
+    },
+    {
+      "id": "sel-basic-004",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you set up Selenium WebDriver in Python?",
+      "back": "```python\nfrom selenium import webdriver\nfrom selenium.webdriver.chrome.service import Service\n\nservice = Service('/path/to/chromedriver')\ndriver = webdriver.Chrome(service=service)\ndriver.get('https://example.com')\ndriver.quit()\n```",
+      "explanation": "Import webdriver, create Service with driver path, instantiate Chrome driver, navigate with get(), and always call quit().",
+      "difficulty": "easy",
+      "tags": ["selenium", "python", "setup"]
+    },
+    {
+      "id": "sel-basic-005",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by ID in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.id(\"username\"));\n\n# Python\nelement = driver.find_element(By.ID, \"username\")\n\n// JavaScript\nconst element = await driver.findElement(By.id('username'));\n```",
+      "explanation": "Use findElement with By.id(). Returns first matching element. Throws NoSuchElementException if not found.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "id"]
+    },
+    {
+      "id": "sel-basic-006",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by class name in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.className(\"submit-btn\"));\n\n# Python\nelement = driver.find_element(By.CLASS_NAME, \"submit-btn\")\n\n// JavaScript\nconst element = await driver.findElement(By.className('submit-btn'));\n```",
+      "explanation": "Use findElement with By.className(). Note: Use single class name only, not multiple classes separated by spaces.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "class"]
+    },
+    {
+      "id": "sel-basic-007",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by CSS selector in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.cssSelector(\".container > button\"));\n\n# Python\nelement = driver.find_element(By.CSS_SELECTOR, \".container > button\")\n\n// JavaScript\nconst element = await driver.findElement(By.css('.container > button'));\n```",
+      "explanation": "Use findElement with By.cssSelector(). Supports full CSS selector syntax. Most flexible locator strategy.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "css"]
+    },
+    {
+      "id": "sel-basic-008",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by XPath in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.xpath(\"//button[@type='submit']\"));\n\n# Python\nelement = driver.find_element(By.XPATH, \"//button[@type='submit']\")\n\n// JavaScript\nconst element = await driver.findElement(By.xpath(\"//button[@type='submit']\"));\n```",
+      "explanation": "Use findElement with By.xpath(). Powerful but slower than CSS. Use for complex DOM traversal.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "xpath"]
+    },
+    {
+      "id": "sel-basic-009",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by link text in Selenium?",
+      "back": "```java\n// Java\nWebElement link = driver.findElement(By.linkText(\"Sign In\"));\n\n# Python\nlink = driver.find_element(By.LINK_TEXT, \"Sign In\")\n\n// Partial link text\nWebElement link = driver.findElement(By.partialLinkText(\"Sign\"));\n```",
+      "explanation": "Use linkText for exact match or partialLinkText for partial match. Works only with <a> tags.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "link"]
+    },
+    {
+      "id": "sel-basic-010",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by name attribute in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.name(\"email\"));\n\n# Python\nelement = driver.find_element(By.NAME, \"email\")\n\n// JavaScript\nconst element = await driver.findElement(By.name('email'));\n```",
+      "explanation": "Use findElement with By.name(). Useful for form inputs with name attributes.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "name"]
+    },
+    {
+      "id": "sel-basic-011",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find an element by tag name in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.tagName(\"button\"));\n\n# Python\nelement = driver.find_element(By.TAG_NAME, \"button\")\n\n// Find multiple elements\nList<WebElement> buttons = driver.findElements(By.tagName(\"button\"));\n```",
+      "explanation": "Use findElement with By.tagName(). Returns first element of that tag type. Use findElements for all matching elements.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "tag"]
+    },
+    {
+      "id": "sel-basic-012",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you click an element in Selenium?",
+      "back": "```java\n// Java\nWebElement button = driver.findElement(By.id(\"submit\"));\nbutton.click();\n\n# Python\nbutton = driver.find_element(By.ID, \"submit\")\nbutton.click()\n\n// JavaScript\nconst button = await driver.findElement(By.id('submit'));\nawait button.click();\n```",
+      "explanation": "Use click() method on WebElement. Element must be visible and enabled. May need to scroll element into view first.",
+      "difficulty": "easy",
+      "tags": ["selenium", "interactions", "click"]
+    },
+    {
+      "id": "sel-basic-013",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you send text to an input field in Selenium?",
+      "back": "```java\n// Java\nWebElement input = driver.findElement(By.id(\"username\"));\ninput.sendKeys(\"testuser\");\n\n# Python\ninput = driver.find_element(By.ID, \"username\")\ninput.send_keys(\"testuser\")\n\n// Clear before typing\ninput.clear();\ninput.sendKeys(\"newvalue\");\n```",
+      "explanation": "Use sendKeys() to type text. Use clear() first to remove existing text. sendKeys can also send special keys.",
+      "difficulty": "easy",
+      "tags": ["selenium", "interactions", "input"]
+    },
+    {
+      "id": "sel-basic-014",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you get text from an element in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.className(\"message\"));\nString text = element.getText();\n\n# Python\nelement = driver.find_element(By.CLASS_NAME, \"message\")\ntext = element.text\n\n// JavaScript\nconst element = await driver.findElement(By.className('message'));\nconst text = await element.getText();\n```",
+      "explanation": "Use getText() or .text property to get visible text content. Returns empty string if element is not visible.",
+      "difficulty": "easy",
+      "tags": ["selenium", "elements", "text"]
+    },
+    {
+      "id": "sel-basic-015",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you get an attribute value in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.id(\"link\"));\nString href = element.getAttribute(\"href\");\n\n# Python\nelement = driver.find_element(By.ID, \"link\")\nhref = element.get_attribute(\"href\")\n\n// Get value attribute\nString value = input.getAttribute(\"value\");\n```",
+      "explanation": "Use getAttribute() to get HTML attribute values. Returns null/None if attribute doesn't exist.",
+      "difficulty": "easy",
+      "tags": ["selenium", "elements", "attributes"]
+    },
+    {
+      "id": "sel-basic-016",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you check if an element is displayed in Selenium?",
+      "back": "```java\n// Java\nWebElement element = driver.findElement(By.id(\"message\"));\nboolean isDisplayed = element.isDisplayed();\n\n# Python\nelement = driver.find_element(By.ID, \"message\")\nis_displayed = element.is_displayed()\n\n// Check visibility\nif (element.isDisplayed()) {\n    System.out.println(\"Element is visible\");\n}\n```",
+      "explanation": "Use isDisplayed() to check visibility. Returns true if element is visible on the page, false otherwise.",
+      "difficulty": "easy",
+      "tags": ["selenium", "elements", "visibility"]
+    },
+    {
+      "id": "sel-basic-017",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you check if an element is enabled in Selenium?",
+      "back": "```java\n// Java\nWebElement button = driver.findElement(By.id(\"submit\"));\nboolean isEnabled = button.isEnabled();\n\n# Python\nbutton = driver.find_element(By.ID, \"submit\")\nis_enabled = button.is_enabled()\n\n// Check before interacting\nif (button.isEnabled()) {\n    button.click();\n}\n```",
+      "explanation": "Use isEnabled() to check if element is enabled and can be interacted with. Returns false if disabled attribute is present.",
+      "difficulty": "easy",
+      "tags": ["selenium", "elements", "state"]
+    },
+    {
+      "id": "sel-basic-018",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you check if a checkbox is selected in Selenium?",
+      "back": "```java\n// Java\nWebElement checkbox = driver.findElement(By.id(\"terms\"));\nboolean isSelected = checkbox.isSelected();\n\n# Python\ncheckbox = driver.find_element(By.ID, \"terms\")\nis_selected = checkbox.is_selected()\n\n// Toggle checkbox\nif (!checkbox.isSelected()) {\n    checkbox.click();\n}\n```",
+      "explanation": "Use isSelected() to check if checkbox or radio button is selected. Works with selected/checked state.",
+      "difficulty": "easy",
+      "tags": ["selenium", "elements", "checkbox"]
+    },
+    {
+      "id": "sel-basic-019",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you select from a dropdown in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.support.ui.Select;\n\nWebElement dropdown = driver.findElement(By.id(\"country\"));\nSelect select = new Select(dropdown);\n\n// Select by visible text\nselect.selectByVisibleText(\"United States\");\n// Select by value\nselect.selectByValue(\"us\");\n// Select by index\nselect.selectByIndex(0);\n```",
+      "explanation": "Use Select class wrapper for dropdown elements. Provides methods to select by text, value, or index.",
+      "difficulty": "easy",
+      "tags": ["selenium", "select", "dropdown"]
+    },
+    {
+      "id": "sel-basic-020",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you navigate to a URL in Selenium?",
+      "back": "```java\n// Java\ndriver.get(\"https://example.com\");\n// Or\ndriver.navigate().to(\"https://example.com\");\n\n# Python\ndriver.get(\"https://example.com\")\n# Or\ndriver.navigate().to(\"https://example.com\")\n```",
+      "explanation": "Use get() or navigate().to() to load a URL. get() is simpler, navigate() provides more navigation methods.",
+      "difficulty": "easy",
+      "tags": ["selenium", "navigation", "basics"]
+    },
+    {
+      "id": "sel-basic-021",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you navigate back and forward in Selenium?",
+      "back": "```java\n// Java\ndriver.navigate().back();\ndriver.navigate().forward();\ndriver.navigate().refresh();\n\n# Python\ndriver.back()\ndriver.forward()\ndriver.refresh()\n```",
+      "explanation": "Use navigate().back(), forward(), and refresh() for browser navigation. Similar to browser back/forward buttons.",
+      "difficulty": "easy",
+      "tags": ["selenium", "navigation", "history"]
+    },
+    {
+      "id": "sel-basic-022",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you get the current URL in Selenium?",
+      "back": "```java\n// Java\nString currentUrl = driver.getCurrentUrl();\nSystem.out.println(currentUrl);\n\n# Python\ncurrent_url = driver.current_url\nprint(current_url)\n\n// Verify URL\nassertEquals(\"https://example.com/dashboard\", driver.getCurrentUrl());\n```",
+      "explanation": "Use getCurrentUrl() to get current page URL. Useful for verifying navigation and redirects.",
+      "difficulty": "easy",
+      "tags": ["selenium", "navigation", "url"]
+    },
+    {
+      "id": "sel-basic-023",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you get the page title in Selenium?",
+      "back": "```java\n// Java\nString title = driver.getTitle();\nSystem.out.println(title);\n\n# Python\ntitle = driver.title\nprint(title)\n\n// Assert title\nassertEquals(\"Home Page\", driver.getTitle());\n```",
+      "explanation": "Use getTitle() or .title to get page title. Useful for verifying correct page loaded.",
+      "difficulty": "easy",
+      "tags": ["selenium", "page", "title"]
+    },
+    {
+      "id": "sel-basic-024",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you close browser in Selenium?",
+      "back": "```java\n// Java\ndriver.close(); // Closes current window\ndriver.quit();  // Closes all windows and ends session\n\n# Python\ndriver.close()  # Closes current window\ndriver.quit()   # Closes all windows and ends session\n```",
+      "explanation": "close() closes current window. quit() closes all windows and ends WebDriver session. Always use quit() in cleanup.",
+      "difficulty": "easy",
+      "tags": ["selenium", "browser", "cleanup"]
+    },
+    {
+      "id": "sel-basic-025",
+      "type": "definition",
+      "deck": "selenium-basics",
+      "front": "What is implicit wait in Selenium?",
+      "back": "Implicit wait tells WebDriver to poll the DOM for a specified duration when trying to find an element. It's set once and applies to all findElement calls. If element is found before timeout, it proceeds immediately.",
+      "difficulty": "easy",
+      "tags": ["selenium", "waits", "implicit"]
+    },
+    {
+      "id": "sel-basic-026",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you implement implicit wait in Selenium?",
+      "back": "```java\n// Java\nimport java.time.Duration;\ndriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));\n\n# Python\nfrom selenium.webdriver.support.wait import WebDriverWait\ndriver.implicitly_wait(10)  # 10 seconds\n\n// Now all findElement calls will wait up to 10 seconds\nWebElement element = driver.findElement(By.id(\"dynamic-element\"));\n```",
+      "explanation": "Set implicit wait once at driver initialization. Applies globally to all element lookups. Default is 0 seconds.",
+      "difficulty": "easy",
+      "tags": ["selenium", "waits", "implicit"]
+    },
+    {
+      "id": "sel-basic-027",
+      "type": "definition",
+      "deck": "selenium-basics",
+      "front": "What is explicit wait in Selenium?",
+      "back": "Explicit wait waits for a specific condition to be met before proceeding. It's applied to specific elements and conditions, providing more control than implicit wait. Uses WebDriverWait and ExpectedConditions classes.",
+      "difficulty": "easy",
+      "tags": ["selenium", "waits", "explicit"]
+    },
+    {
+      "id": "sel-basic-028",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you implement explicit wait in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.support.ui.WebDriverWait;\nimport org.openqa.selenium.support.ui.ExpectedConditions;\n\nWebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));\nWebElement element = wait.until(\n    ExpectedConditions.visibilityOfElementLocated(By.id(\"message\"))\n);\n\n# Python\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, 10)\nelement = wait.until(\n    EC.visibility_of_element_located((By.ID, \"message\"))\n)\n```",
+      "explanation": "Create WebDriverWait instance with timeout. Use ExpectedConditions for common wait conditions. More flexible than implicit wait.",
+      "difficulty": "easy",
+      "tags": ["selenium", "waits", "explicit"]
+    },
+    {
+      "id": "sel-basic-029",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "What are common ExpectedConditions in Selenium?",
+      "back": "```java\n// Element visibility\nExpectedConditions.visibilityOfElementLocated(By.id(\"element\"));\n\n// Element clickable\nExpectedConditions.elementToBeClickable(By.id(\"button\"));\n\n// Element present in DOM\nExpectedConditions.presenceOfElementLocated(By.id(\"element\"));\n\n// Title contains\nExpectedConditions.titleContains(\"Expected Title\");\n\n// Alert present\nExpectedConditions.alertIsPresent();\n```",
+      "explanation": "ExpectedConditions provides common wait scenarios. Choose appropriate condition based on what you're waiting for.",
+      "difficulty": "easy",
+      "tags": ["selenium", "waits", "conditions"]
+    },
+    {
+      "id": "sel-basic-030",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you handle alerts in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.Alert;\n\n// Switch to alert\nAlert alert = driver.switchTo().alert();\n\n// Get alert text\nString alertText = alert.getText();\n\n// Accept alert (click OK)\nalert.accept();\n\n// Dismiss alert (click Cancel)\nalert.dismiss();\n\n// Send text to prompt\nalert.sendKeys(\"Input text\");\nalert.accept();\n```",
+      "explanation": "Use switchTo().alert() to handle JavaScript alerts. Can get text, accept, dismiss, or send text for prompts.",
+      "difficulty": "easy",
+      "tags": ["selenium", "alert", "dialog"]
+    },
+    {
+      "id": "sel-basic-031",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you switch to an iframe in Selenium?",
+      "back": "```java\n// Java\n// By index\ndriver.switchTo().frame(0);\n\n// By name or ID\ndriver.switchTo().frame(\"frameName\");\n\n// By WebElement\nWebElement iframe = driver.findElement(By.id(\"frameId\"));\ndriver.switchTo().frame(iframe);\n\n// Switch back to main content\ndriver.switchTo().defaultContent();\n\n// Switch to parent frame\ndriver.switchTo().parentFrame();\n```",
+      "explanation": "Use switchTo().frame() to enter iframe context. Must switch to interact with iframe content. Use defaultContent() to exit.",
+      "difficulty": "easy",
+      "tags": ["selenium", "iframe", "frame"]
+    },
+    {
+      "id": "sel-basic-032",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you handle multiple windows in Selenium?",
+      "back": "```java\n// Java\n// Get current window handle\nString mainWindow = driver.getWindowHandle();\n\n// Get all window handles\nSet<String> allWindows = driver.getWindowHandles();\n\n// Switch to new window\nfor (String window : allWindows) {\n    if (!window.equals(mainWindow)) {\n        driver.switchTo().window(window);\n        break;\n    }\n}\n\n// Switch back to main window\ndriver.switchTo().window(mainWindow);\n```",
+      "explanation": "Use getWindowHandles() to get all windows. Use switchTo().window() to switch between windows. Must switch to interact with window content.",
+      "difficulty": "easy",
+      "tags": ["selenium", "windows", "tabs"]
+    },
+    {
+      "id": "sel-basic-033",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you take a screenshot in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.TakesScreenshot;\nimport org.openqa.selenium.OutputType;\nimport java.io.File;\nimport org.apache.commons.io.FileUtils;\n\nTakesScreenshot ts = (TakesScreenshot) driver;\nFile source = ts.getScreenshotAs(OutputType.FILE);\nFileUtils.copyFile(source, new File(\"screenshot.png\"));\n\n# Python\ndriver.save_screenshot(\"screenshot.png\")\n# Or\ndriver.get_screenshot_as_file(\"screenshot.png\")\n```",
+      "explanation": "Cast driver to TakesScreenshot interface. Use getScreenshotAs() to capture screenshot. Save to file for evidence.",
+      "difficulty": "easy",
+      "tags": ["selenium", "screenshot", "debugging"]
+    },
+    {
+      "id": "sel-basic-034",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you execute JavaScript in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.JavascriptExecutor;\n\nJavascriptExecutor js = (JavascriptExecutor) driver;\n\n// Execute script\njs.executeScript(\"alert('Hello');\");\n\n// Get return value\nString title = (String) js.executeScript(\"return document.title;\");\n\n// Click element using JS\nWebElement button = driver.findElement(By.id(\"btn\"));\njs.executeScript(\"arguments[0].click();\", button);\n```",
+      "explanation": "Cast driver to JavascriptExecutor. Use executeScript() to run JavaScript. Pass elements as arguments. Get return values.",
+      "difficulty": "easy",
+      "tags": ["selenium", "javascript", "executor"]
+    },
+    {
+      "id": "sel-basic-035",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you scroll in Selenium?",
+      "back": "```java\n// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\n\n// Scroll to bottom\njs.executeScript(\"window.scrollTo(0, document.body.scrollHeight)\");\n\n// Scroll to top\njs.executeScript(\"window.scrollTo(0, 0)\");\n\n// Scroll element into view\nWebElement element = driver.findElement(By.id(\"target\"));\njs.executeScript(\"arguments[0].scrollIntoView(true);\", element);\n```",
+      "explanation": "Use JavaScript executor for scrolling. Scroll window or specific elements. Useful when element is not in viewport.",
+      "difficulty": "easy",
+      "tags": ["selenium", "scroll", "javascript"]
+    },
+    {
+      "id": "sel-basic-036",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you get and set cookies in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.Cookie;\n\n// Get all cookies\nSet<Cookie> cookies = driver.manage().getCookies();\n\n// Get specific cookie\nCookie cookie = driver.manage().getCookieNamed(\"sessionId\");\n\n// Add cookie\nCookie newCookie = new Cookie(\"key\", \"value\");\ndriver.manage().addCookie(newCookie);\n\n// Delete cookie\ndriver.manage().deleteCookieNamed(\"sessionId\");\n\n// Delete all cookies\ndriver.manage().deleteAllCookies();\n```",
+      "explanation": "Use manage().getCookies() to get cookies. addCookie() to set, deleteCookie() to remove. Useful for session management.",
+      "difficulty": "easy",
+      "tags": ["selenium", "cookies", "session"]
+    },
+    {
+      "id": "sel-basic-037",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you maximize and resize browser window in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.Dimension;\n\n// Maximize window\ndriver.manage().window().maximize();\n\n// Set window size\nDimension dimension = new Dimension(1920, 1080);\ndriver.manage().window().setSize(dimension);\n\n// Fullscreen\ndriver.manage().window().fullscreen();\n\n// Get window size\nDimension size = driver.manage().window().getSize();\n```",
+      "explanation": "Use manage().window() for window operations. Maximize for full screen, setSize for specific dimensions.",
+      "difficulty": "easy",
+      "tags": ["selenium", "window", "size"]
+    },
+    {
+      "id": "sel-basic-038",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you find multiple elements in Selenium?",
+      "back": "```java\n// Java\nList<WebElement> buttons = driver.findElements(By.tagName(\"button\"));\n\n// Iterate through elements\nfor (WebElement button : buttons) {\n    System.out.println(button.getText());\n}\n\n// Get count\nint count = buttons.size();\n\n// Access specific element\nWebElement firstButton = buttons.get(0);\n```",
+      "explanation": "Use findElements() (plural) to get list of matching elements. Returns empty list if no matches. Use for loops or indexing to access.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "multiple"]
+    },
+    {
+      "id": "sel-basic-039",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you perform mouse hover in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.interactions.Actions;\n\nActions actions = new Actions(driver);\nWebElement element = driver.findElement(By.id(\"menu\"));\n\n// Hover over element\nactions.moveToElement(element).perform();\n\n// Hover and click\nactions.moveToElement(element).click().perform();\n```",
+      "explanation": "Use Actions class for complex interactions. moveToElement() performs hover. Always call perform() to execute actions.",
+      "difficulty": "easy",
+      "tags": ["selenium", "hover", "actions"]
+    },
+    {
+      "id": "sel-basic-040",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you perform right-click in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.interactions.Actions;\n\nActions actions = new Actions(driver);\nWebElement element = driver.findElement(By.id(\"item\"));\n\n// Right click (context click)\nactions.contextClick(element).perform();\n\n// Right click at specific coordinates\nactions.contextClick().perform();\n```",
+      "explanation": "Use Actions class with contextClick(). Can perform on element or at current mouse position. Call perform() to execute.",
+      "difficulty": "easy",
+      "tags": ["selenium", "click", "actions"]
+    },
+    {
+      "id": "sel-basic-041",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you perform double-click in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.interactions.Actions;\n\nActions actions = new Actions(driver);\nWebElement element = driver.findElement(By.id(\"item\"));\n\n// Double click\nactions.doubleClick(element).perform();\n\n// Double click at current position\nactions.doubleClick().perform();\n```",
+      "explanation": "Use Actions class with doubleClick(). Can perform on element or at current position. Useful for text selection or special interactions.",
+      "difficulty": "easy",
+      "tags": ["selenium", "click", "actions"]
+    },
+    {
+      "id": "sel-basic-042",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you send keyboard keys in Selenium?",
+      "back": "```java\n// Java\nimport org.openqa.selenium.Keys;\n\n// Send special keys\nelement.sendKeys(Keys.ENTER);\nelement.sendKeys(Keys.TAB);\nelement.sendKeys(Keys.ESCAPE);\n\n// Key combinations\nelement.sendKeys(Keys.CONTROL + \"a\"); // Select all\nelement.sendKeys(Keys.CONTROL + \"c\"); // Copy\n\n// Using Actions\nActions actions = new Actions(driver);\nactions.sendKeys(Keys.PAGE_DOWN).perform();\n```",
+      "explanation": "Use Keys enum for special keys. Combine with CONTROL, SHIFT, ALT for shortcuts. Can use with sendKeys() or Actions.",
+      "difficulty": "easy",
+      "tags": ["selenium", "keyboard", "keys"]
+    },
+    {
+      "id": "sel-basic-043",
+      "type": "definition",
+      "deck": "selenium-basics",
+      "front": "What is the difference between findElement and findElements?",
+      "back": "findElement() returns first matching WebElement and throws NoSuchElementException if not found. findElements() returns List of all matching elements and returns empty list if none found. Use findElement for single element, findElements for multiple elements or to check existence without exception.",
+      "difficulty": "easy",
+      "tags": ["selenium", "locators", "comparison"]
+    },
+    {
+      "id": "sel-basic-044",
+      "type": "best-practice",
+      "deck": "selenium-basics",
+      "front": "What's the recommended locator strategy order in Selenium?",
+      "back": "1. ID - fastest and most reliable\n2. Name - good for form elements\n3. CSS Selector - flexible and fast\n4. XPath - powerful but slower\n5. Link Text - for links only\n6. Class Name - less unique\n7. Tag Name - least specific\n\nPrefer ID or unique attributes. Avoid XPath when CSS works. Make locators resilient to UI changes.",
+      "difficulty": "easy",
+      "tags": ["best-practice", "locators", "selenium"]
+    },
+    {
+      "id": "sel-basic-045",
+      "type": "best-practice",
+      "deck": "selenium-basics",
+      "front": "When should you use implicit vs explicit wait?",
+      "back": "Implicit Wait:\n- Set once at driver initialization\n- Applies to all findElement calls\n- Good for consistent element loading\n- Cannot wait for specific conditions\n\nExplicit Wait:\n- Used for specific scenarios\n- Wait for specific conditions\n- More flexible and reliable\n- Better for dynamic content\n\nBest Practice: Use explicit waits for specific conditions. Avoid mixing both as they can cause unpredictable timeouts.",
+      "difficulty": "easy",
+      "tags": ["best-practice", "waits", "selenium"]
+    },
+    {
+      "id": "sel-basic-046",
+      "type": "troubleshooting",
+      "deck": "selenium-basics",
+      "front": "How do you handle NoSuchElementException?",
+      "back": "Causes:\n1. Element doesn't exist\n2. Element not loaded yet\n3. Wrong locator\n4. Element in iframe\n5. Element not visible\n\nSolutions:\n1. Verify locator is correct\n2. Add explicit wait\n3. Check if element in iframe\n4. Ensure page loaded completely\n5. Use findElements to check existence\n6. Scroll element into view",
+      "difficulty": "easy",
+      "tags": ["troubleshooting", "exception", "selenium"]
+    },
+    {
+      "id": "sel-basic-047",
+      "type": "troubleshooting",
+      "deck": "selenium-basics",
+      "front": "How do you handle StaleElementReferenceException?",
+      "back": "Occurs when element reference is no longer in DOM (page refreshed, DOM updated).\n\nSolutions:\n1. Re-find element before each action\n2. Use explicit wait with expected condition\n3. Store locator instead of element\n4. Refresh element reference after page changes\n5. Use try-catch and retry logic\n\nBest: Always re-find elements after page changes or refreshes.",
+      "difficulty": "easy",
+      "tags": ["troubleshooting", "exception", "selenium"]
+    },
+    {
+      "id": "sel-basic-048",
+      "type": "troubleshooting",
+      "deck": "selenium-basics",
+      "front": "How do you handle ElementNotInteractableException?",
+      "back": "Occurs when element exists but cannot be interacted with.\n\nCauses:\n1. Element not visible\n2. Element covered by another element\n3. Element disabled\n4. Element outside viewport\n\nSolutions:\n1. Wait for element to be clickable\n2. Scroll element into view\n3. Remove overlapping elements\n4. Use JavaScript click as last resort\n5. Check element is enabled",
+      "difficulty": "easy",
+      "tags": ["troubleshooting", "exception", "selenium"]
+    },
+    {
+      "id": "sel-basic-049",
+      "type": "code",
+      "deck": "selenium-basics",
+      "front": "How do you handle file uploads in Selenium?",
+      "back": "```java\n// Java\n// For simple input[type='file']\nWebElement upload = driver.findElement(By.id(\"file-upload\"));\nupload.sendKeys(\"/path/to/file.txt\");\n\n// For multiple files\nString file1 = \"/path/to/file1.txt\";\nString file2 = \"/path/to/file2.txt\";\nupload.sendKeys(file1 + \"\\n\" + file2);\n\n# Python\nupload = driver.find_element(By.ID, \"file-upload\")\nupload.send_keys(\"/path/to/file.txt\")\n```",
+      "explanation": "Use sendKeys() with file path on input[type='file'] element. No need to click browse button. Use absolute paths.",
+      "difficulty": "easy",
+      "tags": ["selenium", "file-upload", "input"]
+    },
+    {
+      "id": "sel-basic-050",
+      "type": "best-practice",
+      "deck": "selenium-basics",
+      "front": "What are Selenium best practices for reliable tests?",
+      "back": "1. Always use explicit waits for dynamic content\n2. Prefer ID and unique attributes for locators\n3. Always call driver.quit() in cleanup\n4. Use Page Object Model for maintainability\n5. Avoid Thread.sleep() - use proper waits\n6. Handle exceptions properly\n7. Take screenshots on failure\n8. Keep tests independent and isolated\n9. Use descriptive test and variable names\n10. Don't test third-party sites\n11. Run tests in headless mode in CI\n12. Regularly update WebDriver versions",
+      "difficulty": "easy",
+      "tags": ["best-practice", "selenium", "testing"]
+    }
+  ]
+}

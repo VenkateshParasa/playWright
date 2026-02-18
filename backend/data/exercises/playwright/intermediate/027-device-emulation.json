@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-027",
+  "title": "Emulate Devices",
+  "slug": "device-emulation",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 30,
+  "description": "Master emulate devices in Playwright",
+  "objectives": [
+    "Mobile emulation",
+    "Tablet emulation",
+    "Custom viewports",
+    "Touch events",
+    "Device descriptors"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Mobile emulation\n2. Tablet emulation\n3. Custom viewports\n4. Touch events\n5. Device descriptors",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('device-emulation', async ({ page }) => {\n  // TODO: Implement Emulate Devices\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_device_emulation(page: Page):\n    # TODO: Implement Emulate Devices\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('device-emulation', async ({ page }) => {\n  // TODO: Implement Emulate Devices\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Emulate Devices\ntest('device-emulation', async ({ page }) => {\n  // Implementation demonstrates mobile emulation\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Emulate Devices\ndef test_device_emulation(page: Page):\n    # Implementation demonstrates mobile emulation\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Emulate Devices\ntest('device-emulation', async ({ page }) => {\n  // Implementation demonstrates mobile emulation\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by mobile emulation",
+    "Remember to tablet emulation",
+    "Use appropriate methods for custom viewports",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Mobile emulation",
+      "input": null,
+      "expectedBehavior": "Mobile emulation works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Tablet emulation",
+      "input": null,
+      "expectedBehavior": "Tablet emulation works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Custom viewports",
+      "input": null,
+      "expectedBehavior": "Custom viewports works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Emulate Devices Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-027",
+    "lesson-028"
+  ],
+  "xpReward": 300,
+  "coinReward": 75,
+  "tags": [
+    "mobile",
+    "responsive",
+    "emulation",
+    "devices"
+  ]
+}

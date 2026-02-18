@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-028",
+  "title": "Video Recording",
+  "slug": "video-recording",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 25,
+  "description": "Master video recording in Playwright",
+  "objectives": [
+    "Enable video",
+    "Configure quality",
+    "Save videos",
+    "Video on failure",
+    "Cleanup recordings"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Enable video\n2. Configure quality\n3. Save videos\n4. Video on failure\n5. Cleanup recordings",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('video-recording', async ({ page }) => {\n  // TODO: Implement Video Recording\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_video_recording(page: Page):\n    # TODO: Implement Video Recording\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('video-recording', async ({ page }) => {\n  // TODO: Implement Video Recording\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Video Recording\ntest('video-recording', async ({ page }) => {\n  // Implementation demonstrates enable video\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Video Recording\ndef test_video_recording(page: Page):\n    # Implementation demonstrates enable video\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Video Recording\ntest('video-recording', async ({ page }) => {\n  // Implementation demonstrates enable video\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by enable video",
+    "Remember to configure quality",
+    "Use appropriate methods for save videos",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Enable video",
+      "input": null,
+      "expectedBehavior": "Enable video works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Configure quality",
+      "input": null,
+      "expectedBehavior": "Configure quality works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Save videos",
+      "input": null,
+      "expectedBehavior": "Save videos works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Video Recording Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-028",
+    "lesson-029"
+  ],
+  "xpReward": 250,
+  "coinReward": 60,
+  "tags": [
+    "video",
+    "recording",
+    "debugging",
+    "artifacts"
+  ]
+}

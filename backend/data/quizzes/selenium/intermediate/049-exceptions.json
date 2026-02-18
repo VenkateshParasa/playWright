@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-049",
+  "title": "Exception Handling",
+  "slug": "exceptions",
+  "track": "selenium",
+  "category": "intermediate",
+  "description": "Master Exception Handling in Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q491", "type": "multiple-choice", "question": "What is Exception Handling used for?", "options": ["Basic testing", "Advanced scenarios", "Configuration", "All purposes"], "correctAnswer": 1, "explanation": "Exception Handling is essential for handling advanced testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["intermediate", "exceptions"]},
+    {"id": "quiz-sel-q492", "type": "code-completion", "question": "Implement Exception Handling:", "codeTemplate": "// Implementation template", "correctAnswer": "// Correct solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates proper Exception Handling usage.", "difficulty": "medium", "points": 15, "tags": ["code", "implementation"]},
+    {"id": "quiz-sel-q493", "type": "true-false", "question": "Exception Handling is part of Selenium WebDriver.", "correctAnswer": true, "explanation": "Exception Handling is a built-in WebDriver feature.", "difficulty": "medium", "points": 5, "tags": ["webdriver", "features"]},
+    {"id": "quiz-sel-q494", "type": "multiple-choice", "question": "When should you use Exception Handling?", "options": ["Always", "For specific scenarios", "Never", "Only in production"], "correctAnswer": 1, "explanation": "Exception Handling is best suited for specific testing needs.", "difficulty": "medium", "points": 10, "tags": ["best-practices", "usage"]},
+    {"id": "quiz-sel-q495", "type": "code-completion", "question": "Complete the Exception Handling pattern:", "codeTemplate": "// Pattern code", "correctAnswer": "// Complete pattern", "acceptedAnswers": ["pattern"], "explanation": "This is a common Exception Handling pattern.", "difficulty": "medium", "points": 15, "tags": ["patterns", "code"]},
+    {"id": "quiz-sel-q496", "type": "multiple-choice", "question": "What are Exception Handling limitations?", "options": ["Performance", "Browser support", "Complexity", "Varies by context"], "correctAnswer": 3, "explanation": "Exception Handling limitations depend on the specific use case.", "difficulty": "medium", "points": 10, "tags": ["limitations", "considerations"]},
+    {"id": "quiz-sel-q497", "type": "debugging", "question": "Fix this Exception Handling issue:", "code": "// Code with issue", "options": ["Syntax fix", "Logic fix", "Configuration fix", "Multiple fixes needed"], "correctAnswer": 1, "explanation": "The main issue is with Exception Handling logic.", "difficulty": "medium", "points": 20, "tags": ["debugging", "troubleshooting"]},
+    {"id": "quiz-sel-q498", "type": "true-false", "question": "Exception Handling works across all browsers.", "correctAnswer": true, "explanation": "Exception Handling is supported by all major browsers.", "difficulty": "medium", "points": 5, "tags": ["compatibility", "browsers"]},
+    {"id": "quiz-sel-q499", "type": "multiple-choice", "question": "How do you optimize Exception Handling?", "options": ["Caching", "Parallel execution", "Smart waits", "All techniques"], "correctAnswer": 3, "explanation": "Multiple optimization techniques can improve Exception Handling.", "difficulty": "medium", "points": 10, "tags": ["optimization", "performance"]},
+    {"id": "quiz-sel-q490", "type": "code-output", "question": "What is the result of this Exception Handling code?", "code": "// Code example", "options": ["Output A", "Output B", "Exception", "Depends on state"], "correctAnswer": 1, "explanation": "This code produces a specific result for Exception Handling.", "difficulty": "medium", "points": 15, "tags": ["behavior", "output"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-049",
+  "prerequisites": ["quiz-sel-048"],
+  "xpReward": 200,
+  "coinReward": 40
+}

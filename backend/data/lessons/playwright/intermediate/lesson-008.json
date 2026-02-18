@@ -1,0 +1,69 @@
+{
+  "id": "pw-intermediate-008",
+  "title": "Screenshots and Videos",
+  "slug": "screenshots-videos",
+  "track": "playwright",
+  "category": "intermediate",
+  "order": 8,
+  "duration": 30,
+  "description": "Capture screenshots and videos for debugging and documentation.",
+  "objectives": [
+    "Take element screenshots",
+    "Record test videos",
+    "Configure capture settings",
+    "Use for visual regression"
+  ],
+  "prerequisites": [
+    "pw-intermediate-007"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Screenshots and Videos",
+        "type": "text",
+        "content": "# Screenshots and Videos\n\nMaster visual capture techniques for better debugging and reporting.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Screenshots and Videos\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Screenshots and Videos concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, screenshots and videos is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Screenshots and Videos\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Screenshots and Videos is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Screenshots and Videos for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Screenshots and Videos Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-intermediate-quiz-008",
+  "nextLesson": "pw-intermediate-009",
+  "estimatedXP": 200,
+  "tags": [
+    "playwright",
+    "intermediate",
+    "screenshots",
+    "automation",
+    "testing"
+  ]
+}

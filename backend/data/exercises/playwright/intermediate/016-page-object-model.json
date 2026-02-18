@@ -1,0 +1,80 @@
+{
+  "id": "exercise-pw-016",
+  "title": "Implement Page Object Model",
+  "slug": "page-object-model",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 45,
+  "description": "Learn to implement the Page Object Model design pattern for maintainable test automation",
+  "objectives": [
+    "Create page object classes",
+    "Encapsulate page elements and actions",
+    "Use page objects in tests",
+    "Implement method chaining",
+    "Follow POM best practices"
+  ],
+  "instructions": "Create a Page Object Model structure:\n1. Create a LoginPage class with locators and methods\n2. Create a DashboardPage class\n3. Write tests using these page objects\n4. Implement method chaining for fluent API\n5. Use proper TypeScript/class structure",
+  "starterCode": {
+    "javascript": "// pages/LoginPage.js\nclass LoginPage {\n  constructor(page) {\n    this.page = page;\n    // TODO: Define locators\n  }\n  \n  // TODO: Implement login method\n  \n  // TODO: Implement other methods\n}\n\n// tests/login.spec.js\nimport { test, expect } from '@playwright/test';\n\ntest('login using POM', async ({ page }) => {\n  // TODO: Use LoginPage object\n});",
+    "python": "# pages/login_page.py\nclass LoginPage:\n    def __init__(self, page):\n        self.page = page\n        # TODO: Define locators\n    \n    # TODO: Implement login method\n    \n    # TODO: Implement other methods\n\n# tests/test_login.py\nfrom playwright.sync_api import Page, expect\n\ndef test_login_using_pom(page: Page):\n    # TODO: Use LoginPage object\n    pass",
+    "typescript": "// pages/LoginPage.ts\nimport { Page } from '@playwright/test';\n\nexport class LoginPage {\n  constructor(private page: Page) {}\n  \n  // TODO: Define locators\n  \n  // TODO: Implement login method\n  \n  // TODO: Implement other methods\n}\n\n// tests/login.spec.ts\nimport { test, expect } from '@playwright/test';\n\ntest('login using POM', async ({ page }) => {\n  // TODO: Use LoginPage object\n});"
+  },
+  "solution": {
+    "javascript": "// pages/LoginPage.js\nexport class LoginPage {\n  constructor(page) {\n    this.page = page;\n    this.usernameInput = page.locator('#username');\n    this.passwordInput = page.locator('#password');\n    this.loginButton = page.getByRole('button', { name: 'Login' });\n    this.errorMessage = page.locator('.error');\n  }\n  \n  async navigate() {\n    await this.page.goto('https://practice.expandtesting.com/login');\n    return this;\n  }\n  \n  async login(username, password) {\n    await this.usernameInput.fill(username);\n    await this.passwordInput.fill(password);\n    await this.loginButton.click();\n    return this;\n  }\n  \n  async getErrorMessage() {\n    return await this.errorMessage.textContent();\n  }\n}\n\n// pages/DashboardPage.js\nexport class DashboardPage {\n  constructor(page) {\n    this.page = page;\n    this.welcomeMessage = page.locator('.welcome');\n    this.logoutButton = page.getByRole('button', { name: 'Logout' });\n  }\n  \n  async isLoaded() {\n    await this.welcomeMessage.waitFor();\n    return true;\n  }\n  \n  async logout() {\n    await this.logoutButton.click();\n  }\n}\n\n// tests/login.spec.js\nimport { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { DashboardPage } from '../pages/DashboardPage';\n\ntest.describe('Login Tests', () => {\n  test('successful login', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.navigate();\n    await loginPage.login('practice', 'SuperSecretPassword!');\n    \n    const dashboard = new DashboardPage(page);\n    await expect(dashboard.welcomeMessage).toBeVisible();\n  });\n  \n  test('failed login', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.navigate();\n    await loginPage.login('invalid', 'invalid');\n    \n    const error = await loginPage.getErrorMessage();\n    expect(error).toContain('invalid');\n  });\n});",
+    "python": "# pages/login_page.py\nclass LoginPage:\n    def __init__(self, page):\n        self.page = page\n        self.username_input = page.locator('#username')\n        self.password_input = page.locator('#password')\n        self.login_button = page.get_by_role('button', name='Login')\n        self.error_message = page.locator('.error')\n    \n    def navigate(self):\n        self.page.goto('https://practice.expandtesting.com/login')\n        return self\n    \n    def login(self, username, password):\n        self.username_input.fill(username)\n        self.password_input.fill(password)\n        self.login_button.click()\n        return self\n    \n    def get_error_message(self):\n        return self.error_message.text_content()\n\n# pages/dashboard_page.py\nclass DashboardPage:\n    def __init__(self, page):\n        self.page = page\n        self.welcome_message = page.locator('.welcome')\n        self.logout_button = page.get_by_role('button', name='Logout')\n    \n    def is_loaded(self):\n        self.welcome_message.wait_for()\n        return True\n    \n    def logout(self):\n        self.logout_button.click()\n\n# tests/test_login.py\nfrom playwright.sync_api import Page, expect\nfrom pages.login_page import LoginPage\nfrom pages.dashboard_page import DashboardPage\nimport pytest\n\nclass TestLogin:\n    def test_successful_login(self, page: Page):\n        login_page = LoginPage(page)\n        login_page.navigate()\n        login_page.login('practice', 'SuperSecretPassword!')\n        \n        dashboard = DashboardPage(page)\n        expect(dashboard.welcome_message).to_be_visible()\n    \n    def test_failed_login(self, page: Page):\n        login_page = LoginPage(page)\n        login_page.navigate()\n        login_page.login('invalid', 'invalid')\n        \n        error = login_page.get_error_message()\n        assert 'invalid' in error",
+    "typescript": "// pages/LoginPage.ts\nimport { Page, Locator } from '@playwright/test';\n\nexport class LoginPage {\n  readonly usernameInput: Locator;\n  readonly passwordInput: Locator;\n  readonly loginButton: Locator;\n  readonly errorMessage: Locator;\n  \n  constructor(private page: Page) {\n    this.usernameInput = page.locator('#username');\n    this.passwordInput = page.locator('#password');\n    this.loginButton = page.getByRole('button', { name: 'Login' });\n    this.errorMessage = page.locator('.error');\n  }\n  \n  async navigate(): Promise<LoginPage> {\n    await this.page.goto('https://practice.expandtesting.com/login');\n    return this;\n  }\n  \n  async login(username: string, password: string): Promise<LoginPage> {\n    await this.usernameInput.fill(username);\n    await this.passwordInput.fill(password);\n    await this.loginButton.click();\n    return this;\n  }\n  \n  async getErrorMessage(): Promise<string | null> {\n    return await this.errorMessage.textContent();\n  }\n}\n\n// pages/DashboardPage.ts\nimport { Page, Locator } from '@playwright/test';\n\nexport class DashboardPage {\n  readonly welcomeMessage: Locator;\n  readonly logoutButton: Locator;\n  \n  constructor(private page: Page) {\n    this.welcomeMessage = page.locator('.welcome');\n    this.logoutButton = page.getByRole('button', { name: 'Logout' });\n  }\n  \n  async isLoaded(): Promise<boolean> {\n    await this.welcomeMessage.waitFor();\n    return true;\n  }\n  \n  async logout(): Promise<void> {\n    await this.logoutButton.click();\n  }\n}\n\n// tests/login.spec.ts\nimport { test, expect } from '@playwright/test';\nimport { LoginPage } from '../pages/LoginPage';\nimport { DashboardPage } from '../pages/DashboardPage';\n\ntest.describe('Login Tests', () => {\n  test('successful login', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.navigate();\n    await loginPage.login('practice', 'SuperSecretPassword!');\n    \n    const dashboard = new DashboardPage(page);\n    await expect(dashboard.welcomeMessage).toBeVisible();\n  });\n  \n  test('failed login', async ({ page }) => {\n    const loginPage = new LoginPage(page);\n    await loginPage.navigate();\n    await loginPage.login('invalid', 'invalid');\n    \n    const error = await loginPage.getErrorMessage();\n    expect(error).toContain('invalid');\n  });\n});"
+  },
+  "hints": [
+    "Create separate classes for each page",
+    "Store locators as class properties",
+    "Methods should perform actions on the page",
+    "Return 'this' for method chaining",
+    "Keep business logic in tests, not in page objects",
+    "Use TypeScript for better IDE support"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Page object classes created",
+      "input": null,
+      "expectedBehavior": "LoginPage and DashboardPage classes exist",
+      "points": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Locators properly defined",
+      "input": null,
+      "expectedBehavior": "All page elements are defined as locators",
+      "points": 20
+    },
+    {
+      "id": "test-3",
+      "name": "Methods implemented",
+      "input": null,
+      "expectedBehavior": "Page actions are encapsulated in methods",
+      "points": 30
+    },
+    {
+      "id": "test-4",
+      "name": "Tests use POM",
+      "input": null,
+      "expectedBehavior": "Tests successfully use page objects",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Page Object Model",
+      "url": "https://playwright.dev/docs/pom"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": ["lesson-031", "lesson-032"],
+  "xpReward": 400,
+  "coinReward": 100,
+  "tags": ["pom", "page-object-model", "design-pattern", "architecture"]
+}

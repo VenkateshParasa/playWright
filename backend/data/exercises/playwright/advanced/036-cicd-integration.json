@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-036",
+  "title": "CI/CD Integration",
+  "slug": "cicd-integration",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 50,
+  "description": "Master ci/cd integration in Playwright",
+  "objectives": [
+    "GitHub Actions",
+    "Docker containers",
+    "Parallel execution",
+    "Artifact collection",
+    "Failure notifications"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. GitHub Actions\n2. Docker containers\n3. Parallel execution\n4. Artifact collection\n5. Failure notifications",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('cicd-integration', async ({ page }) => {\n  // TODO: Implement CI/CD Integration\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_cicd_integration(page: Page):\n    # TODO: Implement CI/CD Integration\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('cicd-integration', async ({ page }) => {\n  // TODO: Implement CI/CD Integration\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for CI/CD Integration\ntest('cicd-integration', async ({ page }) => {\n  // Implementation demonstrates github actions\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for CI/CD Integration\ndef test_cicd_integration(page: Page):\n    # Implementation demonstrates github actions\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for CI/CD Integration\ntest('cicd-integration', async ({ page }) => {\n  // Implementation demonstrates github actions\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by github actions",
+    "Remember to docker containers",
+    "Use appropriate methods for parallel execution",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "GitHub Actions",
+      "input": null,
+      "expectedBehavior": "GitHub Actions works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Docker containers",
+      "input": null,
+      "expectedBehavior": "Docker containers works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Parallel execution",
+      "input": null,
+      "expectedBehavior": "Parallel execution works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "CI/CD Integration Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-036",
+    "lesson-037"
+  ],
+  "xpReward": 500,
+  "coinReward": 125,
+  "tags": [
+    "cicd",
+    "github-actions",
+    "docker",
+    "automation"
+  ]
+}

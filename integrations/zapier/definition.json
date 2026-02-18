@@ -1,0 +1,294 @@
+{
+  "name": "Playwright & Selenium Learning Platform",
+  "version": "1.0.0",
+  "description": "Learn Playwright and Selenium through interactive lessons, quizzes, and exercises",
+  "authentication": {
+    "type": "custom",
+    "fields": [
+      {
+        "key": "api_key",
+        "label": "API Key",
+        "required": true,
+        "type": "string",
+        "helpText": "Get your API key from the Developer Portal at https://app.playwright-learning.com/developers"
+      }
+    ],
+    "test": {
+      "url": "https://api.playwright-learning.com/v1/users/me",
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{bundle.authData.api_key}}"
+      }
+    }
+  },
+  "triggers": {
+    "lesson_completed": {
+      "key": "lesson_completed",
+      "noun": "Lesson",
+      "display": {
+        "label": "Lesson Completed",
+        "description": "Triggers when a user completes a lesson",
+        "hidden": false,
+        "important": true
+      },
+      "operation": {
+        "type": "hook",
+        "perform": {
+          "url": "https://api.playwright-learning.com/v1/webhooks",
+          "method": "POST",
+          "body": {
+            "url": "{{bundle.targetUrl}}",
+            "events": ["lesson.completed"]
+          },
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}",
+            "Content-Type": "application/json"
+          }
+        },
+        "performUnsubscribe": {
+          "url": "https://api.playwright-learning.com/v1/webhooks/{{bundle.subscribeData.id}}",
+          "method": "DELETE",
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}"
+          }
+        },
+        "performList": {
+          "url": "https://api.playwright-learning.com/v1/lessons",
+          "method": "GET",
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}"
+          }
+        },
+        "sample": {
+          "id": "123",
+          "userId": "user_456",
+          "lessonId": "lesson_789",
+          "lessonTitle": "Introduction to Playwright",
+          "completedAt": "2024-02-17T10:00:00Z"
+        }
+      }
+    },
+    "quiz_passed": {
+      "key": "quiz_passed",
+      "noun": "Quiz",
+      "display": {
+        "label": "Quiz Passed",
+        "description": "Triggers when a user passes a quiz",
+        "hidden": false,
+        "important": true
+      },
+      "operation": {
+        "type": "hook",
+        "perform": {
+          "url": "https://api.playwright-learning.com/v1/webhooks",
+          "method": "POST",
+          "body": {
+            "url": "{{bundle.targetUrl}}",
+            "events": ["quiz.passed"]
+          },
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}",
+            "Content-Type": "application/json"
+          }
+        },
+        "performUnsubscribe": {
+          "url": "https://api.playwright-learning.com/v1/webhooks/{{bundle.subscribeData.id}}",
+          "method": "DELETE",
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}"
+          }
+        },
+        "sample": {
+          "id": "123",
+          "userId": "user_456",
+          "quizId": "quiz_789",
+          "quizTitle": "Playwright Basics Quiz",
+          "score": 85,
+          "passed": true,
+          "completedAt": "2024-02-17T10:00:00Z"
+        }
+      }
+    },
+    "achievement_unlocked": {
+      "key": "achievement_unlocked",
+      "noun": "Achievement",
+      "display": {
+        "label": "Achievement Unlocked",
+        "description": "Triggers when a user unlocks an achievement",
+        "hidden": false,
+        "important": true
+      },
+      "operation": {
+        "type": "hook",
+        "perform": {
+          "url": "https://api.playwright-learning.com/v1/webhooks",
+          "method": "POST",
+          "body": {
+            "url": "{{bundle.targetUrl}}",
+            "events": ["achievement.unlocked"]
+          },
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}",
+            "Content-Type": "application/json"
+          }
+        },
+        "performUnsubscribe": {
+          "url": "https://api.playwright-learning.com/v1/webhooks/{{bundle.subscribeData.id}}",
+          "method": "DELETE",
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}"
+          }
+        },
+        "sample": {
+          "id": "123",
+          "userId": "user_456",
+          "achievementId": "achievement_789",
+          "achievementTitle": "First Steps",
+          "achievementDescription": "Complete your first lesson",
+          "unlockedAt": "2024-02-17T10:00:00Z"
+        }
+      }
+    }
+  },
+  "actions": {
+    "create_user": {
+      "key": "create_user",
+      "noun": "User",
+      "display": {
+        "label": "Create User",
+        "description": "Creates a new user account",
+        "hidden": false,
+        "important": true
+      },
+      "operation": {
+        "perform": {
+          "url": "https://api.playwright-learning.com/v1/users",
+          "method": "POST",
+          "body": {
+            "email": "{{bundle.inputData.email}}",
+            "firstName": "{{bundle.inputData.firstName}}",
+            "lastName": "{{bundle.inputData.lastName}}",
+            "password": "{{bundle.inputData.password}}"
+          },
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}",
+            "Content-Type": "application/json"
+          }
+        },
+        "inputFields": [
+          {
+            "key": "email",
+            "label": "Email",
+            "type": "string",
+            "required": true
+          },
+          {
+            "key": "firstName",
+            "label": "First Name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "key": "lastName",
+            "label": "Last Name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "key": "password",
+            "label": "Password",
+            "type": "password",
+            "required": true
+          }
+        ],
+        "sample": {
+          "id": "user_123",
+          "email": "user@example.com",
+          "firstName": "John",
+          "lastName": "Doe"
+        }
+      }
+    },
+    "enroll_user": {
+      "key": "enroll_user",
+      "noun": "Enrollment",
+      "display": {
+        "label": "Enroll User in Lesson",
+        "description": "Enrolls a user in a specific lesson",
+        "hidden": false,
+        "important": true
+      },
+      "operation": {
+        "perform": {
+          "url": "https://api.playwright-learning.com/v1/enrollments",
+          "method": "POST",
+          "body": {
+            "userId": "{{bundle.inputData.userId}}",
+            "lessonId": "{{bundle.inputData.lessonId}}"
+          },
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}",
+            "Content-Type": "application/json"
+          }
+        },
+        "inputFields": [
+          {
+            "key": "userId",
+            "label": "User ID",
+            "type": "string",
+            "required": true,
+            "dynamic": "user.id"
+          },
+          {
+            "key": "lessonId",
+            "label": "Lesson ID",
+            "type": "string",
+            "required": true,
+            "dynamic": "lesson.id"
+          }
+        ],
+        "sample": {
+          "id": "enrollment_123",
+          "userId": "user_456",
+          "lessonId": "lesson_789",
+          "enrolledAt": "2024-02-17T10:00:00Z"
+        }
+      }
+    }
+  },
+  "searches": {
+    "find_user": {
+      "key": "find_user",
+      "noun": "User",
+      "display": {
+        "label": "Find User",
+        "description": "Finds a user by email",
+        "hidden": false,
+        "important": false
+      },
+      "operation": {
+        "perform": {
+          "url": "https://api.playwright-learning.com/v1/users/search?email={{bundle.inputData.email}}",
+          "method": "GET",
+          "headers": {
+            "Authorization": "Bearer {{bundle.authData.api_key}}"
+          }
+        },
+        "inputFields": [
+          {
+            "key": "email",
+            "label": "Email",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "sample": {
+          "id": "user_123",
+          "email": "user@example.com",
+          "firstName": "John",
+          "lastName": "Doe"
+        }
+      }
+    }
+  }
+}

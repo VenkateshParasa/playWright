@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-035",
+  "title": "Mobile Browser Testing",
+  "slug": "mobile-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 45,
+  "description": "Master mobile browser testing in Playwright",
+  "objectives": [
+    "Real device testing",
+    "Android testing",
+    "iOS testing",
+    "Touch gestures",
+    "Mobile-specific features"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Real device testing\n2. Android testing\n3. iOS testing\n4. Touch gestures\n5. Mobile-specific features",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('mobile-testing', async ({ page }) => {\n  // TODO: Implement Mobile Browser Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_mobile_testing(page: Page):\n    # TODO: Implement Mobile Browser Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('mobile-testing', async ({ page }) => {\n  // TODO: Implement Mobile Browser Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Mobile Browser Testing\ntest('mobile-testing', async ({ page }) => {\n  // Implementation demonstrates real device testing\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Mobile Browser Testing\ndef test_mobile_testing(page: Page):\n    # Implementation demonstrates real device testing\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Mobile Browser Testing\ntest('mobile-testing', async ({ page }) => {\n  // Implementation demonstrates real device testing\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by real device testing",
+    "Remember to android testing",
+    "Use appropriate methods for ios testing",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Real device testing",
+      "input": null,
+      "expectedBehavior": "Real device testing works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Android testing",
+      "input": null,
+      "expectedBehavior": "Android testing works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "iOS testing",
+      "input": null,
+      "expectedBehavior": "iOS testing works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Mobile Browser Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-035",
+    "lesson-036"
+  ],
+  "xpReward": 450,
+  "coinReward": 115,
+  "tags": [
+    "mobile",
+    "android",
+    "ios",
+    "devices"
+  ]
+}

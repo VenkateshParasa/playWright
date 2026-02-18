@@ -1,0 +1,159 @@
+{
+  "id": "quiz-pw-012",
+  "title": "Element Handling",
+  "slug": "element-handling",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Advanced techniques for handling different types of elements",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q111",
+      "type": "multiple-choice",
+      "question": "How do you handle file uploads in Playwright?",
+      "options": [
+        "locator.upload(path)",
+        "locator.setInputFiles(path)",
+        "locator.attachFile(path)",
+        "locator.addFile(path)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "setInputFiles() is used to upload files to file input elements.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["elements", "files", "upload"]
+    },
+    {
+      "id": "quiz-pw-q112",
+      "type": "code-completion",
+      "question": "Complete the code to get element text content:",
+      "codeTemplate": "const text = await locator.____();",
+      "correctAnswer": "const text = await locator.textContent();",
+      "acceptedAnswers": ["textContent", "innerText"],
+      "explanation": "textContent() or innerText() retrieves the text content of an element.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["elements", "text", "code"]
+    },
+    {
+      "id": "quiz-pw-q113",
+      "type": "true-false",
+      "question": "Playwright can interact with elements inside iframes without switching context.",
+      "correctAnswer": false,
+      "explanation": "You need to get the frame locator using page.frameLocator() to interact with iframe content.",
+      "difficulty": "medium",
+      "points": 5,
+      "tags": ["elements", "iframes"]
+    },
+    {
+      "id": "quiz-pw-q114",
+      "type": "multiple-choice",
+      "question": "Which method retrieves an element's attribute value?",
+      "options": [
+        "locator.attr(name)",
+        "locator.getAttribute(name)",
+        "locator.attribute(name)",
+        "locator.get(name)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "getAttribute(name) returns the value of the specified attribute.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["elements", "attributes"]
+    },
+    {
+      "id": "quiz-pw-q115",
+      "type": "code-completion",
+      "question": "Complete the code to interact with iframe content:",
+      "codeTemplate": "await page.____('iframe').getByRole('button').click();",
+      "correctAnswer": "await page.frameLocator('iframe').getByRole('button').click();",
+      "acceptedAnswers": ["frameLocator"],
+      "explanation": "frameLocator() creates a frame locator for interacting with iframe content.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["elements", "iframes", "code"]
+    },
+    {
+      "id": "quiz-pw-q116",
+      "type": "multiple-choice",
+      "question": "How do you check if an element is checked (checkbox/radio)?",
+      "options": [
+        "locator.isChecked()",
+        "locator.checked()",
+        "locator.getChecked()",
+        "locator.hasChecked()"
+      ],
+      "correctAnswer": 0,
+      "explanation": "isChecked() returns true if a checkbox or radio button is checked.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["elements", "forms", "state"]
+    },
+    {
+      "id": "quiz-pw-q117",
+      "type": "debugging",
+      "question": "What's wrong with this iframe interaction?",
+      "code": "await page.locator('iframe').getByRole('button').click();",
+      "options": [
+        "Should use frameLocator instead of locator",
+        "Cannot chain getByRole after iframe",
+        "Missing await",
+        "Both A and B"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Use frameLocator() for iframe interactions, not regular locator().",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["elements", "debugging", "iframes"]
+    },
+    {
+      "id": "quiz-pw-q118",
+      "type": "true-false",
+      "question": "The inputValue() method works only on input, textarea, and select elements.",
+      "correctAnswer": true,
+      "explanation": "inputValue() retrieves the value of input elements, textareas, and select elements.",
+      "difficulty": "medium",
+      "points": 5,
+      "tags": ["elements", "forms"]
+    },
+    {
+      "id": "quiz-pw-q119",
+      "type": "multiple-choice",
+      "question": "How do you get the bounding box of an element?",
+      "options": [
+        "locator.box()",
+        "locator.boundingBox()",
+        "locator.getBox()",
+        "locator.dimensions()"
+      ],
+      "correctAnswer": 1,
+      "explanation": "boundingBox() returns the element's position and size information.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["elements", "dimensions"]
+    },
+    {
+      "id": "quiz-pw-q120",
+      "type": "code-output",
+      "question": "What does this code do?",
+      "code": "await page.locator('input').evaluate(el => el.value = 'test');",
+      "options": [
+        "Types 'test' with keyboard events",
+        "Sets input value directly in DOM",
+        "Submits form with 'test'",
+        "Validates input against 'test'"
+      ],
+      "correctAnswer": 1,
+      "explanation": "evaluate() executes JavaScript in the browser context, directly setting the DOM value.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["elements", "evaluate", "dom"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-012",
+  "prerequisites": ["quiz-pw-011"],
+  "xpReward": 200,
+  "coinReward": 40
+}

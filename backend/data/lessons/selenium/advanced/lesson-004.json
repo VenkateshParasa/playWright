@@ -1,0 +1,69 @@
+{
+  "id": "sel-advanced-004",
+  "title": "Framework Design Patterns",
+  "slug": "framework-patterns",
+  "track": "selenium",
+  "category": "advanced",
+  "order": 4,
+  "duration": 35,
+  "description": "Design robust test automation frameworks with proven patterns.",
+  "objectives": [
+    "Apply design patterns",
+    "Create framework architecture",
+    "Implement utilities",
+    "Build reusable components"
+  ],
+  "prerequisites": [
+    "sel-advanced-003"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Framework Design Patterns",
+        "type": "text",
+        "content": "# Framework Design Patterns\n\nArchitect professional-grade test frameworks.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Framework Design Patterns\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Framework Design Patterns concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, framework design patterns is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Framework Design Patterns\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Framework Design Patterns is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Framework Design Patterns for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Framework Design Patterns Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-advanced-quiz-004",
+  "nextLesson": "sel-advanced-005",
+  "estimatedXP": 250,
+  "tags": [
+    "selenium",
+    "advanced",
+    "framework",
+    "automation",
+    "testing"
+  ]
+}

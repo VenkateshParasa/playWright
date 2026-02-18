@@ -1,0 +1,69 @@
+{
+  "id": "sel-advanced-007",
+  "title": "Docker Selenium",
+  "slug": "docker-selenium",
+  "track": "selenium",
+  "category": "advanced",
+  "order": 7,
+  "duration": 35,
+  "description": "Run Selenium tests in Docker containers for consistency and portability.",
+  "objectives": [
+    "Set up Docker Selenium",
+    "Create test containers",
+    "Run in Docker",
+    "Use in CI/CD"
+  ],
+  "prerequisites": [
+    "sel-advanced-006"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Docker Selenium",
+        "type": "text",
+        "content": "# Docker Selenium\n\nContainerize tests for reliable execution anywhere.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Docker Selenium\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Docker Selenium concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, docker selenium is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Docker Selenium\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Docker Selenium is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Docker Selenium for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Docker Selenium Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-advanced-quiz-007",
+  "nextLesson": "sel-advanced-008",
+  "estimatedXP": 250,
+  "tags": [
+    "selenium",
+    "advanced",
+    "docker",
+    "automation",
+    "testing"
+  ]
+}

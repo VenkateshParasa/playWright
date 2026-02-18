@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-038",
+  "title": "Complex User Flows",
+  "slug": "complex-user-flows",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 60,
+  "description": "Master complex user flows in Playwright",
+  "objectives": [
+    "Multi-step workflows",
+    "State management",
+    "Error recovery",
+    "Transaction testing",
+    "E2E scenarios"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Multi-step workflows\n2. State management\n3. Error recovery\n4. Transaction testing\n5. E2E scenarios",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('complex-user-flows', async ({ page }) => {\n  // TODO: Implement Complex User Flows\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_complex_user_flows(page: Page):\n    # TODO: Implement Complex User Flows\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('complex-user-flows', async ({ page }) => {\n  // TODO: Implement Complex User Flows\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Complex User Flows\ntest('complex-user-flows', async ({ page }) => {\n  // Implementation demonstrates multi-step workflows\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Complex User Flows\ndef test_complex_user_flows(page: Page):\n    # Implementation demonstrates multi-step workflows\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Complex User Flows\ntest('complex-user-flows', async ({ page }) => {\n  // Implementation demonstrates multi-step workflows\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by multi-step workflows",
+    "Remember to state management",
+    "Use appropriate methods for error recovery",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Multi-step workflows",
+      "input": null,
+      "expectedBehavior": "Multi-step workflows works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "State management",
+      "input": null,
+      "expectedBehavior": "State management works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Error recovery",
+      "input": null,
+      "expectedBehavior": "Error recovery works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Complex User Flows Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-038",
+    "lesson-039"
+  ],
+  "xpReward": 600,
+  "coinReward": 150,
+  "tags": [
+    "e2e",
+    "workflows",
+    "user-flows",
+    "integration"
+  ]
+}

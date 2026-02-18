@@ -1,0 +1,381 @@
+/**
+ * Video Transcoding Worker
+ *
+ * This worker handles video transcoding jobs in the background using a queue system.
+ * It processes videos uploaded by users and generates multiple resolutions and formats.
+ *
+ * Queue System: BullMQ (Redis-backed queue)
+ * Processing: FFmpeg for video transcoding
+ *
+ * Job Types:
+ * - transcode: Convert video to multiple resolutions
+ * - generate-hls: Create HLS manifests and segments
+ * - generate-dash: Create DASH manifests
+ * - generate-thumbnails: Extract thumbnails
+ * - generate-subtitles: Auto-generate subtitles
+ */
+
+import { Worker, Job, Queue } from 'bullmq';
+import Redis from 'ioredis';
+import transcodingService from '../backend/src/services/video/transcodingService.js';
+import processingService from '../backend/src/services/video/processingService.js';
+import Video from '../backend/src/models/Video.js';
+
+// Redis connection
+const connection = new Redis({
+  host: process.env.REDIS_HOST || 'localhost',
+  port: parseInt(process.env.REDIS_PORT || '6379'),
+  maxRetriesPerRequest: null,
+});
+
+// Create queue
+export const videoQueue = new Queue('video-processing', { connection });
+
+// Job handlers
+const jobHandlers = {
+  /**
+   * Transcode video to multiple resolutions
+   */
+  async transcode(job: Job) {
+    const { videoId, inputPath, profiles } = job.data;
+
+    job.log(`Starting transcoding for video ${videoId}`);
+    await job.updateProgress(0);
+
+    try {
+      // Listen to transcoding progress
+      transcodingService.on('progress', ({ videoId: vId, progress }) => {
+        if (vId === videoId) {
+          job.updateProgress(progress);
+          job.log(`Transcoding progress: ${progress.toFixed(2)}%`);
+        }
+      });
+
+      const processedFiles = await transcodingService.transcodeVideo(
+        videoId,
+        inputPath,
+        profiles
+      );
+
+      // Update video record
+      await Video.findByIdAndUpdate(videoId, {
+        processedFiles,
+        processingProgress: 50, // 50% after transcoding
+      });
+
+      await job.updateProgress(100);
+      job.log('Transcoding completed');
+
+      return { success: true, processedFiles };
+    } catch (error) {
+      job.log(`Transcoding failed: ${error}`);
+      throw error;
+    }
+  },
+
+  /**
+   * Generate HLS manifest and segments
+   */
+  async generateHLS(job: Job) {
+    const { videoId, inputPath } = job.data;
+
+    job.log(`Generating HLS for video ${videoId}`);
+    await job.updateProgress(0);
+
+    try {
+      const hlsManifest = await transcodingService.generateHLS(videoId, inputPath);
+
+      await Video.findByIdAndUpdate(videoId, {
+        hlsManifest,
+        processingProgress: 70,
+      });
+
+      await job.updateProgress(100);
+      job.log('HLS generation completed');
+
+      return { success: true, hlsManifest };
+    } catch (error) {
+      job.log(`HLS generation failed: ${error}`);
+      throw error;
+    }
+  },
+
+  /**
+   * Generate DASH manifest
+   */
+  async generateDASH(job: Job) {
+    const { videoId, inputPath } = job.data;
+
+    job.log(`Generating DASH for video ${videoId}`);
+    await job.updateProgress(0);
+
+    try {
+      const dashManifest = await transcodingService.generateDASH(videoId, inputPath);
+
+      await Video.findByIdAndUpdate(videoId, {
+        dashManifest,
+        processingProgress: 85,
+      });
+
+      await job.updateProgress(100);
+      job.log('DASH generation completed');
+
+      return { success: true, dashManifest };
+    } catch (error) {
+      job.log(`DASH generation failed: ${error}`);
+      throw error;
+    }
+  },
+
+  /**
+   * Generate thumbnails
+   */
+  async generateThumbnails(job: Job) {
+    const { videoId, filePath, count } = job.data;
+
+    job.log(`Generating thumbnails for video ${videoId}`);
+    await job.updateProgress(0);
+
+    try {
+      const thumbnails = await processingService.generateThumbnails(
+        videoId,
+        filePath,
+        count || 5
+      );
+
+      await Video.findByIdAndUpdate(videoId, {
+        thumbnail: thumbnails,
+        processingProgress: 30,
+      });
+
+      await job.updateProgress(100);
+      job.log('Thumbnail generation completed');
+
+      return { success: true, thumbnails };
+    } catch (error) {
+      job.log(`Thumbnail generation failed: ${error}`);
+      throw error;
+    }
+  },
+
+  /**
+   * Generate subtitles
+   */
+  async generateSubtitles(job: Job) {
+    const { videoId, filePath, language } = job.data;
+
+    job.log(`Generating subtitles for video ${videoId}`);
+    await job.updateProgress(0);
+
+    try {
+      const subtitlePath = await processingService.generateSubtitles(
+        videoId,
+        filePath,
+        language || 'en'
+      );
+
+      const video = await Video.findById(videoId);
+      if (video) {
+        video.subtitles.push({
+          language: language || 'en',
+          url: `/subtitles/${subtitlePath.split('/').pop()}`,
+          autoGenerated: true,
+        });
+        await video.save();
+      }
+
+      await job.updateProgress(100);
+      job.log('Subtitle generation completed');
+
+      return { success: true, subtitlePath };
+    } catch (error) {
+      job.log(`Subtitle generation failed: ${error}`);
+      throw error;
+    }
+  },
+
+  /**
+   * Full video processing pipeline
+   */
+  async processComplete(job: Job) {
+    const { videoId, inputPath } = job.data;
+
+    job.log(`Starting complete processing for video ${videoId}`);
+    await job.updateProgress(0);
+
+    try {
+      // 1. Generate thumbnails (0-20%)
+      await jobHandlers.generateThumbnails({
+        ...job,
+        data: { videoId, filePath: inputPath, count: 5 },
+      } as Job);
+      await job.updateProgress(20);
+
+      // 2. Transcode to multiple resolutions (20-60%)
+      await jobHandlers.transcode({
+        ...job,
+        data: { videoId, inputPath, profiles: ['1080p', '720p', '480p', '360p'] },
+      } as Job);
+      await job.updateProgress(60);
+
+      // 3. Generate HLS (60-80%)
+      await jobHandlers.generateHLS({
+        ...job,
+        data: { videoId, inputPath },
+      } as Job);
+      await job.updateProgress(80);
+
+      // 4. Generate DASH (80-95%)
+      await jobHandlers.generateDASH({
+        ...job,
+        data: { videoId, inputPath },
+      } as Job);
+      await job.updateProgress(95);
+
+      // 5. Generate subtitles (95-100%)
+      await jobHandlers.generateSubtitles({
+        ...job,
+        data: { videoId, filePath: inputPath, language: 'en' },
+      } as Job);
+
+      // Mark as ready
+      await Video.findByIdAndUpdate(videoId, {
+        status: 'ready',
+        processingProgress: 100,
+        isPublished: true,
+        publishedAt: new Date(),
+      });
+
+      await job.updateProgress(100);
+      job.log('Complete processing finished');
+
+      return { success: true };
+    } catch (error) {
+      job.log(`Complete processing failed: ${error}`);
+
+      await Video.findByIdAndUpdate(videoId, {
+        status: 'error',
+        errorMessage: error instanceof Error ? error.message : 'Unknown error',
+      });
+
+      throw error;
+    }
+  },
+};
+
+// Create worker
+const worker = new Worker(
+  'video-processing',
+  async (job: Job) => {
+    console.log(`Processing job ${job.id} of type ${job.name}`);
+
+    const handler = jobHandlers[job.name as keyof typeof jobHandlers];
+
+    if (!handler) {
+      throw new Error(`Unknown job type: ${job.name}`);
+    }
+
+    return await handler(job);
+  },
+  {
+    connection,
+    concurrency: parseInt(process.env.WORKER_CONCURRENCY || '2'),
+    limiter: {
+      max: 10,
+      duration: 1000,
+    },
+  }
+);
+
+// Event handlers
+worker.on('completed', (job) => {
+  console.log(`Job ${job.id} completed successfully`);
+});
+
+worker.on('failed', (job, err) => {
+  console.error(`Job ${job?.id} failed:`, err);
+});
+
+worker.on('error', (err) => {
+  console.error('Worker error:', err);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM received, closing worker...');
+  await worker.close();
+  await connection.quit();
+  process.exit(0);
+});
+
+process.on('SIGINT', async () => {
+  console.log('SIGINT received, closing worker...');
+  await worker.close();
+  await connection.quit();
+  process.exit(0);
+});
+
+console.log('Video transcoding worker started');
+
+export default worker;
+
+// Helper functions for adding jobs to the queue
+
+/**
+ * Add transcode job
+ */
+export async function addTranscodeJob(
+  videoId: string,
+  inputPath: string,
+  profiles?: string[]
+) {
+  return await videoQueue.add(
+    'transcode',
+    { videoId, inputPath, profiles },
+    {
+      attempts: 3,
+      backoff: {
+        type: 'exponential',
+        delay: 2000,
+      },
+    }
+  );
+}
+
+/**
+ * Add complete processing job
+ */
+export async function addCompleteProcessingJob(videoId: string, inputPath: string) {
+  return await videoQueue.add(
+    'processComplete',
+    { videoId, inputPath },
+    {
+      attempts: 3,
+      backoff: {
+        type: 'exponential',
+        delay: 5000,
+      },
+    }
+  );
+}
+
+/**
+ * Get job status
+ */
+export async function getJobStatus(jobId: string) {
+  const job = await videoQueue.getJob(jobId);
+
+  if (!job) {
+    return null;
+  }
+
+  return {
+    id: job.id,
+    name: job.name,
+    progress: await job.progress,
+    state: await job.getState(),
+    data: job.data,
+    returnvalue: job.returnvalue,
+    failedReason: job.failedReason,
+  };
+}

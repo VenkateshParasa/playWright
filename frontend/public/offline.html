@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline - Test Automation Academy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #1f2937;
+    }
+
+    .offline-container {
+      background: white;
+      border-radius: 20px;
+      padding: 60px 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .offline-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .offline-icon svg {
+      width: 60px;
+      height: 60px;
+      fill: white;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1f2937;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      text-align: left;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+
+    .features h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 15px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: start;
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-item svg {
+      width: 20px;
+      height: 20px;
+      fill: #10b981;
+      margin-right: 10px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .retry-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .retry-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+    }
+
+    .retry-button:active {
+      transform: translateY(0);
+    }
+
+    .connection-status {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    .connection-status.offline {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .connection-status.online {
+      background: #d1fae5;
+      color: #059669;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .offline .status-dot {
+      background: #dc2626;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    .online .status-dot {
+      background: #059669;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .offline-container {
+        padding: 40px 25px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .offline-icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .offline-icon svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="offline-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+    </div>
+
+    <h1>You're Offline</h1>
+    <p>No internet connection detected. Don't worry, you can still access cached content!</p>
+
+    <div class="features">
+      <h2>Available Offline:</h2>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        <span>Previously viewed lessons and content</span>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        <span>Flashcard reviews (syncs when online)</span>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        <span>Your learning progress and statistics</span>
+      </div>
+      <div class="feature-item">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        <span>Saved code examples and exercises</span>
+      </div>
+    </div>
+
+    <button class="retry-button" onclick="retryConnection()">
+      Retry Connection
+    </button>
+
+    <div class="connection-status offline" id="connectionStatus">
+      <span class="status-dot"></span>
+      <span id="statusText">Offline</span>
+    </div>
+  </div>
+
+  <script>
+    // Check connection status
+    function updateConnectionStatus() {
+      const status = document.getElementById('connectionStatus');
+      const statusText = document.getElementById('statusText');
+
+      if (navigator.onLine) {
+        status.classList.remove('offline');
+        status.classList.add('online');
+        statusText.textContent = 'Online';
+
+        // Auto redirect to home page after connection restored
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1000);
+      } else {
+        status.classList.remove('online');
+        status.classList.add('offline');
+        statusText.textContent = 'Offline';
+      }
+    }
+
+    // Retry connection
+    function retryConnection() {
+      updateConnectionStatus();
+      if (navigator.onLine) {
+        window.location.href = '/';
+      }
+    }
+
+    // Listen for online/offline events
+    window.addEventListener('online', updateConnectionStatus);
+    window.addEventListener('offline', updateConnectionStatus);
+
+    // Initial check
+    updateConnectionStatus();
+
+    // Periodic check every 5 seconds
+    setInterval(updateConnectionStatus, 5000);
+  </script>
+</body>
+</html>

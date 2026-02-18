@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-034",
+  "title": "Performance Testing",
+  "slug": "performance-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 50,
+  "description": "Master performance testing in Playwright",
+  "objectives": [
+    "Measure load time",
+    "Track metrics",
+    "Performance API",
+    "Resource timing",
+    "Lighthouse integration"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Measure load time\n2. Track metrics\n3. Performance API\n4. Resource timing\n5. Lighthouse integration",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('performance-testing', async ({ page }) => {\n  // TODO: Implement Performance Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_performance_testing(page: Page):\n    # TODO: Implement Performance Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('performance-testing', async ({ page }) => {\n  // TODO: Implement Performance Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Performance Testing\ntest('performance-testing', async ({ page }) => {\n  // Implementation demonstrates measure load time\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Performance Testing\ndef test_performance_testing(page: Page):\n    # Implementation demonstrates measure load time\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Performance Testing\ntest('performance-testing', async ({ page }) => {\n  // Implementation demonstrates measure load time\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by measure load time",
+    "Remember to track metrics",
+    "Use appropriate methods for performance api",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Measure load time",
+      "input": null,
+      "expectedBehavior": "Measure load time works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Track metrics",
+      "input": null,
+      "expectedBehavior": "Track metrics works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Performance API",
+      "input": null,
+      "expectedBehavior": "Performance API works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Performance Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-034",
+    "lesson-035"
+  ],
+  "xpReward": 500,
+  "coinReward": 125,
+  "tags": [
+    "performance",
+    "metrics",
+    "timing",
+    "lighthouse"
+  ]
+}

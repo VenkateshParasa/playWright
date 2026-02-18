@@ -1,0 +1,69 @@
+{
+  "id": "sel-intermediate-002",
+  "title": "Select Dropdown and Multi-Select",
+  "slug": "select-dropdown",
+  "track": "selenium",
+  "category": "intermediate",
+  "order": 2,
+  "duration": 30,
+  "description": "Work with dropdown menus and multi-select elements efficiently.",
+  "objectives": [
+    "Use Select class",
+    "Handle custom dropdowns",
+    "Work with multi-select",
+    "Verify selected options"
+  ],
+  "prerequisites": [
+    "sel-intermediate-001"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Select Dropdown and Multi-Select",
+        "type": "text",
+        "content": "# Select Dropdown and Multi-Select\n\nComplete guide to dropdown and select element handling.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Select Dropdown and Multi-Select\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Select Dropdown and Multi-Select concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, select dropdown and multi-select is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Select Dropdown and Multi-Select\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Select Dropdown and Multi-Select is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Select Dropdown and Multi-Select for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Select Dropdown and Multi-Select Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-intermediate-quiz-002",
+  "nextLesson": "sel-intermediate-003",
+  "estimatedXP": 200,
+  "tags": [
+    "selenium",
+    "intermediate",
+    "select",
+    "automation",
+    "testing"
+  ]
+}

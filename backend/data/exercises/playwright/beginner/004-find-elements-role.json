@@ -1,0 +1,71 @@
+{
+  "id": "exercise-pw-004",
+  "title": "Find Elements by Role",
+  "slug": "find-elements-role",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 15,
+  "description": "Master Playwright's role-based locators for accessible and reliable element selection",
+  "objectives": [
+    "Use getByRole for different element types",
+    "Understand ARIA roles",
+    "Find buttons, links, and headings by role",
+    "Use role options for filtering"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Navigates to a webpage\n2. Finds and clicks a button using getByRole\n3. Finds a link using getByRole\n4. Finds a heading using getByRole\n5. Verifies each element exists",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('find elements by role', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  // TODO: Find and click 'Get started' link by role\n  \n  // TODO: Find the main heading by role\n  \n  // TODO: Assert heading contains 'Playwright'\n  \n  // TODO: Find 'Node.js' button by role\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_find_by_role(page: Page):\n    page.goto('https://playwright.dev')\n    \n    # TODO: Find and click 'Get started' link by role\n    \n    # TODO: Find the main heading by role\n    \n    # TODO: Assert heading contains 'Playwright'\n    \n    # TODO: Find 'Node.js' button by role\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('find elements by role', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  // TODO: Find and click 'Get started' link by role\n  \n  // TODO: Find the main heading by role\n  \n  // TODO: Assert heading contains 'Playwright'\n  \n  // TODO: Find 'Node.js' button by role\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('find elements by role', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  const getStartedLink = page.getByRole('link', { name: 'Get started' });\n  await expect(getStartedLink).toBeVisible();\n  \n  const heading = page.getByRole('heading', { level: 1 });\n  await expect(heading).toContainText('Playwright');\n  \n  const nodeButton = page.getByRole('button', { name: /node/i });\n  await expect(nodeButton).toBeVisible();\n});",
+    "python": "from playwright.sync_api import Page, expect\nimport re\n\ndef test_find_by_role(page: Page):\n    page.goto('https://playwright.dev')\n    \n    get_started = page.get_by_role('link', name='Get started')\n    expect(get_started).to_be_visible()\n    \n    heading = page.get_by_role('heading', level=1)\n    expect(heading).to_contain_text('Playwright')\n    \n    node_button = page.get_by_role('button', name=re.compile('node', re.I))\n    expect(node_button).to_be_visible()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('find elements by role', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  const getStartedLink = page.getByRole('link', { name: 'Get started' });\n  await expect(getStartedLink).toBeVisible();\n  \n  const heading = page.getByRole('heading', { level: 1 });\n  await expect(heading).toContainText('Playwright');\n  \n  const nodeButton = page.getByRole('button', { name: /node/i });\n  await expect(nodeButton).toBeVisible();\n});"
+  },
+  "hints": [
+    "getByRole('link') finds anchor tags",
+    "getByRole('button') finds button elements",
+    "getByRole('heading', { level: 1 }) finds h1 tags",
+    "Use { name: 'text' } to filter by accessible name",
+    "Role-based locators are more resilient to DOM changes"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Link is found by role",
+      "input": null,
+      "expectedBehavior": "Get started link is visible",
+      "points": 30
+    },
+    {
+      "id": "test-2",
+      "name": "Heading is found by role",
+      "input": null,
+      "expectedBehavior": "Main heading contains 'Playwright'",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Button is found by role",
+      "input": null,
+      "expectedBehavior": "Node.js button is visible",
+      "points": 35
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Locators by Role",
+      "url": "https://playwright.dev/docs/locators#locate-by-role"
+    },
+    {
+      "title": "ARIA Roles Reference",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles"
+    }
+  ],
+  "relatedLessons": ["lesson-007", "lesson-008"],
+  "xpReward": 150,
+  "coinReward": 40,
+  "tags": ["locators", "role", "accessibility", "getByRole"]
+}

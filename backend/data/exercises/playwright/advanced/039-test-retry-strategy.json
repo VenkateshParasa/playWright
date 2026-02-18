@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-039",
+  "title": "Test Retry Strategy",
+  "slug": "test-retry-strategy",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 40,
+  "description": "Master test retry strategy in Playwright",
+  "objectives": [
+    "Configure retries",
+    "Conditional retries",
+    "Flaky test handling",
+    "Retry hooks",
+    "Failure analysis"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Configure retries\n2. Conditional retries\n3. Flaky test handling\n4. Retry hooks\n5. Failure analysis",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('test-retry-strategy', async ({ page }) => {\n  // TODO: Implement Test Retry Strategy\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_test_retry_strategy(page: Page):\n    # TODO: Implement Test Retry Strategy\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('test-retry-strategy', async ({ page }) => {\n  // TODO: Implement Test Retry Strategy\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Test Retry Strategy\ntest('test-retry-strategy', async ({ page }) => {\n  // Implementation demonstrates configure retries\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Test Retry Strategy\ndef test_test_retry_strategy(page: Page):\n    # Implementation demonstrates configure retries\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Test Retry Strategy\ntest('test-retry-strategy', async ({ page }) => {\n  // Implementation demonstrates configure retries\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by configure retries",
+    "Remember to conditional retries",
+    "Use appropriate methods for flaky test handling",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Configure retries",
+      "input": null,
+      "expectedBehavior": "Configure retries works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Conditional retries",
+      "input": null,
+      "expectedBehavior": "Conditional retries works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Flaky test handling",
+      "input": null,
+      "expectedBehavior": "Flaky test handling works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Test Retry Strategy Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-039",
+    "lesson-040"
+  ],
+  "xpReward": 400,
+  "coinReward": 100,
+  "tags": [
+    "retries",
+    "flaky-tests",
+    "stability",
+    "reliability"
+  ]
+}

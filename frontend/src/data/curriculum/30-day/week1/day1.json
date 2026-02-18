@@ -1,0 +1,66 @@
+
+{
+  "id": "day1-setup",
+  "title": "Day 1: Environment Setup & Tooling",
+  "day": 1,
+  "week": 1,
+  "track": "30-day",
+  "difficulty": "easy",
+  "estimatedTime": 120,
+  "objectives": [
+    "Install Node.js, Java JDK, and Maven",
+    "Set up VS Code with recommended extensions",
+    "Initialize Playwright and Selenium projects",
+    "Run your first 'Hello World' tests"
+  ],
+  "content": [
+    {
+      "type": "section",
+      "title": "Welcome to Test Automation!",
+      "content": "Welcome to your journey in mastering Playwright and Selenium! Today, we'll set up your development environment and run your first automated tests."
+    },
+    {
+      "type": "section",
+      "title": "Prerequisites",
+      "content": "Before we begin, make sure you have:\n\n- A computer with at least 8GB RAM\n- Stable internet connection\n- Administrator access to install software"
+    },
+    {
+      "type": "section",
+      "title": "Step 1: Install Node.js",
+      "content": "Node.js is required for Playwright and modern JavaScript development."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Check if Node.js is installed\nnode --version\n\n# Should show v20.x.x or higher\nnpm --version",
+      "caption": "Verify Node.js installation"
+    },
+    {
+      "type": "section",
+      "title": "Step 2: Install Java JDK",
+      "content": "Java Development Kit is required for Selenium with Java."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Check Java installation\njava -version\n\n# Should show version 17 or higher",
+      "caption": "Verify Java installation"
+    },
+    {
+      "type": "section",
+      "title": "Step 3: Install Maven",
+      "content": "Maven is a build tool for Java projects."
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Check Maven installation\nmvn --version\n\n# Should show Maven 3.9.x or higher",
+      "caption": "Verify Maven installation"
+    },
+    {
+      "type": "section",
+      "title": "Step 4: Set Up VS Code",
+      "content": "TBD"
+    }
+]
+}

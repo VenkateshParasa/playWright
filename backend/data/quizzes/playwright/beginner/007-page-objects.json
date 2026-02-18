@@ -1,0 +1,157 @@
+{
+  "id": "quiz-pw-007",
+  "title": "Page Object Model",
+  "slug": "page-objects",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Learn to organize tests using the Page Object Model pattern",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q061",
+      "type": "multiple-choice",
+      "question": "What is the main benefit of using Page Object Model?",
+      "options": [
+        "Faster test execution",
+        "Better code organization and reusability",
+        "Automatic test generation",
+        "Reduced browser memory usage"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Page Object Model improves code organization, maintainability, and reusability by encapsulating page logic.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["pom", "design-patterns"]
+    },
+    {
+      "id": "quiz-pw-q062",
+      "type": "true-false",
+      "question": "In Page Object Model, each page class should represent a single web page or component.",
+      "correctAnswer": true,
+      "explanation": "POM organizes code by creating a class for each page or component, encapsulating its elements and actions.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["pom", "principles"]
+    },
+    {
+      "id": "quiz-pw-q063",
+      "type": "code-completion",
+      "question": "Complete the basic Page Object class structure:",
+      "codeTemplate": "class LoginPage {\n  constructor(____) {\n    this.page = ____;\n  }\n}",
+      "correctAnswer": "class LoginPage {\n  constructor(page) {\n    this.page = page;\n  }\n}",
+      "acceptedAnswers": [
+        "page"
+      ],
+      "explanation": "Page Object classes receive the page fixture in the constructor and store it as an instance variable.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["pom", "code", "structure"]
+    },
+    {
+      "id": "quiz-pw-q064",
+      "type": "multiple-choice",
+      "question": "What should Page Object methods return?",
+      "options": [
+        "Always void",
+        "Locators only",
+        "Either void, other page objects, or data",
+        "Always page objects"
+      ],
+      "correctAnswer": 2,
+      "explanation": "POM methods can return void, navigate to other pages (returning page objects), or return data from the page.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["pom", "methods"]
+    },
+    {
+      "id": "quiz-pw-q065",
+      "type": "true-false",
+      "question": "Test assertions should be placed inside Page Object methods.",
+      "correctAnswer": false,
+      "explanation": "Best practice is to keep assertions in test files, not in Page Objects. POM should only contain page interactions.",
+      "difficulty": "medium",
+      "points": 5,
+      "tags": ["pom", "best-practices", "assertions"]
+    },
+    {
+      "id": "quiz-pw-q066",
+      "type": "code-completion",
+      "question": "Complete the login method in a Page Object:",
+      "codeTemplate": "async login(username, password) {\n  await this.page.getByLabel('Username').____;\n  await this.page.getByLabel('Password').____;\n  await this.page.getByRole('button', { name: 'Login' }).click();\n}",
+      "correctAnswer": "async login(username, password) {\n  await this.page.getByLabel('Username').fill(username);\n  await this.page.getByLabel('Password').fill(password);\n  await this.page.getByRole('button', { name: 'Login' }).click();\n}",
+      "acceptedAnswers": [
+        "fill(username)",
+        "fill(password)"
+      ],
+      "explanation": "Page Object methods should encapsulate all actions needed for a specific operation.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["pom", "code", "methods"]
+    },
+    {
+      "id": "quiz-pw-q067",
+      "type": "multiple-choice",
+      "question": "Where should locators be defined in a Page Object?",
+      "options": [
+        "In separate locator methods",
+        "Directly in action methods",
+        "As class properties or getter methods",
+        "In a separate locators file"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Locators should be defined as class properties or getter methods for reusability and maintainability.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["pom", "locators"]
+    },
+    {
+      "id": "quiz-pw-q068",
+      "type": "debugging",
+      "question": "What's the issue with this Page Object?",
+      "code": "class HomePage {\n  async clickButton() {\n    await page.click('button');\n  }\n}",
+      "options": [
+        "Missing constructor",
+        "Missing page property",
+        "Should use this.page",
+        "All of the above"
+      ],
+      "correctAnswer": 3,
+      "explanation": "The class needs a constructor to receive page, store it as this.page, and use it in methods.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["pom", "debugging", "common-errors"]
+    },
+    {
+      "id": "quiz-pw-q069",
+      "type": "multiple-choice",
+      "question": "What is the recommended way to instantiate a Page Object in tests?",
+      "options": [
+        "In each test separately",
+        "In beforeEach hook",
+        "As a test fixture",
+        "Both B and C are good practices"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Page Objects can be instantiated in beforeEach hooks or as custom fixtures for better organization.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["pom", "fixtures", "best-practices"]
+    },
+    {
+      "id": "quiz-pw-q070",
+      "type": "true-false",
+      "question": "A Page Object can represent a component that appears on multiple pages.",
+      "correctAnswer": true,
+      "explanation": "Page Objects can represent reusable components like headers, footers, or modals that appear across multiple pages.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["pom", "components"]
+    }
+  ],
+  "totalPoints": 105,
+  "relatedLesson": "lesson-pw-007",
+  "prerequisites": ["quiz-pw-006"],
+  "xpReward": 150,
+  "coinReward": 30
+}

@@ -1,0 +1,858 @@
+[
+  {
+    "achievementId": "first_steps",
+    "name": "First Steps",
+    "description": "Complete your first lesson",
+    "category": "learning",
+    "tier": "bronze",
+    "xpReward": 500,
+    "coinReward": 100,
+    "icon": "🎯",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "lessons_completed",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "eager_learner",
+    "name": "Eager Learner",
+    "description": "Complete 10 lessons",
+    "category": "learning",
+    "tier": "bronze",
+    "xpReward": 1000,
+    "coinReward": 200,
+    "icon": "📚",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "lessons_completed",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "dedicated_student",
+    "name": "Dedicated Student",
+    "description": "Complete 50 lessons",
+    "category": "learning",
+    "tier": "silver",
+    "xpReward": 2500,
+    "coinReward": 500,
+    "icon": "🎓",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "lessons_completed",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "master_learner",
+    "name": "Master Learner",
+    "description": "Complete 100 lessons",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 5000,
+    "coinReward": 1000,
+    "icon": "🏆",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "lessons_completed",
+      "value": 100
+    }
+  },
+  {
+    "achievementId": "speed_reader",
+    "name": "Speed Reader",
+    "description": "Complete 10 lessons in one day",
+    "category": "speed",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 400,
+    "icon": "⚡",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "lessons_in_day",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "quiz_master",
+    "name": "Quiz Master",
+    "description": "Pass 50 quizzes with 90%+ score",
+    "category": "quality",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "🎖️",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "quiz_passed_high_score",
+      "value": 50,
+      "condition": "score >= 90"
+    }
+  },
+  {
+    "achievementId": "perfectionist",
+    "name": "Perfectionist",
+    "description": "Score 100% on 20 quizzes",
+    "category": "quality",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 1500,
+    "icon": "💎",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "perfect_quizzes",
+      "value": 20
+    }
+  },
+  {
+    "achievementId": "code_ninja",
+    "name": "Code Ninja",
+    "description": "Complete 100 coding exercises",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 4500,
+    "coinReward": 900,
+    "icon": "🥷",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "exercises_completed",
+      "value": 100
+    }
+  },
+  {
+    "achievementId": "memory_champion",
+    "name": "Memory Champion",
+    "description": "Review 1000 flashcards",
+    "category": "srs",
+    "tier": "gold",
+    "xpReward": 3500,
+    "coinReward": 700,
+    "icon": "🧠",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "flashcards_reviewed",
+      "value": 1000
+    }
+  },
+  {
+    "achievementId": "flashcard_master",
+    "name": "Flashcard Master",
+    "description": "Master 500 flashcards",
+    "category": "srs",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 1200,
+    "icon": "🎴",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "mastered_flashcards",
+      "value": 500
+    }
+  },
+  {
+    "achievementId": "helping_hand",
+    "name": "Helping Hand",
+    "description": "Help 10 other users",
+    "category": "social",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 400,
+    "icon": "🤝",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "helpful_answers",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "community_hero",
+    "name": "Community Hero",
+    "description": "Help 50 other users",
+    "category": "social",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "🦸",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "helpful_answers",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "consistent_learner",
+    "name": "Consistent Learner",
+    "description": "Maintain a 7-day streak",
+    "category": "consistency",
+    "tier": "bronze",
+    "xpReward": 1500,
+    "coinReward": 300,
+    "icon": "🔥",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "streak_days",
+      "value": 7
+    }
+  },
+  {
+    "achievementId": "dedicated_scholar",
+    "name": "Dedicated Scholar",
+    "description": "Maintain a 30-day streak",
+    "category": "consistency",
+    "tier": "silver",
+    "xpReward": 3000,
+    "coinReward": 600,
+    "icon": "🔥",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "streak_days",
+      "value": 30
+    }
+  },
+  {
+    "achievementId": "unstoppable",
+    "name": "Unstoppable",
+    "description": "Maintain a 100-day streak",
+    "category": "consistency",
+    "tier": "platinum",
+    "xpReward": 10000,
+    "coinReward": 2000,
+    "icon": "🔥",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "streak_days",
+      "value": 100
+    }
+  },
+  {
+    "achievementId": "night_owl",
+    "name": "Night Owl",
+    "description": "Study after midnight 10 times",
+    "category": "special",
+    "tier": "bronze",
+    "xpReward": 1000,
+    "coinReward": 200,
+    "icon": "🦉",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "night_study",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "early_bird",
+    "name": "Early Bird",
+    "description": "Study before 6 AM 10 times",
+    "category": "special",
+    "tier": "bronze",
+    "xpReward": 1000,
+    "coinReward": 200,
+    "icon": "🐦",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "early_study",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "marathon_learner",
+    "name": "Marathon Learner",
+    "description": "Study for 5 hours in a single day",
+    "category": "special",
+    "tier": "gold",
+    "xpReward": 3000,
+    "coinReward": 600,
+    "icon": "🏃",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "daily_study_time",
+      "value": 300
+    }
+  },
+  {
+    "achievementId": "playwright_specialist",
+    "name": "Playwright Specialist",
+    "description": "Complete all Playwright lessons",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 5000,
+    "coinReward": 1000,
+    "icon": "🎭",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "category_completed",
+      "value": 1,
+      "condition": "category == 'playwright'"
+    }
+  },
+  {
+    "achievementId": "selenium_expert",
+    "name": "Selenium Expert",
+    "description": "Complete all Selenium lessons",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 5000,
+    "coinReward": 1000,
+    "icon": "⚙️",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "category_completed",
+      "value": 1,
+      "condition": "category == 'selenium'"
+    }
+  },
+  {
+    "achievementId": "quick_learner",
+    "name": "Quick Learner",
+    "description": "Complete a lesson in under 5 minutes",
+    "category": "speed",
+    "tier": "bronze",
+    "xpReward": 800,
+    "coinReward": 150,
+    "icon": "⏱️",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "quick_lesson",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "speedster",
+    "name": "Speedster",
+    "description": "Complete 50 lessons in under 5 minutes each",
+    "category": "speed",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "💨",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "quick_lesson",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "quiz_speedrun",
+    "name": "Quiz Speedrun",
+    "description": "Complete a quiz in under 2 minutes with 100% score",
+    "category": "speed",
+    "tier": "platinum",
+    "xpReward": 3500,
+    "coinReward": 700,
+    "icon": "🚀",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "quick_perfect_quiz",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "daily_warrior",
+    "name": "Daily Warrior",
+    "description": "Complete all daily challenges 30 times",
+    "category": "consistency",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "⚔️",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "daily_challenges_complete",
+      "value": 30
+    }
+  },
+  {
+    "achievementId": "weekend_warrior",
+    "name": "Weekend Warrior",
+    "description": "Study on 20 weekends",
+    "category": "consistency",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 400,
+    "icon": "🌴",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "weekend_study",
+      "value": 20
+    }
+  },
+  {
+    "achievementId": "first_competition",
+    "name": "First Competition",
+    "description": "Join your first competition",
+    "category": "social",
+    "tier": "bronze",
+    "xpReward": 500,
+    "coinReward": 100,
+    "icon": "🏁",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "competitions_joined",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "champion",
+    "name": "Champion",
+    "description": "Win 1st place in a competition",
+    "category": "social",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 2000,
+    "icon": "👑",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "competition_wins",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "podium_regular",
+    "name": "Podium Regular",
+    "description": "Finish top 3 in 10 competitions",
+    "category": "social",
+    "tier": "gold",
+    "xpReward": 4500,
+    "coinReward": 900,
+    "icon": "🥇",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "competition_top3",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "level_10",
+    "name": "Level 10",
+    "description": "Reach level 10",
+    "category": "learning",
+    "tier": "bronze",
+    "xpReward": 1000,
+    "coinReward": 200,
+    "icon": "🌟",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "level_reached",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "level_25",
+    "name": "Level 25",
+    "description": "Reach level 25",
+    "category": "learning",
+    "tier": "silver",
+    "xpReward": 2500,
+    "coinReward": 500,
+    "icon": "⭐",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "level_reached",
+      "value": 25
+    }
+  },
+  {
+    "achievementId": "level_50",
+    "name": "Level 50",
+    "description": "Reach level 50",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 5000,
+    "coinReward": 1000,
+    "icon": "💫",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "level_reached",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "level_100",
+    "name": "Centurion",
+    "description": "Reach level 100",
+    "category": "learning",
+    "tier": "platinum",
+    "xpReward": 10000,
+    "coinReward": 3000,
+    "icon": "✨",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "level_reached",
+      "value": 100
+    }
+  },
+  {
+    "achievementId": "treasure_hunter",
+    "name": "Treasure Hunter",
+    "description": "Earn 10,000 coins",
+    "category": "special",
+    "tier": "gold",
+    "xpReward": 3000,
+    "coinReward": 500,
+    "icon": "💰",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "total_coins_earned",
+      "value": 10000
+    }
+  },
+  {
+    "achievementId": "shopaholic",
+    "name": "Shopaholic",
+    "description": "Purchase 25 items from the reward shop",
+    "category": "special",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 0,
+    "icon": "🛍️",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "items_purchased",
+      "value": 25
+    }
+  },
+  {
+    "achievementId": "collector",
+    "name": "Collector",
+    "description": "Unlock 25 achievements",
+    "category": "special",
+    "tier": "silver",
+    "xpReward": 2500,
+    "coinReward": 500,
+    "icon": "🎁",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "achievements_unlocked",
+      "value": 25
+    }
+  },
+  {
+    "achievementId": "completionist",
+    "name": "Completionist",
+    "description": "Unlock 50 achievements",
+    "category": "special",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 1500,
+    "icon": "🏅",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "achievements_unlocked",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "quest_seeker",
+    "name": "Quest Seeker",
+    "description": "Complete 10 quests",
+    "category": "learning",
+    "tier": "bronze",
+    "xpReward": 1000,
+    "coinReward": 200,
+    "icon": "🗺️",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "quests_completed",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "quest_master",
+    "name": "Quest Master",
+    "description": "Complete 50 quests",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "🧭",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "quests_completed",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "social_butterfly",
+    "name": "Social Butterfly",
+    "description": "Make 50 forum posts",
+    "category": "social",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 400,
+    "icon": "🦋",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "forum_posts",
+      "value": 50
+    }
+  },
+  {
+    "achievementId": "discussion_leader",
+    "name": "Discussion Leader",
+    "description": "Make 200 forum posts",
+    "category": "social",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "💬",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "forum_posts",
+      "value": 200
+    }
+  },
+  {
+    "achievementId": "practice_makes_perfect",
+    "name": "Practice Makes Perfect",
+    "description": "Complete the same exercise 10 times",
+    "category": "quality",
+    "tier": "silver",
+    "xpReward": 1500,
+    "coinReward": 300,
+    "icon": "🔁",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "repeated_exercise",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "comeback_kid",
+    "name": "Comeback Kid",
+    "description": "Recover from a broken streak and reach 14 days again",
+    "category": "consistency",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 400,
+    "icon": "🎯",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "streak_recovery",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "xp_millionaire",
+    "name": "XP Millionaire",
+    "description": "Earn 1,000,000 total XP",
+    "category": "special",
+    "tier": "platinum",
+    "xpReward": 10000,
+    "coinReward": 5000,
+    "icon": "💎",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "total_xp",
+      "value": 1000000
+    }
+  },
+  {
+    "achievementId": "study_beast",
+    "name": "Study Beast",
+    "description": "Study for 100 total hours",
+    "category": "consistency",
+    "tier": "platinum",
+    "xpReward": 8000,
+    "coinReward": 1600,
+    "icon": "💪",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "total_study_time",
+      "value": 6000
+    }
+  },
+  {
+    "achievementId": "review_master",
+    "name": "Review Master",
+    "description": "Review cards with 95%+ accuracy on 100 sessions",
+    "category": "quality",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 1000,
+    "icon": "🎯",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "high_accuracy_reviews",
+      "value": 100,
+      "condition": "accuracy >= 95"
+    }
+  },
+  {
+    "achievementId": "explorer",
+    "name": "Explorer",
+    "description": "Complete lessons in 5 different categories",
+    "category": "learning",
+    "tier": "silver",
+    "xpReward": 2000,
+    "coinReward": 400,
+    "icon": "🔍",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "categories_explored",
+      "value": 5
+    }
+  },
+  {
+    "achievementId": "jack_of_all_trades",
+    "name": "Jack of All Trades",
+    "description": "Complete at least 10 lessons in 10 different categories",
+    "category": "learning",
+    "tier": "gold",
+    "xpReward": 4000,
+    "coinReward": 800,
+    "icon": "🎨",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "multi_category_mastery",
+      "value": 10
+    }
+  },
+  {
+    "achievementId": "secret_easter_egg",
+    "name": "Easter Egg Hunter",
+    "description": "???",
+    "category": "special",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 2000,
+    "icon": "🥚",
+    "isSecret": true,
+    "isProgressive": false,
+    "requirement": {
+      "type": "easter_egg",
+      "value": 1
+    },
+    "unlockCondition": "Complete a lesson at exactly midnight on a full moon"
+  },
+  {
+    "achievementId": "konami_code",
+    "name": "Konami Master",
+    "description": "???",
+    "category": "special",
+    "tier": "platinum",
+    "xpReward": 3000,
+    "coinReward": 1000,
+    "icon": "🎮",
+    "isSecret": true,
+    "isProgressive": false,
+    "requirement": {
+      "type": "konami_code",
+      "value": 1
+    },
+    "unlockCondition": "Enter the Konami code on the dashboard"
+  },
+  {
+    "achievementId": "the_chosen_one",
+    "name": "The Chosen One",
+    "description": "???",
+    "category": "special",
+    "tier": "platinum",
+    "xpReward": 10000,
+    "coinReward": 5000,
+    "icon": "👁️",
+    "isSecret": true,
+    "isProgressive": false,
+    "requirement": {
+      "type": "secret_combination",
+      "value": 1
+    },
+    "unlockCondition": "Complete specific combination of achievements"
+  },
+  {
+    "achievementId": "first_hundred",
+    "name": "First Hundred",
+    "description": "Be in the first 100 users to register",
+    "category": "special",
+    "tier": "platinum",
+    "xpReward": 5000,
+    "coinReward": 2000,
+    "icon": "🌟",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "early_adopter",
+      "value": 100
+    }
+  },
+  {
+    "achievementId": "leaderboard_king",
+    "name": "Leaderboard King",
+    "description": "Reach #1 on the global leaderboard",
+    "category": "social",
+    "tier": "platinum",
+    "xpReward": 10000,
+    "coinReward": 3000,
+    "icon": "👑",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "leaderboard_rank",
+      "value": 1
+    }
+  },
+  {
+    "achievementId": "top_ten",
+    "name": "Top Ten",
+    "description": "Reach top 10 on the global leaderboard",
+    "category": "social",
+    "tier": "gold",
+    "xpReward": 5000,
+    "coinReward": 1000,
+    "icon": "🔟",
+    "isSecret": false,
+    "isProgressive": false,
+    "requirement": {
+      "type": "leaderboard_rank",
+      "value": 10,
+      "condition": "rank <= 10"
+    }
+  }
+]

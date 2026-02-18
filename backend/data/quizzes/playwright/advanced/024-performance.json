@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-024",
+  "title": "Performance Testing",
+  "slug": "performance",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced Performance Testing techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q241", "type": "multiple-choice", "question": "What is Performance Testing in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "Performance Testing encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "performance"]},
+    {"id": "quiz-pw-q242", "type": "code-completion", "question": "Implement Performance Testing:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for Performance Testing.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q243", "type": "true-false", "question": "Performance Testing requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "Performance Testing is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q244", "type": "multiple-choice", "question": "When is Performance Testing most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "Performance Testing provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q245", "type": "code-completion", "question": "Optimize Performance Testing:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves Performance Testing performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q246", "type": "multiple-choice", "question": "What are Performance Testing challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "Performance Testing involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q247", "type": "debugging", "question": "Debug this Performance Testing issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q248", "type": "true-false", "question": "Performance Testing scales well for large test suites.", "correctAnswer": true, "explanation": "Performance Testing is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q249", "type": "multiple-choice", "question": "How do you architect Performance Testing?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q240", "type": "code-output", "question": "Analyze this Performance Testing pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-024",
+  "prerequisites": ["quiz-pw-023"],
+  "xpReward": 250,
+  "coinReward": 50
+}

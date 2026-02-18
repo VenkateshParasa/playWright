@@ -1,0 +1,72 @@
+{
+  "id": "exercise-pw-017",
+  "title": "Handle Dynamic Content",
+  "slug": "handle-dynamic-content",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 30,
+  "description": "Learn to handle dynamically loaded content and AJAX responses",
+  "objectives": [
+    "Wait for dynamic content to load",
+    "Handle AJAX requests",
+    "Work with infinite scroll",
+    "Detect and wait for DOM changes",
+    "Handle lazy-loaded images"
+  ],
+  "instructions": "Write tests that:\n1. Wait for dynamic content loaded via AJAX\n2. Handle content that appears after a delay\n3. Work with infinite scroll lists\n4. Detect when new elements are added to DOM\n5. Verify lazy-loaded content",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle dynamic content', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/2');\n  \n  // TODO: Click start and wait for dynamic content\n  \n  // TODO: Verify content appears\n  \n  // TODO: Handle additional dynamic scenarios\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_dynamic_content(page: Page):\n    page.goto('https://practice.expandtesting.com/dynamic-loading/2')\n    \n    # TODO: Click start and wait for dynamic content\n    \n    # TODO: Verify content appears\n    \n    # TODO: Handle additional dynamic scenarios\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle dynamic content', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/2');\n  \n  // TODO: Click start and wait for dynamic content\n  \n  // TODO: Verify content appears\n  \n  // TODO: Handle additional dynamic scenarios\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle dynamic content', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/2');\n  \n  await page.click('button:has-text(\"Start\")');\n  \n  // Wait for loading to finish and content to appear\n  await page.waitForSelector('#finish', { state: 'visible', timeout: 10000 });\n  \n  const result = page.locator('#finish');\n  await expect(result).toContainText('Hello World!');\n  \n  // Test dynamic table\n  await page.goto('https://practice.expandtesting.com/tables');\n  await page.waitForLoadState('networkidle');\n  \n  const tableRows = page.locator('table tbody tr');\n  const rowCount = await tableRows.count();\n  expect(rowCount).toBeGreaterThan(0);\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_dynamic_content(page: Page):\n    page.goto('https://practice.expandtesting.com/dynamic-loading/2')\n    \n    page.click('button:has-text(\"Start\")')\n    \n    # Wait for loading to finish and content to appear\n    page.wait_for_selector('#finish', state='visible', timeout=10000)\n    \n    result = page.locator('#finish')\n    expect(result).to_contain_text('Hello World!')\n    \n    # Test dynamic table\n    page.goto('https://practice.expandtesting.com/tables')\n    page.wait_for_load_state('networkidle')\n    \n    table_rows = page.locator('table tbody tr')\n    row_count = table_rows.count()\n    assert row_count > 0",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle dynamic content', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/2');\n  \n  await page.click('button:has-text(\"Start\")');\n  \n  // Wait for loading to finish and content to appear\n  await page.waitForSelector('#finish', { state: 'visible', timeout: 10000 });\n  \n  const result = page.locator('#finish');\n  await expect(result).toContainText('Hello World!');\n  \n  // Test dynamic table\n  await page.goto('https://practice.expandtesting.com/tables');\n  await page.waitForLoadState('networkidle');\n  \n  const tableRows = page.locator('table tbody tr');\n  const rowCount = await tableRows.count();\n  expect(rowCount).toBeGreaterThan(0);\n});"
+  },
+  "hints": [
+    "Use waitForSelector with state: 'visible'",
+    "Use waitForLoadState('networkidle') for AJAX",
+    "Set appropriate timeouts for slow loading content",
+    "Use waitForResponse to wait for specific API calls",
+    "Check element count changes for infinite scroll"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Wait for dynamic content",
+      "input": null,
+      "expectedBehavior": "Content appears after AJAX load",
+      "points": 40
+    },
+    {
+      "id": "test-2",
+      "name": "Verify loaded content",
+      "input": null,
+      "expectedBehavior": "Dynamically loaded text is correct",
+      "points": 30
+    },
+    {
+      "id": "test-3",
+      "name": "Handle network idle",
+      "input": null,
+      "expectedBehavior": "Wait for all network requests to complete",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Waiting",
+      "url": "https://playwright.dev/docs/navigations"
+    },
+    {
+      "title": "Network Events",
+      "url": "https://playwright.dev/docs/network"
+    }
+  ],
+  "relatedLessons": ["lesson-033", "lesson-034"],
+  "xpReward": 300,
+  "coinReward": 75,
+  "tags": ["dynamic-content", "ajax", "async", "waiting"]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-059",
+  "title": "Advanced Patterns",
+  "slug": "advanced-patterns",
+  "track": "selenium",
+  "category": "advanced",
+  "description": "Advanced Advanced Patterns for enterprise Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q591", "type": "multiple-choice", "question": "What makes Advanced Patterns advanced?", "options": ["Complexity", "Scalability needs", "Enterprise requirements", "All factors"], "correctAnswer": 3, "explanation": "Advanced Patterns addresses complex enterprise automation challenges.", "difficulty": "hard", "points": 10, "tags": ["advanced", "advanced-patterns"]},
+    {"id": "quiz-sel-q592", "type": "code-completion", "question": "Implement advanced Advanced Patterns:", "codeTemplate": "// Advanced template", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This shows advanced Advanced Patterns implementation.", "difficulty": "hard", "points": 15, "tags": ["advanced", "implementation"]},
+    {"id": "quiz-sel-q593", "type": "true-false", "question": "Advanced Patterns requires deep architectural knowledge.", "correctAnswer": true, "explanation": "Advanced Patterns involves complex architectural decisions.", "difficulty": "hard", "points": 5, "tags": ["architecture", "expertise"]},
+    {"id": "quiz-sel-q594", "type": "multiple-choice", "question": "How does Advanced Patterns scale?", "options": ["Horizontally", "Vertically", "Both ways", "Depends on architecture"], "correctAnswer": 3, "explanation": "Advanced Patterns scaling depends on infrastructure and design.", "difficulty": "hard", "points": 10, "tags": ["scalability", "architecture"]},
+    {"id": "quiz-sel-q595", "type": "code-completion", "question": "Optimize Advanced Patterns for production:", "codeTemplate": "// Production code", "correctAnswer": "// Production-ready solution", "acceptedAnswers": ["solution"], "explanation": "This optimization is crucial for Advanced Patterns in production.", "difficulty": "hard", "points": 15, "tags": ["production", "optimization"]},
+    {"id": "quiz-sel-q596", "type": "multiple-choice", "question": "What are Advanced Patterns tradeoffs?", "options": ["Cost vs performance", "Complexity vs maintainability", "Speed vs reliability", "Multiple tradeoffs exist"], "correctAnswer": 3, "explanation": "Advanced Patterns involves balancing various concerns.", "difficulty": "hard", "points": 10, "tags": ["tradeoffs", "decisions"]},
+    {"id": "quiz-sel-q597", "type": "debugging", "question": "Diagnose this Advanced Patterns production issue:", "code": "// Complex production issue", "options": ["Infrastructure", "Code", "Configuration", "Requires deep analysis"], "correctAnswer": 3, "explanation": "Production Advanced Patterns issues need comprehensive analysis.", "difficulty": "hard", "points": 20, "tags": ["debugging", "production"]},
+    {"id": "quiz-sel-q598", "type": "true-false", "question": "Advanced Patterns is suitable for all projects.", "correctAnswer": false, "explanation": "Advanced Patterns is most valuable for large-scale projects.", "difficulty": "hard", "points": 5, "tags": ["suitability", "assessment"]},
+    {"id": "quiz-sel-q599", "type": "multiple-choice", "question": "How do you architect Advanced Patterns?", "options": ["Monolithic", "Microservices", "Hybrid", "Context-dependent"], "correctAnswer": 3, "explanation": "Advanced Patterns architecture should match project needs.", "difficulty": "hard", "points": 10, "tags": ["architecture", "design"]},
+    {"id": "quiz-sel-q590", "type": "code-output", "question": "Analyze this Advanced Patterns architecture:", "code": "// Architecture code", "options": ["Good design", "Anti-pattern", "Needs refinement", "Depends on requirements"], "correctAnswer": 2, "explanation": "This Advanced Patterns architecture has room for improvement.", "difficulty": "hard", "points": 15, "tags": ["architecture", "analysis"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-059",
+  "prerequisites": ["quiz-sel-058"],
+  "xpReward": 250,
+  "coinReward": 50
+}

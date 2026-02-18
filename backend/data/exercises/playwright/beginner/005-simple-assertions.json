@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pw-005",
+  "title": "Make Simple Assertions",
+  "slug": "simple-assertions",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 15,
+  "description": "Learn to use Playwright's assertion library for verifying test expectations",
+  "objectives": [
+    "Use toBeVisible assertion",
+    "Use toHaveText assertion",
+    "Use toHaveURL assertion",
+    "Use toContainText assertion",
+    "Handle negative assertions"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Navigates to a webpage\n2. Asserts an element is visible\n3. Asserts an element contains specific text\n4. Asserts the URL matches expected value\n5. Asserts an element is not visible",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('simple assertions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // TODO: Assert the input field is visible\n  \n  // TODO: Add a todo item 'Learn Playwright'\n  \n  // TODO: Assert the todo text is visible\n  \n  // TODO: Assert URL contains 'todomvc'\n  \n  // TODO: Assert completed todos section is not visible initially\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_simple_assertions(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    \n    # TODO: Assert the input field is visible\n    \n    # TODO: Add a todo item 'Learn Playwright'\n    \n    # TODO: Assert the todo text is visible\n    \n    # TODO: Assert URL contains 'todomvc'\n    \n    # TODO: Assert completed todos section is not visible initially\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('simple assertions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // TODO: Assert the input field is visible\n  \n  // TODO: Add a todo item 'Learn Playwright'\n  \n  // TODO: Assert the todo text is visible\n  \n  // TODO: Assert URL contains 'todomvc'\n  \n  // TODO: Assert completed todos section is not visible initially\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('simple assertions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  const input = page.getByPlaceholder('What needs to be done?');\n  await expect(input).toBeVisible();\n  \n  await input.fill('Learn Playwright');\n  await input.press('Enter');\n  \n  await expect(page.getByText('Learn Playwright')).toBeVisible();\n  await expect(page).toHaveURL(/.*todomvc/);\n  \n  await expect(page.locator('.clear-completed')).not.toBeVisible();\n});",
+    "python": "from playwright.sync_api import Page, expect\nimport re\n\ndef test_simple_assertions(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    \n    input_field = page.get_by_placeholder('What needs to be done?')\n    expect(input_field).to_be_visible()\n    \n    input_field.fill('Learn Playwright')\n    input_field.press('Enter')\n    \n    expect(page.get_by_text('Learn Playwright')).to_be_visible()\n    expect(page).to_have_url(re.compile('.*todomvc'))\n    \n    expect(page.locator('.clear-completed')).not_to_be_visible()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('simple assertions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  const input = page.getByPlaceholder('What needs to be done?');\n  await expect(input).toBeVisible();\n  \n  await input.fill('Learn Playwright');\n  await input.press('Enter');\n  \n  await expect(page.getByText('Learn Playwright')).toBeVisible();\n  await expect(page).toHaveURL(/.*todomvc/);\n  \n  await expect(page.locator('.clear-completed')).not.toBeVisible();\n});"
+  },
+  "hints": [
+    "Use expect(locator).toBeVisible() to check visibility",
+    "Use expect(page).toHaveURL() to verify URLs",
+    "Use .not before an assertion to negate it",
+    "Playwright assertions auto-wait for conditions",
+    "Regular expressions work with toHaveURL and toHaveText"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Visibility assertion works",
+      "input": null,
+      "expectedBehavior": "Input field visibility is verified",
+      "points": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Text assertion works",
+      "input": null,
+      "expectedBehavior": "Todo item text is verified",
+      "points": 25
+    },
+    {
+      "id": "test-3",
+      "name": "URL assertion works",
+      "input": null,
+      "expectedBehavior": "URL matches expected pattern",
+      "points": 25
+    },
+    {
+      "id": "test-4",
+      "name": "Negative assertion works",
+      "input": null,
+      "expectedBehavior": "Element not visible is verified",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Assertions",
+      "url": "https://playwright.dev/docs/assertions"
+    },
+    {
+      "title": "Auto-waiting",
+      "url": "https://playwright.dev/docs/actionability"
+    }
+  ],
+  "relatedLessons": ["lesson-009", "lesson-010"],
+  "xpReward": 150,
+  "coinReward": 40,
+  "tags": ["assertions", "expect", "visibility", "testing"]
+}

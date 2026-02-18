@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-004",
+  "title": "Performance Testing",
+  "slug": "performance-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 4,
+  "duration": 35,
+  "description": "Measure and monitor application performance with Playwright.",
+  "objectives": [
+    "Measure load times",
+    "Analyze Core Web Vitals",
+    "Profile performance",
+    "Set performance budgets"
+  ],
+  "prerequisites": [
+    "pw-advanced-003"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Performance Testing",
+        "type": "text",
+        "content": "# Performance Testing\n\nEnsure your application meets performance standards.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Performance Testing\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Performance Testing concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, performance testing is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Performance Testing\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Performance Testing is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Performance Testing for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Performance Testing Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-004",
+  "nextLesson": "pw-advanced-005",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "performance",
+    "automation",
+    "testing"
+  ]
+}

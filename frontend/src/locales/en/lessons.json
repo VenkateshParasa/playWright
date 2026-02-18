@@ -1,0 +1,96 @@
+{
+  "list": {
+    "title": "All Lessons",
+    "subtitle": "Explore our comprehensive collection of test automation lessons",
+    "filterByCategory": "Filter by Category",
+    "filterByDifficulty": "Filter by Difficulty",
+    "sortBy": "Sort By",
+    "searchPlaceholder": "Search lessons...",
+    "noLessons": "No lessons found matching your criteria",
+    "loadMore": "Load More Lessons"
+  },
+  "card": {
+    "duration": "{{minutes}} min",
+    "chapters": "{{count}} chapter",
+    "chapters_plural": "{{count}} chapters",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "startLesson": "Start Lesson",
+    "continueLesson": "Continue Lesson",
+    "reviewLesson": "Review Lesson",
+    "completed": "Completed",
+    "inProgress": "{{progress}}% Complete"
+  },
+  "player": {
+    "title": "Lesson",
+    "nextChapter": "Next Chapter",
+    "previousChapter": "Previous Chapter",
+    "completeLesson": "Complete Lesson",
+    "tableOfContents": "Table of Contents",
+    "resources": "Resources",
+    "notes": "Notes",
+    "bookmarks": "Bookmarks",
+    "addNote": "Add Note",
+    "addBookmark": "Add Bookmark",
+    "copyCode": "Copy Code",
+    "runCode": "Run Code",
+    "resetCode": "Reset Code",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "toggleTheme": "Toggle Theme"
+  },
+  "details": {
+    "overview": "Overview",
+    "whatYouWillLearn": "What You'll Learn",
+    "prerequisites": "Prerequisites",
+    "learningObjectives": "Learning Objectives",
+    "syllabus": "Syllabus",
+    "instructor": "Instructor",
+    "lastUpdated": "Last Updated",
+    "language": "Language",
+    "subtitles": "Subtitles",
+    "enrollNow": "Enroll Now",
+    "startNow": "Start Now",
+    "downloadResources": "Download Resources",
+    "shareLesson": "Share Lesson"
+  },
+  "progress": {
+    "lessonsCompleted": "Lessons Completed",
+    "currentLesson": "Current Lesson",
+    "timeSpent": "Time Spent",
+    "averageScore": "Average Score",
+    "continueWhere": "Continue where you left off",
+    "recommendedNext": "Recommended Next Lessons",
+    "recentActivity": "Recent Activity"
+  },
+  "completion": {
+    "title": "Congratulations!",
+    "message": "You've completed this lesson!",
+    "earnedPoints": "You earned {{points}} points",
+    "nextSteps": "Next Steps",
+    "takeQuiz": "Take the Quiz",
+    "practiceExercises": "Practice Exercises",
+    "nextLesson": "Next Lesson",
+    "reviewLesson": "Review This Lesson",
+    "shareSuccess": "Share Your Success"
+  },
+  "categories": {
+    "gettingStarted": "Getting Started",
+    "locators": "Locators & Selectors",
+    "interactions": "User Interactions",
+    "assertions": "Assertions & Validations",
+    "apiTesting": "API Testing",
+    "performance": "Performance Testing",
+    "ci-cd": "CI/CD Integration",
+    "bestPractices": "Best Practices",
+    "debugging": "Debugging & Troubleshooting",
+    "frameworks": "Test Frameworks"
+  },
+  "difficulty": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert"
+  }
+}

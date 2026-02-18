@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-016",
+  "title": "Browser Contexts",
+  "slug": "browser-contexts",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master Browser Contexts concepts in Playwright testing",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q161", "type": "multiple-choice", "question": "What is the primary benefit of Browser Contexts in Playwright?", "options": ["Faster execution", "Better test isolation", "Easier debugging", "All of the above"], "correctAnswer": 3, "explanation": "Browser Contexts improves test reliability, isolation, and maintainability.", "difficulty": "medium", "points": 10, "tags": ["contexts", "concepts"]},
+    {"id": "quiz-pw-q162", "type": "code-completion", "question": "Complete the code for Browser Contexts:", "codeTemplate": "// Code template for contexts", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the correct way to implement Browser Contexts.", "difficulty": "medium", "points": 15, "tags": ["contexts", "code"]},
+    {"id": "quiz-pw-q163", "type": "true-false", "question": "Browser Contexts can improve test performance.", "correctAnswer": true, "explanation": "Browser Contexts is designed to optimize test execution and reliability.", "difficulty": "medium", "points": 5, "tags": ["contexts", "performance"]},
+    {"id": "quiz-pw-q164", "type": "multiple-choice", "question": "When should you use Browser Contexts?", "options": ["Always", "Only in CI/CD", "For complex scenarios", "Never"], "correctAnswer": 2, "explanation": "Browser Contexts is most beneficial for complex testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["contexts", "best-practices"]},
+    {"id": "quiz-pw-q165", "type": "code-completion", "question": "Complete the advanced Browser Contexts pattern:", "codeTemplate": "// Advanced pattern", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates an advanced use case for Browser Contexts.", "difficulty": "medium", "points": 15, "tags": ["contexts", "advanced"]},
+    {"id": "quiz-pw-q166", "type": "multiple-choice", "question": "What are common Browser Contexts pitfalls?", "options": ["Resource leaks", "Race conditions", "Configuration errors", "All of the above"], "correctAnswer": 3, "explanation": "Be aware of these common issues when working with Browser Contexts.", "difficulty": "medium", "points": 10, "tags": ["contexts", "troubleshooting"]},
+    {"id": "quiz-pw-q167", "type": "debugging", "question": "What's wrong with this Browser Contexts implementation?", "code": "// Problematic code", "options": ["Missing configuration", "Incorrect usage", "Performance issue", "All could be issues"], "correctAnswer": 1, "explanation": "This code doesn't follow Browser Contexts best practices.", "difficulty": "medium", "points": 20, "tags": ["contexts", "debugging"]},
+    {"id": "quiz-pw-q168", "type": "true-false", "question": "Browser Contexts requires additional dependencies.", "correctAnswer": false, "explanation": "Browser Contexts is built into Playwright without extra dependencies.", "difficulty": "medium", "points": 5, "tags": ["contexts", "dependencies"]},
+    {"id": "quiz-pw-q169", "type": "multiple-choice", "question": "How do you configure Browser Contexts in playwright.config?", "options": ["In use section", "In projects", "At root level", "Depends on use case"], "correctAnswer": 3, "explanation": "Browser Contexts configuration location depends on your specific needs.", "difficulty": "medium", "points": 10, "tags": ["contexts", "configuration"]},
+    {"id": "quiz-pw-q160", "type": "code-output", "question": "What does this Browser Contexts code produce?", "code": "// Sample code", "options": ["Expected result A", "Expected result B", "Error", "Depends on context"], "correctAnswer": 1, "explanation": "This code demonstrates a key Browser Contexts behavior.", "difficulty": "medium", "points": 15, "tags": ["contexts", "behavior"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-016",
+  "prerequisites": ["quiz-pw-015"],
+  "xpReward": 200,
+  "coinReward": 40
+}

@@ -1,0 +1,667 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-17",
+  "description": "File mapping for folder structure refactoring",
+  "totalFiles": 650,
+
+  "backend": {
+    "models": {
+      "user": [
+        {
+          "from": "backend/src/models/User.ts",
+          "to": "backend/src/models/user/User.ts",
+          "domain": "user",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Session.ts",
+          "to": "backend/src/models/user/Session.ts",
+          "domain": "user",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/OAuth2Token.ts",
+          "to": "backend/src/models/user/OAuth2Token.ts",
+          "domain": "user",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/SecurityPolicy.ts",
+          "to": "backend/src/models/user/SecurityPolicy.ts",
+          "domain": "user",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/CommunityProfile.ts",
+          "to": "backend/src/models/user/CommunityProfile.ts",
+          "domain": "user",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/UserProgress.ts",
+          "to": "backend/src/models/user/UserProgress.ts",
+          "domain": "user",
+          "type": "model"
+        }
+      ],
+
+      "learning": [
+        {
+          "from": "backend/src/models/Lesson.ts",
+          "to": "backend/src/models/learning/Lesson.ts",
+          "domain": "learning",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Course.ts",
+          "to": "backend/src/models/learning/Course.ts",
+          "domain": "learning",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Quiz.ts",
+          "to": "backend/src/models/learning/Quiz.ts",
+          "domain": "learning",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Flashcard.ts",
+          "to": "backend/src/models/learning/Flashcard.ts",
+          "domain": "learning",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Deck.ts",
+          "to": "backend/src/models/learning/Deck.ts",
+          "domain": "learning",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Card.ts",
+          "to": "backend/src/models/learning/Card.ts",
+          "domain": "learning",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/VideoProgress.ts",
+          "to": "backend/src/models/learning/VideoProgress.ts",
+          "domain": "learning",
+          "type": "model"
+        }
+      ],
+
+      "gamification": [
+        {
+          "from": "backend/src/models/Achievement.ts",
+          "to": "backend/src/models/gamification/Achievement.ts",
+          "domain": "gamification",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/UserGamification.ts",
+          "to": "backend/src/models/gamification/UserGamification.ts",
+          "domain": "gamification",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Reward.ts",
+          "to": "backend/src/models/gamification/Reward.ts",
+          "domain": "gamification",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Quest.ts",
+          "to": "backend/src/models/gamification/Quest.ts",
+          "domain": "gamification",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Competition.ts",
+          "to": "backend/src/models/gamification/Competition.ts",
+          "domain": "gamification",
+          "type": "model"
+        }
+      ],
+
+      "commerce": [
+        {
+          "from": "backend/src/models/Subscription.ts",
+          "to": "backend/src/models/commerce/Subscription.ts",
+          "domain": "commerce",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Transaction.ts",
+          "to": "backend/src/models/commerce/Transaction.ts",
+          "domain": "commerce",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Pricing.ts",
+          "to": "backend/src/models/commerce/Pricing.ts",
+          "domain": "commerce",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Coupon.ts",
+          "to": "backend/src/models/commerce/Coupon.ts",
+          "domain": "commerce",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Affiliate.ts",
+          "to": "backend/src/models/commerce/Affiliate.ts",
+          "domain": "commerce",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Referral.ts",
+          "to": "backend/src/models/commerce/Referral.ts",
+          "domain": "commerce",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/InstructorPayout.ts",
+          "to": "backend/src/models/commerce/InstructorPayout.ts",
+          "domain": "commerce",
+          "type": "model"
+        }
+      ],
+
+      "enterprise": [
+        {
+          "from": "backend/src/models/Tenant.ts",
+          "to": "backend/src/models/enterprise/Tenant.ts",
+          "domain": "enterprise",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/ApiKey.ts",
+          "to": "backend/src/models/enterprise/ApiKey.ts",
+          "domain": "enterprise",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/OAuth2Client.ts",
+          "to": "backend/src/models/enterprise/OAuth2Client.ts",
+          "domain": "enterprise",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Webhook.ts",
+          "to": "backend/src/models/enterprise/Webhook.ts",
+          "domain": "enterprise",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/WebhookEvent.ts",
+          "to": "backend/src/models/enterprise/WebhookEvent.ts",
+          "domain": "enterprise",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/ComplianceLog.ts",
+          "to": "backend/src/models/enterprise/ComplianceLog.ts",
+          "domain": "enterprise",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/AuditLog.ts",
+          "to": "backend/src/models/enterprise/AuditLog.ts",
+          "domain": "enterprise",
+          "type": "model"
+        }
+      ],
+
+      "community": [
+        {
+          "from": "backend/src/models/Thread.ts",
+          "to": "backend/src/models/community/Thread.ts",
+          "domain": "community",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Reply.ts",
+          "to": "backend/src/models/community/Reply.ts",
+          "domain": "community",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Message.ts",
+          "to": "backend/src/models/community/Message.ts",
+          "domain": "community",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/StudyGroup.ts",
+          "to": "backend/src/models/community/StudyGroup.ts",
+          "domain": "community",
+          "type": "model"
+        }
+      ],
+
+      "content": [
+        {
+          "from": "backend/src/models/Video.ts",
+          "to": "backend/src/models/content/Video.ts",
+          "domain": "content",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Asset.ts",
+          "to": "backend/src/models/content/Asset.ts",
+          "domain": "content",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/LiveClass.ts",
+          "to": "backend/src/models/content/LiveClass.ts",
+          "domain": "content",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/Certificate.ts",
+          "to": "backend/src/models/content/Certificate.ts",
+          "domain": "content",
+          "type": "model"
+        }
+      ],
+
+      "marketing": [
+        {
+          "from": "backend/src/models/Lead.ts",
+          "to": "backend/src/models/marketing/Lead.ts",
+          "domain": "marketing",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/EmailCampaign.ts",
+          "to": "backend/src/models/marketing/EmailCampaign.ts",
+          "domain": "marketing",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/LandingPage.ts",
+          "to": "backend/src/models/marketing/LandingPage.ts",
+          "domain": "marketing",
+          "type": "model"
+        }
+      ],
+
+      "mentorship": [
+        {
+          "from": "backend/src/models/Mentor.ts",
+          "to": "backend/src/models/mentorship/Mentor.ts",
+          "domain": "mentorship",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/MentorshipProgram.ts",
+          "to": "backend/src/models/mentorship/MentorshipProgram.ts",
+          "domain": "mentorship",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/MentorshipSession.ts",
+          "to": "backend/src/models/mentorship/MentorshipSession.ts",
+          "domain": "mentorship",
+          "type": "model"
+        }
+      ],
+
+      "analytics": [
+        {
+          "from": "backend/src/models/CustomReport.ts",
+          "to": "backend/src/models/analytics/CustomReport.ts",
+          "domain": "analytics",
+          "type": "model"
+        }
+      ],
+
+      "shared": [
+        {
+          "from": "backend/src/models/Notification.ts",
+          "to": "backend/src/models/shared/Notification.ts",
+          "domain": "shared",
+          "type": "model"
+        },
+        {
+          "from": "backend/src/models/types.ts",
+          "to": "backend/src/models/shared/types.ts",
+          "domain": "shared",
+          "type": "types"
+        }
+      ]
+    },
+
+    "controllers": {
+      "note": "Most controllers are already organized by domain. Only need to create barrel exports.",
+      "actions": [
+        "Add index.ts to each controller folder",
+        "Ensure consistent naming: camelCase + Controller suffix",
+        "Group related controllers in domain folders"
+      ]
+    },
+
+    "services": {
+      "note": "Services are already well-organized by domain. Only need barrel exports.",
+      "actions": [
+        "Add index.ts to each service folder",
+        "Ensure consistent naming: camelCase + Service suffix",
+        "Maintain existing domain structure"
+      ]
+    }
+  },
+
+  "frontend": {
+    "pages": {
+      "note": "Some pages need case normalization (Auth → auth)",
+      "actions": [
+        {
+          "from": "frontend/src/pages/Auth/",
+          "to": "frontend/src/pages/auth/",
+          "action": "Rename folder to lowercase"
+        },
+        {
+          "from": "frontend/src/pages/admin/",
+          "to": "frontend/src/pages/admin/",
+          "action": "Already correct - add barrel exports"
+        }
+      ]
+    },
+
+    "components": {
+      "reorganize": [
+        {
+          "description": "Create common folder for shared components",
+          "action": "Move Button, Input, Card, Modal to components/common/"
+        },
+        {
+          "description": "Create layout folder",
+          "action": "Move Header, Sidebar, Footer to components/layout/"
+        },
+        {
+          "description": "Organize domain-specific components",
+          "action": "Group lesson, quiz, flashcard components by domain"
+        }
+      ]
+    },
+
+    "stores": {
+      "note": "Stores are flat but well-named. Add barrel export.",
+      "action": "Create stores/index.ts with all store exports"
+    },
+
+    "hooks": {
+      "note": "Hooks are flat. Consider grouping by domain in future.",
+      "action": "Create hooks/index.ts barrel export"
+    }
+  },
+
+  "documentation": {
+    "reorganize": [
+      {
+        "description": "Group user-facing docs",
+        "action": "Move getting-started, guides to docs/user/"
+      },
+      {
+        "description": "Group developer docs",
+        "action": "Move architecture, API docs to docs/developer/"
+      },
+      {
+        "description": "Group admin docs",
+        "action": "Move admin guides to docs/admin/"
+      },
+      {
+        "description": "Group deployment docs",
+        "action": "Move deployment guides to docs/deployment/"
+      }
+    ]
+  },
+
+  "importUpdates": {
+    "backend": {
+      "models": {
+        "pattern": "import { Model } from '@/models/domain'",
+        "examples": [
+          {
+            "before": "import { User } from '../models/User'",
+            "after": "import { User } from '@/models/user'"
+          },
+          {
+            "before": "import { Lesson } from '../../models/Lesson'",
+            "after": "import { Lesson } from '@/models/learning'"
+          },
+          {
+            "before": "import { Achievement } from '../../../models/Achievement'",
+            "after": "import { Achievement } from '@/models/gamification'"
+          }
+        ]
+      },
+      "services": {
+        "pattern": "import { service } from '@/services/domain'",
+        "examples": [
+          {
+            "before": "import { authService } from '../../services/auth/authService'",
+            "after": "import { authService } from '@/services/auth'"
+          },
+          {
+            "before": "import { aiService } from '../services/ai/openaiService'",
+            "after": "import { aiService } from '@/services/ai'"
+          }
+        ]
+      },
+      "controllers": {
+        "pattern": "import { controller } from '@/controllers/domain'",
+        "examples": [
+          {
+            "before": "import { authController } from '../controllers/auth/authController'",
+            "after": "import { authController } from '@/controllers/auth'"
+          }
+        ]
+      }
+    },
+
+    "frontend": {
+      "components": {
+        "pattern": "import { Component } from '@/components/category'",
+        "examples": [
+          {
+            "before": "import { Button } from '../../../components/Button'",
+            "after": "import { Button } from '@/components/common'"
+          },
+          {
+            "before": "import { LessonCard } from '../../components/lessons/LessonCard'",
+            "after": "import { LessonCard } from '@/components/lessons'"
+          }
+        ]
+      },
+      "pages": {
+        "pattern": "import { Page } from '@/pages/feature'",
+        "examples": [
+          {
+            "before": "import { LoginPage } from '../pages/Auth/LoginPage'",
+            "after": "import { LoginPage } from '@/pages/auth'"
+          }
+        ]
+      },
+      "stores": {
+        "pattern": "import { store } from '@/stores'",
+        "examples": [
+          {
+            "before": "import { useAuthStore } from '../stores/authStore'",
+            "after": "import { useAuthStore } from '@/stores'"
+          }
+        ]
+      },
+      "hooks": {
+        "pattern": "import { hook } from '@/hooks'",
+        "examples": [
+          {
+            "before": "import { useAuth } from '../../hooks/useAuth'",
+            "after": "import { useAuth } from '@/hooks'"
+          }
+        ]
+      }
+    }
+  },
+
+  "tooling": {
+    "automatedScripts": [
+      {
+        "script": "scripts/organize-files.sh",
+        "purpose": "Create folder structure",
+        "usage": "./scripts/organize-files.sh"
+      },
+      {
+        "script": "scripts/update-imports.sh",
+        "purpose": "Update import statements (to be created)",
+        "usage": "./scripts/update-imports.sh"
+      },
+      {
+        "script": "scripts/create-barrel-exports.sh",
+        "purpose": "Generate index.ts files (to be created)",
+        "usage": "./scripts/create-barrel-exports.sh"
+      }
+    ],
+
+    "vscodeSettings": {
+      "searchAndReplace": {
+        "enableRegex": true,
+        "patterns": [
+          {
+            "find": "from ['\"]\\.\\./\\.\\./\\.\\./(models|services|controllers)/([^'\"]+)['\"]",
+            "replace": "from '@/$1/$2'"
+          }
+        ]
+      }
+    }
+  },
+
+  "validation": {
+    "tests": [
+      "npm run test",
+      "npm run test:coverage",
+      "npm run build",
+      "npm run type-check",
+      "npm run lint"
+    ],
+
+    "checks": [
+      "All tests passing",
+      "No TypeScript errors",
+      "No ESLint errors",
+      "Build succeeds",
+      "Coverage maintained",
+      "No broken imports",
+      "Barrel exports working"
+    ]
+  },
+
+  "migrationPhases": [
+    {
+      "phase": 1,
+      "name": "Preparation",
+      "duration": "1 day",
+      "tasks": [
+        "Create folder structure (run organize-files.sh)",
+        "Configure path aliases in tsconfig.json",
+        "Set up barrel exports templates",
+        "Create migration scripts",
+        "Team training"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Backend Models",
+      "duration": "1 day",
+      "domains": [
+        "user",
+        "learning",
+        "gamification",
+        "commerce",
+        "enterprise"
+      ],
+      "tasks": [
+        "Move model files to domain folders",
+        "Create barrel exports",
+        "Update imports",
+        "Run tests",
+        "Deploy to staging"
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Backend Services",
+      "duration": "1 day",
+      "tasks": [
+        "Create barrel exports for service folders",
+        "Update imports",
+        "Run tests",
+        "Deploy to staging"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Backend Controllers & Routes",
+      "duration": "1 day",
+      "tasks": [
+        "Create barrel exports",
+        "Update imports",
+        "Run tests",
+        "Deploy to staging"
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Frontend",
+      "duration": "1-2 days",
+      "tasks": [
+        "Reorganize pages",
+        "Reorganize components",
+        "Create barrel exports",
+        "Update imports",
+        "Run tests",
+        "Deploy to staging"
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Testing & Validation",
+      "duration": "1 day",
+      "tasks": [
+        "Full regression testing",
+        "Performance testing",
+        "Security scanning",
+        "Fix any issues found"
+      ]
+    },
+    {
+      "phase": 7,
+      "name": "Production Deployment",
+      "duration": "0.5 day",
+      "tasks": [
+        "Deploy to production",
+        "Monitor for 24 hours",
+        "Team feedback",
+        "Documentation update"
+      ]
+    }
+  ],
+
+  "rollbackPlan": {
+    "triggers": [
+      "Critical tests failing",
+      "Production errors",
+      "Performance degradation > 20%",
+      "Major features broken"
+    ],
+    "procedure": [
+      "Stop deployment",
+      "Notify team",
+      "Revert to previous commit",
+      "Investigate issues",
+      "Fix and retry"
+    ]
+  }
+}

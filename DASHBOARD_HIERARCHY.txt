@@ -1,0 +1,202 @@
+Dashboard Component Hierarchy
+==============================
+
+App.tsx
+  └── Layout.tsx
+      └── Dashboard.tsx
+          ├── DashboardSkeleton (when loading)
+          │   ├── WelcomeCardSkeleton
+          │   ├── ProgressOverviewSkeleton
+          │   ├── StreakCounterSkeleton
+          │   ├── QuickActionsSkeleton
+          │   ├── StudyTimeChartSkeleton
+          │   ├── UpcomingReviewsSkeleton
+          │   └── RecentAchievementsSkeleton
+          │
+          └── Loaded Dashboard
+              ├── WelcomeCard
+              │   ├── User icon
+              │   ├── Calendar icon
+              │   └── Current day badge
+              │
+              ├── Grid Row 1 (3 columns on lg)
+              │   ├── ProgressOverview
+              │   │   ├── TrendingUp icon
+              │   │   ├── Progress bar
+              │   │   ├── Week indicator
+              │   │   └── Lessons counter
+              │   │
+              │   ├── StreakCounter
+              │   │   ├── Flame icon
+              │   │   ├── Current streak display
+              │   │   └── Longest streak badge
+              │   │
+              │   └── QuickActions
+              │       ├── Continue Learning button
+              │       ├── Review Flashcards button
+              │       └── Practice Exercises button
+              │
+              ├── Grid Row 2 (2 columns on lg)
+              │   ├── StudyTimeChart
+              │   │   ├── BarChart3 icon
+              │   │   ├── Stats summary
+              │   │   └── Recharts BarChart
+              │   │
+              │   └── UpcomingReviews
+              │       ├── Brain icon
+              │       ├── Due counts grid
+              │       └── Review list
+              │
+              └── Full Width
+                  └── RecentAchievements
+                      ├── Trophy icon
+                      ├── Achievement count badge
+                      └── Achievement cards
+
+
+Props Flow
+==========
+
+Dashboard.tsx
+  ├─> mockDashboardData (or API data)
+  └─> Distributes to components:
+
+      WelcomeCard(userName, learningTrack, currentDay)
+      ProgressOverview(overallProgress, currentWeek, totalWeeks, lessonsCompleted, totalLessons)
+      StreakCounter(currentStreak, longestStreak)
+      UpcomingReviews(totalDueToday, totalDueTomorrow, upcomingReviews[])
+      RecentAchievements(achievements[], totalAchievements)
+      StudyTimeChart(data[])
+      QuickActions(nextLessonId, nextLessonTitle, reviewsAvailable, exercisesAvailable)
+
+
+Data Types (dashboard.ts)
+==========================
+
+DashboardData
+  ├── user: User
+  │   ├── name: string
+  │   ├── learningTrack: '30-day' | '60-day'
+  │   └── currentDay: number
+  │
+  ├── progress: Progress
+  │   ├── overallProgress: number
+  │   ├── currentWeek: number
+  │   ├── totalWeeks: number
+  │   ├── lessonsCompleted: number
+  │   └── totalLessons: number
+  │
+  ├── streak: Streak
+  │   ├── currentStreak: number
+  │   └── longestStreak: number
+  │
+  ├── reviews: Reviews
+  │   ├── totalDueToday: number
+  │   ├── totalDueTomorrow: number
+  │   └── upcomingReviews: Review[]
+  │       ├── id: string
+  │       ├── title: string
+  │       ├── dueTime: Date
+  │       └── category: string
+  │
+  ├── achievements: Achievement[]
+  │   ├── id: string
+  │   ├── title: string
+  │   ├── description: string
+  │   ├── icon: 'award' | 'trophy' | 'star' | 'zap'
+  │   ├── color: string
+  │   └── earnedAt: Date
+  │
+  ├── totalAchievements: number
+  │
+  ├── studyTime: StudyData[]
+  │   ├── day: string
+  │   ├── minutes: number
+  │   └── lessons: number
+  │
+  └── quickActions: QuickActionsData
+      ├── nextLessonId?: string
+      ├── nextLessonTitle?: string
+      ├── reviewsAvailable: number
+      └── exercisesAvailable: number
+
+
+File Locations
+==============
+
+Components:
+  /frontend/src/components/dashboard/
+    - WelcomeCard.tsx
+    - ProgressOverview.tsx
+    - StreakCounter.tsx
+    - UpcomingReviews.tsx
+    - RecentAchievements.tsx
+    - StudyTimeChart.tsx
+    - QuickActions.tsx
+    - SkeletonLoaders.tsx
+    - index.ts
+
+Pages:
+  /frontend/src/pages/
+    - Dashboard.tsx
+
+Types:
+  /frontend/src/types/
+    - dashboard.ts
+
+Documentation:
+  /
+    - DASHBOARD_IMPLEMENTATION.md (full docs)
+    - DASHBOARD_QUICKREF.md (quick reference)
+    - DASHBOARD_HIERARCHY.txt (this file)
+
+
+Icon Usage
+==========
+
+lucide-react icons used:
+  - User (WelcomeCard)
+  - Calendar (WelcomeCard)
+  - TrendingUp (ProgressOverview)
+  - BookOpen (ProgressOverview)
+  - CheckCircle2 (ProgressOverview)
+  - Flame (StreakCounter)
+  - Clock (UpcomingReviews)
+  - Brain (UpcomingReviews)
+  - AlertCircle (UpcomingReviews)
+  - Award (RecentAchievements)
+  - Trophy (RecentAchievements)
+  - Star (RecentAchievements)
+  - Zap (RecentAchievements)
+  - BarChart3 (StudyTimeChart)
+  - ArrowRight (QuickActions)
+  - Code (QuickActions)
+
+
+Styling Approach
+================
+
+All components use:
+  - Tailwind CSS utility classes
+  - Responsive breakpoints (sm, md, lg, xl)
+  - Color-coded themes per component
+  - Shadow and border utilities
+  - Hover and transition effects
+  - Rounded corners and padding
+  - Grid and flexbox layouts
+
+
+State Management
+================
+
+Dashboard.tsx:
+  - useState for loading state
+  - useState for dashboard data
+  - useEffect for data fetching
+  - Conditional rendering based on loading
+
+Components:
+  - Pure presentational components
+  - Props-driven rendering
+  - No internal state management
+  - Optional loading props for individual skeletons

@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-018",
+  "title": "Visual Testing",
+  "slug": "visual-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master Visual Testing concepts in Playwright testing",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q181", "type": "multiple-choice", "question": "What is the primary benefit of Visual Testing in Playwright?", "options": ["Faster execution", "Better test isolation", "Easier debugging", "All of the above"], "correctAnswer": 3, "explanation": "Visual Testing improves test reliability, isolation, and maintainability.", "difficulty": "medium", "points": 10, "tags": ["visual", "concepts"]},
+    {"id": "quiz-pw-q182", "type": "code-completion", "question": "Complete the code for Visual Testing:", "codeTemplate": "// Code template for visual", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the correct way to implement Visual Testing.", "difficulty": "medium", "points": 15, "tags": ["visual", "code"]},
+    {"id": "quiz-pw-q183", "type": "true-false", "question": "Visual Testing can improve test performance.", "correctAnswer": true, "explanation": "Visual Testing is designed to optimize test execution and reliability.", "difficulty": "medium", "points": 5, "tags": ["visual", "performance"]},
+    {"id": "quiz-pw-q184", "type": "multiple-choice", "question": "When should you use Visual Testing?", "options": ["Always", "Only in CI/CD", "For complex scenarios", "Never"], "correctAnswer": 2, "explanation": "Visual Testing is most beneficial for complex testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["visual", "best-practices"]},
+    {"id": "quiz-pw-q185", "type": "code-completion", "question": "Complete the advanced Visual Testing pattern:", "codeTemplate": "// Advanced pattern", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates an advanced use case for Visual Testing.", "difficulty": "medium", "points": 15, "tags": ["visual", "advanced"]},
+    {"id": "quiz-pw-q186", "type": "multiple-choice", "question": "What are common Visual Testing pitfalls?", "options": ["Resource leaks", "Race conditions", "Configuration errors", "All of the above"], "correctAnswer": 3, "explanation": "Be aware of these common issues when working with Visual Testing.", "difficulty": "medium", "points": 10, "tags": ["visual", "troubleshooting"]},
+    {"id": "quiz-pw-q187", "type": "debugging", "question": "What's wrong with this Visual Testing implementation?", "code": "// Problematic code", "options": ["Missing configuration", "Incorrect usage", "Performance issue", "All could be issues"], "correctAnswer": 1, "explanation": "This code doesn't follow Visual Testing best practices.", "difficulty": "medium", "points": 20, "tags": ["visual", "debugging"]},
+    {"id": "quiz-pw-q188", "type": "true-false", "question": "Visual Testing requires additional dependencies.", "correctAnswer": false, "explanation": "Visual Testing is built into Playwright without extra dependencies.", "difficulty": "medium", "points": 5, "tags": ["visual", "dependencies"]},
+    {"id": "quiz-pw-q189", "type": "multiple-choice", "question": "How do you configure Visual Testing in playwright.config?", "options": ["In use section", "In projects", "At root level", "Depends on use case"], "correctAnswer": 3, "explanation": "Visual Testing configuration location depends on your specific needs.", "difficulty": "medium", "points": 10, "tags": ["visual", "configuration"]},
+    {"id": "quiz-pw-q180", "type": "code-output", "question": "What does this Visual Testing code produce?", "code": "// Sample code", "options": ["Expected result A", "Expected result B", "Error", "Depends on context"], "correctAnswer": 1, "explanation": "This code demonstrates a key Visual Testing behavior.", "difficulty": "medium", "points": 15, "tags": ["visual", "behavior"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-018",
+  "prerequisites": ["quiz-pw-017"],
+  "xpReward": 200,
+  "coinReward": 40
+}

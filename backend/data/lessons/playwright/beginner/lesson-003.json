@@ -1,0 +1,100 @@
+{
+  "id": "pw-beginner-003",
+  "title": "Writing Your First Test",
+  "slug": "writing-your-first-test",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 3,
+  "duration": 25,
+  "description": "Create your first Playwright test from scratch, understanding test structure, basic commands, and assertions.",
+  "objectives": [
+    "Understand the anatomy of a Playwright test",
+    "Write basic test cases with navigation and interactions",
+    "Use assertions to verify expected outcomes",
+    "Run and debug your first test"
+  ],
+  "prerequisites": ["pw-beginner-001", "pw-beginner-002"],
+  "content": {
+    "sections": [
+      {
+        "title": "Test Structure Basics",
+        "type": "text",
+        "content": "# Understanding Test Structure\n\nA Playwright test consists of several key components:\n\n## Import Statement\n\nEvery test file starts by importing the test runner and assertion library:\n\n```typescript\nimport { test, expect } from '@playwright/test';\n```\n\n- `test`: Function to define test cases and hooks\n- `expect`: Assertion library for verifying conditions\n\n## Test Block\n\nTests are defined using the `test()` function:\n\n```typescript\ntest('test name', async ({ page }) => {\n  // Test code here\n});\n```\n\n**Components**:\n- **Test name**: Descriptive string explaining what the test does\n- **async**: Tests are asynchronous (they perform actions that take time)\n- **{ page }**: Fixtures provided by Playwright (we'll cover more fixtures later)\n- **Test body**: The actual test code\n\n## The Page Fixture\n\nThe `page` fixture is your main interface to the browser:\n- Represents a single browser tab/page\n- Automatically created and cleaned up for each test\n- Provides methods for navigation, interaction, and assertions\n\n## Test Lifecycle\n\nEach test follows this lifecycle:\n1. **Setup**: Browser context and page are created\n2. **Execution**: Your test code runs\n3. **Teardown**: Browser context and page are closed automatically\n\nNo manual cleanup needed - Playwright handles it!"
+      },
+      {
+        "title": "Your First Test",
+        "type": "code",
+        "language": "typescript",
+        "code": "// tests/first-test.spec.ts\nimport { test, expect } from '@playwright/test';\n\ntest('visit Playwright homepage', async ({ page }) => {\n  // Navigate to the Playwright website\n  await page.goto('https://playwright.dev');\n  \n  // Verify the page title\n  await expect(page).toHaveTitle(/Playwright/);\n  \n  // Check if the main heading is visible\n  const heading = page.locator('h1');\n  await expect(heading).toBeVisible();\n  \n  // Verify the heading contains expected text\n  await expect(heading).toContainText('Playwright');\n});\n\n// Key points:\n// 1. Always use 'await' with Playwright methods\n// 2. page.goto() navigates to a URL\n// 3. expect() creates assertions\n// 4. Assertions automatically wait for conditions to be met",
+        "explanation": "This is a complete, working test. It navigates to a website and verifies content. Notice how simple and readable it is - this is the power of Playwright's API."
+      },
+      {
+        "title": "Basic Navigation",
+        "type": "text",
+        "content": "# Navigation Methods\n\n## page.goto(url)\n\nNavigate to a specific URL:\n\n```typescript\nawait page.goto('https://example.com');\n```\n\n**Options**:\n```typescript\n// Wait until network is idle\nawait page.goto('https://example.com', { \n  waitUntil: 'networkidle' \n});\n\n// Set custom timeout\nawait page.goto('https://example.com', { \n  timeout: 60000 \n});\n\n// Combine options\nawait page.goto('https://example.com', {\n  waitUntil: 'domcontentloaded',\n  timeout: 30000\n});\n```\n\n**Wait Until Options**:\n- `load`: Wait for load event (default)\n- `domcontentloaded`: Wait for DOMContentLoaded event\n- `networkidle`: Wait until no network connections for 500ms\n- `commit`: Wait for navigation to commit\n\n## Other Navigation Methods\n\n```typescript\n// Go back\nawait page.goBack();\n\n// Go forward\nawait page.goForward();\n\n// Reload the page\nawait page.reload();\n\n// Wait for navigation to complete\nawait page.waitForURL('**/dashboard');\n```\n\n## Using Base URL\n\nIf you configured `baseURL` in playwright.config.ts:\n\n```typescript\n// Instead of full URL\nawait page.goto('https://example.com/login');\n\n// Use relative path\nawait page.goto('/login');\n```"
+      },
+      {
+        "title": "Basic Interactions",
+        "type": "code",
+        "language": "typescript",
+        "code": "// tests/interactions.spec.ts\nimport { test, expect } from '@playwright/test';\n\ntest('basic interactions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // Type text into an input field\n  const input = page.locator('.new-todo');\n  await input.fill('Buy groceries');\n  \n  // Press Enter key\n  await input.press('Enter');\n  \n  // Click a button or element\n  await page.click('text=Active');\n  \n  // Double-click\n  await page.dblclick('.todo-list li');\n  \n  // Right-click (context menu)\n  await page.click('.todo-list li', { button: 'right' });\n  \n  // Hover over an element\n  await page.hover('.todo-count');\n  \n  // Focus an element\n  await page.focus('.new-todo');\n  \n  // Select option from dropdown\n  await page.selectOption('select#sort', 'price');\n});\n\n// Pro tips:\n// - fill() clears existing content first\n// - type() types character by character (slower but more realistic)\n// - All methods auto-wait for element to be ready",
+        "explanation": "This example shows common user interactions. Playwright makes them simple with intuitive method names and automatic waiting."
+      },
+      {
+        "title": "Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "// tests/assertions.spec.ts\nimport { test, expect } from '@playwright/test';\n\ntest('using assertions', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  // Page assertions\n  await expect(page).toHaveTitle(/Playwright/);\n  await expect(page).toHaveURL('https://playwright.dev/');\n  \n  // Element visibility\n  const getStarted = page.locator('text=Get Started');\n  await expect(getStarted).toBeVisible();\n  await expect(getStarted).toBeEnabled();\n  \n  // Text content\n  await expect(getStarted).toHaveText('Get Started');\n  await expect(getStarted).toContainText('Started');\n  \n  // Element attributes\n  const link = page.locator('a.navbar__item');\n  await expect(link).toHaveAttribute('href', '/docs/intro');\n  \n  // CSS properties\n  await expect(getStarted).toHaveCSS('color', 'rgb(255, 255, 255)');\n  \n  // Element count\n  const items = page.locator('.navbar__item');\n  await expect(items).toHaveCount(5);\n  \n  // Negative assertions\n  await expect(page.locator('.error')).not.toBeVisible();\n  await expect(page).not.toHaveURL(/login/);\n});\n\n// Important:\n// - Always use 'await' with expect()\n// - Assertions auto-retry until timeout (5 seconds default)\n// - This eliminates flakiness from timing issues",
+        "explanation": "Playwright assertions are powerful and auto-wait. They keep retrying until the condition is met or timeout occurs, making tests reliable."
+      },
+      {
+        "title": "Complete Test Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// tests/todo-app.spec.ts - A complete real-world test\nimport { test, expect } from '@playwright/test';\n\ntest.describe('Todo Application', () => {\n  \n  test('user can add and complete todos', async ({ page }) => {\n    // Navigate to the app\n    await page.goto('https://demo.playwright.dev/todomvc');\n    \n    // Add first todo\n    const input = page.locator('.new-todo');\n    await input.fill('Buy milk');\n    await input.press('Enter');\n    \n    // Verify todo was added\n    const firstTodo = page.locator('.todo-list li').first();\n    await expect(firstTodo).toHaveText('Buy milk');\n    \n    // Add second todo\n    await input.fill('Walk the dog');\n    await input.press('Enter');\n    \n    // Verify count\n    await expect(page.locator('.todo-list li')).toHaveCount(2);\n    \n    // Complete first todo\n    await firstTodo.locator('.toggle').check();\n    \n    // Verify it's marked as completed\n    await expect(firstTodo).toHaveClass(/completed/);\n    \n    // Verify counter updated\n    await expect(page.locator('.todo-count')).toHaveText('1 item left');\n  });\n  \n  test('user can filter todos', async ({ page }) => {\n    await page.goto('https://demo.playwright.dev/todomvc');\n    \n    // Add and complete a todo\n    await page.fill('.new-todo', 'Test task');\n    await page.press('.new-todo', 'Enter');\n    await page.check('.toggle');\n    \n    // Click Completed filter\n    await page.click('text=Completed');\n    \n    // Verify URL changed\n    await expect(page).toHaveURL(/completed/);\n    \n    // Verify completed todo is visible\n    await expect(page.locator('.todo-list li')).toHaveCount(1);\n    \n    // Click Active filter\n    await page.click('text=Active');\n    \n    // Verify no active todos\n    await expect(page.locator('.todo-list li')).toHaveCount(0);\n  });\n});\n\n// Best practices demonstrated:\n// 1. Use test.describe() to group related tests\n// 2. Give tests descriptive names\n// 3. Add multiple assertions to verify behavior thoroughly\n// 4. Test realistic user workflows",
+        "explanation": "This is a complete test suite testing a todo application. Notice how we group related tests, verify each action, and test complete user workflows."
+      },
+      {
+        "title": "Running and Debugging",
+        "type": "text",
+        "content": "# Running Your Tests\n\n## Command Line\n\n```bash\n# Run all tests\nnpx playwright test\n\n# Run a specific file\nnpx playwright test first-test.spec.ts\n\n# Run tests in headed mode (see browser)\nnpx playwright test --headed\n\n# Run in specific browser\nnpx playwright test --project=chromium\n\n# Run with UI mode (interactive)\nnpx playwright test --ui\n```\n\n## Debugging Tests\n\n### Method 1: Debug Mode\n\n```bash\nnpx playwright test --debug\n```\n\nThis opens Playwright Inspector where you can:\n- Step through test line by line\n- See page state at each step\n- Explore locators\n- Time-travel through test execution\n\n### Method 2: VS Code Debugger\n\n1. Set a breakpoint by clicking left of line number\n2. Click \"Debug Test\" button in VS Code\n3. Use VS Code's debug controls to step through\n\n### Method 3: Using console.log()\n\n```typescript\ntest('debugging example', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Log to see what's happening\n  console.log(await page.title());\n  \n  const button = page.locator('button');\n  console.log(await button.textContent());\n  console.log(await button.isVisible());\n});\n```\n\n### Method 4: Pause Test Execution\n\n```typescript\ntest('pause example', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Pause and inspect\n  await page.pause();\n  \n  // Test continues when you click Resume\n  await page.click('button');\n});\n```\n\n## Understanding Test Output\n\n```\nRunning 3 tests using 3 workers\n\n  ✓ first-test.spec.ts:3:1 › visit Playwright homepage (1s)\n  ✓ interactions.spec.ts:3:1 › basic interactions (2s)\n  ✓ todo-app.spec.ts:5:3 › Todo Application › user can add todos (1s)\n\n  3 passed (4s)\n```\n\n**Understanding the output**:\n- ✓ indicates passed test\n- Time in parentheses is execution time\n- Tests run in parallel by default\n- Total time is less than sum of individual tests\n\n## Common Errors\n\n### TimeoutError\n```\nTimeoutError: page.click: Timeout 30000ms exceeded.\n```\n**Cause**: Element not found or not clickable\n**Solution**: Check selector, increase timeout, or verify element exists\n\n### Navigation Error\n```\nError: page.goto: net::ERR_CONNECTION_REFUSED\n```\n**Cause**: Server not running or wrong URL\n**Solution**: Verify URL, start development server\n\n### Assertion Error\n```\nError: expect(locator).toHaveText(expected)\nExpected: \"Welcome\"\nReceived: \"Welcome Back\"\n```\n**Cause**: Actual text doesn't match expected\n**Solution**: Update expectation or fix application"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "# Test Writing Best Practices\n\n## 1. Use Descriptive Test Names\n\n```typescript\n// Bad\ntest('test1', async ({ page }) => { });\n\n// Good\ntest('user can login with valid credentials', async ({ page }) => { });\n```\n\n## 2. Follow AAA Pattern\n\n**Arrange, Act, Assert**:\n\n```typescript\ntest('user can add todo', async ({ page }) => {\n  // Arrange - Setup\n  await page.goto('/todos');\n  \n  // Act - Perform action\n  await page.fill('.new-todo', 'Buy milk');\n  await page.press('.new-todo', 'Enter');\n  \n  // Assert - Verify result\n  await expect(page.locator('.todo-list li')).toHaveText('Buy milk');\n});\n```\n\n## 3. Keep Tests Independent\n\nEach test should:\n- Not depend on other tests\n- Set up its own data\n- Clean up after itself (Playwright does this automatically)\n\n```typescript\n// Bad - depends on previous test\ntest('login', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('#email', 'user@test.com');\n  await page.click('#submit');\n});\n\ntest('view profile', async ({ page }) => {\n  // Assumes user is already logged in!\n  await page.goto('/profile');\n});\n\n// Good - each test is independent\ntest('user can view profile after login', async ({ page }) => {\n  // Login first\n  await page.goto('/login');\n  await page.fill('#email', 'user@test.com');\n  await page.click('#submit');\n  \n  // Then test profile\n  await page.goto('/profile');\n  await expect(page.locator('h1')).toHaveText('My Profile');\n});\n```\n\n## 4. Use Meaningful Selectors\n\n```typescript\n// Avoid\nawait page.click('div > div > button');\n\n// Better\nawait page.click('button[type=\"submit\"]');\n\n// Best\nawait page.click('button:has-text(\"Sign in\")');\n// Or with data-testid\nawait page.click('[data-testid=\"submit-button\"]');\n```\n\n## 5. Add Multiple Assertions\n\nVerify all relevant aspects:\n\n```typescript\ntest('successful login', async ({ page }) => {\n  await page.goto('/login');\n  await page.fill('#email', 'user@test.com');\n  await page.fill('#password', 'password');\n  await page.click('#submit');\n  \n  // Multiple assertions ensure complete verification\n  await expect(page).toHaveURL('/dashboard');\n  await expect(page.locator('.welcome')).toBeVisible();\n  await expect(page.locator('.user-name')).toHaveText('John Doe');\n  await expect(page.locator('.logout-button')).toBeVisible();\n});\n```\n\n## 6. Group Related Tests\n\n```typescript\ntest.describe('User Authentication', () => {\n  test('successful login', async ({ page }) => { });\n  test('login with wrong password', async ({ page }) => { });\n  test('login with non-existent user', async ({ page }) => { });\n});\n```\n\n## 7. Use beforeEach for Common Setup\n\n```typescript\ntest.describe('Todo Tests', () => {\n  test.beforeEach(async ({ page }) => {\n    // This runs before each test\n    await page.goto('/todos');\n  });\n  \n  test('add todo', async ({ page }) => {\n    // Page is already at /todos\n    await page.fill('.new-todo', 'Task 1');\n  });\n  \n  test('delete todo', async ({ page }) => {\n    // Page is already at /todos\n    await page.click('.delete-button');\n  });\n});\n```"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Playwright tests are async functions that receive fixtures like 'page'",
+    "Always use 'await' with Playwright methods for navigation and interactions",
+    "Assertions with expect() automatically retry until conditions are met",
+    "Use test.describe() to group related tests logically",
+    "Tests should follow the AAA pattern: Arrange, Act, Assert",
+    "Playwright provides excellent debugging tools including --debug and page.pause()",
+    "Keep tests independent - each test should set up its own state",
+    "Use descriptive test names that explain what is being tested"
+  ],
+  "resources": [
+    {
+      "title": "Writing Tests",
+      "url": "https://playwright.dev/docs/writing-tests",
+      "type": "documentation"
+    },
+    {
+      "title": "Test Assertions",
+      "url": "https://playwright.dev/docs/test-assertions",
+      "type": "documentation"
+    },
+    {
+      "title": "Debugging Tests",
+      "url": "https://playwright.dev/docs/debug",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-003",
+  "nextLesson": "pw-beginner-004",
+  "estimatedXP": 200,
+  "tags": ["playwright", "testing", "first-test", "assertions", "debugging"]
+}

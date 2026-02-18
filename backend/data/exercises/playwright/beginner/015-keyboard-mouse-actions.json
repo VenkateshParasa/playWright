@@ -1,0 +1,80 @@
+{
+  "id": "exercise-pw-015",
+  "title": "Handle Keyboard and Mouse Actions",
+  "slug": "keyboard-mouse-actions",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Learn to simulate keyboard inputs and mouse actions in Playwright",
+  "objectives": [
+    "Press individual keys",
+    "Use keyboard shortcuts",
+    "Perform mouse hover",
+    "Execute double-click",
+    "Right-click actions"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Uses keyboard.press for key actions\n2. Performs Ctrl+A and other shortcuts\n3. Hovers over elements\n4. Double-clicks elements\n5. Right-clicks for context menu",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('keyboard and mouse actions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // TODO: Type using keyboard\n  \n  // TODO: Use keyboard shortcuts\n  \n  // TODO: Hover over element\n  \n  // TODO: Double-click if applicable\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_keyboard_mouse(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    \n    # TODO: Type using keyboard\n    \n    # TODO: Use keyboard shortcuts\n    \n    # TODO: Hover over element\n    \n    # TODO: Double-click if applicable\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('keyboard and mouse actions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  // TODO: Type using keyboard\n  \n  // TODO: Use keyboard shortcuts\n  \n  // TODO: Hover over element\n  \n  // TODO: Double-click if applicable\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('keyboard and mouse actions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  const input = page.getByPlaceholder('What needs to be done?');\n  await input.click();\n  \n  // Type and press Enter\n  await input.type('First Task');\n  await page.keyboard.press('Enter');\n  \n  // Add another task and select all\n  await input.type('Second Task');\n  await page.keyboard.press('Control+A');\n  await page.keyboard.press('Backspace');\n  \n  // Type new task\n  await input.type('New Task');\n  await input.press('Enter');\n  \n  // Hover over todo item\n  const todo = page.locator('.todo-list li').first();\n  await todo.hover();\n  \n  // Verify delete button becomes visible on hover\n  await expect(todo.locator('.destroy')).toBeVisible();\n  \n  // Double-click to edit (if feature exists)\n  const label = todo.locator('label');\n  await label.dblclick();\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_keyboard_mouse(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    \n    input_field = page.get_by_placeholder('What needs to be done?')\n    input_field.click()\n    \n    # Type and press Enter\n    input_field.type('First Task')\n    page.keyboard.press('Enter')\n    \n    # Add another task and select all\n    input_field.type('Second Task')\n    page.keyboard.press('Control+A')\n    page.keyboard.press('Backspace')\n    \n    # Type new task\n    input_field.type('New Task')\n    input_field.press('Enter')\n    \n    # Hover over todo item\n    todo = page.locator('.todo-list li').first\n    todo.hover()\n    \n    # Verify delete button becomes visible on hover\n    expect(todo.locator('.destroy')).to_be_visible()\n    \n    # Double-click to edit\n    label = todo.locator('label')\n    label.dblclick()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('keyboard and mouse actions', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  \n  const input = page.getByPlaceholder('What needs to be done?');\n  await input.click();\n  \n  // Type and press Enter\n  await input.type('First Task');\n  await page.keyboard.press('Enter');\n  \n  // Add another task and select all\n  await input.type('Second Task');\n  await page.keyboard.press('Control+A');\n  await page.keyboard.press('Backspace');\n  \n  // Type new task\n  await input.type('New Task');\n  await input.press('Enter');\n  \n  // Hover over todo item\n  const todo = page.locator('.todo-list li').first();\n  await todo.hover();\n  \n  // Verify delete button becomes visible on hover\n  await expect(todo.locator('.destroy')).toBeVisible();\n  \n  // Double-click to edit\n  const label = todo.locator('label');\n  await label.dblclick();\n});"
+  },
+  "hints": [
+    "Use .type() for typing text character by character",
+    "Use page.keyboard.press() for key presses",
+    "Use .hover() to move mouse over element",
+    "Use .dblclick() for double-click",
+    "Use .click({ button: 'right' }) for right-click",
+    "Keyboard shortcuts: 'Control+A', 'Meta+V', etc."
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Keyboard typing works",
+      "input": "First Task",
+      "expectedBehavior": "Text is typed correctly",
+      "points": 25
+    },
+    {
+      "id": "test-2",
+      "name": "Keyboard shortcuts work",
+      "input": null,
+      "expectedBehavior": "Control+A selects all text",
+      "points": 25
+    },
+    {
+      "id": "test-3",
+      "name": "Mouse hover works",
+      "input": null,
+      "expectedBehavior": "Hover reveals hidden elements",
+      "points": 25
+    },
+    {
+      "id": "test-4",
+      "name": "Double-click works",
+      "input": null,
+      "expectedBehavior": "Double-click triggers edit mode",
+      "points": 25
+    }
+  ],
+  "resources": [
+    {
+      "title": "Keyboard",
+      "url": "https://playwright.dev/docs/input#keys-and-shortcuts"
+    },
+    {
+      "title": "Mouse",
+      "url": "https://playwright.dev/docs/input#mouse-click"
+    }
+  ],
+  "relatedLessons": ["lesson-029", "lesson-030"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["keyboard", "mouse", "actions", "hover", "shortcuts"]
+}

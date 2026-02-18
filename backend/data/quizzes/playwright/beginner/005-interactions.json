@@ -1,0 +1,160 @@
+{
+  "id": "quiz-pw-005",
+  "title": "Interactions and Actions",
+  "slug": "interactions",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Learn how to interact with web elements using Playwright actions",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q041",
+      "type": "multiple-choice",
+      "question": "Which method is used to type text into an input field?",
+      "options": [
+        "page.type()",
+        "page.fill()",
+        "page.enter()",
+        "page.input()"
+      ],
+      "correctAnswer": 1,
+      "explanation": "page.fill() is the recommended method to type text into input fields in Playwright.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["actions", "input"]
+    },
+    {
+      "id": "quiz-pw-q042",
+      "type": "code-completion",
+      "question": "Complete the code to click a button:",
+      "codeTemplate": "await page.getByRole('button', { name: 'Submit' }).____();",
+      "correctAnswer": "await page.getByRole('button', { name: 'Submit' }).click();",
+      "acceptedAnswers": [
+        "click"
+      ],
+      "explanation": "The click() method is used to click on elements in Playwright.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["actions", "click", "code"]
+    },
+    {
+      "id": "quiz-pw-q043",
+      "type": "true-false",
+      "question": "Playwright automatically scrolls elements into view before interacting with them.",
+      "correctAnswer": true,
+      "explanation": "Playwright automatically scrolls elements into view as part of its actionability checks.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["actions", "auto-wait", "scroll"]
+    },
+    {
+      "id": "quiz-pw-q044",
+      "type": "multiple-choice",
+      "question": "Which method performs a double-click on an element?",
+      "options": [
+        "click({ clickCount: 2 })",
+        "dblclick()",
+        "doubleClick()",
+        "Both A and B"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Both dblclick() and click({ clickCount: 2 }) can be used to double-click an element.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["actions", "click"]
+    },
+    {
+      "id": "quiz-pw-q045",
+      "type": "code-completion",
+      "question": "Complete the code to select an option from a dropdown:",
+      "codeTemplate": "await page.getByRole('combobox').____('Option 1');",
+      "correctAnswer": "await page.getByRole('combobox').selectOption('Option 1');",
+      "acceptedAnswers": [
+        "selectOption"
+      ],
+      "explanation": "selectOption() is used to select options from dropdown menus.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["actions", "select", "code"]
+    },
+    {
+      "id": "quiz-pw-q046",
+      "type": "true-false",
+      "question": "The check() method can be used on both checkboxes and radio buttons.",
+      "correctAnswer": true,
+      "explanation": "The check() method works for both checkboxes and radio buttons in Playwright.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["actions", "forms"]
+    },
+    {
+      "id": "quiz-pw-q047",
+      "type": "multiple-choice",
+      "question": "What is the difference between fill() and type()?",
+      "options": [
+        "fill() is faster as it sets the value directly",
+        "type() simulates keyboard events character by character",
+        "fill() clears the field first",
+        "All of the above"
+      ],
+      "correctAnswer": 3,
+      "explanation": "fill() is faster, clears the field first, and sets value directly. type() simulates actual keyboard events.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["actions", "input", "difference"]
+    },
+    {
+      "id": "quiz-pw-q048",
+      "type": "debugging",
+      "question": "What's wrong with this code?",
+      "code": "await page.getByRole('button').click().fill('text');",
+      "options": [
+        "Cannot chain fill() after click()",
+        "Missing locator specification",
+        "Need to wait between actions",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Actions cannot be chained this way. Each action should be performed on the appropriate element separately.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["actions", "debugging", "common-errors"]
+    },
+    {
+      "id": "quiz-pw-q049",
+      "type": "code-completion",
+      "question": "Complete the code to hover over an element:",
+      "codeTemplate": "await page.getByRole('link', { name: 'Menu' }).____();",
+      "correctAnswer": "await page.getByRole('link', { name: 'Menu' }).hover();",
+      "acceptedAnswers": [
+        "hover"
+      ],
+      "explanation": "The hover() method is used to move the mouse over an element.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["actions", "hover", "code"]
+    },
+    {
+      "id": "quiz-pw-q050",
+      "type": "multiple-choice",
+      "question": "Which method uploads a file to an input element?",
+      "options": [
+        "uploadFile()",
+        "setInputFiles()",
+        "attachFile()",
+        "addFile()"
+      ],
+      "correctAnswer": 1,
+      "explanation": "setInputFiles() is used to upload files to file input elements in Playwright.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["actions", "files"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-005",
+  "prerequisites": ["quiz-pw-004"],
+  "xpReward": 150,
+  "coinReward": 30
+}

@@ -1,0 +1,69 @@
+{
+  "id": "sel-advanced-001",
+  "title": "Selenium Grid Setup",
+  "slug": "selenium-grid",
+  "track": "selenium",
+  "category": "advanced",
+  "order": 1,
+  "duration": 35,
+  "description": "Set up Selenium Grid for distributed test execution.",
+  "objectives": [
+    "Install Grid",
+    "Configure hub and nodes",
+    "Run distributed tests",
+    "Scale test infrastructure"
+  ],
+  "prerequisites": [
+    "sel-intermediate-010"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Selenium Grid Setup",
+        "type": "text",
+        "content": "# Selenium Grid Setup\n\nBuild scalable test infrastructure with Selenium Grid.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Selenium Grid Setup\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Selenium Grid Setup concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, selenium grid setup is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Selenium Grid Setup\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Selenium Grid Setup is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Selenium Grid Setup for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Selenium Grid Setup Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-advanced-quiz-001",
+  "nextLesson": "sel-advanced-002",
+  "estimatedXP": 250,
+  "tags": [
+    "selenium",
+    "advanced",
+    "selenium",
+    "automation",
+    "testing"
+  ]
+}

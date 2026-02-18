@@ -1,0 +1,116 @@
+# Render.com Configuration for Backend Service
+# https://render.com/docs/blueprint-spec
+
+services:
+  # Backend API Service
+  - type: web
+    name: playwright-learning-backend
+    env: node
+    region: oregon
+    plan: standard
+    buildCommand: npm install && npm run build
+    startCommand: node dist/server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    branch: main
+
+    # Environment Variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false  # Set in Render dashboard
+      - key: JWT_SECRET
+        sync: false  # Set in Render dashboard
+      - key: REFRESH_TOKEN_SECRET
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          name: playwright-learning-redis
+          type: redis
+          property: connectionString
+      - key: SENTRY_DSN
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: CLIENT_URL
+        value: https://playwright-learning.com
+
+    # Scaling Configuration
+    numInstances: 2
+    scaling:
+      minInstances: 2
+      maxInstances: 10
+      targetMemoryPercent: 80
+      targetCPUPercent: 70
+
+    # Resource Configuration
+    disk:
+      name: logs
+      mountPath: /var/log/app
+      sizeGB: 10
+
+    # Custom Domains
+    domains:
+      - api.playwright-learning.com
+
+    # Health Check
+    healthCheck:
+      path: /health
+      interval: 30
+      timeout: 10
+      unhealthyThreshold: 3
+      healthyThreshold: 2
+
+  # Redis Cache Service
+  - type: redis
+    name: playwright-learning-redis
+    plan: standard
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []  # Allow all
+
+  # Cron Jobs
+  - type: cron
+    name: database-backup
+    schedule: "0 2 * * *"  # Daily at 2 AM UTC
+    buildCommand: npm install
+    startCommand: node scripts/backup.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: BACKUP_S3_BUCKET
+        value: playwright-learning-backups
+
+  - type: cron
+    name: cleanup-temp-files
+    schedule: "0 */6 * * *"  # Every 6 hours
+    buildCommand: npm install
+    startCommand: node scripts/cleanup.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+# Database (use MongoDB Atlas)
+# Configure MongoDB Atlas separately at mongodb.com
+
+# Add Background Workers if needed
+# - type: worker
+#   name: playwright-learning-worker
+#   env: node
+#   buildCommand: npm install && npm run build
+#   startCommand: node dist/worker.js
+#   envVars:
+#     - key: NODE_ENV
+#       value: production

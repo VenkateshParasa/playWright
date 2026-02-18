@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-001",
+  "title": "Visual Regression Testing",
+  "slug": "visual-regression",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 1,
+  "duration": 35,
+  "description": "Detect visual changes with screenshot comparison testing.",
+  "objectives": [
+    "Set up visual regression",
+    "Compare screenshots",
+    "Handle false positives",
+    "Integrate with CI/CD"
+  ],
+  "prerequisites": [
+    "pw-intermediate-010"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Visual Regression Testing",
+        "type": "text",
+        "content": "# Visual Regression Testing\n\nImplement comprehensive visual testing to catch UI regressions.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Visual Regression Testing\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Visual Regression Testing concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, visual regression testing is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Visual Regression Testing\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Visual Regression Testing is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Visual Regression Testing for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Visual Regression Testing Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-001",
+  "nextLesson": "pw-advanced-002",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "visual",
+    "automation",
+    "testing"
+  ]
+}

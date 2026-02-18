@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-019",
+  "title": "Fixtures",
+  "slug": "fixtures",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master Fixtures concepts in Playwright testing",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q191", "type": "multiple-choice", "question": "What is the primary benefit of Fixtures in Playwright?", "options": ["Faster execution", "Better test isolation", "Easier debugging", "All of the above"], "correctAnswer": 3, "explanation": "Fixtures improves test reliability, isolation, and maintainability.", "difficulty": "medium", "points": 10, "tags": ["fixtures", "concepts"]},
+    {"id": "quiz-pw-q192", "type": "code-completion", "question": "Complete the code for Fixtures:", "codeTemplate": "// Code template for fixtures", "correctAnswer": "// Correct implementation", "acceptedAnswers": ["implementation"], "explanation": "This is the correct way to implement Fixtures.", "difficulty": "medium", "points": 15, "tags": ["fixtures", "code"]},
+    {"id": "quiz-pw-q193", "type": "true-false", "question": "Fixtures can improve test performance.", "correctAnswer": true, "explanation": "Fixtures is designed to optimize test execution and reliability.", "difficulty": "medium", "points": 5, "tags": ["fixtures", "performance"]},
+    {"id": "quiz-pw-q194", "type": "multiple-choice", "question": "When should you use Fixtures?", "options": ["Always", "Only in CI/CD", "For complex scenarios", "Never"], "correctAnswer": 2, "explanation": "Fixtures is most beneficial for complex testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["fixtures", "best-practices"]},
+    {"id": "quiz-pw-q195", "type": "code-completion", "question": "Complete the advanced Fixtures pattern:", "codeTemplate": "// Advanced pattern", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates an advanced use case for Fixtures.", "difficulty": "medium", "points": 15, "tags": ["fixtures", "advanced"]},
+    {"id": "quiz-pw-q196", "type": "multiple-choice", "question": "What are common Fixtures pitfalls?", "options": ["Resource leaks", "Race conditions", "Configuration errors", "All of the above"], "correctAnswer": 3, "explanation": "Be aware of these common issues when working with Fixtures.", "difficulty": "medium", "points": 10, "tags": ["fixtures", "troubleshooting"]},
+    {"id": "quiz-pw-q197", "type": "debugging", "question": "What's wrong with this Fixtures implementation?", "code": "// Problematic code", "options": ["Missing configuration", "Incorrect usage", "Performance issue", "All could be issues"], "correctAnswer": 1, "explanation": "This code doesn't follow Fixtures best practices.", "difficulty": "medium", "points": 20, "tags": ["fixtures", "debugging"]},
+    {"id": "quiz-pw-q198", "type": "true-false", "question": "Fixtures requires additional dependencies.", "correctAnswer": false, "explanation": "Fixtures is built into Playwright without extra dependencies.", "difficulty": "medium", "points": 5, "tags": ["fixtures", "dependencies"]},
+    {"id": "quiz-pw-q199", "type": "multiple-choice", "question": "How do you configure Fixtures in playwright.config?", "options": ["In use section", "In projects", "At root level", "Depends on use case"], "correctAnswer": 3, "explanation": "Fixtures configuration location depends on your specific needs.", "difficulty": "medium", "points": 10, "tags": ["fixtures", "configuration"]},
+    {"id": "quiz-pw-q190", "type": "code-output", "question": "What does this Fixtures code produce?", "code": "// Sample code", "options": ["Expected result A", "Expected result B", "Error", "Depends on context"], "correctAnswer": 1, "explanation": "This code demonstrates a key Fixtures behavior.", "difficulty": "medium", "points": 15, "tags": ["fixtures", "behavior"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-019",
+  "prerequisites": ["quiz-pw-018"],
+  "xpReward": 200,
+  "coinReward": 40
+}

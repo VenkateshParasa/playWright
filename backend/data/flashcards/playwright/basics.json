@@ -1,0 +1,502 @@
+{
+  "deck": {
+    "id": "playwright-basics",
+    "name": "Playwright Basics",
+    "description": "Fundamental concepts of Playwright including browser automation basics, locators, element interactions, and test structure",
+    "track": "playwright",
+    "level": "beginner",
+    "cardCount": 50,
+    "estimatedTime": 30
+  },
+  "cards": [
+    {
+      "id": "pw-basic-001",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What is Playwright?",
+      "back": "Playwright is an open-source Node.js library developed by Microsoft for automating Chromium, Firefox, and WebKit browsers with a single API. It enables reliable end-to-end testing with cross-browser support.",
+      "difficulty": "easy",
+      "tags": ["playwright", "definition", "basics"]
+    },
+    {
+      "id": "pw-basic-002",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What browsers does Playwright support?",
+      "back": "Playwright supports Chromium (Chrome, Edge), Firefox, and WebKit (Safari). It can automate all three browser engines with a single API.",
+      "difficulty": "easy",
+      "tags": ["playwright", "browsers", "basics"]
+    },
+    {
+      "id": "pw-basic-003",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you install Playwright?",
+      "back": "```bash\nnpm init playwright@latest\n# or\nnpm install -D @playwright/test\n# Install browsers\nnpx playwright install\n```",
+      "explanation": "The init command sets up a new Playwright project with recommended configuration. The install command adds Playwright as a dev dependency.",
+      "difficulty": "easy",
+      "tags": ["playwright", "installation", "cli"]
+    },
+    {
+      "id": "pw-basic-004",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "Write a basic Playwright test structure",
+      "back": "```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('basic test', async ({ page }) => {\n  await page.goto('https://example.com');\n  await expect(page).toHaveTitle(/Example/);\n});\n```",
+      "explanation": "A Playwright test imports test and expect from @playwright/test. The test function receives fixtures like 'page' automatically.",
+      "difficulty": "easy",
+      "tags": ["playwright", "test-structure", "code"]
+    },
+    {
+      "id": "pw-basic-005",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What is a Page object in Playwright?",
+      "back": "A Page object represents a single browser tab or window. It provides methods to interact with the page, navigate, evaluate scripts, and access page content.",
+      "difficulty": "easy",
+      "tags": ["playwright", "page-object", "basics"]
+    },
+    {
+      "id": "pw-basic-006",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you navigate to a URL in Playwright?",
+      "back": "```javascript\nawait page.goto('https://example.com');\n// With options\nawait page.goto('https://example.com', {\n  waitUntil: 'networkidle'\n});\n```",
+      "explanation": "page.goto() navigates to a URL. The waitUntil option controls when navigation is considered complete (load, domcontentloaded, networkidle).",
+      "difficulty": "easy",
+      "tags": ["playwright", "navigation", "code"]
+    },
+    {
+      "id": "pw-basic-007",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate an element by text in Playwright?",
+      "back": "```javascript\nawait page.getByText('Sign in');\n// Exact match\nawait page.getByText('Sign in', { exact: true });\n// Partial match with regex\nawait page.getByText(/sign in/i);\n```",
+      "explanation": "getByText() is the recommended method for text-based selection. It's more resilient to changes than CSS or XPath selectors.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "code"]
+    },
+    {
+      "id": "pw-basic-008",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate an element by role in Playwright?",
+      "back": "```javascript\nawait page.getByRole('button', { name: 'Sign in' });\nawait page.getByRole('heading', { level: 1 });\nawait page.getByRole('textbox', { name: 'Email' });\n```",
+      "explanation": "getByRole() selects elements by ARIA role. It's the most accessible and recommended way to select interactive elements.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "accessibility"]
+    },
+    {
+      "id": "pw-basic-009",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you click an element in Playwright?",
+      "back": "```javascript\nawait page.getByRole('button').click();\n// With options\nawait page.getByRole('button').click({\n  force: true,\n  timeout: 5000,\n  clickCount: 2\n});\n```",
+      "explanation": "Playwright automatically waits for the element to be actionable before clicking. Options allow customization of the click behavior.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "code"]
+    },
+    {
+      "id": "pw-basic-010",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you fill a text input in Playwright?",
+      "back": "```javascript\nawait page.getByLabel('Email').fill('user@example.com');\n// Clear and fill\nawait page.getByLabel('Email').clear();\nawait page.getByLabel('Email').fill('new@example.com');\n```",
+      "explanation": "fill() clears the input and types the text. It automatically waits for the element to be editable.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "forms"]
+    },
+    {
+      "id": "pw-basic-011",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you select from a dropdown in Playwright?",
+      "back": "```javascript\n// By value\nawait page.selectOption('select#colors', 'blue');\n// By label\nawait page.selectOption('select#colors', { label: 'Blue' });\n// Multiple selections\nawait page.selectOption('select#colors', ['red', 'green']);\n```",
+      "explanation": "selectOption() can select by value, label, index, or element. It supports both single and multiple selections.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "forms"]
+    },
+    {
+      "id": "pw-basic-012",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you check a checkbox in Playwright?",
+      "back": "```javascript\nawait page.getByLabel('Accept terms').check();\n// Uncheck\nawait page.getByLabel('Accept terms').uncheck();\n// Toggle based on condition\nawait page.getByLabel('Accept terms').setChecked(true);\n```",
+      "explanation": "check() and uncheck() ensure the checkbox is in the desired state. setChecked() accepts a boolean.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "forms"]
+    },
+    {
+      "id": "pw-basic-013",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert element visibility in Playwright?",
+      "back": "```javascript\nawait expect(page.getByText('Welcome')).toBeVisible();\n// Check hidden\nawait expect(page.getByText('Error')).toBeHidden();\n// With timeout\nawait expect(page.getByText('Loading')).toBeVisible({ timeout: 10000 });\n```",
+      "explanation": "toBeVisible() and toBeHidden() are async matchers that automatically retry until the condition is met or timeout occurs.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "code"]
+    },
+    {
+      "id": "pw-basic-014",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert page title in Playwright?",
+      "back": "```javascript\nawait expect(page).toHaveTitle('My Page');\n// With regex\nawait expect(page).toHaveTitle(/My Page/);\n// Partial match\nawait expect(page).toHaveTitle(/Page/);\n```",
+      "explanation": "toHaveTitle() checks the page title. It supports exact strings or regular expressions for flexible matching.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "code"]
+    },
+    {
+      "id": "pw-basic-015",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert URL in Playwright?",
+      "back": "```javascript\nawait expect(page).toHaveURL('https://example.com/dashboard');\n// With regex\nawait expect(page).toHaveURL(/dashboard/);\n// Check URL contains\nawait expect(page).toHaveURL(/.*dashboard.*/);\n```",
+      "explanation": "toHaveURL() verifies the current page URL. Supports exact match or regex patterns.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "navigation"]
+    },
+    {
+      "id": "pw-basic-016",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert element text content in Playwright?",
+      "back": "```javascript\nawait expect(page.getByRole('heading')).toHaveText('Welcome');\n// Array of texts\nawait expect(page.getByRole('listitem')).toHaveText(['Item 1', 'Item 2']);\n// Contains text\nawait expect(page.locator('.message')).toContainText('Success');\n```",
+      "explanation": "toHaveText() checks exact text content. toContainText() checks if text is present within the element.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "code"]
+    },
+    {
+      "id": "pw-basic-017",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you get element attribute in Playwright?",
+      "back": "```javascript\nconst href = await page.getByRole('link').getAttribute('href');\nconst isDisabled = await page.getByRole('button').getAttribute('disabled');\n// Assert attribute\nawait expect(page.getByRole('link')).toHaveAttribute('href', '/home');\n```",
+      "explanation": "getAttribute() returns the attribute value. toHaveAttribute() assertion checks attribute existence and value.",
+      "difficulty": "easy",
+      "tags": ["playwright", "elements", "code"]
+    },
+    {
+      "id": "pw-basic-018",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you get element text content in Playwright?",
+      "back": "```javascript\nconst text = await page.getByRole('heading').textContent();\nconst innerText = await page.locator('.message').innerText();\nconst allTexts = await page.getByRole('listitem').allTextContents();\n```",
+      "explanation": "textContent() returns all text including hidden elements. innerText() returns visible text only. allTextContents() returns array of texts.",
+      "difficulty": "easy",
+      "tags": ["playwright", "elements", "code"]
+    },
+    {
+      "id": "pw-basic-019",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate element by CSS selector in Playwright?",
+      "back": "```javascript\nawait page.locator('.my-class');\nawait page.locator('#my-id');\nawait page.locator('div.container > button');\n// Chaining\nawait page.locator('.parent').locator('.child');\n```",
+      "explanation": "locator() accepts CSS selectors. While functional, user-facing locators like getByRole() are preferred for better test resilience.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "css"]
+    },
+    {
+      "id": "pw-basic-020",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate element by XPath in Playwright?",
+      "back": "```javascript\nawait page.locator('xpath=//button[@class=\"submit\"]');\nawait page.locator('//div[contains(@class, \"message\")]');\n// Following sibling\nawait page.locator('//label[text()=\"Email\"]//following-sibling::input');\n```",
+      "explanation": "XPath selectors work but are fragile. Use user-facing locators when possible for better maintainability.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "xpath"]
+    },
+    {
+      "id": "pw-basic-021",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate element by placeholder in Playwright?",
+      "back": "```javascript\nawait page.getByPlaceholder('Enter your email');\n// Partial match\nawait page.getByPlaceholder(/email/);\n// Exact match\nawait page.getByPlaceholder('Enter your email', { exact: true });\n```",
+      "explanation": "getByPlaceholder() selects input elements by their placeholder attribute. Useful for form inputs.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "forms"]
+    },
+    {
+      "id": "pw-basic-022",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate element by label in Playwright?",
+      "back": "```javascript\nawait page.getByLabel('Email address');\n// Works with for/id association\nawait page.getByLabel('Username').fill('user123');\n// Partial match\nawait page.getByLabel(/email/i);\n```",
+      "explanation": "getByLabel() finds form controls associated with label elements. It's accessible and resilient to UI changes.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "forms", "accessibility"]
+    },
+    {
+      "id": "pw-basic-023",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you locate element by test ID in Playwright?",
+      "back": "```javascript\nawait page.getByTestId('submit-button');\n// Custom attribute (configured in playwright.config)\nawait page.getByTestId('user-profile');\n// In HTML: <button data-testid=\"submit-button\">\n```",
+      "explanation": "getByTestId() uses data-testid attribute by default. The attribute name is configurable in playwright.config.js.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "test-ids"]
+    },
+    {
+      "id": "pw-basic-024",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you wait for an element to be visible in Playwright?",
+      "back": "```javascript\nawait page.getByText('Loading').waitFor({ state: 'visible' });\n// Wait for hidden\nawait page.getByText('Loading').waitFor({ state: 'hidden' });\n// Wait for attached\nawait page.getByText('Content').waitFor({ state: 'attached' });\n```",
+      "explanation": "waitFor() explicitly waits for element state. Playwright has auto-wait, but explicit waits are useful for specific scenarios.",
+      "difficulty": "easy",
+      "tags": ["playwright", "waits", "code"]
+    },
+    {
+      "id": "pw-basic-025",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What is Playwright's auto-wait feature?",
+      "back": "Playwright automatically waits for elements to be actionable before performing actions. It checks that elements are visible, enabled, stable, and not obscured. This eliminates most explicit waits.",
+      "difficulty": "easy",
+      "tags": ["playwright", "auto-wait", "basics"]
+    },
+    {
+      "id": "pw-basic-026",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you run Playwright tests?",
+      "back": "```bash\n# Run all tests\nnpx playwright test\n# Run specific file\nnpx playwright test example.spec.ts\n# Run in headed mode\nnpx playwright test --headed\n# Run in specific browser\nnpx playwright test --project=chromium\n```",
+      "explanation": "npx playwright test is the main command. Various flags control execution mode, browser selection, and other options.",
+      "difficulty": "easy",
+      "tags": ["playwright", "cli", "execution"]
+    },
+    {
+      "id": "pw-basic-027",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you run Playwright tests in debug mode?",
+      "back": "```bash\n# Debug mode with Playwright Inspector\nnpx playwright test --debug\n# Debug specific test\nnpx playwright test example.spec.ts:10 --debug\n# In code\nawait page.pause();\n```",
+      "explanation": "Debug mode opens Playwright Inspector for step-by-step execution. page.pause() adds a breakpoint in code.",
+      "difficulty": "easy",
+      "tags": ["playwright", "debugging", "cli"]
+    },
+    {
+      "id": "pw-basic-028",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you take a screenshot in Playwright?",
+      "back": "```javascript\nawait page.screenshot({ path: 'screenshot.png' });\n// Full page screenshot\nawait page.screenshot({ path: 'full.png', fullPage: true });\n// Element screenshot\nawait page.getByRole('button').screenshot({ path: 'button.png' });\n```",
+      "explanation": "screenshot() captures the viewport by default. fullPage option captures entire scrollable page. Elements can also be screenshotted.",
+      "difficulty": "easy",
+      "tags": ["playwright", "screenshots", "code"]
+    },
+    {
+      "id": "pw-basic-029",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What is a Locator in Playwright?",
+      "back": "A Locator represents a way to find element(s) on the page. Locators are strict by default (fail if multiple elements match) and auto-wait for elements to be actionable. They're lazy - they don't search for elements until an action is performed.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "definition"]
+    },
+    {
+      "id": "pw-basic-030",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you handle multiple elements with the same locator in Playwright?",
+      "back": "```javascript\n// Get all elements\nconst items = await page.getByRole('listitem').all();\nfor (const item of items) {\n  console.log(await item.textContent());\n}\n// Get specific element by index\nawait page.getByRole('button').nth(2).click();\n// Get first/last\nawait page.getByRole('button').first().click();\nawait page.getByRole('button').last().click();\n```",
+      "explanation": "all() returns array of locators. nth(), first(), last() select specific elements. Playwright is strict by default and fails if multiple elements match.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "multiple-elements"]
+    },
+    {
+      "id": "pw-basic-031",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you filter locators in Playwright?",
+      "back": "```javascript\n// Filter by text\nawait page.getByRole('listitem').filter({ hasText: 'Product' }).click();\n// Filter by nested element\nawait page.getByRole('listitem').filter({ has: page.getByRole('button') });\n// Exclude filter\nawait page.getByRole('listitem').filter({ hasNotText: 'Sold out' });\n```",
+      "explanation": "filter() narrows down locators based on conditions. hasText checks text content, has checks for nested elements.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "filtering"]
+    },
+    {
+      "id": "pw-basic-032",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you chain locators in Playwright?",
+      "back": "```javascript\n// Locator within locator\nawait page.locator('.container').locator('button').click();\n// Using getBy methods\nawait page.getByRole('article').getByRole('button', { name: 'Edit' });\n// Multiple levels\nawait page.locator('.panel').getByRole('list').getByRole('listitem').first();\n```",
+      "explanation": "Chaining locators creates more specific selectors by searching within parent elements. This improves selector reliability.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "chaining"]
+    },
+    {
+      "id": "pw-basic-033",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert element count in Playwright?",
+      "back": "```javascript\nawait expect(page.getByRole('listitem')).toHaveCount(5);\n// At least/most\nawait expect(page.getByRole('button')).toHaveCount(3);\n// Check empty\nawait expect(page.getByRole('error')).toHaveCount(0);\n```",
+      "explanation": "toHaveCount() verifies the number of elements matching a locator. Useful for asserting list lengths or ensuring elements don't exist.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "count"]
+    },
+    {
+      "id": "pw-basic-034",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert element is enabled/disabled in Playwright?",
+      "back": "```javascript\nawait expect(page.getByRole('button')).toBeEnabled();\nawait expect(page.getByRole('button')).toBeDisabled();\n// Check editable\nawait expect(page.getByRole('textbox')).toBeEditable();\n```",
+      "explanation": "toBeEnabled() and toBeDisabled() check interactive element state. toBeEditable() checks if input elements can be edited.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "state"]
+    },
+    {
+      "id": "pw-basic-035",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you assert checkbox state in Playwright?",
+      "back": "```javascript\nawait expect(page.getByLabel('Accept')).toBeChecked();\nawait expect(page.getByLabel('Reject')).not.toBeChecked();\n// Check attribute\nawait expect(page.getByLabel('Accept')).toHaveAttribute('checked', '');\n```",
+      "explanation": "toBeChecked() verifies checkbox or radio button is selected. Use .not for negative assertions.",
+      "difficulty": "easy",
+      "tags": ["playwright", "assertions", "forms"]
+    },
+    {
+      "id": "pw-basic-036",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you press keyboard keys in Playwright?",
+      "back": "```javascript\nawait page.keyboard.press('Enter');\nawait page.keyboard.press('Control+A');\nawait page.getByRole('textbox').press('Control+V');\n// Type text\nawait page.keyboard.type('Hello World');\n```",
+      "explanation": "keyboard.press() simulates key presses. It supports modifier keys. press() can also be called on locators for element-specific actions.",
+      "difficulty": "easy",
+      "tags": ["playwright", "keyboard", "interactions"]
+    },
+    {
+      "id": "pw-basic-037",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you hover over an element in Playwright?",
+      "back": "```javascript\nawait page.getByRole('button').hover();\n// Hover with position\nawait page.getByRole('button').hover({ position: { x: 10, y: 10 } });\n// Hover and wait\nawait page.getByRole('button').hover();\nawait expect(page.getByRole('tooltip')).toBeVisible();\n```",
+      "explanation": "hover() simulates mouse hover. Useful for triggering hover states, tooltips, and dropdown menus.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "hover"]
+    },
+    {
+      "id": "pw-basic-038",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you double-click in Playwright?",
+      "back": "```javascript\nawait page.getByText('Word').dblclick();\n// With options\nawait page.getByText('Word').dblclick({ \n  button: 'left',\n  delay: 100 \n});\n```",
+      "explanation": "dblclick() performs a double-click action. Useful for text selection, file opening, etc.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "click"]
+    },
+    {
+      "id": "pw-basic-039",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you right-click in Playwright?",
+      "back": "```javascript\nawait page.getByText('File').click({ button: 'right' });\n// Wait for context menu\nawait page.getByText('File').click({ button: 'right' });\nawait expect(page.getByRole('menu')).toBeVisible();\n```",
+      "explanation": "Right-click is done using click() with button: 'right' option. Useful for testing context menus.",
+      "difficulty": "easy",
+      "tags": ["playwright", "interactions", "click"]
+    },
+    {
+      "id": "pw-basic-040",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What is the difference between page.locator() and page.$()?",
+      "back": "page.locator() returns a Locator with auto-waiting and strict mode. page.$() is a legacy method that returns an ElementHandle without auto-waiting. Always prefer locator() for better reliability.",
+      "difficulty": "easy",
+      "tags": ["playwright", "locators", "comparison"]
+    },
+    {
+      "id": "pw-basic-041",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you configure Playwright timeout?",
+      "back": "```javascript\n// Global timeout in config\nuse: { actionTimeout: 10000 },\n// Per action\nawait page.getByRole('button').click({ timeout: 5000 });\n// Test timeout\ntest.setTimeout(60000);\n// Navigation timeout\nawait page.goto('url', { timeout: 30000 });\n```",
+      "explanation": "Timeouts can be set globally in config or per action. Default action timeout is 30 seconds.",
+      "difficulty": "easy",
+      "tags": ["playwright", "timeout", "configuration"]
+    },
+    {
+      "id": "pw-basic-042",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you get the page URL in Playwright?",
+      "back": "```javascript\nconst url = page.url();\nconsole.log(url); // https://example.com/path\n// Assert URL\nawait expect(page).toHaveURL('https://example.com/path');\n```",
+      "explanation": "page.url() returns the current page URL as a string. Use toHaveURL() for assertions.",
+      "difficulty": "easy",
+      "tags": ["playwright", "navigation", "code"]
+    },
+    {
+      "id": "pw-basic-043",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you reload a page in Playwright?",
+      "back": "```javascript\nawait page.reload();\n// With options\nawait page.reload({ waitUntil: 'networkidle' });\n// Wait for specific element after reload\nawait page.reload();\nawait expect(page.getByRole('heading')).toBeVisible();\n```",
+      "explanation": "page.reload() refreshes the current page. waitUntil option controls when reload is considered complete.",
+      "difficulty": "easy",
+      "tags": ["playwright", "navigation", "code"]
+    },
+    {
+      "id": "pw-basic-044",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you go back/forward in browser history in Playwright?",
+      "back": "```javascript\n// Go back\nawait page.goBack();\n// Go forward\nawait page.goForward();\n// With options\nawait page.goBack({ waitUntil: 'networkidle' });\n```",
+      "explanation": "goBack() and goForward() navigate browser history like back/forward buttons. waitUntil controls navigation completion.",
+      "difficulty": "easy",
+      "tags": ["playwright", "navigation", "code"]
+    },
+    {
+      "id": "pw-basic-045",
+      "type": "code",
+      "deck": "playwright-basics",
+      "front": "How do you get page title in Playwright?",
+      "back": "```javascript\nconst title = await page.title();\nconsole.log(title);\n// Assert title\nawait expect(page).toHaveTitle('My Page');\nawait expect(page).toHaveTitle(/Page/);\n```",
+      "explanation": "page.title() returns the page title as a string. toHaveTitle() provides a better assertion with auto-wait.",
+      "difficulty": "easy",
+      "tags": ["playwright", "page", "code"]
+    },
+    {
+      "id": "pw-basic-046",
+      "type": "best-practice",
+      "deck": "playwright-basics",
+      "front": "What's the recommended way to select elements in Playwright?",
+      "back": "Use user-facing locators in this priority order:\n1. getByRole() - most accessible\n2. getByLabel() - for forms\n3. getByPlaceholder() - for inputs\n4. getByText() - for text content\n5. getByTestId() - last resort\nAvoid CSS selectors and XPath as they're brittle to UI changes.",
+      "difficulty": "easy",
+      "tags": ["best-practice", "locators", "playwright"]
+    },
+    {
+      "id": "pw-basic-047",
+      "type": "best-practice",
+      "deck": "playwright-basics",
+      "front": "Should you add explicit waits in Playwright?",
+      "back": "Usually no. Playwright has built-in auto-wait that handles most scenarios. Only add explicit waits for specific cases like:\n- Waiting for animations\n- Waiting for API responses\n- Waiting for element state changes not covered by auto-wait\nOver-using waits makes tests slower and harder to maintain.",
+      "difficulty": "easy",
+      "tags": ["best-practice", "waits", "playwright"]
+    },
+    {
+      "id": "pw-basic-048",
+      "type": "troubleshooting",
+      "deck": "playwright-basics",
+      "front": "What does 'strict mode violation' error mean in Playwright?",
+      "back": "This error occurs when a locator matches multiple elements. Playwright is strict by default to prevent ambiguous actions.\nSolutions:\n1. Make locator more specific\n2. Use filter() to narrow down\n3. Use first(), last(), or nth() to select specific element\n4. Chain locators to create unique path",
+      "difficulty": "easy",
+      "tags": ["troubleshooting", "errors", "playwright"]
+    },
+    {
+      "id": "pw-basic-049",
+      "type": "troubleshooting",
+      "deck": "playwright-basics",
+      "front": "How do you handle timeout errors in Playwright?",
+      "back": "Timeout errors mean an element wasn't found or wasn't actionable within the timeout period.\nSolutions:\n1. Check locator is correct\n2. Increase timeout if page is slow\n3. Wait for page to be in correct state\n4. Check for overlapping elements\n5. Verify element exists in DOM\n6. Use page.pause() to debug",
+      "difficulty": "easy",
+      "tags": ["troubleshooting", "timeout", "playwright"]
+    },
+    {
+      "id": "pw-basic-050",
+      "type": "definition",
+      "deck": "playwright-basics",
+      "front": "What is Playwright's Test Runner?",
+      "back": "@playwright/test is a complete test runner built specifically for Playwright. It includes fixtures, parallelization, retries, test isolation, multiple reporters, and built-in browser management. It's designed for end-to-end testing and provides a better experience than using Jest or Mocha.",
+      "difficulty": "easy",
+      "tags": ["playwright", "test-runner", "definition"]
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "deck": {
+    "id": "playwright-intermediate",
+    "name": "Playwright Intermediate",
+    "description": "Advanced locators, network interception, API testing, authentication, browser contexts, file handling, fixtures, and parallel testing",
+    "track": "playwright",
+    "level": "intermediate",
+    "cardCount": 75,
+    "estimatedTime": 45
+  },
+  "cards": [
+    {
+      "id": "pw-inter-001",
+      "type": "definition",
+      "deck": "playwright-intermediate",
+      "front": "What is a Browser Context in Playwright?",
+      "back": "A Browser Context is an isolated incognito-like session within a browser. It has separate cookies, cache, and storage. Multiple contexts can run in parallel within a single browser instance, enabling efficient test isolation.",
+      "difficulty": "medium",
+      "tags": ["playwright", "context", "isolation"]
+    },
+    {
+      "id": "pw-inter-002",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you create and use a browser context?",
+      "back": "```javascript\nconst browser = await chromium.launch();\nconst context = await browser.newContext();\nconst page = await context.newPage();\n// Multiple pages in same context share state\nconst page2 = await context.newPage();\n// Cleanup\nawait context.close();\nawait browser.close();\n```",
+      "explanation": "Contexts provide isolation between test runs. Each context is independent with its own storage, cookies, and cache.",
+      "difficulty": "medium",
+      "tags": ["playwright", "context", "code"]
+    },
+    {
+      "id": "pw-inter-003",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you set viewport size in Playwright?",
+      "back": "```javascript\n// In context\nconst context = await browser.newContext({\n  viewport: { width: 1280, height: 720 }\n});\n// Per page\nawait page.setViewportSize({ width: 1920, height: 1080 });\n// In config for all tests\nuse: { viewport: { width: 1280, height: 720 } }\n```",
+      "explanation": "Viewport size affects responsive layouts and element visibility. Set it at context creation or per page.",
+      "difficulty": "medium",
+      "tags": ["playwright", "viewport", "configuration"]
+    },
+    {
+      "id": "pw-inter-004",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you emulate mobile devices in Playwright?",
+      "back": "```javascript\nconst { devices } = require('@playwright/test');\nconst iPhone = devices['iPhone 13'];\n\nconst context = await browser.newContext({\n  ...iPhone\n});\n// Or in config\nuse: { ...devices['iPhone 13'] }\n```",
+      "explanation": "Playwright provides device descriptors with viewport, user agent, and touch support. Use devices object for mobile emulation.",
+      "difficulty": "medium",
+      "tags": ["playwright", "mobile", "emulation"]
+    },
+    {
+      "id": "pw-inter-005",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you set geolocation in Playwright?",
+      "back": "```javascript\nconst context = await browser.newContext({\n  geolocation: { longitude: 12.4924, latitude: 41.8902 },\n  permissions: ['geolocation']\n});\n// Update later\nawait context.setGeolocation({ longitude: 29.979, latitude: 31.1342 });\n```",
+      "explanation": "Set geolocation at context creation with permissions. Useful for testing location-based features.",
+      "difficulty": "medium",
+      "tags": ["playwright", "geolocation", "permissions"]
+    },
+    {
+      "id": "pw-inter-006",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you grant permissions in Playwright?",
+      "back": "```javascript\nconst context = await browser.newContext({\n  permissions: ['geolocation', 'notifications']\n});\n// Grant later\nawait context.grantPermissions(['camera', 'microphone']);\n// Clear permissions\nawait context.clearPermissions();\n```",
+      "explanation": "Set permissions at context level. Supports geolocation, notifications, camera, microphone, and more.",
+      "difficulty": "medium",
+      "tags": ["playwright", "permissions", "code"]
+    },
+    {
+      "id": "pw-inter-007",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you set timezone in Playwright?",
+      "back": "```javascript\nconst context = await browser.newContext({\n  timezoneId: 'America/New_York'\n});\n// In config\nuse: { timezoneId: 'Europe/London' }\n// Test time-dependent features\nawait expect(page.locator('.timezone')).toHaveText(/EST/);\n```",
+      "explanation": "Set timezone to test time-dependent features across different regions. Uses IANA timezone database.",
+      "difficulty": "medium",
+      "tags": ["playwright", "timezone", "configuration"]
+    },
+    {
+      "id": "pw-inter-008",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you set locale in Playwright?",
+      "back": "```javascript\nconst context = await browser.newContext({\n  locale: 'de-DE'\n});\n// In config\nuse: { locale: 'en-GB' }\n// Affects date formats, number formats, etc.\n```",
+      "explanation": "Locale affects date formatting, number formatting, and language. Useful for internationalization testing.",
+      "difficulty": "medium",
+      "tags": ["playwright", "locale", "i18n"]
+    },
+    {
+      "id": "pw-inter-009",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you intercept network requests in Playwright?",
+      "back": "```javascript\nawait page.route('**/api/users', route => {\n  route.fulfill({\n    status: 200,\n    body: JSON.stringify({ users: [] })\n  });\n});\n// Modify request\nawait page.route('**/api/**', route => {\n  route.continue({ headers: { ...route.request().headers(), 'X-Custom': 'value' } });\n});\n```",
+      "explanation": "page.route() intercepts requests matching a pattern. You can fulfill, abort, or continue with modifications.",
+      "difficulty": "medium",
+      "tags": ["playwright", "network", "interception"]
+    },
+    {
+      "id": "pw-inter-010",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you mock API responses in Playwright?",
+      "back": "```javascript\n// Mock with static data\nawait page.route('**/api/products', route => {\n  route.fulfill({ \n    status: 200,\n    contentType: 'application/json',\n    body: JSON.stringify([{ id: 1, name: 'Product 1' }])\n  });\n});\n// Mock from file\nawait page.route('**/api/data', route => {\n  route.fulfill({ path: './fixtures/data.json' });\n});\n```",
+      "explanation": "Use route.fulfill() to mock API responses. Useful for testing without backend or simulating errors.",
+      "difficulty": "medium",
+      "tags": ["playwright", "mocking", "api"]
+    },
+    {
+      "id": "pw-inter-011",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you wait for a network request in Playwright?",
+      "back": "```javascript\n// Wait for specific request\nconst responsePromise = page.waitForResponse('**/api/data');\nawait page.getByRole('button').click();\nconst response = await responsePromise;\n// Wait for request\nconst requestPromise = page.waitForRequest('**/api/submit');\nawait page.getByRole('button').click();\nconst request = await requestPromise;\n```",
+      "explanation": "waitForResponse() and waitForRequest() wait for network activity. Set up promise before triggering action.",
+      "difficulty": "medium",
+      "tags": ["playwright", "network", "waits"]
+    },
+    {
+      "id": "pw-inter-012",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle file uploads in Playwright?",
+      "back": "```javascript\n// Set files on input\nawait page.getByLabel('Upload').setInputFiles('path/to/file.pdf');\n// Multiple files\nawait page.getByLabel('Upload').setInputFiles(['file1.pdf', 'file2.pdf']);\n// From buffer\nawait page.getByLabel('Upload').setInputFiles({\n  name: 'file.txt',\n  mimeType: 'text/plain',\n  buffer: Buffer.from('file content')\n});\n// Clear files\nawait page.getByLabel('Upload').setInputFiles([]);\n```",
+      "explanation": "setInputFiles() sets files on file input elements. Supports single/multiple files, paths, or buffers.",
+      "difficulty": "medium",
+      "tags": ["playwright", "files", "upload"]
+    },
+    {
+      "id": "pw-inter-013",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle file downloads in Playwright?",
+      "back": "```javascript\nconst downloadPromise = page.waitForEvent('download');\nawait page.getByText('Download').click();\nconst download = await downloadPromise;\n// Save to path\nawait download.saveAs('/path/to/save/file.pdf');\n// Get path (temporary)\nconst path = await download.path();\n// Get filename\nconst filename = download.suggestedFilename();\n```",
+      "explanation": "Listen for download event before triggering download. Download object provides methods to save or inspect the file.",
+      "difficulty": "medium",
+      "tags": ["playwright", "files", "download"]
+    },
+    {
+      "id": "pw-inter-014",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you make API requests in Playwright?",
+      "back": "```javascript\nconst response = await page.request.get('https://api.example.com/users');\nconst data = await response.json();\n// POST request\nawait page.request.post('https://api.example.com/users', {\n  data: { name: 'John' },\n  headers: { 'Content-Type': 'application/json' }\n});\n// Using request context\nconst apiContext = await request.newContext();\nconst response = await apiContext.get('/api/data');\n```",
+      "explanation": "page.request provides API testing capabilities. Shares cookies/auth with page. Can also use standalone request context.",
+      "difficulty": "medium",
+      "tags": ["playwright", "api", "testing"]
+    },
+    {
+      "id": "pw-inter-015",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test API endpoints directly in Playwright?",
+      "back": "```javascript\nimport { test, expect } from '@playwright/test';\n\ntest('API test', async ({ request }) => {\n  const response = await request.get('/api/users');\n  expect(response.ok()).toBeTruthy();\n  expect(response.status()).toBe(200);\n  const data = await response.json();\n  expect(data.users).toHaveLength(5);\n});\n```",
+      "explanation": "Use request fixture for API testing. No browser needed. Useful for testing backend endpoints independently.",
+      "difficulty": "medium",
+      "tags": ["playwright", "api", "testing"]
+    },
+    {
+      "id": "pw-inter-016",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you save and load authentication state in Playwright?",
+      "back": "```javascript\n// Save state after login\nconst context = await browser.newContext();\nconst page = await context.newPage();\nawait page.goto('/login');\n// ... perform login\nawait context.storageState({ path: 'auth.json' });\n\n// Load state\nconst context = await browser.newContext({\n  storageState: 'auth.json'\n});\n```",
+      "explanation": "storageState() saves cookies and localStorage. Reuse authentication across tests to avoid repeated logins.",
+      "difficulty": "medium",
+      "tags": ["playwright", "authentication", "storage"]
+    },
+    {
+      "id": "pw-inter-017",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you set cookies in Playwright?",
+      "back": "```javascript\nawait context.addCookies([{\n  name: 'session',\n  value: 'abc123',\n  domain: 'example.com',\n  path: '/',\n  expires: Date.now() / 1000 + 3600\n}]);\n// Get cookies\nconst cookies = await context.cookies();\n// Clear cookies\nawait context.clearCookies();\n```",
+      "explanation": "Add cookies at context level before page navigation. Useful for setting authentication tokens or bypassing login.",
+      "difficulty": "medium",
+      "tags": ["playwright", "cookies", "authentication"]
+    },
+    {
+      "id": "pw-inter-018",
+      "type": "definition",
+      "deck": "playwright-intermediate",
+      "front": "What are Fixtures in Playwright?",
+      "back": "Fixtures are test helpers that set up and tear down test environment. Built-in fixtures include page, context, browser, request. You can create custom fixtures to share setup logic, provide test data, or create reusable components.",
+      "difficulty": "medium",
+      "tags": ["playwright", "fixtures", "definition"]
+    },
+    {
+      "id": "pw-inter-019",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you create a custom fixture in Playwright?",
+      "back": "```javascript\nimport { test as base } from '@playwright/test';\n\nconst test = base.extend({\n  todoPage: async ({ page }, use) => {\n    await page.goto('/todos');\n    await use(page);\n  }\n});\n\ntest('use fixture', async ({ todoPage }) => {\n  await todoPage.getByText('Add').click();\n});\n```",
+      "explanation": "extend() creates custom fixtures. Fixtures run setup before test and cleanup after. Use 'use' callback to pass fixture value.",
+      "difficulty": "medium",
+      "tags": ["playwright", "fixtures", "code"]
+    },
+    {
+      "id": "pw-inter-020",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you create a worker fixture in Playwright?",
+      "back": "```javascript\nconst test = base.extend({\n  account: [async ({ browser }, use, workerInfo) => {\n    // Setup once per worker\n    const account = await createAccount();\n    await use(account);\n    // Cleanup\n    await deleteAccount(account);\n  }, { scope: 'worker' }]\n});\n```",
+      "explanation": "Worker fixtures run once per worker process, not per test. Useful for expensive setup like database connections or account creation.",
+      "difficulty": "medium",
+      "tags": ["playwright", "fixtures", "worker"]
+    },
+    {
+      "id": "pw-inter-021",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you run tests in parallel in Playwright?",
+      "back": "```javascript\n// In config\nworkers: 4, // Number of parallel workers\n// Or\nworkers: process.env.CI ? 2 : undefined,\n// Per test file\ntest.describe.configure({ mode: 'parallel' });\n// Run serially\ntest.describe.configure({ mode: 'serial' });\n```",
+      "explanation": "Playwright runs test files in parallel by default. Configure workers in config. Can control parallelization per test file.",
+      "difficulty": "medium",
+      "tags": ["playwright", "parallel", "configuration"]
+    },
+    {
+      "id": "pw-inter-022",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle test retries in Playwright?",
+      "back": "```javascript\n// In config\nretries: process.env.CI ? 2 : 0,\n// Per test\ntest('flaky test', async ({ page }) => {\n  test.info().annotations.push({ type: 'issue', description: '#123' });\n});\ntest.describe(() => {\n  test.describe.configure({ retries: 2 });\n});\n```",
+      "explanation": "Configure retries globally or per test. Retries help with flaky tests. First run is always attempted; retries happen on failure.",
+      "difficulty": "medium",
+      "tags": ["playwright", "retries", "configuration"]
+    },
+    {
+      "id": "pw-inter-023",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle test timeouts in Playwright?",
+      "back": "```javascript\n// Global timeout in config\ntimeout: 30000,\nuse: {\n  actionTimeout: 10000,\n  navigationTimeout: 30000\n},\n// Per test\ntest('slow test', async ({ page }) => {\n  test.setTimeout(60000);\n});\ntest.slow(); // 3x timeout\n```",
+      "explanation": "Set timeouts at different levels: test timeout, action timeout, navigation timeout. test.slow() triples the timeout.",
+      "difficulty": "medium",
+      "tags": ["playwright", "timeout", "configuration"]
+    },
+    {
+      "id": "pw-inter-024",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you organize tests with test.describe in Playwright?",
+      "back": "```javascript\ntest.describe('User Authentication', () => {\n  test.beforeEach(async ({ page }) => {\n    await page.goto('/login');\n  });\n  \n  test('successful login', async ({ page }) => {\n    // test code\n  });\n  \n  test('failed login', async ({ page }) => {\n    // test code\n  });\n});\n```",
+      "explanation": "test.describe() groups related tests. Supports beforeEach, afterEach hooks. Provides better organization and shared setup.",
+      "difficulty": "medium",
+      "tags": ["playwright", "organization", "describe"]
+    },
+    {
+      "id": "pw-inter-025",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use beforeEach and afterEach hooks in Playwright?",
+      "back": "```javascript\ntest.beforeEach(async ({ page }) => {\n  await page.goto('/dashboard');\n  await page.getByRole('button', { name: 'Login' }).click();\n});\n\ntest.afterEach(async ({ page }) => {\n  await page.screenshot({ path: 'screenshot.png' });\n});\n\ntest('test 1', async ({ page }) => { /* ... */ });\ntest('test 2', async ({ page }) => { /* ... */ });\n```",
+      "explanation": "Hooks run before/after each test in the scope. Useful for common setup/teardown. Can be defined in describe blocks or globally.",
+      "difficulty": "medium",
+      "tags": ["playwright", "hooks", "setup"]
+    },
+    {
+      "id": "pw-inter-026",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you skip tests conditionally in Playwright?",
+      "back": "```javascript\ntest('skip on mobile', async ({ page, isMobile }) => {\n  test.skip(isMobile, 'Feature not supported on mobile');\n  // test code\n});\n// Skip test\ntest.skip('not ready', async ({ page }) => {});\n// Skip entire describe\ntest.describe.skip('feature', () => {});\n```",
+      "explanation": "test.skip() skips tests conditionally or unconditionally. Useful for platform-specific tests or work in progress.",
+      "difficulty": "medium",
+      "tags": ["playwright", "skip", "conditional"]
+    },
+    {
+      "id": "pw-inter-027",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you focus on specific tests in Playwright?",
+      "back": "```javascript\ntest.only('run only this', async ({ page }) => {\n  // This test will run\n});\n\ntest('skipped', async ({ page }) => {\n  // This test will be skipped\n});\n\ntest.describe.only('focused group', () => {\n  // Only tests in this group run\n});\n```",
+      "explanation": "test.only() runs only marked tests. Useful for debugging specific tests. Remove before committing.",
+      "difficulty": "medium",
+      "tags": ["playwright", "focus", "debugging"]
+    },
+    {
+      "id": "pw-inter-028",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle iframes in Playwright?",
+      "back": "```javascript\n// Get frame by name\nconst frame = page.frame('iframe-name');\n// Get frame by URL\nconst frame = page.frame({ url: /example.com/ });\n// Get frame locator\nconst frameLocator = page.frameLocator('iframe#my-frame');\nawait frameLocator.getByRole('button').click();\n// All frames\nconst frames = page.frames();\n```",
+      "explanation": "Use frameLocator() for modern API with auto-waiting. page.frame() returns Frame object. Frames have same API as Page.",
+      "difficulty": "medium",
+      "tags": ["playwright", "iframe", "frames"]
+    },
+    {
+      "id": "pw-inter-029",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle multiple pages/tabs in Playwright?",
+      "back": "```javascript\n// Wait for new page\nconst [newPage] = await Promise.all([\n  context.waitForEvent('page'),\n  page.getByText('Open new tab').click()\n]);\nawait newPage.waitForLoadState();\n// Get all pages\nconst pages = context.pages();\n// Switch pages\nawait pages[1].bringToFront();\n```",
+      "explanation": "Listen for page event before triggering action. New pages are independent Page objects within the same context.",
+      "difficulty": "medium",
+      "tags": ["playwright", "pages", "tabs"]
+    },
+    {
+      "id": "pw-inter-030",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle popups in Playwright?",
+      "back": "```javascript\n// Wait for popup\nconst popupPromise = page.waitForEvent('popup');\nawait page.getByText('Open popup').click();\nconst popup = await popupPromise;\nawait popup.waitForLoadState();\nawait popup.getByText('Confirm').click();\n// Close popup\nawait popup.close();\n```",
+      "explanation": "Popups are new Page objects. Set up event listener before triggering action that opens popup.",
+      "difficulty": "medium",
+      "tags": ["playwright", "popup", "windows"]
+    },
+    {
+      "id": "pw-inter-031",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle dialogs (alerts, confirms, prompts) in Playwright?",
+      "back": "```javascript\n// Accept dialog\npage.on('dialog', dialog => dialog.accept());\nawait page.getByRole('button').click();\n// Dismiss dialog\npage.on('dialog', dialog => dialog.dismiss());\n// Get dialog message\npage.on('dialog', dialog => {\n  console.log(dialog.message());\n  dialog.accept('input text'); // For prompts\n});\n```",
+      "explanation": "Listen for dialog event before triggering. Auto-accept/dismiss if no handler. Can get message and provide input for prompts.",
+      "difficulty": "medium",
+      "tags": ["playwright", "dialog", "alert"]
+    },
+    {
+      "id": "pw-inter-032",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you execute JavaScript in Playwright?",
+      "back": "```javascript\n// Evaluate in page context\nconst result = await page.evaluate(() => {\n  return document.title;\n});\n// Pass arguments\nconst text = await page.evaluate(el => el.textContent, element);\n// Evaluate on element\nconst color = await page.locator('.box').evaluate(el => {\n  return window.getComputedStyle(el).color;\n});\n```",
+      "explanation": "evaluate() runs JavaScript in browser context. Can pass serializable arguments. Returns serializable values.",
+      "difficulty": "medium",
+      "tags": ["playwright", "javascript", "evaluate"]
+    },
+    {
+      "id": "pw-inter-033",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you scroll in Playwright?",
+      "back": "```javascript\n// Scroll element into view (automatic)\nawait page.getByText('Bottom').scrollIntoViewIfNeeded();\n// Scroll page\nawait page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));\n// Wheel scroll\nawait page.mouse.wheel(0, 300);\n// Scroll element\nawait page.locator('.container').evaluate(el => el.scrollTop = 100);\n```",
+      "explanation": "Playwright auto-scrolls elements into view before actions. Manual scrolling available via evaluate or mouse.wheel.",
+      "difficulty": "medium",
+      "tags": ["playwright", "scroll", "interactions"]
+    },
+    {
+      "id": "pw-inter-034",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you drag and drop in Playwright?",
+      "back": "```javascript\n// Drag and drop\nawait page.locator('#source').dragTo(page.locator('#target'));\n// Manual drag\nawait page.locator('#draggable').hover();\nawait page.mouse.down();\nawait page.locator('#dropzone').hover();\nawait page.mouse.up();\n```",
+      "explanation": "dragTo() is the simple method. For complex scenarios, use mouse.down/up with hover for precise control.",
+      "difficulty": "medium",
+      "tags": ["playwright", "drag-drop", "interactions"]
+    },
+    {
+      "id": "pw-inter-035",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle shadow DOM in Playwright?",
+      "back": "```javascript\n// Playwright pierces shadow DOM automatically\nawait page.locator('x-button').click();\n// Explicit shadow root\nconst shadowRoot = await page.locator('#host').evaluateHandle(el => el.shadowRoot);\nconst button = await shadowRoot.$('button');\n// Using >> combinator\nawait page.locator('#host >> button').click();\n```",
+      "explanation": "Playwright automatically pierces shadow DOM with standard locators. No special handling needed in most cases.",
+      "difficulty": "medium",
+      "tags": ["playwright", "shadow-dom", "locators"]
+    },
+    {
+      "id": "pw-inter-036",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you take video recordings in Playwright?",
+      "back": "```javascript\n// In config\nuse: {\n  video: 'on', // 'off', 'on', 'retain-on-failure', 'on-first-retry'\n  videoSize: { width: 1280, height: 720 }\n},\n// Get video path\ntest('example', async ({ page }, testInfo) => {\n  // test code\n  const videoPath = await page.video().path();\n});\n```",
+      "explanation": "Configure video recording in config. Videos saved automatically. Can retrieve path after test for analysis.",
+      "difficulty": "medium",
+      "tags": ["playwright", "video", "recording"]
+    },
+    {
+      "id": "pw-inter-037",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use Playwright's trace viewer?",
+      "back": "```bash\n# Enable traces in config\nuse: { trace: 'on-first-retry' },\n# Or always on\nuse: { trace: 'on' },\n# View trace\nnpx playwright show-trace trace.zip\n# In test\nawait context.tracing.start({ screenshots: true, snapshots: true });\n// test actions\nawait context.tracing.stop({ path: 'trace.zip' });\n```",
+      "explanation": "Traces record test execution with screenshots, DOM snapshots, network logs. Essential for debugging CI failures.",
+      "difficulty": "medium",
+      "tags": ["playwright", "trace", "debugging"]
+    },
+    {
+      "id": "pw-inter-038",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you set user agent in Playwright?",
+      "back": "```javascript\nconst context = await browser.newContext({\n  userAgent: 'Mozilla/5.0 (Custom) Chrome/96.0'\n});\n// In config\nuse: {\n  userAgent: 'Custom User Agent String'\n}\n// Check current user agent\nconst ua = await page.evaluate(() => navigator.userAgent);\n```",
+      "explanation": "Set userAgent at context creation. Useful for testing user agent detection or simulating different browsers.",
+      "difficulty": "medium",
+      "tags": ["playwright", "user-agent", "configuration"]
+    },
+    {
+      "id": "pw-inter-039",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you block resources in Playwright?",
+      "back": "```javascript\nawait page.route('**/*.{png,jpg,jpeg,gif,svg,webp}', route => route.abort());\n// Block tracking scripts\nawait page.route('**/*analytics*.js', route => route.abort());\n// Block by resource type\nawait context.route('**/*', route => {\n  return route.request().resourceType() === 'image' \n    ? route.abort() \n    : route.continue();\n});\n```",
+      "explanation": "Use route.abort() to block resources. Speeds up tests by blocking images, fonts, or tracking scripts.",
+      "difficulty": "medium",
+      "tags": ["playwright", "network", "optimization"]
+    },
+    {
+      "id": "pw-inter-040",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you modify request headers in Playwright?",
+      "back": "```javascript\n// Set extra headers\nconst context = await browser.newContext({\n  extraHTTPHeaders: {\n    'X-Custom-Header': 'value'\n  }\n});\n// Modify per request\nawait page.route('**/*', route => {\n  route.continue({\n    headers: {\n      ...route.request().headers(),\n      'Authorization': 'Bearer token'\n    }\n  });\n});\n```",
+      "explanation": "Set headers globally via extraHTTPHeaders or per request via route.continue(). Useful for authentication and testing.",
+      "difficulty": "medium",
+      "tags": ["playwright", "headers", "network"]
+    },
+    {
+      "id": "pw-inter-041",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you get network response body in Playwright?",
+      "back": "```javascript\nconst response = await page.goto('https://api.example.com/data');\nconst body = await response.json();\n// For other requests\npage.on('response', async response => {\n  if (response.url().includes('/api/')) {\n    const data = await response.json();\n    console.log(data);\n  }\n});\n```",
+      "explanation": "Response object provides methods to get body as json(), text(), or body(). Monitor all responses via response event.",
+      "difficulty": "medium",
+      "tags": ["playwright", "network", "response"]
+    },
+    {
+      "id": "pw-inter-042",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you simulate offline mode in Playwright?",
+      "back": "```javascript\n// Set offline at context creation\nconst context = await browser.newContext({ offline: true });\n// Toggle offline mode\nawait context.setOffline(true);\nawait page.reload();\nawait context.setOffline(false);\n// Test offline behavior\nawait expect(page.locator('.offline-message')).toBeVisible();\n```",
+      "explanation": "Control network connectivity to test offline behavior, error handling, and offline-first features.",
+      "difficulty": "medium",
+      "tags": ["playwright", "offline", "network"]
+    },
+    {
+      "id": "pw-inter-043",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you simulate slow network in Playwright?",
+      "back": "```javascript\n// Coming from Chrome DevTools Protocol\nawait page.route('**/*', route => {\n  setTimeout(() => route.continue(), 1000);\n});\n// Or use CDP session for bandwidth throttling\nconst client = await context.newCDPSession(page);\nawait client.send('Network.emulateNetworkConditions', {\n  offline: false,\n  downloadThroughput: 500 * 1024 / 8, // 500kb/s\n  uploadThroughput: 500 * 1024 / 8,\n  latency: 100\n});\n```",
+      "explanation": "Add delays to routes or use CDP for realistic network throttling. Tests performance and loading states.",
+      "difficulty": "medium",
+      "tags": ["playwright", "network", "performance"]
+    },
+    {
+      "id": "pw-inter-044",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you get request details in Playwright?",
+      "back": "```javascript\npage.on('request', request => {\n  console.log('Method:', request.method());\n  console.log('URL:', request.url());\n  console.log('Headers:', request.headers());\n  console.log('Post data:', request.postData());\n  console.log('Resource type:', request.resourceType());\n});\n```",
+      "explanation": "Request event provides access to all request details. Useful for debugging, logging, or asserting network behavior.",
+      "difficulty": "medium",
+      "tags": ["playwright", "network", "request"]
+    },
+    {
+      "id": "pw-inter-045",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you run tests in different browsers in Playwright?",
+      "back": "```javascript\n// In playwright.config.js\nprojects: [\n  { name: 'chromium', use: { ...devices['Desktop Chrome'] } },\n  { name: 'firefox', use: { ...devices['Desktop Firefox'] } },\n  { name: 'webkit', use: { ...devices['Desktop Safari'] } },\n  { name: 'mobile', use: { ...devices['iPhone 13'] } }\n]\n// Run specific project\nnpx playwright test --project=firefox\n```",
+      "explanation": "Configure projects in config for different browsers, viewports, or configurations. Run all or specific projects.",
+      "difficulty": "medium",
+      "tags": ["playwright", "browsers", "projects"]
+    },
+    {
+      "id": "pw-inter-046",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use test annotations in Playwright?",
+      "back": "```javascript\ntest('example', async ({ page }) => {\n  test.info().annotations.push(\n    { type: 'issue', description: 'https://github.com/issue/123' },\n    { type: 'docs', description: 'https://docs.example.com' }\n  );\n  // test code\n});\n// Conditional annotation\ntest.fixme(browserName === 'webkit', 'Bug in webkit');\n```",
+      "explanation": "Annotations add metadata to tests. Shown in reports. Useful for linking issues, documentation, or test metadata.",
+      "difficulty": "medium",
+      "tags": ["playwright", "annotations", "metadata"]
+    },
+    {
+      "id": "pw-inter-047",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use test tags in Playwright?",
+      "back": "```javascript\ntest('login @smoke @critical', async ({ page }) => {});\ntest('profile @user', async ({ page }) => {});\n// Run by tag\n// npx playwright test --grep @smoke\n// Exclude tag\n// npx playwright test --grep-invert @slow\n// In config\ngrep: /@smoke/,\n```",
+      "explanation": "Add tags to test names. Filter tests by tags using --grep. Organize tests by feature, priority, or type.",
+      "difficulty": "medium",
+      "tags": ["playwright", "tags", "filtering"]
+    },
+    {
+      "id": "pw-inter-048",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use Playwright's expect.poll()?",
+      "back": "```javascript\n// Poll until condition is met\nawait expect.poll(async () => {\n  const response = await page.request.get('/api/status');\n  return response.status();\n}).toBe(200);\n// With timeout\nawait expect.poll(async () => {\n  return await getAsyncValue();\n}, { timeout: 10000, intervals: [100, 200, 500] }).toBe('expected');\n```",
+      "explanation": "expect.poll() repeatedly calls async function until assertion passes or timeout. Useful for polling APIs or async state.",
+      "difficulty": "medium",
+      "tags": ["playwright", "assertions", "polling"]
+    },
+    {
+      "id": "pw-inter-049",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test Web Workers in Playwright?",
+      "back": "```javascript\npage.on('worker', worker => {\n  console.log('Worker URL:', worker.url());\n  worker.on('close', () => console.log('Worker closed'));\n});\n// Evaluate in worker\nconst workerMessage = await new Promise(resolve => {\n  page.on('worker', worker => {\n    worker.evaluate(() => self.postMessage('test'));\n    worker.on('message', msg => resolve(msg));\n  });\n});\n```",
+      "explanation": "Listen for worker event to access Web Worker instances. Can evaluate code in worker context.",
+      "difficulty": "medium",
+      "tags": ["playwright", "web-workers", "advanced"]
+    },
+    {
+      "id": "pw-inter-050",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test Service Workers in Playwright?",
+      "back": "```javascript\n// Check if service worker is registered\nconst hasServiceWorker = await page.evaluate(async () => {\n  const registration = await navigator.serviceWorker.getRegistration();\n  return !!registration;\n});\n// Listen for service worker messages\nawait page.evaluate(() => {\n  navigator.serviceWorker.addEventListener('message', event => {\n    console.log('SW message:', event.data);\n  });\n});\n```",
+      "explanation": "Test service worker registration and messaging via page.evaluate(). Access navigator.serviceWorker in browser context.",
+      "difficulty": "medium",
+      "tags": ["playwright", "service-worker", "pwa"]
+    },
+    {
+      "id": "pw-inter-051",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test clipboard operations in Playwright?",
+      "back": "```javascript\n// Grant clipboard permissions\nawait context.grantPermissions(['clipboard-read', 'clipboard-write']);\n// Copy to clipboard\nawait page.getByRole('button', { name: 'Copy' }).click();\nconst clipboardText = await page.evaluate(() => \n  navigator.clipboard.readText()\n);\nexpect(clipboardText).toBe('Expected text');\n// Write to clipboard\nawait page.evaluate(text => navigator.clipboard.writeText(text), 'Test');\n```",
+      "explanation": "Grant clipboard permissions and use navigator.clipboard API via evaluate(). Test copy/paste functionality.",
+      "difficulty": "medium",
+      "tags": ["playwright", "clipboard", "permissions"]
+    },
+    {
+      "id": "pw-inter-052",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test local storage in Playwright?",
+      "back": "```javascript\n// Set local storage\nawait page.evaluate(() => {\n  localStorage.setItem('key', 'value');\n});\n// Get local storage\nconst value = await page.evaluate(() => localStorage.getItem('key'));\n// Clear local storage\nawait page.evaluate(() => localStorage.clear());\n// Check in test\nawait expect(page.locator('.username')).toHaveText('John');\n```",
+      "explanation": "Access localStorage via page.evaluate(). Can set, get, and clear storage. Useful for testing state persistence.",
+      "difficulty": "medium",
+      "tags": ["playwright", "storage", "local-storage"]
+    },
+    {
+      "id": "pw-inter-053",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test session storage in Playwright?",
+      "back": "```javascript\n// Set session storage\nawait context.addInitScript(() => {\n  sessionStorage.setItem('sessionKey', 'sessionValue');\n});\n// Get session storage\nconst value = await page.evaluate(() => \n  sessionStorage.getItem('sessionKey')\n);\n// Session storage is per page\nconst page2 = await context.newPage();\n// Session storage not shared between pages\n```",
+      "explanation": "sessionStorage is per-page, not shared across pages in same context. Use addInitScript for setup before page loads.",
+      "difficulty": "medium",
+      "tags": ["playwright", "storage", "session-storage"]
+    },
+    {
+      "id": "pw-inter-054",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use Playwright's waitForLoadState?",
+      "back": "```javascript\n// Wait for load\nawait page.waitForLoadState('load');\n// Wait for DOM content loaded\nawait page.waitForLoadState('domcontentloaded');\n// Wait for no network activity\nawait page.waitForLoadState('networkidle');\n// In navigation\nawait page.goto('/page', { waitUntil: 'networkidle' });\n```",
+      "explanation": "waitForLoadState() waits for specific page load state. Options: load, domcontentloaded, networkidle. Useful after navigation.",
+      "difficulty": "medium",
+      "tags": ["playwright", "waits", "load-state"]
+    },
+    {
+      "id": "pw-inter-055",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you wait for a function to return true in Playwright?",
+      "back": "```javascript\nawait page.waitForFunction(() => {\n  return document.querySelector('.loader') === null;\n});\n// With arguments\nawait page.waitForFunction(selector => {\n  return document.querySelector(selector) !== null;\n}, '.dynamic-content');\n// With timeout\nawait page.waitForFunction(() => condition, { timeout: 5000 });\n```",
+      "explanation": "waitForFunction() polls a function in browser context until it returns truthy. Alternative to element-based waits.",
+      "difficulty": "medium",
+      "tags": ["playwright", "waits", "function"]
+    },
+    {
+      "id": "pw-inter-056",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you use Playwright's waitForSelector?",
+      "back": "```javascript\n// Wait for selector (legacy, prefer locator)\nawait page.waitForSelector('.my-element');\n// Modern approach\nawait page.locator('.my-element').waitFor();\n// Wait for hidden\nawait page.locator('.loading').waitFor({ state: 'hidden' });\n// With timeout\nawait page.locator('.content').waitFor({ timeout: 10000 });\n```",
+      "explanation": "waitForSelector is legacy. Use locator().waitFor() instead. Waits for element to be attached to DOM.",
+      "difficulty": "medium",
+      "tags": ["playwright", "waits", "selector"]
+    },
+    {
+      "id": "pw-inter-057",
+      "type": "best-practice",
+      "deck": "playwright-intermediate",
+      "front": "When should you use Browser Context vs reusing a single Page?",
+      "back": "Use separate contexts for:\n- Test isolation (cookies, storage, cache)\n- Different user sessions\n- Different configurations (viewport, permissions)\n\nReuse page when:\n- Testing single-page navigation flow\n- Performance is critical\n- Tests share same state\n\nDefault: Each test gets fresh context for isolation.",
+      "difficulty": "medium",
+      "tags": ["best-practice", "context", "isolation"]
+    },
+    {
+      "id": "pw-inter-058",
+      "type": "best-practice",
+      "deck": "playwright-intermediate",
+      "front": "What's the best way to handle authentication in Playwright tests?",
+      "back": "1. Create auth state once in global setup\n2. Save to file with context.storageState()\n3. Reuse in all tests via storageState config\n4. Skip login in every test\n5. Use separate auth states for different user roles\n\nThis is much faster than logging in for each test.",
+      "difficulty": "medium",
+      "tags": ["best-practice", "authentication", "performance"]
+    },
+    {
+      "id": "pw-inter-059",
+      "type": "best-practice",
+      "deck": "playwright-intermediate",
+      "front": "How should you structure test data in Playwright?",
+      "back": "1. Use fixtures for reusable test data\n2. Store JSON test data in separate files\n3. Use factories for generating test objects\n4. Create custom fixtures that provide data\n5. Use worker fixtures for expensive data setup\n6. Avoid hardcoded data in tests\n7. Use environment variables for config\n\nKeep tests readable and data maintainable.",
+      "difficulty": "medium",
+      "tags": ["best-practice", "test-data", "organization"]
+    },
+    {
+      "id": "pw-inter-060",
+      "type": "best-practice",
+      "deck": "playwright-intermediate",
+      "front": "When should you mock API responses vs using real APIs?",
+      "back": "Mock when:\n- Testing edge cases (errors, timeouts)\n- API is unreliable or slow\n- Testing without backend\n- Simulating specific scenarios\n\nUse real APIs when:\n- Integration testing\n- Testing actual data flow\n- Validating contracts\n- End-to-end scenarios\n\nBest: Both - fast mocked tests + slower E2E tests.",
+      "difficulty": "medium",
+      "tags": ["best-practice", "mocking", "api"]
+    },
+    {
+      "id": "pw-inter-061",
+      "type": "troubleshooting",
+      "deck": "playwright-intermediate",
+      "front": "How do you debug flaky tests in Playwright?",
+      "back": "1. Enable trace on retry: trace: 'on-first-retry'\n2. Use --repeat-each to reproduce\n3. Check for race conditions\n4. Review auto-wait assumptions\n5. Add explicit waits for async operations\n6. Check network timing issues\n7. Review test isolation\n8. Use page.pause() to inspect state\n9. Enable video recording\n10. Check for external dependencies",
+      "difficulty": "medium",
+      "tags": ["troubleshooting", "flaky", "debugging"]
+    },
+    {
+      "id": "pw-inter-062",
+      "type": "troubleshooting",
+      "deck": "playwright-intermediate",
+      "front": "Why might network interception fail in Playwright?",
+      "back": "Common issues:\n1. Route registered after navigation\n2. Pattern doesn't match URL\n3. ServiceWorker intercepting requests\n4. CORS or mixed content\n5. Multiple routes conflicting\n6. Route not calling fulfill/continue/abort\n\nSolution: Register routes before page.goto(), use broad patterns, check route.request().url() to debug.",
+      "difficulty": "medium",
+      "tags": ["troubleshooting", "network", "interception"]
+    },
+    {
+      "id": "pw-inter-063",
+      "type": "troubleshooting",
+      "deck": "playwright-intermediate",
+      "front": "How do you handle 'Element is outside of the viewport' errors?",
+      "back": "Playwright auto-scrolls, but issues may occur with:\n1. Fixed/sticky headers overlapping\n2. Element in scrollable container\n3. Viewport too small\n\nSolutions:\n1. Increase viewport size\n2. Manually scroll: scrollIntoViewIfNeeded()\n3. Use force: true (last resort)\n4. Check for overlapping elements\n5. Wait for animations to complete",
+      "difficulty": "medium",
+      "tags": ["troubleshooting", "viewport", "scroll"]
+    },
+    {
+      "id": "pw-inter-064",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test file input with drag and drop in Playwright?",
+      "back": "```javascript\n// HTML5 drag and drop with files\nconst dataTransfer = await page.evaluateHandle(() => {\n  const dt = new DataTransfer();\n  const file = new File(['content'], 'test.txt', { type: 'text/plain' });\n  dt.items.add(file);\n  return dt;\n});\nawait page.dispatchEvent('#dropzone', 'drop', { dataTransfer });\n// Or use setInputFiles on hidden input\nawait page.locator('input[type=\"file\"]').setInputFiles('file.txt');\n```",
+      "explanation": "For drag-drop file uploads, create DataTransfer in browser context. For standard inputs, use setInputFiles().",
+      "difficulty": "medium",
+      "tags": ["playwright", "file-upload", "drag-drop"]
+    },
+    {
+      "id": "pw-inter-065",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test infinite scroll in Playwright?",
+      "back": "```javascript\nlet previousHeight = 0;\nwhile (true) {\n  const currentHeight = await page.evaluate(() => document.body.scrollHeight);\n  if (currentHeight === previousHeight) break;\n  previousHeight = currentHeight;\n  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));\n  await page.waitForLoadState('networkidle');\n}\nconst items = await page.getByRole('article').count();\n```",
+      "explanation": "Scroll to bottom, wait for content load, repeat until no new content. Track scroll height to detect completion.",
+      "difficulty": "medium",
+      "tags": ["playwright", "infinite-scroll", "scroll"]
+    },
+    {
+      "id": "pw-inter-066",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test hover tooltips in Playwright?",
+      "back": "```javascript\nawait page.getByRole('button', { name: 'Info' }).hover();\nawait expect(page.getByRole('tooltip')).toBeVisible();\nawait expect(page.getByRole('tooltip')).toHaveText('Information');\n// Move away\nawait page.locator('body').hover({ position: { x: 0, y: 0 } });\nawait expect(page.getByRole('tooltip')).toBeHidden();\n```",
+      "explanation": "Hover element to show tooltip, assert visibility and content. Move mouse away to hide and verify hiding.",
+      "difficulty": "medium",
+      "tags": ["playwright", "tooltip", "hover"]
+    },
+    {
+      "id": "pw-inter-067",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test input debouncing in Playwright?",
+      "back": "```javascript\n// Type with delay\nawait page.getByLabel('Search').fill('test');\n// Wait for debounce period\nawait page.waitForTimeout(500);\n// Check API was called\nconst response = await page.waitForResponse('**/api/search*');\nconst results = await response.json();\nexpect(results).toHaveLength(5);\n// Or use network wait\nconst responsePromise = page.waitForResponse('**/api/search*');\nawait page.getByLabel('Search').fill('test');\nawait responsePromise;\n```",
+      "explanation": "Fill input, wait for debounce, then assert API call or results. Use waitForResponse for network verification.",
+      "difficulty": "medium",
+      "tags": ["playwright", "debounce", "timing"]
+    },
+    {
+      "id": "pw-inter-068",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test autocomplete/typeahead in Playwright?",
+      "back": "```javascript\nawait page.getByLabel('City').fill('New');\n// Wait for suggestions\nawait expect(page.getByRole('option')).toHaveCount(5);\n// Select suggestion\nawait page.getByRole('option', { name: 'New York' }).click();\n// Verify selection\nawait expect(page.getByLabel('City')).toHaveValue('New York');\n```",
+      "explanation": "Type to trigger suggestions, wait for options to appear, select option, verify final value.",
+      "difficulty": "medium",
+      "tags": ["playwright", "autocomplete", "interactions"]
+    },
+    {
+      "id": "pw-inter-069",
+      "type": "code",
+      "deck": "playwright-intermediate",
+      "front": "How do you test real-time updates (WebSocket/SSE) in Playwright?",
+      "back": "```javascript\n// Listen for WebSocket\npage.on('websocket', ws => {\n  ws.on('framesent', frame => console.log('Sent:', frame.payload));\n  ws.on('framereceived', frame => console.log('Received:', frame.payload));\n});\n// Test real-time update\nawait page.goto('/chat');\nawait page.getByRole('textbox').fill('Hello');\nawait page.getByRole('button', { name: 'Send' }).click();\nawait expect(page.getByText('Hello')).toBeVisible();\n```",
+      "explanation": "Monitor WebSocket frames for debugging. Test by triggering action and asserting UI updates from server messages.",
+      "difficulty": "medium",
+      "tags": ["playwright", "websocket", "realtime"]
+    },
+    {
+      "id": "pw-inter-070",
+      "type": "comparison",
+      "deck": "playwright-intermediate",
+      "front": "Compare page.locator() vs page.$ in Playwright",
+      "back": "page.locator():\n- Returns Locator (lazy, strict)\n- Auto-waits for actions\n- Recommended modern API\n- Retry-able\n\npage.$():\n- Returns ElementHandle\n- No auto-wait\n- Legacy API\n- Needs manual waits\n- Disposed after use\n\nAlways prefer locator() for reliability.",
+      "difficulty": "medium",
+      "tags": ["comparison", "locator", "api"]
+    },
+    {
+      "id": "pw-inter-071",
+      "type": "comparison",
+      "deck": "playwright-intermediate",
+      "front": "When to use page.route() vs context.route() in Playwright?",
+      "back": "page.route():\n- Applies to single page\n- Set up per test\n- More specific\n\ncontext.route():\n- Applies to all pages in context\n- Set up once\n- Good for common mocks\n- Shared across pages\n\nUse context.route() for global mocks, page.route() for test-specific mocks.",
+      "difficulty": "medium",
+      "tags": ["comparison", "routing", "scope"]
+    },
+    {
+      "id": "pw-inter-072",
+      "type": "comparison",
+      "deck": "playwright-intermediate",
+      "front": "Compare test fixtures vs beforeEach hooks in Playwright",
+      "back": "Fixtures:\n- Reusable across tests\n- Dependency injection\n- Composable\n- Type-safe\n- Better for complex setup\n\nbeforeEach:\n- Simple setup\n- Sequential execution\n- Good for common actions\n- Less reusable\n\nPrefer fixtures for setup that's reused or complex. Use beforeEach for simple, file-specific setup.",
+      "difficulty": "medium",
+      "tags": ["comparison", "fixtures", "hooks"]
+    },
+    {
+      "id": "pw-inter-073",
+      "type": "definition",
+      "deck": "playwright-intermediate",
+      "front": "What is Playwright's strict mode and why is it important?",
+      "back": "Strict mode ensures locators match exactly one element. If zero or multiple elements match, Playwright throws an error instead of picking the first. This prevents ambiguous actions and catches bugs early. Use filter(), nth(), first(), or last() to handle multiple matches explicitly.",
+      "difficulty": "medium",
+      "tags": ["playwright", "strict-mode", "safety"]
+    },
+    {
+      "id": "pw-inter-074",
+      "type": "definition",
+      "deck": "playwright-intermediate",
+      "front": "What is the purpose of Playwright's request context?",
+      "back": "Request context allows API testing without a browser. It's lighter than browser context, shares cookies/auth with browser tests, and supports all HTTP methods. Ideal for API-first testing, GraphQL testing, and backend integration tests within the same test suite.",
+      "difficulty": "medium",
+      "tags": ["playwright", "request", "api"]
+    },
+    {
+      "id": "pw-inter-075",
+      "type": "best-practice",
+      "deck": "playwright-intermediate",
+      "front": "What's the recommended test organization structure in Playwright?",
+      "back": "1. tests/ - Test files\n2. tests/fixtures/ - Custom fixtures\n3. tests/pages/ - Page objects (if used)\n4. tests/utils/ - Helper functions\n5. playwright.config.ts - Configuration\n6. global-setup.ts - One-time setup\n7. auth/ - Stored auth states\n\nGroup tests by feature or page. Use descriptive file names. Keep test files focused.",
+      "difficulty": "medium",
+      "tags": ["best-practice", "organization", "structure"]
+    }
+  ]
+}

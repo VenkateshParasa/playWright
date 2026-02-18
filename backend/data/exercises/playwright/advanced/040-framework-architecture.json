@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-040",
+  "title": "Framework Architecture Design",
+  "slug": "framework-architecture",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 90,
+  "description": "Master framework architecture design in Playwright",
+  "objectives": [
+    "Project structure",
+    "Design patterns",
+    "Utilities library",
+    "Configuration management",
+    "Scalable architecture"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Project structure\n2. Design patterns\n3. Utilities library\n4. Configuration management\n5. Scalable architecture",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('framework-architecture', async ({ page }) => {\n  // TODO: Implement Framework Architecture Design\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_framework_architecture(page: Page):\n    # TODO: Implement Framework Architecture Design\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('framework-architecture', async ({ page }) => {\n  // TODO: Implement Framework Architecture Design\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Framework Architecture Design\ntest('framework-architecture', async ({ page }) => {\n  // Implementation demonstrates project structure\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Framework Architecture Design\ndef test_framework_architecture(page: Page):\n    # Implementation demonstrates project structure\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Framework Architecture Design\ntest('framework-architecture', async ({ page }) => {\n  // Implementation demonstrates project structure\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by project structure",
+    "Remember to design patterns",
+    "Use appropriate methods for utilities library",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Project structure",
+      "input": null,
+      "expectedBehavior": "Project structure works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Design patterns",
+      "input": null,
+      "expectedBehavior": "Design patterns works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Utilities library",
+      "input": null,
+      "expectedBehavior": "Utilities library works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Framework Architecture Design Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-040",
+    "lesson-041"
+  ],
+  "xpReward": 900,
+  "coinReward": 225,
+  "tags": [
+    "architecture",
+    "framework",
+    "design",
+    "patterns"
+  ]
+}

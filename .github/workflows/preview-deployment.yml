@@ -1,0 +1,182 @@
+name: Preview Deployment
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'frontend/**'
+
+jobs:
+  deploy-preview:
+    name: Deploy PR Preview
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Run tests
+        working-directory: ./frontend
+        run: npm run test -- --run
+
+      - name: Build preview
+        working-directory: ./frontend
+        run: npm run build
+        env:
+          VITE_API_URL: ${{ secrets.STAGING_API_URL }}
+          VITE_ENV: preview
+
+      - name: Deploy preview to Vercel
+        uses: amondnet/vercel-action@v25
+        id: vercel-preview
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./frontend
+          github-comment: true
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            ${{ steps.vercel-preview.outputs.preview-url }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Comment PR with preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const previewUrl = '${{ steps.vercel-preview.outputs.preview-url }}';
+            const comment = `## 🚀 Preview Deployment
+
+            Your preview deployment is ready!
+
+            **Preview URL:** ${previewUrl}
+
+            ### What's included:
+            - ✅ All tests passed
+            - ✅ Build successful
+            - ✅ Lighthouse CI completed
+
+            ### Quick Actions:
+            - [Open Preview](${previewUrl})
+            - [View Lighthouse Report](lighthouse-report-url)
+
+            This preview will be automatically updated with new commits.
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Run E2E tests on preview
+        working-directory: ./frontend
+        run: |
+          npx playwright install --with-deps chromium
+          PLAYWRIGHT_BASE_URL=${{ steps.vercel-preview.outputs.preview-url }} npm run test:e2e
+
+      - name: Comment test results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ job.status }}' === 'success' ? '✅' : '❌';
+            const comment = `## ${status} E2E Test Results
+
+            E2E tests on preview deployment: **${{ job.status }}**
+
+            ${status === '✅' ? 'All tests passed successfully!' : 'Some tests failed. Please check the logs.'}
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  visual-regression:
+    name: Visual Regression on Preview
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Run visual regression tests
+        working-directory: ./frontend
+        run: |
+          npx playwright install --with-deps
+          npm run test:e2e -- --grep @visual
+
+      - name: Upload visual diff
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-regression-diff-pr-${{ github.event.number }}
+          path: frontend/test-results/
+          retention-days: 30
+
+  accessibility-check:
+    name: Accessibility Check
+    runs-on: ubuntu-latest
+    needs: deploy-preview
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Pa11y
+        run: |
+          npm install -g pa11y-ci
+          echo '{"urls": ["${{ needs.deploy-preview.outputs.preview-url }}"]}' > pa11y.json
+          pa11y-ci --config pa11y.json
+
+      - name: Comment accessibility results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ job.status }}' === 'success' ? '✅' : '⚠️';
+            const comment = `## ${status} Accessibility Check
+
+            Accessibility check: **${{ job.status }}**
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

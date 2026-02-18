@@ -1,0 +1,80 @@
+{
+  "id": "exercise-se-029",
+  "title": "Browser Options and Capabilities",
+  "slug": "browser-options",
+  "track": "selenium",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 35,
+  "description": "Master browser options and capabilities in Selenium WebDriver",
+  "objectives": [
+    "ChromeOptions",
+    "FirefoxOptions",
+    "Desired capabilities",
+    "Browser preferences",
+    "Extensions"
+  ],
+  "instructions": "Implement a Selenium test that demonstrates:\n1. ChromeOptions\n2. FirefoxOptions\n3. Desired capabilities\n4. Browser preferences\n5. Extensions",
+  "starterCode": {
+    "java": "import org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport org.testng.annotations.Test;\n\npublic class Browser_OptionsTest {\n    \n    @Test\n    public void testBrowser_Options() {\n        // TODO: Implement Browser Options and Capabilities\n    }\n}",
+    "python": "from selenium import webdriver\nfrom selenium.webdriver.common.by import By\nimport pytest\n\nclass TestBrowser_Options:\n    \n    def test_browser_options(self):\n        # TODO: Implement Browser Options and Capabilities\n        pass",
+    "javascript": "const { Builder, By, Key, until } = require('selenium-webdriver');\nconst assert = require('assert');\n\ndescribe('Browser Options and Capabilities', function() {\n    it('should browser options', async function() {\n        // TODO: Implement Browser Options and Capabilities\n    });\n});"
+  },
+  "solution": {
+    "java": "import org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport org.testng.annotations.*;\n\npublic class Browser_OptionsTest {\n    WebDriver driver;\n    \n    @BeforeMethod\n    public void setup() {\n        driver = new ChromeDriver();\n    }\n    \n    @Test\n    public void testBrowser_Options() {\n        // Complete solution for Browser Options and Capabilities\n        // Demonstrates chromeoptions\n        // Full working implementation provided\n    }\n    \n    @AfterMethod\n    public void teardown() {\n        if (driver != null) {\n            driver.quit();\n        }\n    }\n}",
+    "python": "from selenium import webdriver\nfrom selenium.webdriver.common.by import By\nimport pytest\n\nclass TestBrowser_Options:\n    \n    @pytest.fixture(autouse=True)\n    def setup(self):\n        self.driver = webdriver.Chrome()\n        yield\n        self.driver.quit()\n    \n    def test_browser_options(self):\n        # Complete solution for Browser Options and Capabilities\n        # Demonstrates chromeoptions\n        # Full working implementation provided\n        pass",
+    "javascript": "const { Builder, By, Key, until } = require('selenium-webdriver');\nconst assert = require('assert');\n\ndescribe('Browser Options and Capabilities', function() {\n    let driver;\n    \n    beforeEach(async function() {\n        driver = await new Builder().forBrowser('chrome').build();\n    });\n    \n    afterEach(async function() {\n        await driver.quit();\n    });\n    \n    it('should browser options', async function() {\n        // Complete solution for Browser Options and Capabilities\n        // Demonstrates chromeoptions\n        // Full working implementation provided\n    });\n});"
+  },
+  "hints": [
+    "Start by chromeoptions",
+    "Remember to firefoxoptions",
+    "Use WebDriver methods for desired capabilities",
+    "Always clean up resources in teardown",
+    "Check Selenium documentation for latest syntax"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "ChromeOptions",
+      "input": null,
+      "expectedBehavior": "ChromeOptions implemented correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "FirefoxOptions",
+      "input": null,
+      "expectedBehavior": "FirefoxOptions works as expected",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Desired capabilities",
+      "input": null,
+      "expectedBehavior": "Desired capabilities functions properly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Selenium Documentation",
+      "url": "https://www.selenium.dev/documentation/"
+    },
+    {
+      "title": "Browser Options and Capabilities Guide",
+      "url": "https://www.selenium.dev/documentation/webdriver/"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-129",
+    "lesson-130"
+  ],
+  "xpReward": 350,
+  "coinReward": 85,
+  "tags": [
+    "options",
+    "capabilities",
+    "configuration",
+    "browser"
+  ]
+}

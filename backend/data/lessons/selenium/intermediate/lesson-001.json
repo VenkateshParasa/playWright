@@ -1,0 +1,69 @@
+{
+  "id": "sel-intermediate-001",
+  "title": "Advanced Element Interactions",
+  "slug": "advanced-interactions",
+  "track": "selenium",
+  "category": "intermediate",
+  "order": 1,
+  "duration": 30,
+  "description": "Perform complex interactions with web elements beyond basic click and type.",
+  "objectives": [
+    "Double-click and right-click",
+    "Drag and drop",
+    "Mouse hover actions",
+    "Complex gestures"
+  ],
+  "prerequisites": [
+    "sel-beginner-010"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Advanced Element Interactions",
+        "type": "text",
+        "content": "# Advanced Element Interactions\n\nMaster advanced interaction techniques for complex UIs.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Advanced Element Interactions\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Advanced Element Interactions concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, advanced element interactions is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Advanced Element Interactions\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Advanced Element Interactions is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Advanced Element Interactions for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Advanced Element Interactions Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-intermediate-quiz-001",
+  "nextLesson": "sel-intermediate-002",
+  "estimatedXP": 200,
+  "tags": [
+    "selenium",
+    "intermediate",
+    "advanced",
+    "automation",
+    "testing"
+  ]
+}

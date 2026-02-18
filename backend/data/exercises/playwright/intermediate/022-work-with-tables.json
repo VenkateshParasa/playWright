@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-022",
+  "title": "Work with Tables",
+  "slug": "work-with-tables",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 35,
+  "description": "Master work with tables in Playwright",
+  "objectives": [
+    "Locate table cells",
+    "Extract table data",
+    "Sort tables",
+    "Filter table rows",
+    "Paginated tables"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Locate table cells\n2. Extract table data\n3. Sort tables\n4. Filter table rows\n5. Paginated tables",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('work-with-tables', async ({ page }) => {\n  // TODO: Implement Work with Tables\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_work_with_tables(page: Page):\n    # TODO: Implement Work with Tables\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('work-with-tables', async ({ page }) => {\n  // TODO: Implement Work with Tables\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Work with Tables\ntest('work-with-tables', async ({ page }) => {\n  // Implementation demonstrates locate table cells\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Work with Tables\ndef test_work_with_tables(page: Page):\n    # Implementation demonstrates locate table cells\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Work with Tables\ntest('work-with-tables', async ({ page }) => {\n  // Implementation demonstrates locate table cells\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by locate table cells",
+    "Remember to extract table data",
+    "Use appropriate methods for sort tables",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Locate table cells",
+      "input": null,
+      "expectedBehavior": "Locate table cells works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Extract table data",
+      "input": null,
+      "expectedBehavior": "Extract table data works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Sort tables",
+      "input": null,
+      "expectedBehavior": "Sort tables works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Work with Tables Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-022",
+    "lesson-023"
+  ],
+  "xpReward": 350,
+  "coinReward": 85,
+  "tags": [
+    "tables",
+    "data-extraction",
+    "sorting",
+    "filtering"
+  ]
+}

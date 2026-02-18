@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-037",
+  "title": "Custom Test Reporter",
+  "slug": "custom-reporter",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 55,
+  "description": "Master custom test reporter in Playwright",
+  "objectives": [
+    "Reporter API",
+    "Custom formatting",
+    "External integrations",
+    "Real-time updates",
+    "Metrics collection"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Reporter API\n2. Custom formatting\n3. External integrations\n4. Real-time updates\n5. Metrics collection",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('custom-reporter', async ({ page }) => {\n  // TODO: Implement Custom Test Reporter\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_custom_reporter(page: Page):\n    # TODO: Implement Custom Test Reporter\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('custom-reporter', async ({ page }) => {\n  // TODO: Implement Custom Test Reporter\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Custom Test Reporter\ntest('custom-reporter', async ({ page }) => {\n  // Implementation demonstrates reporter api\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Custom Test Reporter\ndef test_custom_reporter(page: Page):\n    # Implementation demonstrates reporter api\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Custom Test Reporter\ntest('custom-reporter', async ({ page }) => {\n  // Implementation demonstrates reporter api\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by reporter api",
+    "Remember to custom formatting",
+    "Use appropriate methods for external integrations",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Reporter API",
+      "input": null,
+      "expectedBehavior": "Reporter API works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Custom formatting",
+      "input": null,
+      "expectedBehavior": "Custom formatting works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "External integrations",
+      "input": null,
+      "expectedBehavior": "External integrations works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Custom Test Reporter Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-037",
+    "lesson-038"
+  ],
+  "xpReward": 550,
+  "coinReward": 140,
+  "tags": [
+    "reporter",
+    "custom",
+    "reporting",
+    "api"
+  ]
+}

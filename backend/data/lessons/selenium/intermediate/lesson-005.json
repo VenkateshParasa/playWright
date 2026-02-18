@@ -1,0 +1,69 @@
+{
+  "id": "sel-intermediate-005",
+  "title": "Window and Tab Handling",
+  "slug": "window-tab-handling",
+  "track": "selenium",
+  "category": "intermediate",
+  "order": 5,
+  "duration": 30,
+  "description": "Manage multiple browser windows and tabs in tests.",
+  "objectives": [
+    "Switch between windows",
+    "Open new tabs",
+    "Close windows",
+    "Get window handles"
+  ],
+  "prerequisites": [
+    "sel-intermediate-004"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Window and Tab Handling",
+        "type": "text",
+        "content": "# Window and Tab Handling\n\nHandle multi-window scenarios with confidence.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Window and Tab Handling\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Window and Tab Handling concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, window and tab handling is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Window and Tab Handling\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Window and Tab Handling is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Window and Tab Handling for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Window and Tab Handling Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-intermediate-quiz-005",
+  "nextLesson": "sel-intermediate-006",
+  "estimatedXP": 200,
+  "tags": [
+    "selenium",
+    "intermediate",
+    "window",
+    "automation",
+    "testing"
+  ]
+}

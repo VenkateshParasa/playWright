@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-010",
+  "title": "Running Tests with TestNG/JUnit/pytest",
+  "slug": "running-tests-frameworks",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 10,
+  "duration": 25,
+  "description": "Integrate Selenium with testing frameworks for better test management.",
+  "objectives": [
+    "Set up testing frameworks",
+    "Use annotations",
+    "Run test suites",
+    "Generate reports"
+  ],
+  "prerequisites": [
+    "sel-beginner-009"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Running Tests with TestNG/JUnit/pytest",
+        "type": "text",
+        "content": "# Running Tests with TestNG/JUnit/pytest\n\nLeverage testing frameworks for professional test execution.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Running Tests with TestNG/JUnit/pytest\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Running Tests with TestNG/JUnit/pytest concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, running tests with testng/junit/pytest is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Running Tests with TestNG/JUnit/pytest\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Running Tests with TestNG/JUnit/pytest is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Running Tests with TestNG/JUnit/pytest for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Running Tests with TestNG/JUnit/pytest Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-010",
+  "nextLesson": "sel-intermediate-001",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "running",
+    "automation",
+    "testing"
+  ]
+}

@@ -1,0 +1,1195 @@
+openapi: 3.0.3
+info:
+  title: Playwright & Selenium Learning Platform API
+  description: |
+    The Playwright & Selenium Learning Platform API allows developers to integrate learning features,
+    access user data, manage webhooks, and build custom integrations.
+
+    ## Authentication
+
+    The API supports two authentication methods:
+
+    ### API Keys
+    Include your API key in the Authorization header:
+    ```
+    Authorization: Bearer YOUR_API_KEY
+    ```
+
+    ### OAuth 2.0
+    Use OAuth 2.0 for user-authorized access:
+    ```
+    Authorization: Bearer YOUR_ACCESS_TOKEN
+    ```
+
+    ## Rate Limiting
+
+    API requests are rate-limited based on your API key configuration (default: 1000 requests/hour).
+    Rate limit information is included in response headers:
+    - `X-RateLimit-Limit`: Total requests allowed per hour
+    - `X-RateLimit-Remaining`: Remaining requests
+    - `X-RateLimit-Reset`: Time when the limit resets
+
+    ## Scopes
+
+    API keys and OAuth tokens require specific scopes for different operations:
+    - `users:read` - Read user information
+    - `users:write` - Update user information
+    - `lessons:read` - Access lesson content
+    - `lessons:write` - Create/update lessons
+    - `quizzes:read` - Access quizzes
+    - `quizzes:write` - Create/update quizzes
+    - `webhooks:read` - View webhooks
+    - `webhooks:write` - Manage webhooks
+    - `api_keys:read` - View API keys
+    - `api_keys:write` - Manage API keys
+
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: api@playwright-learning.com
+    url: https://api.playwright-learning.com/support
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.playwright-learning.com/v1
+    description: Production server
+  - url: https://api-staging.playwright-learning.com/v1
+    description: Staging server
+  - url: http://localhost:3000/api/v1
+    description: Development server
+
+tags:
+  - name: Users
+    description: User management operations
+  - name: API Keys
+    description: API key management
+  - name: Webhooks
+    description: Webhook configuration and management
+  - name: OAuth
+    description: OAuth 2.0 authentication
+  - name: Health
+    description: API health and status
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: API health check
+      description: Check the API health and version
+      operationId: healthCheck
+      responses:
+        '200':
+          description: API is operational
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: operational
+                      version:
+                        type: string
+                        example: 1.0.0
+                      timestamp:
+                        type: string
+                        format: date-time
+
+  /users/me:
+    get:
+      tags:
+        - Users
+      summary: Get current user
+      description: Retrieve the profile of the authenticated user
+      operationId: getCurrentUser
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [users:read]
+      responses:
+        '200':
+          description: User profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+    patch:
+      tags:
+        - Users
+      summary: Update current user
+      description: Update the profile of the authenticated user
+      operationId: updateCurrentUser
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [users:write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                avatar:
+                  type: string
+                  format: uri
+                settings:
+                  $ref: '#/components/schemas/UserSettings'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /users/{userId}:
+    get:
+      tags:
+        - Users
+      summary: Get user by ID
+      description: Retrieve public information about a user
+      operationId: getUserById
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [users:read]
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api-keys:
+    get:
+      tags:
+        - API Keys
+      summary: List API keys
+      description: Get all API keys for the authenticated user
+      operationId: listApiKeys
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:read]
+      responses:
+        '200':
+          description: API keys retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ApiKey'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+
+    post:
+      tags:
+        - API Keys
+      summary: Create API key
+      description: Create a new API key
+      operationId: createApiKey
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApiKeyRequest'
+      responses:
+        '201':
+          description: API key created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      apiKey:
+                        $ref: '#/components/schemas/ApiKey'
+                      key:
+                        type: string
+                        description: The actual API key (shown only once)
+                  meta:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+
+  /api-keys/{keyId}:
+    get:
+      tags:
+        - API Keys
+      summary: Get API key
+      description: Get a specific API key by ID
+      operationId: getApiKey
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:read]
+      parameters:
+        - $ref: '#/components/parameters/KeyId'
+      responses:
+        '200':
+          description: API key retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/ApiKey'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      tags:
+        - API Keys
+      summary: Update API key
+      description: Update an existing API key
+      operationId: updateApiKey
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:write]
+      parameters:
+        - $ref: '#/components/parameters/KeyId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateApiKeyRequest'
+      responses:
+        '200':
+          description: API key updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/ApiKey'
+
+    delete:
+      tags:
+        - API Keys
+      summary: Revoke API key
+      description: Revoke an API key
+      operationId: revokeApiKey
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:write]
+      parameters:
+        - $ref: '#/components/parameters/KeyId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api-keys/{keyId}/rotate:
+    post:
+      tags:
+        - API Keys
+      summary: Rotate API key
+      description: Generate a new key and revoke the old one
+      operationId: rotateApiKey
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:write]
+      parameters:
+        - $ref: '#/components/parameters/KeyId'
+      responses:
+        '200':
+          description: API key rotated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      apiKey:
+                        $ref: '#/components/schemas/ApiKey'
+                      key:
+                        type: string
+
+  /api-keys/{keyId}/usage:
+    get:
+      tags:
+        - API Keys
+      summary: Get API key usage
+      description: Get usage statistics for an API key
+      operationId: getApiKeyUsage
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [api_keys:read]
+      parameters:
+        - $ref: '#/components/parameters/KeyId'
+      responses:
+        '200':
+          description: Usage statistics retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/ApiKeyUsage'
+
+  /webhooks:
+    get:
+      tags:
+        - Webhooks
+      summary: List webhooks
+      description: Get all webhooks for the authenticated user
+      operationId: listWebhooks
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:read]
+      responses:
+        '200':
+          description: Webhooks retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Webhook'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+
+    post:
+      tags:
+        - Webhooks
+      summary: Create webhook
+      description: Create a new webhook
+      operationId: createWebhook
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:write]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookRequest'
+      responses:
+        '201':
+          description: Webhook created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      webhook:
+                        $ref: '#/components/schemas/Webhook'
+                      secret:
+                        type: string
+                        description: Webhook secret for signature verification
+
+  /webhooks/{webhookId}:
+    get:
+      tags:
+        - Webhooks
+      summary: Get webhook
+      description: Get a specific webhook by ID
+      operationId: getWebhook
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:read]
+      parameters:
+        - $ref: '#/components/parameters/WebhookId'
+      responses:
+        '200':
+          description: Webhook retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Webhook'
+
+    patch:
+      tags:
+        - Webhooks
+      summary: Update webhook
+      description: Update an existing webhook
+      operationId: updateWebhook
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:write]
+      parameters:
+        - $ref: '#/components/parameters/WebhookId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWebhookRequest'
+      responses:
+        '200':
+          description: Webhook updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Webhook'
+
+    delete:
+      tags:
+        - Webhooks
+      summary: Delete webhook
+      description: Delete a webhook
+      operationId: deleteWebhook
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:write]
+      parameters:
+        - $ref: '#/components/parameters/WebhookId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+
+  /webhooks/{webhookId}/test:
+    post:
+      tags:
+        - Webhooks
+      summary: Test webhook
+      description: Send a test event to the webhook
+      operationId: testWebhook
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:write]
+      parameters:
+        - $ref: '#/components/parameters/WebhookId'
+      responses:
+        '200':
+          description: Test webhook delivered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                      status:
+                        type: integer
+
+  /webhooks/{webhookId}/events:
+    get:
+      tags:
+        - Webhooks
+      summary: List webhook events
+      description: Get event logs for a webhook
+      operationId: listWebhookEvents
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: [webhooks:read]
+      parameters:
+        - $ref: '#/components/parameters/WebhookId'
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, success, failed, retrying]
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Webhook events retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWebhookEvents'
+
+  /oauth/token:
+    post:
+      tags:
+        - OAuth
+      summary: Get access token
+      description: Exchange authorization code or refresh token for access token
+      operationId: getOAuthToken
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - grant_type
+                - client_id
+              properties:
+                grant_type:
+                  type: string
+                  enum: [authorization_code, refresh_token]
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+                code:
+                  type: string
+                  description: Required for authorization_code grant
+                refresh_token:
+                  type: string
+                  description: Required for refresh_token grant
+                scope:
+                  type: string
+      responses:
+        '200':
+          description: Token issued successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Invalid client credentials
+
+  /oauth/revoke:
+    post:
+      tags:
+        - OAuth
+      summary: Revoke token
+      description: Revoke an access or refresh token
+      operationId: revokeOAuthToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/Success'
+
+  /oauth/clients:
+    get:
+      tags:
+        - OAuth
+      summary: List OAuth clients
+      description: Get all OAuth clients for the authenticated user
+      operationId: listOAuthClients
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: []
+      responses:
+        '200':
+          description: OAuth clients retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OAuth2Client'
+
+    post:
+      tags:
+        - OAuth
+      summary: Create OAuth client
+      description: Create a new OAuth2 client
+      operationId: createOAuthClient
+      security:
+        - ApiKeyAuth: []
+        - OAuth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOAuth2ClientRequest'
+      responses:
+        '201':
+          description: OAuth client created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      client:
+                        $ref: '#/components/schemas/OAuth2Client'
+                      clientSecret:
+                        type: string
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: Use your API key as a bearer token
+
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.playwright-learning.com/oauth/authorize
+          tokenUrl: https://api.playwright-learning.com/v1/oauth/token
+          scopes:
+            users:read: Read user information
+            users:write: Update user information
+            lessons:read: Access lesson content
+            lessons:write: Create/update lessons
+            quizzes:read: Access quizzes
+            quizzes:write: Create/update quizzes
+            webhooks:read: View webhooks
+            webhooks:write: Manage webhooks
+            api_keys:read: View API keys
+            api_keys:write: Manage API keys
+
+  parameters:
+    KeyId:
+      name: keyId
+      in: path
+      required: true
+      schema:
+        type: string
+
+    WebhookId:
+      name: webhookId
+      in: path
+      required: true
+      schema:
+        type: string
+
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 50
+        minimum: 1
+        maximum: 100
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        fullName:
+          type: string
+        avatar:
+          type: string
+          format: uri
+        role:
+          type: string
+          enum: [student, instructor, admin]
+        status:
+          type: string
+          enum: [active, suspended, deleted]
+        settings:
+          $ref: '#/components/schemas/UserSettings'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    UserSettings:
+      type: object
+      properties:
+        theme:
+          type: string
+          enum: [light, dark, auto]
+        language:
+          type: string
+          enum: [en, es, fr, de]
+        notifications:
+          type: object
+        study:
+          type: object
+        privacy:
+          type: object
+
+    ApiKey:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        keyPrefix:
+          type: string
+        environment:
+          type: string
+          enum: [development, production]
+        scopes:
+          type: array
+          items:
+            type: string
+        rateLimit:
+          type: integer
+        usageCount:
+          type: integer
+        lastUsedAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        isActive:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    ApiKeyUsage:
+      type: object
+      properties:
+        usageCount:
+          type: integer
+        lastUsedAt:
+          type: string
+          format: date-time
+        rateLimit:
+          type: integer
+        percentUsed:
+          type: number
+
+    CreateApiKeyRequest:
+      type: object
+      required:
+        - name
+        - environment
+      properties:
+        name:
+          type: string
+        environment:
+          type: string
+          enum: [development, production]
+        scopes:
+          type: array
+          items:
+            type: string
+        rateLimit:
+          type: integer
+          default: 1000
+        expiresAt:
+          type: string
+          format: date-time
+        ipWhitelist:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: object
+
+    UpdateApiKeyRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        rateLimit:
+          type: integer
+        isActive:
+          type: boolean
+        ipWhitelist:
+          type: array
+          items:
+            type: string
+
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+            enum:
+              - user.created
+              - user.updated
+              - lesson.completed
+              - quiz.passed
+              - quiz.failed
+              - exercise.completed
+              - achievement.unlocked
+              - review.completed
+              - progress.milestone
+              - subscription.changed
+        isActive:
+          type: boolean
+        description:
+          type: string
+        successCount:
+          type: integer
+        failureCount:
+          type: integer
+        lastTriggeredAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateWebhookRequest:
+      type: object
+      required:
+        - url
+        - events
+      properties:
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        headers:
+          type: object
+        retryPolicy:
+          type: object
+          properties:
+            maxAttempts:
+              type: integer
+              minimum: 1
+              maximum: 5
+            backoffMultiplier:
+              type: integer
+              minimum: 1
+
+    UpdateWebhookRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        isActive:
+          type: boolean
+        headers:
+          type: object
+
+    WebhookEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        webhookId:
+          type: string
+        eventType:
+          type: string
+        status:
+          type: string
+          enum: [pending, success, failed, retrying]
+        attempts:
+          type: integer
+        responseStatus:
+          type: integer
+        errorMessage:
+          type: string
+        deliveryDuration:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+
+    PaginatedWebhookEvents:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: '#/components/schemas/Pagination'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    OAuth2Client:
+      type: object
+      properties:
+        id:
+          type: string
+        clientId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        redirectUris:
+          type: array
+          items:
+            type: string
+        allowedScopes:
+          type: array
+          items:
+            type: string
+        grantTypes:
+          type: array
+          items:
+            type: string
+        isPublic:
+          type: boolean
+        isActive:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateOAuth2ClientRequest:
+      type: object
+      required:
+        - name
+        - redirectUris
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        redirectUris:
+          type: array
+          items:
+            type: string
+        allowedScopes:
+          type: array
+          items:
+            type: string
+        grantTypes:
+          type: array
+          items:
+            type: string
+        isPublic:
+          type: boolean
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        scope:
+          type: string
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        pages:
+          type: integer
+
+    PaginationLinks:
+      type: object
+      properties:
+        self:
+          type: string
+        next:
+          type: string
+          nullable: true
+        prev:
+          type: string
+          nullable: true
+
+    UserResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/User'
+
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+
+  responses:
+    Success:
+      description: Operation successful
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              meta:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error:
+              code: UNAUTHORIZED
+              message: Authentication required
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error:
+              code: NOT_FOUND
+              message: Resource not found
+
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error:
+              code: INTERNAL_ERROR
+              message: An internal error occurred

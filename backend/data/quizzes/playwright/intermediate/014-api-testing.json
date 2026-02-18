@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-014",
+  "title": "API Testing",
+  "slug": "api-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Learn to test REST APIs using Playwright's API testing capabilities",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q131", "type": "multiple-choice", "question": "Which Playwright object is used for API testing?", "options": ["page.api", "request", "api", "http"], "correctAnswer": 1, "explanation": "The request fixture/context is used for API testing in Playwright.", "difficulty": "medium", "points": 10, "tags": ["api", "testing"]},
+    {"id": "quiz-pw-q132", "type": "code-completion", "question": "Complete the code to make a GET request:", "codeTemplate": "const response = await request.____('https://api.example.com/data');", "correctAnswer": "const response = await request.get('https://api.example.com/data');", "acceptedAnswers": ["get"], "explanation": "request.get() makes a GET request to the specified URL.", "difficulty": "medium", "points": 15, "tags": ["api", "http", "code"]},
+    {"id": "quiz-pw-q133", "type": "true-false", "question": "Playwright can test REST APIs without opening a browser.", "correctAnswer": true, "explanation": "Playwright's API testing feature works independently of browser automation.", "difficulty": "medium", "points": 5, "tags": ["api", "testing"]},
+    {"id": "quiz-pw-q134", "type": "multiple-choice", "question": "How do you send JSON data in a POST request?", "options": ["request.post(url, { body: data })", "request.post(url, { data: data })", "request.post(url, { json: data })", "request.post(url, data)"], "correctAnswer": 1, "explanation": "Use the data option to send JSON data in POST requests.", "difficulty": "medium", "points": 10, "tags": ["api", "post", "json"]},
+    {"id": "quiz-pw-q135", "type": "code-completion", "question": "Complete the code to get JSON response:", "codeTemplate": "const data = await response.____();", "correctAnswer": "const data = await response.json();", "acceptedAnswers": ["json"], "explanation": "response.json() parses the response body as JSON.", "difficulty": "medium", "points": 15, "tags": ["api", "response", "code"]},
+    {"id": "quiz-pw-q136", "type": "multiple-choice", "question": "How do you set custom headers for API requests?", "options": ["request.get(url, { headers: {...} })", "request.setHeaders({...})", "request.headers({...})", "request.withHeaders({...})"], "correctAnswer": 0, "explanation": "Pass headers in the options object when making requests.", "difficulty": "medium", "points": 10, "tags": ["api", "headers"]},
+    {"id": "quiz-pw-q137", "type": "debugging", "question": "What is wrong with this API test?", "code": "const response = request.post('https://api.example.com', { data: {} });\nawait expect(response.status()).toBe(200);", "options": ["Missing await for request", "Incorrect status check", "Wrong POST syntax", "Nothing is wrong"], "correctAnswer": 0, "explanation": "The request.post() call must be awaited before accessing response properties.", "difficulty": "medium", "points": 20, "tags": ["api", "debugging", "async"]},
+    {"id": "quiz-pw-q138", "type": "true-false", "question": "API requests in Playwright automatically retry on failure.", "correctAnswer": false, "explanation": "Unlike UI actions, API requests do not have automatic retry by default.", "difficulty": "medium", "points": 5, "tags": ["api", "retry"]},
+    {"id": "quiz-pw-q139", "type": "multiple-choice", "question": "Which method checks the API response status?", "options": ["response.status()", "response.statusCode()", "response.code()", "response.httpStatus()"], "correctAnswer": 0, "explanation": "response.status() returns the HTTP status code.", "difficulty": "medium", "points": 10, "tags": ["api", "response"]},
+    {"id": "quiz-pw-q140", "type": "code-output", "question": "What does this code validate?", "code": "await expect(response).toBeOK();", "options": ["Response status is 200", "Response status is 2xx", "Response has body", "Response is valid JSON"], "correctAnswer": 1, "explanation": "toBeOK() checks if the response status is in the 200-299 range.", "difficulty": "medium", "points": 15, "tags": ["api", "assertions"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-014",
+  "prerequisites": ["quiz-pw-013"],
+  "xpReward": 200,
+  "coinReward": 40
+}

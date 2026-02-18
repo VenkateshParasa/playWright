@@ -1,0 +1,59 @@
+# Fastlane Configuration for Mobile App
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Build iOS app for development"
+  lane :dev do
+    build_app(
+      scheme: "PlaywrightSeleniumLearning",
+      export_method: "development"
+    )
+  end
+
+  desc "Build iOS app for App Store"
+  lane :release do
+    increment_build_number
+    build_app(
+      scheme: "PlaywrightSeleniumLearning",
+      export_method: "app-store"
+    )
+    upload_to_app_store
+  end
+
+  desc "Upload to TestFlight"
+  lane :beta do
+    build_app(
+      scheme: "PlaywrightSeleniumLearning",
+      export_method: "app-store"
+    )
+    upload_to_testflight
+  end
+end
+
+platform :android do
+  desc "Build Android app for development"
+  lane :dev do
+    gradle(
+      task: "assembleDebug"
+    )
+  end
+
+  desc "Build Android app for Play Store"
+  lane :release do
+    gradle(
+      task: "bundleRelease"
+    )
+    upload_to_play_store
+  end
+
+  desc "Upload to Play Store Beta"
+  lane :beta do
+    gradle(
+      task: "bundleRelease"
+    )
+    upload_to_play_store(
+      track: 'beta'
+    )
+  end
+end

@@ -1,0 +1,80 @@
+{
+  "id": "pw-beginner-001",
+  "title": "Introduction to Playwright",
+  "slug": "introduction-to-playwright",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 1,
+  "duration": 15,
+  "description": "Learn what Playwright is, why it's a powerful tool for modern web testing, and how it compares to other automation frameworks.",
+  "objectives": [
+    "Understand what Playwright is and its core capabilities",
+    "Learn the benefits of using Playwright for test automation",
+    "Compare Playwright with other testing tools",
+    "Identify use cases where Playwright excels"
+  ],
+  "prerequisites": [],
+  "content": {
+    "sections": [
+      {
+        "title": "What is Playwright?",
+        "type": "text",
+        "content": "# What is Playwright?\n\nPlaywright is a modern, open-source automation framework developed by Microsoft that enables reliable end-to-end testing for web applications. Released in 2020, it has quickly become one of the most popular tools for browser automation and testing.\n\n## Key Features\n\nPlaywright stands out with several powerful capabilities:\n\n**Multi-Browser Support**: Test across Chromium, Firefox, and WebKit (Safari) with a single API. This means you can write your tests once and run them on all major browsers.\n\n**Auto-Waiting**: Playwright automatically waits for elements to be ready before performing actions. No more flaky tests due to timing issues or manual wait statements.\n\n**Fast Execution**: Tests run in parallel by default, and browser contexts enable isolated test environments without the overhead of launching new browser instances.\n\n**Cross-Platform**: Works seamlessly on Windows, macOS, and Linux.\n\n**Multiple Language Support**: Write tests in JavaScript, TypeScript, Python, Java, or C#.\n\n## Why Playwright?\n\nTraditional testing tools often struggle with modern web applications that use complex JavaScript frameworks, dynamic content, and asynchronous operations. Playwright was built from the ground up to handle these challenges.\n\n### Modern Web Application Support\n\nPlaywright excels at testing Single Page Applications (SPAs), Progressive Web Apps (PWAs), and applications built with frameworks like React, Angular, and Vue. It handles dynamic content, shadow DOM, and modern web components with ease.\n\n### Developer Experience\n\nThe framework provides excellent debugging tools, including:\n- Playwright Inspector for step-by-step test execution\n- Trace Viewer for post-mortem debugging\n- Video recording and screenshot capabilities\n- Built-in test generator (Codegen)\n\n### Reliability\n\nPlaywright's auto-waiting mechanism and built-in retry logic significantly reduce test flakiness. When you click a button, Playwright ensures the element is visible, enabled, and stable before interacting with it.\n\n## Use Cases\n\nPlaywright is ideal for:\n\n1. **End-to-End Testing**: Validate complete user workflows across your application\n2. **Integration Testing**: Test how different parts of your application work together\n3. **Visual Regression Testing**: Detect unintended visual changes\n4. **API Testing**: Test backend APIs alongside UI tests\n5. **Web Scraping**: Extract data from websites reliably\n6. **Browser Automation**: Automate repetitive browser tasks"
+      },
+      {
+        "title": "Playwright vs Other Tools",
+        "type": "text",
+        "content": "## Comparison with Other Testing Tools\n\n### Playwright vs Selenium\n\n**Selenium** has been the industry standard for years, but Playwright offers several advantages:\n\n- **Auto-waiting**: Selenium requires explicit waits; Playwright waits automatically\n- **Browser Context**: Playwright's browser contexts are faster than launching new browsers\n- **Modern API**: Playwright has a cleaner, more intuitive API\n- **Built-in Testing Tools**: Playwright includes test runner, trace viewer, and codegen out of the box\n- **Network Interception**: Native support without additional libraries\n\n**When to use Selenium**: Legacy applications, need for IE support, existing large Selenium test suites\n\n### Playwright vs Cypress\n\n**Cypress** is another modern testing framework, but Playwright has distinct advantages:\n\n- **Multi-Browser**: Playwright supports all major browsers; Cypress has limited Safari support\n- **Multiple Tabs/Windows**: Playwright handles multiple tabs easily; Cypress doesn't support this well\n- **Network Mocking**: More powerful network interception in Playwright\n- **Cross-Domain Testing**: Playwright handles cross-domain scenarios better\n- **Language Support**: Playwright supports multiple languages; Cypress is JavaScript-only\n\n**When to use Cypress**: Simpler learning curve, strong focus on developer experience, testing within a single domain\n\n### Playwright vs Puppeteer\n\n**Puppeteer** is Google's automation library for Chrome. Playwright was created by the same team that built Puppeteer, incorporating lessons learned:\n\n- **Multi-Browser**: Puppeteer is Chromium-only; Playwright supports all browsers\n- **Testing Features**: Playwright includes a full test runner; Puppeteer is a library\n- **API Design**: Playwright has improved API consistency\n- **Better Selectors**: Enhanced selector engine in Playwright\n\n**When to use Puppeteer**: Chrome-only automation, smaller bundle size needed"
+      },
+      {
+        "title": "Architecture Overview",
+        "type": "text",
+        "content": "## How Playwright Works\n\nUnderstanding Playwright's architecture helps you write better tests:\n\n### Browser Connection\n\nPlaywright communicates with browsers using their debugging protocols:\n- **Chromium**: Chrome DevTools Protocol\n- **Firefox**: Modified version of Firefox's protocol\n- **WebKit**: WebKit's protocol\n\nThis direct connection means Playwright can control browsers at a deep level, enabling features like network interception and geolocation mocking.\n\n### Test Isolation\n\nPlaywright uses **Browser Contexts** to provide test isolation. A browser context is like an incognito window - it has its own cookies, local storage, and cache. Multiple contexts can run in parallel within a single browser instance, making tests fast and isolated.\n\n### Auto-Waiting Mechanism\n\nBefore performing any action, Playwright automatically:\n1. Waits for the element to be attached to DOM\n2. Waits for the element to be visible\n3. Waits for the element to be stable (not animating)\n4. Waits for the element to receive events (not obscured)\n5. Waits for the element to be enabled\n\nThis eliminates the need for most manual wait statements and makes tests more reliable."
+      },
+      {
+        "title": "Simple Example",
+        "type": "code",
+        "language": "javascript",
+        "code": "// A simple Playwright test example\nimport { test, expect } from '@playwright/test';\n\ntest('basic navigation test', async ({ page }) => {\n  // Navigate to a website\n  await page.goto('https://playwright.dev');\n  \n  // Click on a link\n  await page.click('text=Get Started');\n  \n  // Verify we're on the right page\n  await expect(page).toHaveURL(/.*intro/);\n  \n  // Check for specific text on the page\n  await expect(page.locator('h1')).toContainText('Installation');\n});\n\n// That's it! Notice:\n// - No explicit waits needed\n// - Clean, readable syntax\n// - Built-in assertions with expect()",
+        "explanation": "This simple example demonstrates Playwright's clean API. The test navigates to a website, clicks a link, and verifies the result. Notice how we don't need explicit waits - Playwright handles that automatically."
+      },
+      {
+        "title": "Real-World Scenario",
+        "type": "code",
+        "language": "javascript",
+        "code": "// Testing a login flow - a common real-world scenario\nimport { test, expect } from '@playwright/test';\n\ntest('user can login successfully', async ({ page }) => {\n  // Navigate to login page\n  await page.goto('https://example.com/login');\n  \n  // Fill in credentials\n  await page.fill('input[name=\"email\"]', 'user@example.com');\n  await page.fill('input[name=\"password\"]', 'securePassword123');\n  \n  // Click login button\n  await page.click('button[type=\"submit\"]');\n  \n  // Wait for navigation and verify success\n  await expect(page).toHaveURL('https://example.com/dashboard');\n  await expect(page.locator('.welcome-message')).toBeVisible();\n  await expect(page.locator('.user-name')).toContainText('Welcome back!');\n});\n\n// Key points:\n// - Playwright automatically waits for navigation after clicking submit\n// - We can chain multiple assertions\n// - The test is easy to read and understand",
+        "explanation": "This example shows a real-world login test. Playwright automatically handles the form submission, navigation, and waits for elements to appear. The test is straightforward and reliable."
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Playwright is a modern, open-source automation framework developed by Microsoft",
+    "It supports testing across Chromium, Firefox, and WebKit with a single API",
+    "Auto-waiting capability eliminates most timing issues and reduces flaky tests",
+    "Playwright excels at testing modern web applications built with JavaScript frameworks",
+    "Browser contexts enable fast, isolated test execution without launching new browsers",
+    "Built-in tools like Trace Viewer and Codegen enhance debugging and test creation",
+    "Playwright offers advantages over Selenium, Cypress, and Puppeteer for many use cases"
+  ],
+  "resources": [
+    {
+      "title": "Official Playwright Documentation",
+      "url": "https://playwright.dev",
+      "type": "documentation"
+    },
+    {
+      "title": "Playwright GitHub Repository",
+      "url": "https://github.com/microsoft/playwright",
+      "type": "repository"
+    },
+    {
+      "title": "Why Playwright?",
+      "url": "https://playwright.dev/docs/why-playwright",
+      "type": "article"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-001",
+  "nextLesson": "pw-beginner-002",
+  "estimatedXP": 100,
+  "tags": ["playwright", "introduction", "basics", "overview", "getting-started"]
+}

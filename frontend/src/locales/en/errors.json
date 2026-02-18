@@ -1,0 +1,88 @@
+{
+  "general": {
+    "somethingWentWrong": "Something went wrong",
+    "tryAgainLater": "Please try again later",
+    "contactSupport": "If the problem persists, please contact support",
+    "errorCode": "Error Code: {{code}}",
+    "backToHome": "Back to Home",
+    "reload": "Reload Page"
+  },
+  "network": {
+    "offline": "You are currently offline",
+    "noConnection": "No internet connection",
+    "slowConnection": "Slow connection detected",
+    "reconnecting": "Reconnecting...",
+    "reconnected": "Connection restored",
+    "timeout": "Request timed out",
+    "serverError": "Server error occurred"
+  },
+  "auth": {
+    "invalidCredentials": "Invalid email or password",
+    "accountLocked": "Your account has been locked",
+    "sessionExpired": "Your session has expired",
+    "unauthorized": "You are not authorized to access this resource",
+    "emailNotVerified": "Please verify your email address",
+    "tokenExpired": "Your token has expired",
+    "tokenInvalid": "Invalid or expired token"
+  },
+  "validation": {
+    "fieldRequired": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPassword": "Password does not meet requirements",
+    "passwordMismatch": "Passwords do not match",
+    "invalidFormat": "Invalid format",
+    "valueTooShort": "Value is too short",
+    "valueTooLong": "Value is too long",
+    "invalidRange": "Value must be between {{min}} and {{max}}",
+    "invalidOption": "Please select a valid option"
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "message": "The page you're looking for doesn't exist",
+    "suggestions": "Here are some helpful links:",
+    "goHome": "Go to Home",
+    "viewLessons": "View Lessons",
+    "contactUs": "Contact Us"
+  },
+  "forbidden": {
+    "title": "403 - Access Denied",
+    "message": "You don't have permission to access this resource",
+    "requestAccess": "Request Access",
+    "goBack": "Go Back"
+  },
+  "serverError": {
+    "title": "500 - Server Error",
+    "message": "Our server encountered an error",
+    "tryAgain": "Please try again in a few moments",
+    "statusPage": "Check Status Page"
+  },
+  "form": {
+    "submitFailed": "Failed to submit form",
+    "uploadFailed": "File upload failed",
+    "invalidFile": "Invalid file type or size",
+    "maxSizeExceeded": "File size exceeds maximum allowed ({{max}})",
+    "requiredFields": "Please fill in all required fields"
+  },
+  "api": {
+    "requestFailed": "Request failed",
+    "dataLoadFailed": "Failed to load data",
+    "saveFailed": "Failed to save changes",
+    "deleteFailed": "Failed to delete item",
+    "updateFailed": "Failed to update",
+    "connectionLost": "Connection to server lost",
+    "rateLimitExceeded": "Too many requests. Please slow down."
+  },
+  "payment": {
+    "paymentFailed": "Payment failed",
+    "cardDeclined": "Your card was declined",
+    "insufficientFunds": "Insufficient funds",
+    "invalidCard": "Invalid card details",
+    "transactionFailed": "Transaction failed"
+  },
+  "media": {
+    "loadFailed": "Failed to load media",
+    "playbackError": "Playback error occurred",
+    "unsupportedFormat": "Unsupported media format",
+    "codecMissing": "Required codec is missing"
+  }
+}

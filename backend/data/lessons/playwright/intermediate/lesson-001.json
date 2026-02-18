@@ -1,0 +1,69 @@
+{
+  "id": "pw-intermediate-001",
+  "title": "Advanced Locators (CSS, XPath, nth, has)",
+  "slug": "advanced-locators",
+  "track": "playwright",
+  "category": "intermediate",
+  "order": 1,
+  "duration": 30,
+  "description": "Master advanced locator techniques including CSS combinators, XPath expressions, and Playwright-specific selectors.",
+  "objectives": [
+    "Use complex CSS selectors",
+    "Write XPath expressions",
+    "Apply nth, has, and filter selectors",
+    "Chain multiple locator strategies"
+  ],
+  "prerequisites": [
+    "pw-beginner-010"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Advanced Locators (CSS, XPath, nth, has)",
+        "type": "text",
+        "content": "# Advanced Locators (CSS, XPath, nth, has)\n\nLearn advanced selection strategies for complex DOM structures including shadow DOM, iframes, and dynamic content.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Advanced Locators (CSS, XPath, nth, has)\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Advanced Locators (CSS, XPath, nth, has) concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, advanced locators (css, xpath, nth, has) is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Advanced Locators (CSS, XPath, nth, has)\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Advanced Locators (CSS, XPath, nth, has) is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Advanced Locators (CSS, XPath, nth, has) for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Advanced Locators (CSS, XPath, nth, has) Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-intermediate-quiz-001",
+  "nextLesson": "pw-intermediate-002",
+  "estimatedXP": 200,
+  "tags": [
+    "playwright",
+    "intermediate",
+    "advanced",
+    "automation",
+    "testing"
+  ]
+}

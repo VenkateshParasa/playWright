@@ -1,0 +1,71 @@
+{
+  "id": "exercise-pw-002",
+  "title": "Click a Button",
+  "slug": "click-button",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 15,
+  "description": "Learn how to locate and click buttons using Playwright's locator strategies",
+  "objectives": [
+    "Navigate to a webpage",
+    "Locate a button element using getByRole",
+    "Perform a click action",
+    "Verify the result of the click"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Opens https://demo.playwright.dev/todomvc\n2. Clicks the 'What needs to be done?' input field\n3. Types 'Test Task' and presses Enter\n4. Verifies the task appears in the list",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('click and add task', async ({ page }) => {\n  // TODO: Navigate to the TodoMVC demo\n  \n  // TODO: Click the input field and type 'Test Task'\n  \n  // TODO: Press Enter to add the task\n  \n  // TODO: Verify the task appears\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_click_button(page: Page):\n    # TODO: Navigate to the TodoMVC demo\n    \n    # TODO: Click the input field and type 'Test Task'\n    \n    # TODO: Press Enter to add the task\n    \n    # TODO: Verify the task appears\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('click and add task', async ({ page }) => {\n  // TODO: Navigate to the TodoMVC demo\n  \n  // TODO: Click the input field and type 'Test Task'\n  \n  // TODO: Press Enter to add the task\n  \n  // TODO: Verify the task appears\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('click and add task', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  const input = page.getByPlaceholder('What needs to be done?');\n  await input.click();\n  await input.fill('Test Task');\n  await input.press('Enter');\n  await expect(page.getByText('Test Task')).toBeVisible();\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_click_button(page: Page):\n    page.goto('https://demo.playwright.dev/todomvc')\n    input_field = page.get_by_placeholder('What needs to be done?')\n    input_field.click()\n    input_field.fill('Test Task')\n    input_field.press('Enter')\n    expect(page.get_by_text('Test Task')).to_be_visible()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('click and add task', async ({ page }) => {\n  await page.goto('https://demo.playwright.dev/todomvc');\n  const input = page.getByPlaceholder('What needs to be done?');\n  await input.click();\n  await input.fill('Test Task');\n  await input.press('Enter');\n  await expect(page.getByText('Test Task')).toBeVisible();\n});"
+  },
+  "hints": [
+    "Use page.getByPlaceholder() to find input fields by placeholder text",
+    "Use .click() to focus on an element",
+    "Use .fill() to enter text into an input",
+    "Use .press('Enter') to simulate keyboard input",
+    "Use expect().toBeVisible() to verify element visibility"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Input field is clicked",
+      "input": null,
+      "expectedBehavior": "Input field receives focus",
+      "points": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Text is entered",
+      "input": "Test Task",
+      "expectedBehavior": "Text is filled into the input field",
+      "points": 30
+    },
+    {
+      "id": "test-3",
+      "name": "Task is added",
+      "input": null,
+      "expectedBehavior": "Task appears in the todo list",
+      "points": 50
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Locators",
+      "url": "https://playwright.dev/docs/locators"
+    },
+    {
+      "title": "Playwright Actions",
+      "url": "https://playwright.dev/docs/input"
+    }
+  ],
+  "relatedLessons": ["lesson-003", "lesson-004"],
+  "xpReward": 150,
+  "coinReward": 35,
+  "tags": ["click", "locators", "input", "keyboard"]
+}

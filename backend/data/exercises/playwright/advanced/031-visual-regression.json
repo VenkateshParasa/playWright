@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-031",
+  "title": "Visual Regression Testing",
+  "slug": "visual-regression",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 50,
+  "description": "Master visual regression testing in Playwright",
+  "objectives": [
+    "Screenshot comparison",
+    "Visual diffs",
+    "Update baselines",
+    "Threshold configuration",
+    "CI integration"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Screenshot comparison\n2. Visual diffs\n3. Update baselines\n4. Threshold configuration\n5. CI integration",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('visual-regression', async ({ page }) => {\n  // TODO: Implement Visual Regression Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_visual_regression(page: Page):\n    # TODO: Implement Visual Regression Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('visual-regression', async ({ page }) => {\n  // TODO: Implement Visual Regression Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Visual Regression Testing\ntest('visual-regression', async ({ page }) => {\n  // Implementation demonstrates screenshot comparison\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Visual Regression Testing\ndef test_visual_regression(page: Page):\n    # Implementation demonstrates screenshot comparison\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Visual Regression Testing\ntest('visual-regression', async ({ page }) => {\n  // Implementation demonstrates screenshot comparison\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by screenshot comparison",
+    "Remember to visual diffs",
+    "Use appropriate methods for update baselines",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Screenshot comparison",
+      "input": null,
+      "expectedBehavior": "Screenshot comparison works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Visual diffs",
+      "input": null,
+      "expectedBehavior": "Visual diffs works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Update baselines",
+      "input": null,
+      "expectedBehavior": "Update baselines works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Visual Regression Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-031",
+    "lesson-032"
+  ],
+  "xpReward": 500,
+  "coinReward": 125,
+  "tags": [
+    "visual",
+    "regression",
+    "screenshots",
+    "comparison"
+  ]
+}

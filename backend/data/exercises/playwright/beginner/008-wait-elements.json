@@ -1,0 +1,72 @@
+{
+  "id": "exercise-pw-008",
+  "title": "Wait for Elements",
+  "slug": "wait-elements",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Master Playwright's auto-waiting and explicit waiting strategies for reliable tests",
+  "objectives": [
+    "Understand auto-waiting behavior",
+    "Use waitForSelector explicitly",
+    "Wait for load states",
+    "Wait for network idle",
+    "Set custom timeouts"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Waits for page to be fully loaded\n2. Waits for specific elements to appear\n3. Waits for elements to be visible\n4. Waits for network to be idle\n5. Uses custom timeout values",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('wait for elements', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/1');\n  \n  // TODO: Click the start button\n  \n  // TODO: Wait for the loading spinner to disappear\n  \n  // TODO: Wait for the result text to appear\n  \n  // TODO: Assert the result text is visible\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_wait_elements(page: Page):\n    page.goto('https://practice.expandtesting.com/dynamic-loading/1')\n    \n    # TODO: Click the start button\n    \n    # TODO: Wait for the loading spinner to disappear\n    \n    # TODO: Wait for the result text to appear\n    \n    # TODO: Assert the result text is visible\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('wait for elements', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/1');\n  \n  // TODO: Click the start button\n  \n  // TODO: Wait for the loading spinner to disappear\n  \n  // TODO: Wait for the result text to appear\n  \n  // TODO: Assert the result text is visible\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('wait for elements', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/1');\n  \n  await page.click('button:has-text(\"Start\")');\n  \n  await page.waitForSelector('#loading', { state: 'hidden' });\n  \n  await page.waitForSelector('#finish', { state: 'visible' });\n  \n  await expect(page.locator('#finish')).toContainText('Hello World!');\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_wait_elements(page: Page):\n    page.goto('https://practice.expandtesting.com/dynamic-loading/1')\n    \n    page.click('button:has-text(\"Start\")')\n    \n    page.wait_for_selector('#loading', state='hidden')\n    \n    page.wait_for_selector('#finish', state='visible')\n    \n    expect(page.locator('#finish')).to_contain_text('Hello World!')",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('wait for elements', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dynamic-loading/1');\n  \n  await page.click('button:has-text(\"Start\")');\n  \n  await page.waitForSelector('#loading', { state: 'hidden' });\n  \n  await page.waitForSelector('#finish', { state: 'visible' });\n  \n  await expect(page.locator('#finish')).toContainText('Hello World!');\n});"
+  },
+  "hints": [
+    "Use waitForSelector with state: 'hidden' to wait for elements to disappear",
+    "Use waitForSelector with state: 'visible' to wait for elements to appear",
+    "Playwright auto-waits for most actions, but explicit waits are useful for dynamic content",
+    "Use page.waitForLoadState() to wait for page load states",
+    "Set timeout option for custom wait durations"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Start button clicked",
+      "input": null,
+      "expectedBehavior": "Loading process starts",
+      "points": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Loading spinner disappears",
+      "input": null,
+      "expectedBehavior": "Wait for loading spinner to be hidden",
+      "points": 40
+    },
+    {
+      "id": "test-3",
+      "name": "Result appears",
+      "input": null,
+      "expectedBehavior": "Result text 'Hello World!' is visible",
+      "points": 40
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Auto-waiting",
+      "url": "https://playwright.dev/docs/actionability"
+    },
+    {
+      "title": "Explicit Waits",
+      "url": "https://playwright.dev/docs/api/class-page#page-wait-for-selector"
+    }
+  ],
+  "relatedLessons": ["lesson-015", "lesson-016"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["waiting", "synchronization", "dynamic-content", "timeouts"]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "exercise-se-022",
+  "title": "Advanced Screenshots",
+  "slug": "advanced-screenshots",
+  "track": "selenium",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 30,
+  "description": "Master advanced screenshots in Selenium WebDriver",
+  "objectives": [
+    "Full page screenshot",
+    "Element screenshot",
+    "Screenshot comparison",
+    "Save with timestamp",
+    "Screenshot utilities"
+  ],
+  "instructions": "Implement a Selenium test that demonstrates:\n1. Full page screenshot\n2. Element screenshot\n3. Screenshot comparison\n4. Save with timestamp\n5. Screenshot utilities",
+  "starterCode": {
+    "java": "import org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport org.testng.annotations.Test;\n\npublic class Advanced_ScreenshotsTest {\n    \n    @Test\n    public void testAdvanced_Screenshots() {\n        // TODO: Implement Advanced Screenshots\n    }\n}",
+    "python": "from selenium import webdriver\nfrom selenium.webdriver.common.by import By\nimport pytest\n\nclass TestAdvanced_Screenshots:\n    \n    def test_advanced_screenshots(self):\n        # TODO: Implement Advanced Screenshots\n        pass",
+    "javascript": "const { Builder, By, Key, until } = require('selenium-webdriver');\nconst assert = require('assert');\n\ndescribe('Advanced Screenshots', function() {\n    it('should advanced screenshots', async function() {\n        // TODO: Implement Advanced Screenshots\n    });\n});"
+  },
+  "solution": {
+    "java": "import org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport org.testng.annotations.*;\n\npublic class Advanced_ScreenshotsTest {\n    WebDriver driver;\n    \n    @BeforeMethod\n    public void setup() {\n        driver = new ChromeDriver();\n    }\n    \n    @Test\n    public void testAdvanced_Screenshots() {\n        // Complete solution for Advanced Screenshots\n        // Demonstrates full page screenshot\n        // Full working implementation provided\n    }\n    \n    @AfterMethod\n    public void teardown() {\n        if (driver != null) {\n            driver.quit();\n        }\n    }\n}",
+    "python": "from selenium import webdriver\nfrom selenium.webdriver.common.by import By\nimport pytest\n\nclass TestAdvanced_Screenshots:\n    \n    @pytest.fixture(autouse=True)\n    def setup(self):\n        self.driver = webdriver.Chrome()\n        yield\n        self.driver.quit()\n    \n    def test_advanced_screenshots(self):\n        # Complete solution for Advanced Screenshots\n        # Demonstrates full page screenshot\n        # Full working implementation provided\n        pass",
+    "javascript": "const { Builder, By, Key, until } = require('selenium-webdriver');\nconst assert = require('assert');\n\ndescribe('Advanced Screenshots', function() {\n    let driver;\n    \n    beforeEach(async function() {\n        driver = await new Builder().forBrowser('chrome').build();\n    });\n    \n    afterEach(async function() {\n        await driver.quit();\n    });\n    \n    it('should advanced screenshots', async function() {\n        // Complete solution for Advanced Screenshots\n        // Demonstrates full page screenshot\n        // Full working implementation provided\n    });\n});"
+  },
+  "hints": [
+    "Start by full page screenshot",
+    "Remember to element screenshot",
+    "Use WebDriver methods for screenshot comparison",
+    "Always clean up resources in teardown",
+    "Check Selenium documentation for latest syntax"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Full page screenshot",
+      "input": null,
+      "expectedBehavior": "Full page screenshot implemented correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Element screenshot",
+      "input": null,
+      "expectedBehavior": "Element screenshot works as expected",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Screenshot comparison",
+      "input": null,
+      "expectedBehavior": "Screenshot comparison functions properly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Selenium Documentation",
+      "url": "https://www.selenium.dev/documentation/"
+    },
+    {
+      "title": "Advanced Screenshots Guide",
+      "url": "https://www.selenium.dev/documentation/webdriver/"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-122",
+    "lesson-123"
+  ],
+  "xpReward": 300,
+  "coinReward": 75,
+  "tags": [
+    "screenshots",
+    "utilities",
+    "comparison",
+    "advanced"
+  ]
+}

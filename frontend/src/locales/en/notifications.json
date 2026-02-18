@@ -1,0 +1,116 @@
+{
+  "success": {
+    "saved": "Saved successfully",
+    "created": "Created successfully",
+    "updated": "Updated successfully",
+    "deleted": "Deleted successfully",
+    "uploaded": "Uploaded successfully",
+    "downloaded": "Downloaded successfully",
+    "sent": "Sent successfully",
+    "copied": "Copied to clipboard",
+    "imported": "Imported successfully",
+    "exported": "Exported successfully"
+  },
+  "auth": {
+    "loginSuccess": "Welcome back!",
+    "logoutSuccess": "Logged out successfully",
+    "registerSuccess": "Account created successfully!",
+    "passwordReset": "Password reset successfully",
+    "emailVerified": "Email verified successfully",
+    "profileUpdated": "Profile updated successfully"
+  },
+  "lessons": {
+    "lessonStarted": "Lesson started",
+    "lessonCompleted": "Lesson completed! Well done!",
+    "chapterCompleted": "Chapter completed",
+    "bookmarkAdded": "Bookmark added",
+    "bookmarkRemoved": "Bookmark removed",
+    "noteAdded": "Note added",
+    "noteUpdated": "Note updated",
+    "noteDeleted": "Note deleted"
+  },
+  "flashcards": {
+    "setCreated": "Flashcard set created",
+    "setUpdated": "Flashcard set updated",
+    "setDeleted": "Flashcard set deleted",
+    "cardAdded": "Card added",
+    "cardUpdated": "Card updated",
+    "cardDeleted": "Card deleted",
+    "sessionComplete": "Study session completed!",
+    "progressSaved": "Progress saved"
+  },
+  "quizzes": {
+    "quizStarted": "Quiz started",
+    "quizSubmitted": "Quiz submitted successfully",
+    "quizCompleted": "Quiz completed!",
+    "quizPassed": "Congratulations! You passed!",
+    "progressSaved": "Progress saved automatically",
+    "answerSaved": "Answer saved"
+  },
+  "exercises": {
+    "exerciseStarted": "Exercise started",
+    "solutionSubmitted": "Solution submitted",
+    "solutionAccepted": "Solution accepted! Great job!",
+    "progressSaved": "Progress saved",
+    "codeRun": "Code executed successfully",
+    "testsPassed": "All tests passed!"
+  },
+  "achievements": {
+    "unlocked": "Achievement unlocked!",
+    "badgeEarned": "Badge earned: {{badge}}",
+    "levelUp": "Level up! You're now level {{level}}",
+    "streakMilestone": "{{days}}-day streak! Keep it up!",
+    "pointsEarned": "You earned {{points}} points!"
+  },
+  "profile": {
+    "updated": "Profile updated successfully",
+    "avatarChanged": "Avatar changed",
+    "settingsSaved": "Settings saved",
+    "passwordChanged": "Password changed successfully",
+    "emailChanged": "Email changed. Please verify your new email.",
+    "preferencesUpdated": "Preferences updated"
+  },
+  "social": {
+    "shared": "Shared successfully",
+    "liked": "Liked",
+    "unliked": "Unliked",
+    "commented": "Comment posted",
+    "followed": "Now following",
+    "unfollowed": "Unfollowed",
+    "messagesSent": "Message sent"
+  },
+  "system": {
+    "changesSaved": "Your changes have been saved",
+    "actionCompleted": "Action completed successfully",
+    "requestProcessed": "Request processed",
+    "dataRefreshed": "Data refreshed",
+    "cacheCleared": "Cache cleared",
+    "syncCompleted": "Sync completed"
+  },
+  "info": {
+    "autoSaveEnabled": "Auto-save is enabled",
+    "offlineMode": "You are in offline mode",
+    "unsavedChanges": "You have unsaved changes",
+    "demoMode": "You are in demo mode",
+    "betaFeature": "This is a beta feature",
+    "maintenanceScheduled": "Scheduled maintenance: {{date}}"
+  },
+  "warnings": {
+    "unsavedChanges": "You have unsaved changes. Save before leaving?",
+    "actionCantBeUndone": "This action cannot be undone",
+    "deleteWarning": "Are you sure you want to delete this?",
+    "dataWillBeLost": "Your data will be lost if you don't save",
+    "slowConnection": "Slow connection detected",
+    "storageAlmostFull": "Storage is almost full",
+    "sessionExpiring": "Your session will expire in {{minutes}} minutes"
+  },
+  "errors": {
+    "saveFailed": "Failed to save. Please try again.",
+    "loadFailed": "Failed to load data",
+    "connectionError": "Connection error. Check your internet.",
+    "timeoutError": "Request timed out",
+    "genericError": "An error occurred. Please try again.",
+    "validationFailed": "Please check the form for errors",
+    "permissionDenied": "You don't have permission to do this"
+  }
+}

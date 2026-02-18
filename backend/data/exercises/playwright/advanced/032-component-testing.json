@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-032",
+  "title": "Component Testing",
+  "slug": "component-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 45,
+  "description": "Master component testing in Playwright",
+  "objectives": [
+    "Test React components",
+    "Test Vue components",
+    "Mount components",
+    "Component interactions",
+    "Isolated testing"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Test React components\n2. Test Vue components\n3. Mount components\n4. Component interactions\n5. Isolated testing",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('component-testing', async ({ page }) => {\n  // TODO: Implement Component Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_component_testing(page: Page):\n    # TODO: Implement Component Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('component-testing', async ({ page }) => {\n  // TODO: Implement Component Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Component Testing\ntest('component-testing', async ({ page }) => {\n  // Implementation demonstrates test react components\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Component Testing\ndef test_component_testing(page: Page):\n    # Implementation demonstrates test react components\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Component Testing\ntest('component-testing', async ({ page }) => {\n  // Implementation demonstrates test react components\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by test react components",
+    "Remember to test vue components",
+    "Use appropriate methods for mount components",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Test React components",
+      "input": null,
+      "expectedBehavior": "Test React components works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Test Vue components",
+      "input": null,
+      "expectedBehavior": "Test Vue components works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Mount components",
+      "input": null,
+      "expectedBehavior": "Mount components works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Component Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-032",
+    "lesson-033"
+  ],
+  "xpReward": 450,
+  "coinReward": 115,
+  "tags": [
+    "components",
+    "react",
+    "vue",
+    "unit-testing"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "exercise-pw-006",
+  "title": "Handle Multiple Pages",
+  "slug": "handle-multiple-pages",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Learn to handle multiple browser tabs and windows in Playwright",
+  "objectives": [
+    "Wait for new page to open",
+    "Switch between pages",
+    "Work with page context",
+    "Close pages properly"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Opens a page with a link that opens in a new tab\n2. Clicks the link and waits for the new page\n3. Switches to the new page\n4. Performs actions on the new page\n5. Closes the new page and returns to original",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle multiple pages', async ({ page, context }) => {\n  await page.goto('https://demo.playwright.dev/links.html');\n  \n  // TODO: Listen for new page and click link that opens in new tab\n  \n  // TODO: Wait for new page to load\n  \n  // TODO: Verify new page URL\n  \n  // TODO: Close new page\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_multiple_pages(page: Page, context):\n    page.goto('https://demo.playwright.dev/links.html')\n    \n    # TODO: Listen for new page and click link that opens in new tab\n    \n    # TODO: Wait for new page to load\n    \n    # TODO: Verify new page URL\n    \n    # TODO: Close new page\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle multiple pages', async ({ page, context }) => {\n  await page.goto('https://demo.playwright.dev/links.html');\n  \n  // TODO: Listen for new page and click link that opens in new tab\n  \n  // TODO: Wait for new page to load\n  \n  // TODO: Verify new page URL\n  \n  // TODO: Close new page\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle multiple pages', async ({ page, context }) => {\n  await page.goto('https://demo.playwright.dev/links.html');\n  \n  const [newPage] = await Promise.all([\n    context.waitForEvent('page'),\n    page.getByText('Open in new tab').click()\n  ]);\n  \n  await newPage.waitForLoadState();\n  await expect(newPage).toHaveURL(/.*playwright/);\n  \n  await newPage.close();\n  await expect(page).toHaveURL(/.*links/);\n});",
+    "python": "from playwright.sync_api import Page, expect\nimport re\n\ndef test_multiple_pages(page: Page, context):\n    page.goto('https://demo.playwright.dev/links.html')\n    \n    with context.expect_page() as new_page_info:\n        page.get_by_text('Open in new tab').click()\n    new_page = new_page_info.value\n    \n    new_page.wait_for_load_state()\n    expect(new_page).to_have_url(re.compile('.*playwright'))\n    \n    new_page.close()\n    expect(page).to_have_url(re.compile('.*links'))",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle multiple pages', async ({ page, context }) => {\n  await page.goto('https://demo.playwright.dev/links.html');\n  \n  const [newPage] = await Promise.all([\n    context.waitForEvent('page'),\n    page.getByText('Open in new tab').click()\n  ]);\n  \n  await newPage.waitForLoadState();\n  await expect(newPage).toHaveURL(/.*playwright/);\n  \n  await newPage.close();\n  await expect(page).toHaveURL(/.*links/);\n});"
+  },
+  "hints": [
+    "Use context.waitForEvent('page') to wait for new pages",
+    "Use Promise.all() to handle page opening and clicking simultaneously",
+    "Each page object represents a browser tab",
+    "Use waitForLoadState() to ensure page is fully loaded",
+    "Close pages when done to free resources"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "New page opens",
+      "input": null,
+      "expectedBehavior": "New tab/window opens successfully",
+      "points": 30
+    },
+    {
+      "id": "test-2",
+      "name": "New page URL is correct",
+      "input": null,
+      "expectedBehavior": "New page has expected URL",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Return to original page",
+      "input": null,
+      "expectedBehavior": "Original page is still accessible after closing new page",
+      "points": 35
+    }
+  ],
+  "resources": [
+    {
+      "title": "Multi-page Scenarios",
+      "url": "https://playwright.dev/docs/pages"
+    },
+    {
+      "title": "Browser Contexts",
+      "url": "https://playwright.dev/docs/browser-contexts"
+    }
+  ],
+  "relatedLessons": ["lesson-011", "lesson-012"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["multiple-pages", "tabs", "context", "windows"]
+}

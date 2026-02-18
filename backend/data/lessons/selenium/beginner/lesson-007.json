@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-007",
+  "title": "Handling Alerts and Popups",
+  "slug": "alerts-popups",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 7,
+  "duration": 25,
+  "description": "Work with JavaScript alerts, confirms, prompts, and popup windows.",
+  "objectives": [
+    "Switch to alerts",
+    "Accept/dismiss alerts",
+    "Handle prompts",
+    "Manage popup windows"
+  ],
+  "prerequisites": [
+    "sel-beginner-006"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Handling Alerts and Popups",
+        "type": "text",
+        "content": "# Handling Alerts and Popups\n\nLearn to handle all types of popup dialogs.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Handling Alerts and Popups\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Handling Alerts and Popups concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, handling alerts and popups is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Handling Alerts and Popups\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Handling Alerts and Popups is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Handling Alerts and Popups for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Handling Alerts and Popups Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-007",
+  "nextLesson": "sel-beginner-008",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "alerts",
+    "automation",
+    "testing"
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "id": "quiz-pw-002",
+  "title": "Setup and Installation",
+  "slug": "setup-installation",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Test your knowledge of Playwright installation and project setup",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q011",
+      "type": "code-completion",
+      "question": "Complete the npm command to install Playwright:",
+      "codeTemplate": "npm ____ -D @playwright/test",
+      "correctAnswer": "npm install -D @playwright/test",
+      "acceptedAnswers": [
+        "npm install -D @playwright/test",
+        "npm i -D @playwright/test",
+        "npm add -D @playwright/test"
+      ],
+      "explanation": "Use 'npm install -D' or 'npm i -D' to install Playwright as a development dependency.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["installation", "npm", "code"]
+    },
+    {
+      "id": "quiz-pw-q012",
+      "type": "multiple-choice",
+      "question": "What command initializes a new Playwright project?",
+      "options": [
+        "playwright start",
+        "playwright create",
+        "npm init playwright@latest",
+        "playwright setup"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The command 'npm init playwright@latest' initializes a new Playwright project with recommended setup.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["installation", "setup"]
+    },
+    {
+      "id": "quiz-pw-q013",
+      "type": "true-false",
+      "question": "Playwright automatically downloads browser binaries during installation.",
+      "correctAnswer": true,
+      "explanation": "Playwright downloads the necessary browser binaries (Chromium, Firefox, WebKit) automatically during installation.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["installation", "browsers"]
+    },
+    {
+      "id": "quiz-pw-q014",
+      "type": "multiple-choice",
+      "question": "Which file contains Playwright configuration settings?",
+      "options": [
+        "package.json",
+        "playwright.config.ts",
+        "test.config.js",
+        "settings.json"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Playwright uses 'playwright.config.ts' (or .js) as the main configuration file for test settings.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["configuration", "setup"]
+    },
+    {
+      "id": "quiz-pw-q015",
+      "type": "code-completion",
+      "question": "Complete the command to install only Chromium browser:",
+      "codeTemplate": "npx playwright install ____",
+      "correctAnswer": "npx playwright install chromium",
+      "acceptedAnswers": [
+        "npx playwright install chromium",
+        "playwright install chromium"
+      ],
+      "explanation": "Use 'npx playwright install chromium' to install only the Chromium browser binary.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["installation", "browsers", "code"]
+    },
+    {
+      "id": "quiz-pw-q016",
+      "type": "true-false",
+      "question": "Node.js is required to run Playwright tests.",
+      "correctAnswer": true,
+      "explanation": "Playwright requires Node.js version 16 or higher to run JavaScript/TypeScript tests.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["prerequisites", "setup"]
+    },
+    {
+      "id": "quiz-pw-q017",
+      "type": "multiple-choice",
+      "question": "What is the minimum Node.js version required for Playwright?",
+      "options": [
+        "Node.js 12",
+        "Node.js 14",
+        "Node.js 16",
+        "Node.js 18"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Playwright requires Node.js version 16 or higher.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["prerequisites", "setup"]
+    },
+    {
+      "id": "quiz-pw-q018",
+      "type": "debugging",
+      "question": "What's the issue with this installation command?",
+      "code": "npm install playwright",
+      "options": [
+        "Should use @playwright/test instead",
+        "Missing -D flag",
+        "Both A and B",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 2,
+      "explanation": "The correct package name is '@playwright/test' and it should be installed as a dev dependency with -D flag.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["installation", "debugging", "common-errors"]
+    },
+    {
+      "id": "quiz-pw-q019",
+      "type": "multiple-choice",
+      "question": "Which command shows the installed Playwright version?",
+      "options": [
+        "playwright --version",
+        "npx playwright --version",
+        "npm list @playwright/test",
+        "All of the above"
+      ],
+      "correctAnswer": 3,
+      "explanation": "You can check the Playwright version using 'npx playwright --version' or 'npm list @playwright/test'.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["installation", "commands"]
+    },
+    {
+      "id": "quiz-pw-q020",
+      "type": "true-false",
+      "question": "You need to install each browser separately when using Playwright.",
+      "correctAnswer": false,
+      "explanation": "Playwright installs all supported browsers (Chromium, Firefox, WebKit) by default unless specified otherwise.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["installation", "browsers"]
+    }
+  ],
+  "totalPoints": 105,
+  "relatedLesson": "lesson-pw-002",
+  "prerequisites": ["quiz-pw-001"],
+  "xpReward": 150,
+  "coinReward": 30
+}

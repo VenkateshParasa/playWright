@@ -1,0 +1,161 @@
+{
+  "id": "quiz-pw-010",
+  "title": "Configuration",
+  "slug": "configuration",
+  "track": "playwright",
+  "category": "beginner",
+  "description": "Learn to configure Playwright for different testing scenarios",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q091",
+      "type": "multiple-choice",
+      "question": "What is the default configuration file name for Playwright?",
+      "options": [
+        "config.playwright.ts",
+        "playwright.config.ts",
+        "test.config.ts",
+        "playwright.json"
+      ],
+      "correctAnswer": 1,
+      "explanation": "playwright.config.ts (or .js) is the default configuration file for Playwright projects.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["configuration", "setup"]
+    },
+    {
+      "id": "quiz-pw-q092",
+      "type": "true-false",
+      "question": "You can configure different browser projects in playwright.config.ts.",
+      "correctAnswer": true,
+      "explanation": "The projects configuration allows you to define different browser and device configurations.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["configuration", "projects"]
+    },
+    {
+      "id": "quiz-pw-q093",
+      "type": "code-completion",
+      "question": "Complete the config to set base URL:",
+      "codeTemplate": "export default defineConfig({\n  use: {\n    ____: 'https://example.com'\n  }\n});",
+      "correctAnswer": "export default defineConfig({\n  use: {\n    baseURL: 'https://example.com'\n  }\n});",
+      "acceptedAnswers": [
+        "baseURL"
+      ],
+      "explanation": "The baseURL option sets the default URL for page.goto() calls with relative paths.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["configuration", "code", "baseurl"]
+    },
+    {
+      "id": "quiz-pw-q094",
+      "type": "multiple-choice",
+      "question": "Which configuration option sets the default timeout for actions?",
+      "options": [
+        "timeout",
+        "actionTimeout",
+        "defaultTimeout",
+        "waitTimeout"
+      ],
+      "correctAnswer": 1,
+      "explanation": "actionTimeout sets the maximum time for each action like click, fill, etc.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["configuration", "timeout"]
+    },
+    {
+      "id": "quiz-pw-q095",
+      "type": "code-completion",
+      "question": "Complete the config to run tests in parallel:",
+      "codeTemplate": "export default defineConfig({\n  ____: 4\n});",
+      "correctAnswer": "export default defineConfig({\n  workers: 4\n});",
+      "acceptedAnswers": [
+        "workers"
+      ],
+      "explanation": "The workers option controls the number of parallel worker processes for test execution.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["configuration", "code", "parallel"]
+    },
+    {
+      "id": "quiz-pw-q096",
+      "type": "true-false",
+      "question": "You can configure different viewport sizes for different test projects.",
+      "correctAnswer": true,
+      "explanation": "Each project can have its own viewport configuration for testing different screen sizes.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["configuration", "viewport"]
+    },
+    {
+      "id": "quiz-pw-q097",
+      "type": "multiple-choice",
+      "question": "Where should the testDir option be configured?",
+      "options": [
+        "In the use section",
+        "At the root level of config",
+        "In projects array",
+        "In the testOptions section"
+      ],
+      "correctAnswer": 1,
+      "explanation": "testDir is a root-level configuration option that specifies where test files are located.",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["configuration", "structure"]
+    },
+    {
+      "id": "quiz-pw-q098",
+      "type": "debugging",
+      "question": "What's wrong with this configuration?",
+      "code": "export default {\n  use: {\n    browser: 'chromium'\n  }\n}",
+      "options": [
+        "Missing defineConfig wrapper",
+        "Invalid browser property",
+        "Both A and B",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 2,
+      "explanation": "Should use defineConfig() for type safety, and browsers are configured in projects, not use.browser.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["configuration", "debugging", "common-errors"]
+    },
+    {
+      "id": "quiz-pw-q099",
+      "type": "multiple-choice",
+      "question": "Which reporter generates an HTML report?",
+      "options": [
+        "reporter: 'html'",
+        "reporter: [['html']]",
+        "Both A and B",
+        "HTML reports cannot be configured"
+      ],
+      "correctAnswer": 2,
+      "explanation": "HTML reporter can be configured as a string 'html' or in array format [['html', options]].",
+      "difficulty": "easy",
+      "points": 10,
+      "tags": ["configuration", "reporting"]
+    },
+    {
+      "id": "quiz-pw-q100",
+      "type": "code-completion",
+      "question": "Complete the config to set screenshot on failure:",
+      "codeTemplate": "export default defineConfig({\n  use: {\n    screenshot: '____'\n  }\n});",
+      "correctAnswer": "export default defineConfig({\n  use: {\n    screenshot: 'only-on-failure'\n  }\n});",
+      "acceptedAnswers": [
+        "only-on-failure",
+        "on-failure"
+      ],
+      "explanation": "screenshot: 'only-on-failure' captures screenshots automatically when tests fail.",
+      "difficulty": "easy",
+      "points": 15,
+      "tags": ["configuration", "code", "screenshots"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-010",
+  "prerequisites": ["quiz-pw-009"],
+  "xpReward": 150,
+  "coinReward": 30
+}

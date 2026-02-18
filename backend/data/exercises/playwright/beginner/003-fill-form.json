@@ -1,0 +1,71 @@
+{
+  "id": "exercise-pw-003",
+  "title": "Fill a Form",
+  "slug": "fill-form",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 20,
+  "description": "Learn how to interact with form elements including text inputs, checkboxes, and buttons",
+  "objectives": [
+    "Fill multiple input fields",
+    "Check checkboxes",
+    "Submit a form",
+    "Verify form submission"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Navigates to a registration form\n2. Fills in name, email, and password fields\n3. Checks the terms and conditions checkbox\n4. Clicks the submit button\n5. Verifies successful submission",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('fill registration form', async ({ page }) => {\n  // TODO: Navigate to https://practice.expandtesting.com/form-validation\n  \n  // TODO: Fill in the contact name field\n  \n  // TODO: Fill in the contact number field\n  \n  // TODO: Select pickup date\n  \n  // TODO: Select payment method\n  \n  // TODO: Click register button\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_fill_form(page: Page):\n    # TODO: Navigate to https://practice.expandtesting.com/form-validation\n    \n    # TODO: Fill in the contact name field\n    \n    # TODO: Fill in the contact number field\n    \n    # TODO: Select pickup date\n    \n    # TODO: Select payment method\n    \n    # TODO: Click register button\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('fill registration form', async ({ page }) => {\n  // TODO: Navigate to https://practice.expandtesting.com/form-validation\n  \n  // TODO: Fill in the contact name field\n  \n  // TODO: Fill in the contact number field\n  \n  // TODO: Select pickup date\n  \n  // TODO: Select payment method\n  \n  // TODO: Click register button\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('fill registration form', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/form-validation');\n  await page.fill('#validationCustom01', 'John Doe');\n  await page.fill('#validationCustom05', '1234567890');\n  await page.fill('#validationCustom04', '2024-12-31');\n  await page.selectOption('#validationCustom03', 'credit-card');\n  await page.getByRole('button', { name: 'Register' }).click();\n  await expect(page.getByText('Form submitted successfully')).toBeVisible();\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_fill_form(page: Page):\n    page.goto('https://practice.expandtesting.com/form-validation')\n    page.fill('#validationCustom01', 'John Doe')\n    page.fill('#validationCustom05', '1234567890')\n    page.fill('#validationCustom04', '2024-12-31')\n    page.select_option('#validationCustom03', 'credit-card')\n    page.get_by_role('button', name='Register').click()\n    expect(page.get_by_text('Form submitted successfully')).to_be_visible()",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('fill registration form', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/form-validation');\n  await page.fill('#validationCustom01', 'John Doe');\n  await page.fill('#validationCustom05', '1234567890');\n  await page.fill('#validationCustom04', '2024-12-31');\n  await page.selectOption('#validationCustom03', 'credit-card');\n  await page.getByRole('button', { name: 'Register' }).click();\n  await expect(page.getByText('Form submitted successfully')).toBeVisible();\n});"
+  },
+  "hints": [
+    "Use page.fill(selector, value) for text inputs",
+    "Use page.selectOption() for dropdowns",
+    "CSS selectors with # are for IDs",
+    "Use page.getByRole('button') to find submit buttons",
+    "Chain your actions sequentially"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "All fields are filled",
+      "input": { "name": "John Doe", "number": "1234567890" },
+      "expectedBehavior": "All form fields contain the correct values",
+      "points": 40
+    },
+    {
+      "id": "test-2",
+      "name": "Form is submitted",
+      "input": null,
+      "expectedBehavior": "Submit button is clicked",
+      "points": 30
+    },
+    {
+      "id": "test-3",
+      "name": "Success message appears",
+      "input": null,
+      "expectedBehavior": "Form submission success message is visible",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Playwright Form Input",
+      "url": "https://playwright.dev/docs/input"
+    },
+    {
+      "title": "Form Testing Guide",
+      "url": "https://playwright.dev/docs/input#fill-form-fields"
+    }
+  ],
+  "relatedLessons": ["lesson-005", "lesson-006"],
+  "xpReward": 200,
+  "coinReward": 50,
+  "tags": ["forms", "input", "checkbox", "submit"]
+}

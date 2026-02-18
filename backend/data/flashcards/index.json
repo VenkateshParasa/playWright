@@ -1,0 +1,231 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-17",
+  "totalCards": 450,
+  "tracks": [
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "description": "Modern end-to-end testing framework with cross-browser support",
+      "totalCards": 200,
+      "decks": [
+        {
+          "id": "playwright-basics",
+          "name": "Playwright Basics",
+          "description": "Fundamental concepts of Playwright",
+          "level": "beginner",
+          "cardCount": 50,
+          "estimatedTime": 30,
+          "file": "playwright/basics.json",
+          "prerequisites": []
+        },
+        {
+          "id": "playwright-intermediate",
+          "name": "Playwright Intermediate",
+          "description": "Advanced locators, network interception, API testing, authentication",
+          "level": "intermediate",
+          "cardCount": 75,
+          "estimatedTime": 45,
+          "file": "playwright/intermediate.json",
+          "prerequisites": ["playwright-basics"]
+        },
+        {
+          "id": "playwright-advanced",
+          "name": "Playwright Advanced",
+          "description": "Visual regression, component testing, accessibility, performance, CI/CD",
+          "level": "advanced",
+          "cardCount": 75,
+          "estimatedTime": 60,
+          "file": "playwright/advanced.json",
+          "prerequisites": ["playwright-basics", "playwright-intermediate"]
+        }
+      ]
+    },
+    {
+      "id": "selenium",
+      "name": "Selenium WebDriver",
+      "description": "Industry-standard browser automation framework",
+      "totalCards": 200,
+      "decks": [
+        {
+          "id": "selenium-basics",
+          "name": "Selenium Basics",
+          "description": "WebDriver fundamentals, element location, basic commands",
+          "level": "beginner",
+          "cardCount": 50,
+          "estimatedTime": 30,
+          "file": "selenium/basics.json",
+          "prerequisites": []
+        },
+        {
+          "id": "selenium-intermediate",
+          "name": "Selenium Intermediate",
+          "description": "Actions class, Page Object Model, TestNG/JUnit, data-driven testing",
+          "level": "intermediate",
+          "cardCount": 75,
+          "estimatedTime": 45,
+          "file": "selenium/intermediate.json",
+          "prerequisites": ["selenium-basics"]
+        },
+        {
+          "id": "selenium-advanced",
+          "name": "Selenium Advanced",
+          "description": "Selenium Grid, cloud testing, BDD with Cucumber, framework patterns",
+          "level": "advanced",
+          "cardCount": 75,
+          "estimatedTime": 60,
+          "file": "selenium/advanced.json",
+          "prerequisites": ["selenium-basics", "selenium-intermediate"]
+        }
+      ]
+    },
+    {
+      "id": "comparison",
+      "name": "Playwright vs Selenium",
+      "description": "Side-by-side comparison of both frameworks",
+      "totalCards": 50,
+      "decks": [
+        {
+          "id": "playwright-vs-selenium",
+          "name": "Framework Comparison",
+          "description": "Compare features, capabilities, and use cases",
+          "level": "intermediate",
+          "cardCount": 50,
+          "estimatedTime": 30,
+          "file": "comparison.json",
+          "prerequisites": ["playwright-basics", "selenium-basics"]
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "locators",
+      "name": "Element Locators",
+      "description": "Finding elements on the page",
+      "cardCount": 45
+    },
+    {
+      "id": "interactions",
+      "name": "Element Interactions",
+      "description": "Clicking, typing, and manipulating elements",
+      "cardCount": 40
+    },
+    {
+      "id": "waits",
+      "name": "Waits and Synchronization",
+      "description": "Handling timing and async operations",
+      "cardCount": 35
+    },
+    {
+      "id": "assertions",
+      "name": "Assertions",
+      "description": "Verifying expected behavior",
+      "cardCount": 30
+    },
+    {
+      "id": "api",
+      "name": "API Testing",
+      "description": "Testing REST APIs and network requests",
+      "cardCount": 25
+    },
+    {
+      "id": "patterns",
+      "name": "Design Patterns",
+      "description": "Page Object Model and other patterns",
+      "cardCount": 30
+    },
+    {
+      "id": "ci-cd",
+      "name": "CI/CD Integration",
+      "description": "Running tests in pipelines",
+      "cardCount": 25
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced Topics",
+      "description": "Performance, accessibility, visual testing",
+      "cardCount": 40
+    }
+  ],
+  "tags": [
+    "playwright",
+    "selenium",
+    "locators",
+    "interactions",
+    "waits",
+    "assertions",
+    "api",
+    "network",
+    "authentication",
+    "fixtures",
+    "hooks",
+    "parallel",
+    "ci-cd",
+    "visual-regression",
+    "accessibility",
+    "performance",
+    "mobile",
+    "best-practice",
+    "troubleshooting",
+    "comparison",
+    "java",
+    "python",
+    "javascript",
+    "testng",
+    "junit",
+    "cucumber",
+    "grid",
+    "docker",
+    "cloud"
+  ],
+  "learningPaths": [
+    {
+      "id": "playwright-beginner",
+      "name": "Playwright for Beginners",
+      "description": "Start your Playwright journey",
+      "decks": ["playwright-basics"],
+      "estimatedHours": 8
+    },
+    {
+      "id": "playwright-complete",
+      "name": "Complete Playwright Mastery",
+      "description": "Master all Playwright concepts",
+      "decks": ["playwright-basics", "playwright-intermediate", "playwright-advanced"],
+      "estimatedHours": 30
+    },
+    {
+      "id": "selenium-beginner",
+      "name": "Selenium for Beginners",
+      "description": "Start your Selenium journey",
+      "decks": ["selenium-basics"],
+      "estimatedHours": 8
+    },
+    {
+      "id": "selenium-complete",
+      "name": "Complete Selenium Mastery",
+      "description": "Master all Selenium concepts",
+      "decks": ["selenium-basics", "selenium-intermediate", "selenium-advanced"],
+      "estimatedHours": 35
+    },
+    {
+      "id": "framework-comparison",
+      "name": "Framework Comparison",
+      "description": "Learn both and choose wisely",
+      "decks": ["playwright-basics", "selenium-basics", "playwright-vs-selenium"],
+      "estimatedHours": 18
+    }
+  ],
+  "stats": {
+    "totalDecks": 7,
+    "totalCards": 450,
+    "avgCardsPerDeck": 64,
+    "languages": ["JavaScript", "Java", "Python"],
+    "frameworks": ["Playwright", "Selenium", "TestNG", "JUnit", "Cucumber"],
+    "difficultyDistribution": {
+      "easy": 150,
+      "medium": 200,
+      "hard": 100
+    }
+  }
+}

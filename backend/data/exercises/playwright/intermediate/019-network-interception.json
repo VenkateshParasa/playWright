@@ -1,0 +1,78 @@
+{
+  "id": "exercise-pw-019",
+  "title": "Network Interception",
+  "slug": "network-interception",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 40,
+  "description": "Master network request/response interception and mocking",
+  "objectives": [
+    "Intercept requests",
+    "Mock responses",
+    "Abort requests",
+    "Modify requests",
+    "Monitor network traffic"
+  ],
+  "instructions": "Write tests that:\n1. Intercept network requests\n2. Mock API responses\n3. Abort specific requests\n4. Modify request headers\n5. Track all network activity",
+  "xpReward": 400,
+  "coinReward": 100,
+  "tags": [
+    "network",
+    "interception",
+    "mocking",
+    "route"
+  ],
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('network-interception', async ({ page }) => {\n  // TODO: Implement Network Interception\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_network_interception(page: Page):\n    # TODO: Implement Network Interception\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('network-interception', async ({ page }) => {\n  // TODO: Implement Network Interception\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Network Interception\ntest('network-interception', async ({ page }) => {\n  // Implementation here\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Network Interception\ndef test_network_interception(page: Page):\n    # Implementation here\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Network Interception\ntest('network-interception', async ({ page }) => {\n  // Implementation here\n});"
+  },
+  "hints": [
+    "Focus on intercept requests",
+    "Remember to handle mock responses",
+    "Use appropriate methods for abort requests"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Intercept requests",
+      "input": null,
+      "expectedBehavior": "Intercept requests works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Mock responses",
+      "input": null,
+      "expectedBehavior": "Mock responses works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Abort requests",
+      "input": null,
+      "expectedBehavior": "Abort requests works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Network Interception Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-019",
+    "lesson-020"
+  ]
+}

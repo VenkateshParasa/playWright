@@ -1,0 +1,265 @@
+{
+  "version": "1.0.0",
+  "learningPaths": {
+    "playwright-complete": {
+      "id": "playwright-complete",
+      "name": "Playwright Complete Learning Path",
+      "description": "Master Playwright from beginner to advanced level",
+      "track": "playwright",
+      "estimatedDuration": "15 hours",
+      "totalLessons": 30,
+      "difficulty": "beginner-to-advanced",
+      "stages": [
+        {
+          "id": "playwright-beginner",
+          "name": "Beginner",
+          "description": "Learn Playwright fundamentals and core concepts",
+          "lessons": [
+            "pw-beginner-001", "pw-beginner-002", "pw-beginner-003", "pw-beginner-004", "pw-beginner-005",
+            "pw-beginner-006", "pw-beginner-007", "pw-beginner-008", "pw-beginner-009", "pw-beginner-010"
+          ],
+          "estimatedDuration": "4 hours",
+          "totalXP": 1750
+        },
+        {
+          "id": "playwright-intermediate",
+          "name": "Intermediate",
+          "description": "Advanced features and patterns",
+          "lessons": [
+            "pw-intermediate-001", "pw-intermediate-002", "pw-intermediate-003", "pw-intermediate-004", "pw-intermediate-005",
+            "pw-intermediate-006", "pw-intermediate-007", "pw-intermediate-008", "pw-intermediate-009", "pw-intermediate-010"
+          ],
+          "estimatedDuration": "5 hours",
+          "totalXP": 2000
+        },
+        {
+          "id": "playwright-advanced",
+          "name": "Advanced",
+          "description": "Expert techniques and best practices",
+          "lessons": [
+            "pw-advanced-001", "pw-advanced-002", "pw-advanced-003", "pw-advanced-004", "pw-advanced-005",
+            "pw-advanced-006", "pw-advanced-007", "pw-advanced-008", "pw-advanced-009", "pw-advanced-010"
+          ],
+          "estimatedDuration": "6 hours",
+          "totalXP": 2500
+        }
+      ]
+    },
+    "selenium-complete": {
+      "id": "selenium-complete",
+      "name": "Selenium Complete Learning Path",
+      "description": "Master Selenium WebDriver from beginner to advanced level",
+      "track": "selenium",
+      "estimatedDuration": "15 hours",
+      "totalLessons": 30,
+      "difficulty": "beginner-to-advanced",
+      "stages": [
+        {
+          "id": "selenium-beginner",
+          "name": "Beginner",
+          "description": "Learn Selenium fundamentals and core concepts",
+          "lessons": [
+            "sel-beginner-001", "sel-beginner-002", "sel-beginner-003", "sel-beginner-004", "sel-beginner-005",
+            "sel-beginner-006", "sel-beginner-007", "sel-beginner-008", "sel-beginner-009", "sel-beginner-010"
+          ],
+          "estimatedDuration": "4 hours",
+          "totalXP": 1750
+        },
+        {
+          "id": "selenium-intermediate",
+          "name": "Intermediate",
+          "description": "Advanced features and patterns",
+          "lessons": [
+            "sel-intermediate-001", "sel-intermediate-002", "sel-intermediate-003", "sel-intermediate-004", "sel-intermediate-005",
+            "sel-intermediate-006", "sel-intermediate-007", "sel-intermediate-008", "sel-intermediate-009", "sel-intermediate-010"
+          ],
+          "estimatedDuration": "5 hours",
+          "totalXP": 2000
+        },
+        {
+          "id": "selenium-advanced",
+          "name": "Advanced",
+          "description": "Expert techniques and best practices",
+          "lessons": [
+            "sel-advanced-001", "sel-advanced-002", "sel-advanced-003", "sel-advanced-004", "sel-advanced-005",
+            "sel-advanced-006", "sel-advanced-007", "sel-advanced-008", "sel-advanced-009", "sel-advanced-010"
+          ],
+          "estimatedDuration": "6 hours",
+          "totalXP": 2500
+        }
+      ]
+    },
+    "quick-start-playwright": {
+      "id": "quick-start-playwright",
+      "name": "Playwright Quick Start",
+      "description": "Get started with Playwright quickly with essential lessons",
+      "track": "playwright",
+      "estimatedDuration": "2 hours",
+      "totalLessons": 5,
+      "difficulty": "beginner",
+      "stages": [
+        {
+          "id": "playwright-essentials",
+          "name": "Essentials",
+          "description": "Core concepts to get started immediately",
+          "lessons": [
+            "pw-beginner-001",
+            "pw-beginner-002",
+            "pw-beginner-003",
+            "pw-beginner-004",
+            "pw-beginner-005"
+          ],
+          "estimatedDuration": "2 hours",
+          "totalXP": 850
+        }
+      ]
+    },
+    "quick-start-selenium": {
+      "id": "quick-start-selenium",
+      "name": "Selenium Quick Start",
+      "description": "Get started with Selenium quickly with essential lessons",
+      "track": "selenium",
+      "estimatedDuration": "2 hours",
+      "totalLessons": 5,
+      "difficulty": "beginner",
+      "stages": [
+        {
+          "id": "selenium-essentials",
+          "name": "Essentials",
+          "description": "Core concepts to get started immediately",
+          "lessons": [
+            "sel-beginner-001",
+            "sel-beginner-002",
+            "sel-beginner-003",
+            "sel-beginner-004",
+            "sel-beginner-005"
+          ],
+          "estimatedDuration": "2 hours",
+          "totalXP": 850
+        }
+      ]
+    },
+    "api-testing-path": {
+      "id": "api-testing-path",
+      "name": "API Testing Specialization",
+      "description": "Focus on API testing with both frameworks",
+      "track": "both",
+      "estimatedDuration": "3 hours",
+      "totalLessons": 4,
+      "difficulty": "intermediate",
+      "stages": [
+        {
+          "id": "api-testing",
+          "name": "API Testing",
+          "description": "Master API testing techniques",
+          "lessons": [
+            "pw-intermediate-004",
+            "pw-intermediate-003",
+            "sel-intermediate-006",
+            "pw-intermediate-005"
+          ],
+          "estimatedDuration": "3 hours",
+          "totalXP": 800
+        }
+      ]
+    }
+  },
+  "milestones": {
+    "playwright": [
+      {
+        "id": "playwright-beginner-complete",
+        "name": "Playwright Fundamentals",
+        "xpRequired": 1750,
+        "badge": "playwright-beginner",
+        "icon": "🎭",
+        "description": "Completed all beginner Playwright lessons",
+        "rewards": ["Beginner Badge", "Test Writing Skills"]
+      },
+      {
+        "id": "playwright-intermediate-complete",
+        "name": "Playwright Practitioner",
+        "xpRequired": 3750,
+        "badge": "playwright-intermediate",
+        "icon": "🎯",
+        "description": "Completed all intermediate Playwright lessons",
+        "rewards": ["Intermediate Badge", "Advanced Testing Patterns"]
+      },
+      {
+        "id": "playwright-advanced-complete",
+        "name": "Playwright Master",
+        "xpRequired": 6250,
+        "badge": "playwright-master",
+        "icon": "👑",
+        "description": "Completed all Playwright lessons",
+        "rewards": ["Master Badge", "Expert Certification", "Professional Recognition"]
+      }
+    ],
+    "selenium": [
+      {
+        "id": "selenium-beginner-complete",
+        "name": "Selenium Fundamentals",
+        "xpRequired": 1750,
+        "badge": "selenium-beginner",
+        "icon": "🌐",
+        "description": "Completed all beginner Selenium lessons",
+        "rewards": ["Beginner Badge", "WebDriver Skills"]
+      },
+      {
+        "id": "selenium-intermediate-complete",
+        "name": "Selenium Practitioner",
+        "xpRequired": 3750,
+        "badge": "selenium-intermediate",
+        "icon": "🎯",
+        "description": "Completed all intermediate Selenium lessons",
+        "rewards": ["Intermediate Badge", "Advanced Automation Patterns"]
+      },
+      {
+        "id": "selenium-advanced-complete",
+        "name": "Selenium Master",
+        "xpRequired": 6250,
+        "badge": "selenium-master",
+        "icon": "👑",
+        "description": "Completed all Selenium lessons",
+        "rewards": ["Master Badge", "Expert Certification", "Professional Recognition"]
+      }
+    ],
+    "combined": [
+      {
+        "id": "dual-framework-expert",
+        "name": "Dual Framework Expert",
+        "xpRequired": 12500,
+        "badge": "dual-framework-master",
+        "icon": "💎",
+        "description": "Completed all lessons in both Playwright and Selenium",
+        "rewards": ["Ultimate Badge", "Framework Expert Status", "Industry Recognition"]
+      }
+    ]
+  },
+  "prerequisites": {
+    "beginner": [],
+    "intermediate": ["Complete beginner track"],
+    "advanced": ["Complete intermediate track"]
+  },
+  "recommendedPaths": {
+    "beginner": {
+      "title": "Start Here",
+      "description": "New to test automation? Start with beginner lessons",
+      "recommendedPath": "quick-start-playwright"
+    },
+    "experienced": {
+      "title": "Experienced Developer",
+      "description": "Know programming but new to testing?",
+      "recommendedPath": "playwright-complete"
+    },
+    "seleniumUser": {
+      "title": "Selenium User",
+      "description": "Switching from Selenium to Playwright?",
+      "recommendedPath": "quick-start-playwright"
+    },
+    "comprehensiveLearning": {
+      "title": "Comprehensive Learning",
+      "description": "Master both frameworks completely",
+      "recommendedPath": "both-complete"
+    }
+  }
+}

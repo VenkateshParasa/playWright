@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-023",
+  "title": "Accessibility Testing",
+  "slug": "accessibility",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced Accessibility Testing techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q231", "type": "multiple-choice", "question": "What is Accessibility Testing in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "Accessibility Testing encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "accessibility"]},
+    {"id": "quiz-pw-q232", "type": "code-completion", "question": "Implement Accessibility Testing:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for Accessibility Testing.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q233", "type": "true-false", "question": "Accessibility Testing requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "Accessibility Testing is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q234", "type": "multiple-choice", "question": "When is Accessibility Testing most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "Accessibility Testing provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q235", "type": "code-completion", "question": "Optimize Accessibility Testing:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves Accessibility Testing performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q236", "type": "multiple-choice", "question": "What are Accessibility Testing challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "Accessibility Testing involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q237", "type": "debugging", "question": "Debug this Accessibility Testing issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q238", "type": "true-false", "question": "Accessibility Testing scales well for large test suites.", "correctAnswer": true, "explanation": "Accessibility Testing is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q239", "type": "multiple-choice", "question": "How do you architect Accessibility Testing?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q230", "type": "code-output", "question": "Analyze this Accessibility Testing pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-023",
+  "prerequisites": ["quiz-pw-022"],
+  "xpReward": 250,
+  "coinReward": 50
+}

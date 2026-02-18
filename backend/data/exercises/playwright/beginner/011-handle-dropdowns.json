@@ -1,0 +1,68 @@
+{
+  "id": "exercise-pw-011",
+  "title": "Handle Dropdowns",
+  "slug": "handle-dropdowns",
+  "track": "playwright",
+  "category": "beginner",
+  "difficulty": "easy",
+  "estimatedTime": 15,
+  "description": "Learn to interact with select dropdowns and custom dropdown components",
+  "objectives": [
+    "Select options by value",
+    "Select options by label",
+    "Get selected option",
+    "Handle multiple selection",
+    "Verify dropdown state"
+  ],
+  "instructions": "Write a Playwright test that:\n1. Finds a dropdown element\n2. Selects an option by value\n3. Selects an option by visible text\n4. Gets the currently selected option\n5. Verifies the selection",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle dropdowns', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dropdown');\n  \n  // TODO: Select 'Option 1' from simple dropdown\n  \n  // TODO: Verify selection\n  \n  // TODO: Select from country dropdown\n  \n  // TODO: Get selected value\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_handle_dropdowns(page: Page):\n    page.goto('https://practice.expandtesting.com/dropdown')\n    \n    # TODO: Select 'Option 1' from simple dropdown\n    \n    # TODO: Verify selection\n    \n    # TODO: Select from country dropdown\n    \n    # TODO: Get selected value\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle dropdowns', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dropdown');\n  \n  // TODO: Select 'Option 1' from simple dropdown\n  \n  // TODO: Verify selection\n  \n  // TODO: Select from country dropdown\n  \n  // TODO: Get selected value\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('handle dropdowns', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dropdown');\n  \n  await page.selectOption('#dropdown', '1');\n  let selectedValue = await page.locator('#dropdown').inputValue();\n  expect(selectedValue).toBe('1');\n  \n  await page.selectOption('#dropdown', { label: 'Option 2' });\n  selectedValue = await page.locator('#dropdown').inputValue();\n  expect(selectedValue).toBe('2');\n  \n  await page.selectOption('#country', { label: 'United States' });\n  const countryValue = await page.locator('#country').inputValue();\n  expect(countryValue).toBe('US');\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_handle_dropdowns(page: Page):\n    page.goto('https://practice.expandtesting.com/dropdown')\n    \n    page.select_option('#dropdown', '1')\n    selected_value = page.locator('#dropdown').input_value()\n    assert selected_value == '1'\n    \n    page.select_option('#dropdown', label='Option 2')\n    selected_value = page.locator('#dropdown').input_value()\n    assert selected_value == '2'\n    \n    page.select_option('#country', label='United States')\n    country_value = page.locator('#country').input_value()\n    assert country_value == 'US'",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('handle dropdowns', async ({ page }) => {\n  await page.goto('https://practice.expandtesting.com/dropdown');\n  \n  await page.selectOption('#dropdown', '1');\n  let selectedValue = await page.locator('#dropdown').inputValue();\n  expect(selectedValue).toBe('1');\n  \n  await page.selectOption('#dropdown', { label: 'Option 2' });\n  selectedValue = await page.locator('#dropdown').inputValue();\n  expect(selectedValue).toBe('2');\n  \n  await page.selectOption('#country', { label: 'United States' });\n  const countryValue = await page.locator('#country').inputValue();\n  expect(countryValue).toBe('US');\n});"
+  },
+  "hints": [
+    "Use page.selectOption() for select elements",
+    "Can select by value, label, or index",
+    "Use .inputValue() to get current selection",
+    "Pass { label: 'text' } to select by visible text",
+    "Pass string value to select by option value"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Select by value works",
+      "input": "1",
+      "expectedBehavior": "Option 1 is selected",
+      "points": 30
+    },
+    {
+      "id": "test-2",
+      "name": "Select by label works",
+      "input": "Option 2",
+      "expectedBehavior": "Option 2 is selected",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Get selected value works",
+      "input": null,
+      "expectedBehavior": "Selected value is retrieved correctly",
+      "points": 35
+    }
+  ],
+  "resources": [
+    {
+      "title": "Select Options",
+      "url": "https://playwright.dev/docs/input#select-options"
+    }
+  ],
+  "relatedLessons": ["lesson-021", "lesson-022"],
+  "xpReward": 150,
+  "coinReward": 40,
+  "tags": ["dropdowns", "select", "options", "forms"]
+}

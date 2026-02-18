@@ -1,0 +1,69 @@
+{
+  "id": "pw-intermediate-006",
+  "title": "Browser Contexts",
+  "slug": "browser-contexts",
+  "track": "playwright",
+  "category": "intermediate",
+  "order": 6,
+  "duration": 30,
+  "description": "Use browser contexts for test isolation and parallel execution.",
+  "objectives": [
+    "Create isolated contexts",
+    "Share state between tests",
+    "Manage cookies and storage",
+    "Optimize test performance"
+  ],
+  "prerequisites": [
+    "pw-intermediate-005"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Browser Contexts",
+        "type": "text",
+        "content": "# Browser Contexts\n\nMaster browser contexts for efficient and isolated test execution.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Browser Contexts\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Browser Contexts concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, browser contexts is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Browser Contexts\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Browser Contexts is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Browser Contexts for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Browser Contexts Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-intermediate-quiz-006",
+  "nextLesson": "pw-intermediate-007",
+  "estimatedXP": 200,
+  "tags": [
+    "playwright",
+    "intermediate",
+    "browser",
+    "automation",
+    "testing"
+  ]
+}

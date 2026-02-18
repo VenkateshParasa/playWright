@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-022",
+  "title": "Component Testing",
+  "slug": "component-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced Component Testing techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q221", "type": "multiple-choice", "question": "What is Component Testing in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "Component Testing encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "component-testing"]},
+    {"id": "quiz-pw-q222", "type": "code-completion", "question": "Implement Component Testing:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for Component Testing.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q223", "type": "true-false", "question": "Component Testing requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "Component Testing is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q224", "type": "multiple-choice", "question": "When is Component Testing most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "Component Testing provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q225", "type": "code-completion", "question": "Optimize Component Testing:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves Component Testing performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q226", "type": "multiple-choice", "question": "What are Component Testing challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "Component Testing involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q227", "type": "debugging", "question": "Debug this Component Testing issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q228", "type": "true-false", "question": "Component Testing scales well for large test suites.", "correctAnswer": true, "explanation": "Component Testing is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q229", "type": "multiple-choice", "question": "How do you architect Component Testing?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q220", "type": "code-output", "question": "Analyze this Component Testing pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-022",
+  "prerequisites": ["quiz-pw-021"],
+  "xpReward": 250,
+  "coinReward": 50
+}

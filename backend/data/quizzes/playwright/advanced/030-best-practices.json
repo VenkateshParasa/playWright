@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-030",
+  "title": "Best Practices",
+  "slug": "best-practices",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced Best Practices techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q301", "type": "multiple-choice", "question": "What is Best Practices in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "Best Practices encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "best-practices"]},
+    {"id": "quiz-pw-q302", "type": "code-completion", "question": "Implement Best Practices:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for Best Practices.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q303", "type": "true-false", "question": "Best Practices requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "Best Practices is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q304", "type": "multiple-choice", "question": "When is Best Practices most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "Best Practices provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q305", "type": "code-completion", "question": "Optimize Best Practices:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves Best Practices performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q306", "type": "multiple-choice", "question": "What are Best Practices challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "Best Practices involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q307", "type": "debugging", "question": "Debug this Best Practices issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q308", "type": "true-false", "question": "Best Practices scales well for large test suites.", "correctAnswer": true, "explanation": "Best Practices is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q309", "type": "multiple-choice", "question": "How do you architect Best Practices?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q300", "type": "code-output", "question": "Analyze this Best Practices pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-030",
+  "prerequisites": ["quiz-pw-029"],
+  "xpReward": 250,
+  "coinReward": 50
+}

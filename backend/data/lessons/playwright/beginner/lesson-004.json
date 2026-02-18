@@ -1,0 +1,102 @@
+{
+  "id": "pw-beginner-004",
+  "title": "Locator Strategies",
+  "slug": "locator-strategies",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 4,
+  "duration": 30,
+  "description": "Master Playwright's powerful locator strategies to reliably find and interact with elements on web pages.",
+  "objectives": [
+    "Understand what locators are and why they're important",
+    "Learn different locator strategies (text, CSS, role, test-id)",
+    "Choose the right locator for different scenarios",
+    "Use locator chaining and filtering techniques"
+  ],
+  "prerequisites": ["pw-beginner-003"],
+  "content": {
+    "sections": [
+      {
+        "title": "Understanding Locators",
+        "type": "text",
+        "content": "# What are Locators?\n\nLocators are Playwright's way of finding elements on a page. Unlike traditional methods that return elements immediately, Playwright locators are:\n\n**Lazy**: They don't find elements until an action is performed\n**Auto-waiting**: They automatically wait for elements to be ready\n**Resilient**: They retry if elements are not found initially\n**Strict**: They throw errors if multiple matches are found\n\n## Why Locators Matter\n\nYour tests are only as reliable as your locators. Good locators:\n- Survive application changes\n- Are readable and maintainable\n- Don't break when page structure changes\n- Reflect user perspective\n\n## The Locator API\n\n```typescript\nconst locator = page.locator('selector');\nawait locator.click(); // Action triggers element search\n```\n\nKey point: The locator doesn't search for the element when created, only when you perform an action!"
+      },
+      {
+        "title": "Text-Based Locators",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Text locators - Most user-facing and resilient\nimport { test, expect } from '@playwright/test';\n\ntest('text-based locators', async ({ page }) => {\n  await page.goto('https://playwright.dev');\n  \n  // Exact text match\n  await page.locator('text=Get Started').click();\n  \n  // Partial text match\n  await page.locator('text=Get').click(); // Finds \"Get Started\"\n  \n  // Case-insensitive\n  await page.locator('text=get started').click(); // Still works!\n  \n  // With regex\n  await page.locator('text=/Get .*/').click();\n  \n  // Shorthand using page methods\n  await page.click('text=Get Started');\n  \n  // Using getByText (recommended)\n  await page.getByText('Get Started').click();\n  await page.getByText(/Get Started/i).click(); // With regex\n  \n  // Partial match with getByText\n  await page.getByText('Get', { exact: false }).click();\n});\n\n// Pro tip: Text locators are best because they match what users see",
+        "explanation": "Text locators find elements by their visible text. They're the most resilient because they match what users actually see."
+      },
+      {
+        "title": "Role-Based Locators",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Role-based locators - Accessibility-friendly and semantic\nimport { test } from '@playwright/test';\n\ntest('role-based locators', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Find by ARIA role\n  await page.getByRole('button').click();\n  await page.getByRole('link').click();\n  await page.getByRole('textbox').fill('Hello');\n  await page.getByRole('checkbox').check();\n  \n  // Combine role with name (accessible name)\n  await page.getByRole('button', { name: 'Submit' }).click();\n  await page.getByRole('link', { name: 'Learn more' }).click();\n  \n  // With regex\n  await page.getByRole('button', { name: /submit/i }).click();\n  \n  // Common roles:\n  await page.getByRole('heading').click();      // <h1>, <h2>, etc.\n  await page.getByRole('button').click();       // <button>\n  await page.getByRole('link').click();         // <a>\n  await page.getByRole('textbox').fill('text'); // <input type=\"text\">\n  await page.getByRole('checkbox').check();     // <input type=\"checkbox\">\n  await page.getByRole('radio').check();        // <input type=\"radio\">\n  await page.getByRole('combobox').click();     // <select>\n  \n  // Filter by level (for headings)\n  await page.getByRole('heading', { level: 1 }).textContent();\n  \n  // Filter by pressed state\n  await page.getByRole('button', { pressed: true }).click();\n  \n  // Filter by expanded state\n  await page.getByRole('button', { expanded: true }).click();\n});\n\n// Why use roles?\n// - Promotes accessible HTML\n// - Semantic and meaningful\n// - Survives styling changes",
+        "explanation": "Role-based locators use ARIA roles to find elements. They're excellent for accessible applications and reflect semantic meaning."
+      },
+      {
+        "title": "CSS and XPath Selectors",
+        "type": "code",
+        "language": "typescript",
+        "code": "// CSS and XPath selectors - Traditional but powerful\nimport { test } from '@playwright/test';\n\ntest('CSS selectors', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // CSS selectors\n  await page.locator('button').click();           // Tag name\n  await page.locator('.submit-btn').click();      // Class\n  await page.locator('#login-form').fill('text'); // ID\n  await page.locator('[type=\"email\"]').fill('user@test.com'); // Attribute\n  \n  // Combining selectors\n  await page.locator('button.primary').click();   // Tag + class\n  await page.locator('input[name=\"email\"]').fill('test@example.com');\n  \n  // Pseudo-selectors\n  await page.locator('li:first-child').click();\n  await page.locator('li:last-child').click();\n  await page.locator('li:nth-child(3)').click();\n  \n  // Attribute contains\n  await page.locator('[class*=\"submit\"]').click(); // Contains \"submit\"\n  await page.locator('[href^=\"/admin\"]').click(); // Starts with \"/admin\"\n  await page.locator('[href$=\".pdf\"]').click();   // Ends with \".pdf\"\n  \n  // Descendant selectors\n  await page.locator('form input').fill('text');  // Any descendant\n  await page.locator('form > input').fill('text'); // Direct child\n});\n\ntest('XPath selectors', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // XPath (less common in Playwright, but available)\n  await page.locator('xpath=//button').click();\n  await page.locator('xpath=//button[@type=\"submit\"]').click();\n  await page.locator('xpath=//div[contains(@class, \"container\")]').click();\n  \n  // XPath advantages: Can navigate up the DOM tree\n  await page.locator('xpath=//button/parent::div').click();\n  \n  // But prefer CSS when possible - it's faster and more readable\n});\n\n// When to use CSS/XPath:\n// - When text/role locators don't work\n// - For complex DOM navigation\n// - When you have data-testid attributes",
+        "explanation": "CSS and XPath selectors provide powerful ways to locate elements by structure and attributes. Use them when semantic locators aren't available."
+      },
+      {
+        "title": "Test ID Locators",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Test ID locators - Most stable for test automation\nimport { test } from '@playwright/test';\n\ntest('test ID locators', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Using data-testid attribute (default)\n  await page.getByTestId('submit-button').click();\n  await page.getByTestId('email-input').fill('test@example.com');\n  await page.getByTestId('user-profile').click();\n  \n  // Alternative: using locator\n  await page.locator('[data-testid=\"submit-button\"]').click();\n});\n\n// HTML with test IDs:\n/*\n<button data-testid=\"submit-button\">Submit</button>\n<input data-testid=\"email-input\" type=\"email\" />\n<div data-testid=\"user-profile\">\n  <h2>John Doe</h2>\n</div>\n*/\n\n// Custom test ID attribute\n// In playwright.config.ts:\n/*\nuse: {\n  testIdAttribute: 'data-test-id' // or 'data-automation-id'\n}\n*/\n\n// Then use:\ntest('custom test ID', async ({ page }) => {\n  await page.getByTestId('submit').click(); // Finds data-test-id=\"submit\"\n});\n\n// Benefits of test IDs:\n// ✓ Most stable - won't break with UI changes\n// ✓ Clear intent - this element is for testing\n// ✓ Fast - no complex selector parsing\n// ✓ Works with any element type\n\n// Drawbacks:\n// ✗ Requires adding attributes to HTML\n// ✗ Not user-facing (doesn't match user perspective)\n// ✗ Extra work for developers",
+        "explanation": "Test IDs provide the most stable locators but require adding special attributes to your HTML. Best for elements that change frequently."
+      },
+      {
+        "title": "Locator Chaining and Filtering",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Advanced locator techniques\nimport { test, expect } from '@playwright/test';\n\ntest('locator chaining', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Chain locators to narrow down search\n  const form = page.locator('form');\n  const emailInput = form.locator('input[type=\"email\"]');\n  await emailInput.fill('test@example.com');\n  \n  // Or in one line\n  await page.locator('form').locator('input[type=\"email\"]').fill('test@example.com');\n  \n  // Find within a specific area\n  const sidebar = page.locator('.sidebar');\n  await sidebar.locator('text=Settings').click();\n  \n  // Multiple levels\n  await page\n    .locator('.container')\n    .locator('form')\n    .locator('button[type=\"submit\"]')\n    .click();\n});\n\ntest('filtering locators', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Filter by text\n  await page\n    .locator('button')\n    .filter({ hasText: 'Submit' })\n    .click();\n  \n  // Filter by NOT having text\n  await page\n    .locator('button')\n    .filter({ hasNotText: 'Cancel' })\n    .click();\n  \n  // Filter by having a child element\n  await page\n    .locator('article')\n    .filter({ has: page.locator('button.delete') })\n    .click();\n  \n  // Filter by NOT having a child element\n  await page\n    .locator('article')\n    .filter({ hasNot: page.locator('.archived') })\n    .click();\n  \n  // Combine multiple filters\n  await page\n    .locator('div')\n    .filter({ hasText: 'Product' })\n    .filter({ has: page.locator('button') })\n    .click();\n});\n\ntest('selecting specific items', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // First and last\n  await page.locator('li').first().click();\n  await page.locator('li').last().click();\n  \n  // By index (0-based)\n  await page.locator('li').nth(2).click(); // 3rd item\n  \n  // Get count\n  const count = await page.locator('li').count();\n  console.log(`Found ${count} items`);\n  \n  // Iterate through all matches\n  const items = page.locator('li');\n  for (let i = 0; i < await items.count(); i++) {\n    const text = await items.nth(i).textContent();\n    console.log(text);\n  }\n  \n  // Better: use all()\n  const allItems = await page.locator('li').all();\n  for (const item of allItems) {\n    console.log(await item.textContent());\n  }\n});\n\ntest('has() and hasText() methods', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Find article containing a button\n  await page.locator('article', { has: page.locator('button') }).click();\n  \n  // Find article with specific text\n  await page.locator('article', { hasText: 'Breaking News' }).click();\n  \n  // Combine both\n  await page.locator('article', {\n    has: page.locator('button'),\n    hasText: 'Featured'\n  }).click();\n});\n\n// Pro tip: Chain and filter to create precise, readable locators",
+        "explanation": "Chaining and filtering allow you to narrow down elements precisely. This creates more specific and reliable locators."
+      },
+      {
+        "title": "Choosing the Right Locator",
+        "type": "text",
+        "content": "# Locator Selection Guide\n\n## Priority Order\n\nPlaywright recommends this priority:\n\n### 1. User-Facing Attributes (Highest Priority)\n\n**getByRole()**\n```typescript\nawait page.getByRole('button', { name: 'Submit' }).click();\n```\nBest for: Buttons, links, form controls\nWhy: Reflects accessibility, semantic meaning\n\n**getByText()**\n```typescript\nawait page.getByText('Welcome back').click();\n```\nBest for: Headings, paragraphs, labels\nWhy: Matches what users see\n\n**getByLabel()**\n```typescript\nawait page.getByLabel('Email address').fill('test@example.com');\n```\nBest for: Form inputs with labels\nWhy: Matches how users identify fields\n\n**getByPlaceholder()**\n```typescript\nawait page.getByPlaceholder('Enter your email').fill('test@example.com');\n```\nBest for: Inputs with placeholder text\nWhy: User-visible hint\n\n### 2. Test-Specific Attributes\n\n**getByTestId()**\n```typescript\nawait page.getByTestId('submit-button').click();\n```\nBest for: Complex components, dynamic content\nWhy: Stable, won't change with UI updates\n\n### 3. Structural Selectors (Use Sparingly)\n\n**CSS/XPath**\n```typescript\nawait page.locator('.submit-btn').click();\nawait page.locator('#login-form').click();\n```\nBest for: When no better option exists\nWhy: Can break with UI changes\n\n## Decision Tree\n\n```\nDoes element have semantic role and accessible name?\n  YES → Use getByRole()\n  NO ↓\n  \nDoes element have unique visible text?\n  YES → Use getByText()\n  NO ↓\n  \nIs it a form field with a label?\n  YES → Use getByLabel()\n  NO ↓\n  \nDoes element have data-testid?\n  YES → Use getByTestId()\n  NO ↓\n  \nUse CSS selector (but consider adding data-testid)\n```\n\n## Real-World Examples\n\n### Good Locator Choices\n\n```typescript\n// ✓ Button with accessible name\nawait page.getByRole('button', { name: 'Add to cart' }).click();\n\n// ✓ Heading text\nawait page.getByRole('heading', { name: 'Products' }).click();\n\n// ✓ Form input with label\nawait page.getByLabel('Email').fill('test@example.com');\n\n// ✓ Link text\nawait page.getByRole('link', { name: 'Learn more' }).click();\n\n// ✓ Unique text content\nawait page.getByText('Welcome back, John').click();\n```\n\n### Bad Locator Choices\n\n```typescript\n// ✗ Overly specific CSS\nawait page.locator('div > div > form > div:nth-child(2) > input').fill('text');\n// Why: Breaks if structure changes\n\n// ✗ Generic tag names\nawait page.locator('button').click();\n// Why: Might match multiple buttons\n\n// ✗ Index-based without context\nawait page.locator('button').nth(5).click();\n// Why: Breaks if buttons are added/removed\n\n// ✗ Class names that may change\nawait page.locator('.btn-primary-lg-md').click();\n// Why: Styling classes often change\n```\n\n## Handling Multiple Matches\n\nPlaywright is strict - if multiple elements match, it throws an error:\n\n```typescript\n// This throws if multiple buttons exist:\nawait page.locator('button').click();\n// Error: strict mode violation: locator('button') resolved to 3 elements\n```\n\n**Solutions**:\n\n```typescript\n// 1. Make locator more specific\nawait page.locator('button.submit').click();\n\n// 2. Use filter\nawait page.locator('button').filter({ hasText: 'Submit' }).click();\n\n// 3. Chain locators\nawait page.locator('form').locator('button').click();\n\n// 4. Use first/last/nth (if appropriate)\nawait page.locator('button').first().click();\n```"
+      },
+      {
+        "title": "Common Pitfalls",
+        "type": "text",
+        "content": "# Common Locator Mistakes\n\n## 1. Storing Locators Incorrectly\n\n```typescript\n// ❌ Don't store element handles\nconst button = await page.$('button'); // Returns element handle\nawait button.click(); // Might be stale\n\n// ✅ Store locators\nconst button = page.locator('button'); // Returns locator\nawait button.click(); // Always fresh\n```\n\n## 2. Not Using Auto-Waiting\n\n```typescript\n// ❌ Manual waiting (unnecessary)\nawait page.waitForSelector('button');\nawait page.click('button');\n\n// ✅ Let Playwright handle it\nawait page.click('button'); // Auto-waits\n```\n\n## 3. Overly Complex Selectors\n\n```typescript\n// ❌ Too specific\nawait page.locator('div.container > div.row > div.col > form > button').click();\n\n// ✅ Simpler and more resilient\nawait page.locator('form button').click();\n// or better:\nawait page.getByRole('button', { name: 'Submit' }).click();\n```\n\n## 4. Ignoring Accessibility\n\n```typescript\n// ❌ Generic selector\nawait page.locator('#field1').fill('text');\n\n// ✅ Accessible selector\nawait page.getByLabel('Email address').fill('text');\n```\n\n## 5. Using Fragile Attributes\n\n```typescript\n// ❌ Styling classes\nawait page.locator('.mt-4.px-2.text-center').click();\n\n// ✅ Stable attributes\nawait page.getByTestId('submit-button').click();\n```\n\n## Tips for Better Locators\n\n1. **Test your locators in isolation**\n   ```typescript\n   // Use count() to verify\n   const count = await page.locator('button').count();\n   console.log(`Found ${count} buttons`);\n   ```\n\n2. **Use Playwright Inspector**\n   ```bash\n   npx playwright test --debug\n   ```\n   Explore and test locators interactively\n\n3. **Add data-testid for dynamic content**\n   ```html\n   <button data-testid=\"product-123-add-to-cart\">Add to Cart</button>\n   ```\n\n4. **Document complex locators**\n   ```typescript\n   // This locator finds the delete button for a specific user row\n   const deleteButton = page\n     .locator('tr', { hasText: 'john@example.com' })\n     .locator('button', { hasText: 'Delete' });\n   ```\n\n5. **Create helper functions**\n   ```typescript\n   async function clickProductAddToCart(page, productName) {\n     await page\n       .locator('.product', { hasText: productName })\n       .locator('button', { hasText: 'Add to Cart' })\n       .click();\n   }\n   ```"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Locators are lazy and auto-wait, making tests more reliable",
+    "Prefer user-facing locators: getByRole(), getByText(), getByLabel()",
+    "Use getByTestId() for stability when user-facing attributes aren't available",
+    "Chain and filter locators to make them more specific",
+    "Playwright is strict - it throws errors if multiple elements match",
+    "Avoid fragile selectors based on styling classes or deep DOM structure",
+    "Test IDs provide the most stable locators for dynamic content",
+    "Good locators survive application changes and reflect user perspective"
+  ],
+  "resources": [
+    {
+      "title": "Locators Guide",
+      "url": "https://playwright.dev/docs/locators",
+      "type": "documentation"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices",
+      "type": "documentation"
+    },
+    {
+      "title": "Selector Guide",
+      "url": "https://playwright.dev/docs/selectors",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-004",
+  "nextLesson": "pw-beginner-005",
+  "estimatedXP": 200,
+  "tags": ["playwright", "locators", "selectors", "getByRole", "getByText"]
+}

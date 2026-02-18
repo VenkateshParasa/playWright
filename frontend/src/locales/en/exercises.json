@@ -1,0 +1,130 @@
+{
+  "list": {
+    "title": "Coding Exercises",
+    "subtitle": "Practice with hands-on coding challenges",
+    "searchPlaceholder": "Search exercises...",
+    "noExercises": "No exercises found",
+    "all": "All Exercises",
+    "todo": "To Do",
+    "completed": "Completed"
+  },
+  "card": {
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "points": "{{points}} pts",
+    "submissions": "{{count}} submission",
+    "submissions_plural": "{{count}} submissions",
+    "successRate": "{{rate}}% success rate",
+    "solve": "Solve",
+    "continue": "Continue",
+    "review": "Review Solution",
+    "locked": "Locked"
+  },
+  "editor": {
+    "title": "Exercise",
+    "description": "Description",
+    "instructions": "Instructions",
+    "hints": "Hints",
+    "showHint": "Show Hint",
+    "hideHint": "Hide Hint",
+    "testCases": "Test Cases",
+    "expectedOutput": "Expected Output",
+    "yourCode": "Your Code",
+    "runCode": "Run Code",
+    "submitSolution": "Submit Solution",
+    "resetCode": "Reset Code",
+    "saveProgress": "Save Progress",
+    "output": "Output",
+    "console": "Console",
+    "testResults": "Test Results",
+    "passing": "Passing",
+    "failing": "Failing",
+    "allTestsPassed": "All tests passed!",
+    "someTestsFailed": "{{count}}/{{total}} tests passed"
+  },
+  "submission": {
+    "title": "Submit Solution",
+    "confirmMessage": "Ready to submit your solution?",
+    "runTestsFirst": "Make sure to run all tests before submitting",
+    "submitButton": "Submit",
+    "cancelButton": "Cancel",
+    "submitting": "Submitting...",
+    "success": "Solution Submitted!",
+    "failed": "Submission Failed",
+    "accepted": "Accepted",
+    "wrongAnswer": "Wrong Answer",
+    "runtimeError": "Runtime Error",
+    "timeLimitExceeded": "Time Limit Exceeded"
+  },
+  "results": {
+    "title": "Submission Results",
+    "status": "Status",
+    "runtime": "Runtime",
+    "memory": "Memory",
+    "testsPassed": "Tests Passed",
+    "pointsEarned": "Points Earned",
+    "feedback": "Feedback",
+    "viewSolution": "View Solution",
+    "compareWithBest": "Compare with Best Solutions",
+    "nextExercise": "Next Exercise",
+    "tryAgain": "Try Again"
+  },
+  "solution": {
+    "title": "Solution",
+    "explanation": "Explanation",
+    "approach": "Approach",
+    "complexity": "Complexity",
+    "timeComplexity": "Time Complexity",
+    "spaceComplexity": "Space Complexity",
+    "alternativeSolutions": "Alternative Solutions",
+    "userSolutions": "Community Solutions",
+    "topRated": "Top Rated",
+    "mostRecent": "Most Recent",
+    "mySubmissions": "My Submissions"
+  },
+  "hints": {
+    "available": "{{count}} hint available",
+    "available_plural": "{{count}} hints available",
+    "used": "{{count}} hint used",
+    "used_plural": "{{count}} hints used",
+    "pointsDeduction": "Using hints will reduce points earned",
+    "revealHint": "Reveal Hint ({{points}} pts deduction)"
+  },
+  "discussion": {
+    "title": "Discussion",
+    "askQuestion": "Ask a Question",
+    "viewDiscussions": "View Discussions",
+    "noDiscussions": "No discussions yet",
+    "startDiscussion": "Start a Discussion",
+    "replies": "{{count}} reply",
+    "replies_plural": "{{count}} replies",
+    "helpful": "Helpful",
+    "report": "Report"
+  },
+  "statistics": {
+    "title": "Exercise Statistics",
+    "attempted": "Attempted",
+    "solved": "Solved",
+    "successRate": "Success Rate",
+    "averageAttempts": "Avg. Attempts",
+    "totalPoints": "Total Points",
+    "timeSpent": "Time Spent",
+    "fastestSolution": "Fastest Solution",
+    "cleanestCode": "Cleanest Code"
+  },
+  "categories": {
+    "locators": "Locators",
+    "actions": "Actions",
+    "assertions": "Assertions",
+    "waits": "Waits & Timeouts",
+    "api": "API Testing",
+    "fixtures": "Fixtures",
+    "hooks": "Hooks",
+    "pageObjects": "Page Objects",
+    "debugging": "Debugging",
+    "advanced": "Advanced"
+  }
+}

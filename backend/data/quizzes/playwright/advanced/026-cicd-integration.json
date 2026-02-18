@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-026",
+  "title": "CI/CD Integration",
+  "slug": "cicd-integration",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced CI/CD Integration techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q261", "type": "multiple-choice", "question": "What is CI/CD Integration in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "CI/CD Integration encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "cicd-integration"]},
+    {"id": "quiz-pw-q262", "type": "code-completion", "question": "Implement CI/CD Integration:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for CI/CD Integration.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q263", "type": "true-false", "question": "CI/CD Integration requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "CI/CD Integration is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q264", "type": "multiple-choice", "question": "When is CI/CD Integration most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "CI/CD Integration provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q265", "type": "code-completion", "question": "Optimize CI/CD Integration:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves CI/CD Integration performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q266", "type": "multiple-choice", "question": "What are CI/CD Integration challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "CI/CD Integration involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q267", "type": "debugging", "question": "Debug this CI/CD Integration issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q268", "type": "true-false", "question": "CI/CD Integration scales well for large test suites.", "correctAnswer": true, "explanation": "CI/CD Integration is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q269", "type": "multiple-choice", "question": "How do you architect CI/CD Integration?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q260", "type": "code-output", "question": "Analyze this CI/CD Integration pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-026",
+  "prerequisites": ["quiz-pw-025"],
+  "xpReward": 250,
+  "coinReward": 50
+}

@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "timeout": 10000,
+    "wait": 500,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    },
+    "standard": "WCAG2AA",
+    "runners": ["axe", "htmlcs"],
+    "ignore": [
+      "notice",
+      "warning"
+    ]
+  },
+  "urls": [
+    "http://localhost:4173",
+    "http://localhost:4173/dashboard",
+    "http://localhost:4173/lessons",
+    "http://localhost:4173/lessons/browser",
+    "http://localhost:4173/quiz",
+    "http://localhost:4173/flashcards",
+    "http://localhost:4173/exercises",
+    "http://localhost:4173/progress",
+    "http://localhost:4173/achievements",
+    "http://localhost:4173/settings",
+    "http://localhost:4173/settings/profile",
+    "http://localhost:4173/settings/preferences",
+    "http://localhost:4173/settings/appearance"
+  ]
+}

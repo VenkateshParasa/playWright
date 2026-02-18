@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-004",
+  "title": "Element Location Strategies",
+  "slug": "element-location",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 4,
+  "duration": 25,
+  "description": "Master different strategies for locating elements on web pages.",
+  "objectives": [
+    "Use By.id, By.className",
+    "Write CSS selectors",
+    "Create XPath expressions",
+    "Choose best locator strategy"
+  ],
+  "prerequisites": [
+    "sel-beginner-003"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Element Location Strategies",
+        "type": "text",
+        "content": "# Element Location Strategies\n\nComprehensive guide to finding elements reliably.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Element Location Strategies\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Element Location Strategies concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, element location strategies is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Element Location Strategies\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Element Location Strategies is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Element Location Strategies for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Element Location Strategies Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-004",
+  "nextLesson": "sel-beginner-005",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "element",
+    "automation",
+    "testing"
+  ]
+}

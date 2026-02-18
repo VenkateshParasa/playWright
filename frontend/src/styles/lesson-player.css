@@ -1,0 +1,260 @@
+/* Lesson Player Styles */
+
+/* Print styles for lesson content */
+@media print {
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  .lesson-player {
+    background: white !important;
+  }
+
+  .lesson-content {
+    max-width: 100% !important;
+  }
+
+  .code-example {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure code blocks are visible when printed */
+  pre, code {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* Hide navigation and interactive elements */
+  .lesson-navigation,
+  .lesson-progress,
+  .table-of-contents,
+  button {
+    display: none !important;
+  }
+
+  /* Expand collapsed sections */
+  details {
+    display: block !important;
+  }
+
+  details summary {
+    display: none !important;
+  }
+
+  details > *:not(summary) {
+    display: block !important;
+  }
+}
+
+/* Dark mode code block styling */
+.dark .code-example {
+  background: #1e1e1e;
+}
+
+.dark .code-header,
+.dark .code-footer {
+  background: #2d2d2d;
+  border-color: #3d3d3d;
+}
+
+.dark .code-content {
+  background: #1e1e1e;
+}
+
+/* Syntax highlighting colors for dark mode */
+.dark .code-content code {
+  color: #d4d4d4;
+}
+
+.dark .code-line:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Table of contents sticky positioning */
+.table-of-contents {
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+/* Smooth scrolling for headings */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll margin for headings (to account for fixed header) */
+h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Prose styling for lesson content */
+.lesson-content.prose {
+  line-height: 1.75;
+}
+
+.lesson-content.prose h1 {
+  scroll-margin-top: 5rem;
+}
+
+.lesson-content.prose h2 {
+  scroll-margin-top: 5rem;
+}
+
+.lesson-content.prose h3 {
+  scroll-margin-top: 5rem;
+}
+
+/* Code block line highlighting */
+.code-line {
+  display: block;
+  padding: 0 1rem;
+  margin: 0 -1rem;
+  transition: background-color 0.2s;
+}
+
+.code-line:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 1024px) {
+  .table-of-contents {
+    position: relative !important;
+    top: auto !important;
+  }
+}
+
+/* Keyboard shortcut tooltip */
+kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+  border-radius: 0.25rem;
+  border: 1px solid currentColor;
+  padding: 0.125rem 0.375rem;
+}
+
+/* Loading skeleton for lesson content */
+.lesson-skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Bookmark button animation */
+@keyframes bookmark-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bookmark-active {
+  animation: bookmark-pop 0.3s ease-in-out;
+}
+
+/* Focus styles for accessibility */
+.lesson-player *:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Image lazy loading */
+.lesson-content img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lesson-content img.loaded {
+  opacity: 1;
+}
+
+/* Video responsive container */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from {
+    width: 0;
+  }
+}
+
+.progress-bar {
+  animation: progress-fill 0.5s ease-out;
+}
+
+/* Toast notification for copy feedback */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.toast-enter {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.toast-exit {
+  animation: slide-out-right 0.3s ease-in;
+}
+
+/* Scrollbar styling */
+.lesson-content::-webkit-scrollbar,
+.table-of-contents::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lesson-content::-webkit-scrollbar-track,
+.table-of-contents::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lesson-content::-webkit-scrollbar-thumb,
+.table-of-contents::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.lesson-content::-webkit-scrollbar-thumb:hover,
+.table-of-contents::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dark .lesson-content::-webkit-scrollbar-thumb,
+.dark .table-of-contents::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark .lesson-content::-webkit-scrollbar-thumb:hover,
+.dark .table-of-contents::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

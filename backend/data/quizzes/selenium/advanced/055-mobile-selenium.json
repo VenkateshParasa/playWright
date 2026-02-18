@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-055",
+  "title": "Mobile Automation",
+  "slug": "mobile-selenium",
+  "track": "selenium",
+  "category": "advanced",
+  "description": "Advanced Mobile Automation for enterprise Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q551", "type": "multiple-choice", "question": "What makes Mobile Automation advanced?", "options": ["Complexity", "Scalability needs", "Enterprise requirements", "All factors"], "correctAnswer": 3, "explanation": "Mobile Automation addresses complex enterprise automation challenges.", "difficulty": "hard", "points": 10, "tags": ["advanced", "mobile-selenium"]},
+    {"id": "quiz-sel-q552", "type": "code-completion", "question": "Implement advanced Mobile Automation:", "codeTemplate": "// Advanced template", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This shows advanced Mobile Automation implementation.", "difficulty": "hard", "points": 15, "tags": ["advanced", "implementation"]},
+    {"id": "quiz-sel-q553", "type": "true-false", "question": "Mobile Automation requires deep architectural knowledge.", "correctAnswer": true, "explanation": "Mobile Automation involves complex architectural decisions.", "difficulty": "hard", "points": 5, "tags": ["architecture", "expertise"]},
+    {"id": "quiz-sel-q554", "type": "multiple-choice", "question": "How does Mobile Automation scale?", "options": ["Horizontally", "Vertically", "Both ways", "Depends on architecture"], "correctAnswer": 3, "explanation": "Mobile Automation scaling depends on infrastructure and design.", "difficulty": "hard", "points": 10, "tags": ["scalability", "architecture"]},
+    {"id": "quiz-sel-q555", "type": "code-completion", "question": "Optimize Mobile Automation for production:", "codeTemplate": "// Production code", "correctAnswer": "// Production-ready solution", "acceptedAnswers": ["solution"], "explanation": "This optimization is crucial for Mobile Automation in production.", "difficulty": "hard", "points": 15, "tags": ["production", "optimization"]},
+    {"id": "quiz-sel-q556", "type": "multiple-choice", "question": "What are Mobile Automation tradeoffs?", "options": ["Cost vs performance", "Complexity vs maintainability", "Speed vs reliability", "Multiple tradeoffs exist"], "correctAnswer": 3, "explanation": "Mobile Automation involves balancing various concerns.", "difficulty": "hard", "points": 10, "tags": ["tradeoffs", "decisions"]},
+    {"id": "quiz-sel-q557", "type": "debugging", "question": "Diagnose this Mobile Automation production issue:", "code": "// Complex production issue", "options": ["Infrastructure", "Code", "Configuration", "Requires deep analysis"], "correctAnswer": 3, "explanation": "Production Mobile Automation issues need comprehensive analysis.", "difficulty": "hard", "points": 20, "tags": ["debugging", "production"]},
+    {"id": "quiz-sel-q558", "type": "true-false", "question": "Mobile Automation is suitable for all projects.", "correctAnswer": false, "explanation": "Mobile Automation is most valuable for large-scale projects.", "difficulty": "hard", "points": 5, "tags": ["suitability", "assessment"]},
+    {"id": "quiz-sel-q559", "type": "multiple-choice", "question": "How do you architect Mobile Automation?", "options": ["Monolithic", "Microservices", "Hybrid", "Context-dependent"], "correctAnswer": 3, "explanation": "Mobile Automation architecture should match project needs.", "difficulty": "hard", "points": 10, "tags": ["architecture", "design"]},
+    {"id": "quiz-sel-q550", "type": "code-output", "question": "Analyze this Mobile Automation architecture:", "code": "// Architecture code", "options": ["Good design", "Anti-pattern", "Needs refinement", "Depends on requirements"], "correctAnswer": 2, "explanation": "This Mobile Automation architecture has room for improvement.", "difficulty": "hard", "points": 15, "tags": ["architecture", "analysis"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-055",
+  "prerequisites": ["quiz-sel-054"],
+  "xpReward": 250,
+  "coinReward": 50
+}

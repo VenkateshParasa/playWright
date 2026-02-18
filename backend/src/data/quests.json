@@ -1,0 +1,485 @@
+[
+  {
+    "questId": "daily_login",
+    "name": "Daily Login",
+    "description": "Log in to the platform",
+    "type": "daily",
+    "difficulty": "easy",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "login",
+        "value": 1,
+        "description": "Log in today"
+      }
+    ],
+    "rewards": {
+      "xp": 25,
+      "coins": 10
+    },
+    "icon": "🌅",
+    "isRepeatable": true,
+    "cooldownDays": 1
+  },
+  {
+    "questId": "daily_complete_lesson",
+    "name": "Complete a Lesson",
+    "description": "Complete at least one lesson today",
+    "type": "daily",
+    "difficulty": "easy",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_lessons",
+        "value": 1,
+        "description": "Complete 1 lesson"
+      }
+    ],
+    "rewards": {
+      "xp": 100,
+      "coins": 20
+    },
+    "icon": "📖",
+    "isRepeatable": true,
+    "cooldownDays": 1
+  },
+  {
+    "questId": "daily_review_cards",
+    "name": "Daily Review",
+    "description": "Review at least 20 flashcards",
+    "type": "daily",
+    "difficulty": "easy",
+    "category": "practice",
+    "requirements": [
+      {
+        "type": "review_cards",
+        "value": 20,
+        "description": "Review 20 flashcards"
+      }
+    ],
+    "rewards": {
+      "xp": 75,
+      "coins": 15
+    },
+    "icon": "🎴",
+    "isRepeatable": true,
+    "cooldownDays": 1
+  },
+  {
+    "questId": "daily_complete_quiz",
+    "name": "Take a Quiz",
+    "description": "Complete a quiz with at least 70% score",
+    "type": "daily",
+    "difficulty": "medium",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_quiz",
+        "value": 1,
+        "description": "Complete 1 quiz with 70%+ score"
+      }
+    ],
+    "rewards": {
+      "xp": 150,
+      "coins": 30
+    },
+    "icon": "✍️",
+    "isRepeatable": true,
+    "cooldownDays": 1
+  },
+  {
+    "questId": "daily_help_others",
+    "name": "Help the Community",
+    "description": "Help another user by answering their question",
+    "type": "daily",
+    "difficulty": "medium",
+    "category": "social",
+    "requirements": [
+      {
+        "type": "answer_question",
+        "value": 1,
+        "description": "Answer 1 question"
+      }
+    ],
+    "rewards": {
+      "xp": 100,
+      "coins": 25
+    },
+    "icon": "🤝",
+    "isRepeatable": true,
+    "cooldownDays": 1
+  },
+  {
+    "questId": "daily_complete_exercise",
+    "name": "Practice Coding",
+    "description": "Complete a coding exercise",
+    "type": "daily",
+    "difficulty": "medium",
+    "category": "practice",
+    "requirements": [
+      {
+        "type": "complete_exercise",
+        "value": 1,
+        "description": "Complete 1 coding exercise"
+      }
+    ],
+    "rewards": {
+      "xp": 200,
+      "coins": 40
+    },
+    "icon": "💻",
+    "isRepeatable": true,
+    "cooldownDays": 1
+  },
+  {
+    "questId": "weekly_lesson_streak",
+    "name": "Weekly Consistency",
+    "description": "Complete at least one lesson every day this week",
+    "type": "weekly",
+    "difficulty": "medium",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "daily_lesson_streak",
+        "value": 7,
+        "description": "Complete lessons 7 days in a row"
+      }
+    ],
+    "rewards": {
+      "xp": 500,
+      "coins": 100
+    },
+    "icon": "🔥",
+    "isRepeatable": true,
+    "cooldownDays": 7
+  },
+  {
+    "questId": "weekly_quiz_master",
+    "name": "Quiz Champion",
+    "description": "Complete 10 quizzes with 80%+ score this week",
+    "type": "weekly",
+    "difficulty": "hard",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_quizzes_high_score",
+        "value": 10,
+        "description": "Complete 10 quizzes with 80%+ score"
+      }
+    ],
+    "rewards": {
+      "xp": 1000,
+      "coins": 200
+    },
+    "icon": "🎖️",
+    "isRepeatable": true,
+    "cooldownDays": 7
+  },
+  {
+    "questId": "weekly_review_master",
+    "name": "Review Champion",
+    "description": "Review 200 flashcards this week",
+    "type": "weekly",
+    "difficulty": "medium",
+    "category": "practice",
+    "requirements": [
+      {
+        "type": "review_cards",
+        "value": 200,
+        "description": "Review 200 flashcards"
+      }
+    ],
+    "rewards": {
+      "xp": 750,
+      "coins": 150
+    },
+    "icon": "🧠",
+    "isRepeatable": true,
+    "cooldownDays": 7
+  },
+  {
+    "questId": "weekly_coding_champion",
+    "name": "Coding Champion",
+    "description": "Complete 15 coding exercises this week",
+    "type": "weekly",
+    "difficulty": "hard",
+    "category": "practice",
+    "requirements": [
+      {
+        "type": "complete_exercises",
+        "value": 15,
+        "description": "Complete 15 coding exercises"
+      }
+    ],
+    "rewards": {
+      "xp": 1500,
+      "coins": 300,
+      "items": ["xp_booster_small"]
+    },
+    "icon": "🥷",
+    "isRepeatable": true,
+    "cooldownDays": 7
+  },
+  {
+    "questId": "weekly_social_butterfly",
+    "name": "Community Contributor",
+    "description": "Help 5 other users this week",
+    "type": "weekly",
+    "difficulty": "medium",
+    "category": "social",
+    "requirements": [
+      {
+        "type": "answer_questions",
+        "value": 5,
+        "description": "Answer 5 questions"
+      }
+    ],
+    "rewards": {
+      "xp": 500,
+      "coins": 100
+    },
+    "icon": "🦋",
+    "isRepeatable": true,
+    "cooldownDays": 7
+  },
+  {
+    "questId": "tutorial_first_lesson",
+    "name": "Getting Started",
+    "description": "Complete your first lesson to learn the basics",
+    "type": "tutorial",
+    "difficulty": "easy",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_lessons",
+        "value": 1,
+        "description": "Complete 1 lesson"
+      }
+    ],
+    "rewards": {
+      "xp": 200,
+      "coins": 50
+    },
+    "icon": "🎯",
+    "isRepeatable": false
+  },
+  {
+    "questId": "tutorial_first_quiz",
+    "name": "Test Your Knowledge",
+    "description": "Take your first quiz",
+    "type": "tutorial",
+    "difficulty": "easy",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_quiz",
+        "value": 1,
+        "description": "Complete 1 quiz"
+      }
+    ],
+    "rewards": {
+      "xp": 200,
+      "coins": 50
+    },
+    "icon": "📝",
+    "isRepeatable": false,
+    "prerequisiteQuests": ["tutorial_first_lesson"]
+  },
+  {
+    "questId": "tutorial_first_flashcards",
+    "name": "Memory Training",
+    "description": "Review your first 10 flashcards",
+    "type": "tutorial",
+    "difficulty": "easy",
+    "category": "practice",
+    "requirements": [
+      {
+        "type": "review_cards",
+        "value": 10,
+        "description": "Review 10 flashcards"
+      }
+    ],
+    "rewards": {
+      "xp": 150,
+      "coins": 40
+    },
+    "icon": "🎴",
+    "isRepeatable": false,
+    "prerequisiteQuests": ["tutorial_first_quiz"]
+  },
+  {
+    "questId": "tutorial_first_exercise",
+    "name": "Hands-On Practice",
+    "description": "Complete your first coding exercise",
+    "type": "tutorial",
+    "difficulty": "medium",
+    "category": "practice",
+    "requirements": [
+      {
+        "type": "complete_exercise",
+        "value": 1,
+        "description": "Complete 1 coding exercise"
+      }
+    ],
+    "rewards": {
+      "xp": 300,
+      "coins": 75,
+      "items": ["beginner_badge"]
+    },
+    "icon": "💻",
+    "isRepeatable": false,
+    "prerequisiteQuests": ["tutorial_first_flashcards"]
+  },
+  {
+    "questId": "tutorial_join_community",
+    "name": "Join the Community",
+    "description": "Make your first forum post",
+    "type": "tutorial",
+    "difficulty": "easy",
+    "category": "social",
+    "requirements": [
+      {
+        "type": "forum_post",
+        "value": 1,
+        "description": "Make 1 forum post"
+      }
+    ],
+    "rewards": {
+      "xp": 150,
+      "coins": 50
+    },
+    "icon": "💬",
+    "isRepeatable": false,
+    "prerequisiteQuests": ["tutorial_first_exercise"]
+  },
+  {
+    "questId": "story_playwright_journey_1",
+    "name": "Playwright Journey: Chapter 1",
+    "description": "Begin your Playwright adventure",
+    "type": "story",
+    "difficulty": "medium",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_playwright_lessons",
+        "value": 5,
+        "description": "Complete 5 Playwright lessons"
+      }
+    ],
+    "rewards": {
+      "xp": 750,
+      "coins": 150
+    },
+    "icon": "🎭",
+    "isRepeatable": false
+  },
+  {
+    "questId": "story_playwright_journey_2",
+    "name": "Playwright Journey: Chapter 2",
+    "description": "Master Playwright selectors",
+    "type": "story",
+    "difficulty": "hard",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_playwright_lessons",
+        "value": 10,
+        "description": "Complete 10 Playwright lessons"
+      },
+      {
+        "type": "complete_playwright_exercises",
+        "value": 5,
+        "description": "Complete 5 Playwright exercises"
+      }
+    ],
+    "rewards": {
+      "xp": 1500,
+      "coins": 300,
+      "items": ["playwright_specialist_badge"]
+    },
+    "icon": "🎭",
+    "isRepeatable": false,
+    "prerequisiteQuests": ["story_playwright_journey_1"]
+  },
+  {
+    "questId": "story_selenium_journey_1",
+    "name": "Selenium Journey: Chapter 1",
+    "description": "Start your Selenium adventure",
+    "type": "story",
+    "difficulty": "medium",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_selenium_lessons",
+        "value": 5,
+        "description": "Complete 5 Selenium lessons"
+      }
+    ],
+    "rewards": {
+      "xp": 750,
+      "coins": 150
+    },
+    "icon": "⚙️",
+    "isRepeatable": false
+  },
+  {
+    "questId": "story_selenium_journey_2",
+    "name": "Selenium Journey: Chapter 2",
+    "description": "Master Selenium WebDriver",
+    "type": "story",
+    "difficulty": "hard",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_selenium_lessons",
+        "value": 10,
+        "description": "Complete 10 Selenium lessons"
+      },
+      {
+        "type": "complete_selenium_exercises",
+        "value": 5,
+        "description": "Complete 5 Selenium exercises"
+      }
+    ],
+    "rewards": {
+      "xp": 1500,
+      "coins": 300,
+      "items": ["selenium_expert_badge"]
+    },
+    "icon": "⚙️",
+    "isRepeatable": false,
+    "prerequisiteQuests": ["story_selenium_journey_1"]
+  },
+  {
+    "questId": "seasonal_winter_challenge",
+    "name": "Winter Learning Challenge",
+    "description": "Complete the winter challenge event",
+    "type": "seasonal",
+    "difficulty": "epic",
+    "category": "learning",
+    "requirements": [
+      {
+        "type": "complete_lessons",
+        "value": 25,
+        "description": "Complete 25 lessons"
+      },
+      {
+        "type": "complete_quizzes",
+        "value": 10,
+        "description": "Complete 10 quizzes"
+      },
+      {
+        "type": "maintain_streak",
+        "value": 14,
+        "description": "Maintain a 14-day streak"
+      }
+    ],
+    "rewards": {
+      "xp": 5000,
+      "coins": 1000,
+      "items": ["winter_2024_badge", "xp_booster_large"]
+    },
+    "icon": "❄️",
+    "isRepeatable": false
+  }
+]

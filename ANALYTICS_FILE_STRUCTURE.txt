@@ -1,0 +1,130 @@
+ANALYTICS DASHBOARD - FILE STRUCTURE
+=====================================
+
+📁 Backend
+└── src/
+    ├── services/
+    │   └── analyticsService.ts ................... Core analytics calculations
+    ├── controllers/
+    │   └── admin/
+    │       └── analyticsController.ts ............ Request handlers for analytics
+    └── routes/
+        └── admin/
+            └── analytics.ts ....................... API route definitions
+
+📁 Frontend
+└── src/
+    ├── pages/
+    │   └── admin/
+    │       └── Analytics.tsx ...................... Main analytics dashboard page
+    │
+    ├── components/
+    │   └── admin/
+    │       └── analytics/
+    │           ├── index.ts ....................... Component exports
+    │           ├── UserMetrics.tsx ................ User growth & retention
+    │           ├── ContentMetrics.tsx ............. Content performance
+    │           ├── EngagementMetrics.tsx ......... Study time & activity
+    │           ├── ProgressMetrics.tsx ........... Learning progress
+    │           ├── SRSMetrics.tsx ................ Flashcard metrics
+    │           ├── ReportGenerator.tsx ........... Export functionality
+    │           └── charts/
+    │               ├── index.ts ................... Chart exports
+    │               ├── LineChart.tsx .............. Time series
+    │               ├── BarChart.tsx ............... Categorical data
+    │               ├── PieChart.tsx ............... Distributions
+    │               ├── Heatmap.tsx ................ Activity patterns
+    │               └── Histogram.tsx .............. Data distributions
+    │
+    ├── stores/
+    │   └── adminAnalyticsStore.ts ................. Zustand state management
+    │
+    └── lib/
+        └── analytics/
+            └── exportUtils.ts ..................... CSV/JSON/PDF export
+
+📁 Documentation
+├── ANALYTICS_DASHBOARD_GUIDE.md ................... Complete interpretation guide
+├── ANALYTICS_IMPLEMENTATION_SUMMARY.md ............ Implementation overview
+└── ANALYTICS_FILE_STRUCTURE.txt ................... This file
+
+
+KEY METRICS BY COMPONENT
+=========================
+
+UserMetrics Component (12 metrics)
+- Total users, new users, active users
+- User growth chart (30 days)
+- Retention & churn rates
+- Session duration
+- Users by learning track
+
+ContentMetrics Component (13 metrics)
+- Content inventory (lessons, quizzes, exercises, flashcards)
+- Completion rates by module
+- Popular & least completed lessons
+- Quiz scores & pass rates
+- Difficult exercises
+- Flashcard review counts
+- Engagement heatmap
+
+EngagementMetrics Component (8 metrics)
+- Total & average study time
+- Study time distribution
+- Active sessions
+- Session duration distribution
+- Peak usage times
+- Activity heatmap (calendar)
+- Streak distribution
+
+ProgressMetrics Component (6 metrics)
+- Overall completion rate
+- Average progress percentage
+- Completion by module
+- Time to complete by module
+- Progress distribution
+- Stuck users identification
+
+SRSMetrics Component (8 metrics)
+- Total cards & cards per user
+- Cards reviewed (daily, weekly)
+- Average retention rate
+- Retention curve over time
+- Review frequency distribution
+- Card difficulty distribution
+
+
+API ENDPOINTS
+=============
+
+GET  /api/admin/analytics/users       → UserMetrics
+GET  /api/admin/analytics/content     → ContentMetrics
+GET  /api/admin/analytics/engagement  → EngagementMetrics
+GET  /api/admin/analytics/progress    → ProgressMetrics
+GET  /api/admin/analytics/srs         → SRSMetrics
+GET  /api/admin/analytics/overview    → All metrics combined
+POST /api/admin/analytics/report      → Generate custom report
+
+
+CHART TYPES
+===========
+
+LineChart ......... User growth, quiz scores, retention curve
+BarChart .......... Completion rates, pass rates, time to complete
+PieChart .......... Users by track, card difficulty
+Heatmap ........... Day × hour engagement patterns
+Histogram ......... Study time, progress, streak distributions
+
+
+EXPORT FORMATS
+==============
+
+JSON .............. Complete data structure for analysis
+CSV ............... Spreadsheet-compatible format
+PDF ............... Printable summary report (requires jsPDF)
+
+
+TOTAL FILES CREATED: 24
+- Backend: 3 files
+- Frontend: 18 files
+- Documentation: 3 files

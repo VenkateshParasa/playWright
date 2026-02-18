@@ -1,0 +1,69 @@
+{
+  "id": "sel-advanced-005",
+  "title": "Extent Reports",
+  "slug": "extent-reports",
+  "track": "selenium",
+  "category": "advanced",
+  "order": 5,
+  "duration": 35,
+  "description": "Generate beautiful, detailed test reports with ExtentReports.",
+  "objectives": [
+    "Integrate ExtentReports",
+    "Add screenshots to reports",
+    "Create custom reports",
+    "Email reports"
+  ],
+  "prerequisites": [
+    "sel-advanced-004"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Extent Reports",
+        "type": "text",
+        "content": "# Extent Reports\n\nCreate professional test reports for stakeholders.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Extent Reports\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Extent Reports concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, extent reports is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Extent Reports\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Extent Reports is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Extent Reports for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Extent Reports Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-advanced-quiz-005",
+  "nextLesson": "sel-advanced-006",
+  "estimatedXP": 250,
+  "tags": [
+    "selenium",
+    "advanced",
+    "extent",
+    "automation",
+    "testing"
+  ]
+}

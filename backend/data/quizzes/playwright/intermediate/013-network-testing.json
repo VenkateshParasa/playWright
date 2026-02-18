@@ -1,0 +1,163 @@
+{
+  "id": "quiz-pw-013",
+  "title": "Network Testing",
+  "slug": "network-testing",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master network interception and mocking in Playwright",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q121",
+      "type": "multiple-choice",
+      "question": "How do you intercept network requests in Playwright?",
+      "options": [
+        "page.route()",
+        "page.intercept()",
+        "page.network()",
+        "page.request()"
+      ],
+      "correctAnswer": 0,
+      "explanation": "page.route() allows you to intercept and handle network requests.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["network", "routing"]
+    },
+    {
+      "id": "quiz-pw-q122",
+      "type": "code-completion",
+      "question": "Complete the code to mock an API response:",
+      "codeTemplate": "await page.____('/api/data', route => route.fulfill({ json: data }));",
+      "correctAnswer": "await page.route('/api/data', route => route.fulfill({ json: data }));",
+      "acceptedAnswers": [
+        "route"
+      ],
+      "explanation": "route() with fulfill() mocks API responses with custom data.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["network", "mocking", "code"]
+    },
+    {
+      "id": "quiz-pw-q123",
+      "type": "true-false",
+      "question": "Playwright can wait for specific network responses before continuing.",
+      "correctAnswer": true,
+      "explanation": "page.waitForResponse() waits for specific network responses.",
+      "difficulty": "medium",
+      "points": 5,
+      "tags": ["network", "waiting"]
+    },
+    {
+      "id": "quiz-pw-q124",
+      "type": "multiple-choice",
+      "question": "Which method waits for a network request?",
+      "options": [
+        "page.waitForRequest()",
+        "page.onRequest()",
+        "page.request()",
+        "page.listenRequest()"
+      ],
+      "correctAnswer": 0,
+      "explanation": "waitForRequest() waits for and returns a matching network request.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["network", "waiting"]
+    },
+    {
+      "id": "quiz-pw-q125",
+      "type": "code-completion",
+      "question": "Complete the code to abort image requests:",
+      "codeTemplate": "await page.route('**/*.{png,jpg}', route => route.____());",
+      "correctAnswer": "await page.route('**/*.{png,jpg}', route => route.abort());",
+      "acceptedAnswers": [
+        "abort"
+      ],
+      "explanation": "route.abort() cancels the network request.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["network", "routing", "code"]
+    },
+    {
+      "id": "quiz-pw-q126",
+      "type": "multiple-choice",
+      "question": "What does route.continue() do?",
+      "options": [
+        "Continues the request without modification",
+        "Modifies and continues the request",
+        "Both A and B",
+        "Aborts the request"
+      ],
+      "correctAnswer": 2,
+      "explanation": "route.continue() can let the request proceed as-is or with modifications.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["network", "routing"]
+    },
+    {
+      "id": "quiz-pw-q127",
+      "type": "debugging",
+      "question": "What is wrong with this network interception?",
+      "code": "page.route('/api/data', route => { return { data: [] }; });",
+      "options": [
+        "Should use route.fulfill()",
+        "Missing await",
+        "Incorrect route pattern",
+        "Nothing is wrong"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Must use route.fulfill(), route.continue(), or route.abort() in the handler.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["network", "debugging"]
+    },
+    {
+      "id": "quiz-pw-q128",
+      "type": "true-false",
+      "question": "You can modify request headers using route.continue().",
+      "correctAnswer": true,
+      "explanation": "route.continue({ headers: {...} }) allows modifying request headers.",
+      "difficulty": "medium",
+      "points": 5,
+      "tags": ["network", "headers"]
+    },
+    {
+      "id": "quiz-pw-q129",
+      "type": "multiple-choice",
+      "question": "How do you listen to all network requests?",
+      "options": [
+        "page.on('request', handler)",
+        "page.onRequest(handler)",
+        "page.listen('request', handler)",
+        "page.requests(handler)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "page.on('request', handler) listens to all outgoing requests.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["network", "events"]
+    },
+    {
+      "id": "quiz-pw-q130",
+      "type": "code-output",
+      "question": "What does this code do?",
+      "code": "await page.waitForResponse(response => response.url().includes('api') && response.status() === 200);",
+      "options": [
+        "Waits for any API response",
+        "Waits for successful API response",
+        "Waits for failed API response",
+        "Checks API status"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Waits for a response with 'api' in URL and 200 status code.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["network", "waiting"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-013",
+  "prerequisites": ["quiz-pw-012"],
+  "xpReward": 200,
+  "coinReward": 40
+}

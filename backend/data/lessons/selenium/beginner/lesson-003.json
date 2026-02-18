@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-003",
+  "title": "First Selenium Script",
+  "slug": "first-selenium-script",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 3,
+  "duration": 25,
+  "description": "Write your first automated browser script with Selenium WebDriver.",
+  "objectives": [
+    "Create WebDriver instance",
+    "Navigate to URLs",
+    "Find elements",
+    "Perform basic actions"
+  ],
+  "prerequisites": [
+    "sel-beginner-002"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to First Selenium Script",
+        "type": "text",
+        "content": "# First Selenium Script\n\nBuild your first working Selenium script step by step.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for First Selenium Script\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of First Selenium Script concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, first selenium script is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for First Selenium Script\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "First Selenium Script is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master First Selenium Script for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "First Selenium Script Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-003",
+  "nextLesson": "sel-beginner-004",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "first",
+    "automation",
+    "testing"
+  ]
+}

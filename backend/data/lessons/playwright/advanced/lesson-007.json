@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-007",
+  "title": "Custom Reporters",
+  "slug": "custom-reporters",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 7,
+  "duration": 35,
+  "description": "Create custom test reporters for specialized reporting needs.",
+  "objectives": [
+    "Build custom reporters",
+    "Format test results",
+    "Integrate with tools",
+    "Generate custom reports"
+  ],
+  "prerequisites": [
+    "pw-advanced-006"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Custom Reporters",
+        "type": "text",
+        "content": "# Custom Reporters\n\nTailor test reporting to your team's needs.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Custom Reporters\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Custom Reporters concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, custom reporters is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Custom Reporters\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Custom Reporters is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Custom Reporters for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Custom Reporters Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-007",
+  "nextLesson": "pw-advanced-008",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "custom",
+    "automation",
+    "testing"
+  ]
+}

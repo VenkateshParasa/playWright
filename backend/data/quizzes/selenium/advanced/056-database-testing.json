@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-056",
+  "title": "Database Testing",
+  "slug": "database-testing",
+  "track": "selenium",
+  "category": "advanced",
+  "description": "Advanced Database Testing for enterprise Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q561", "type": "multiple-choice", "question": "What makes Database Testing advanced?", "options": ["Complexity", "Scalability needs", "Enterprise requirements", "All factors"], "correctAnswer": 3, "explanation": "Database Testing addresses complex enterprise automation challenges.", "difficulty": "hard", "points": 10, "tags": ["advanced", "database-testing"]},
+    {"id": "quiz-sel-q562", "type": "code-completion", "question": "Implement advanced Database Testing:", "codeTemplate": "// Advanced template", "correctAnswer": "// Advanced solution", "acceptedAnswers": ["solution"], "explanation": "This shows advanced Database Testing implementation.", "difficulty": "hard", "points": 15, "tags": ["advanced", "implementation"]},
+    {"id": "quiz-sel-q563", "type": "true-false", "question": "Database Testing requires deep architectural knowledge.", "correctAnswer": true, "explanation": "Database Testing involves complex architectural decisions.", "difficulty": "hard", "points": 5, "tags": ["architecture", "expertise"]},
+    {"id": "quiz-sel-q564", "type": "multiple-choice", "question": "How does Database Testing scale?", "options": ["Horizontally", "Vertically", "Both ways", "Depends on architecture"], "correctAnswer": 3, "explanation": "Database Testing scaling depends on infrastructure and design.", "difficulty": "hard", "points": 10, "tags": ["scalability", "architecture"]},
+    {"id": "quiz-sel-q565", "type": "code-completion", "question": "Optimize Database Testing for production:", "codeTemplate": "// Production code", "correctAnswer": "// Production-ready solution", "acceptedAnswers": ["solution"], "explanation": "This optimization is crucial for Database Testing in production.", "difficulty": "hard", "points": 15, "tags": ["production", "optimization"]},
+    {"id": "quiz-sel-q566", "type": "multiple-choice", "question": "What are Database Testing tradeoffs?", "options": ["Cost vs performance", "Complexity vs maintainability", "Speed vs reliability", "Multiple tradeoffs exist"], "correctAnswer": 3, "explanation": "Database Testing involves balancing various concerns.", "difficulty": "hard", "points": 10, "tags": ["tradeoffs", "decisions"]},
+    {"id": "quiz-sel-q567", "type": "debugging", "question": "Diagnose this Database Testing production issue:", "code": "// Complex production issue", "options": ["Infrastructure", "Code", "Configuration", "Requires deep analysis"], "correctAnswer": 3, "explanation": "Production Database Testing issues need comprehensive analysis.", "difficulty": "hard", "points": 20, "tags": ["debugging", "production"]},
+    {"id": "quiz-sel-q568", "type": "true-false", "question": "Database Testing is suitable for all projects.", "correctAnswer": false, "explanation": "Database Testing is most valuable for large-scale projects.", "difficulty": "hard", "points": 5, "tags": ["suitability", "assessment"]},
+    {"id": "quiz-sel-q569", "type": "multiple-choice", "question": "How do you architect Database Testing?", "options": ["Monolithic", "Microservices", "Hybrid", "Context-dependent"], "correctAnswer": 3, "explanation": "Database Testing architecture should match project needs.", "difficulty": "hard", "points": 10, "tags": ["architecture", "design"]},
+    {"id": "quiz-sel-q560", "type": "code-output", "question": "Analyze this Database Testing architecture:", "code": "// Architecture code", "options": ["Good design", "Anti-pattern", "Needs refinement", "Depends on requirements"], "correctAnswer": 2, "explanation": "This Database Testing architecture has room for improvement.", "difficulty": "hard", "points": 15, "tags": ["architecture", "analysis"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-056",
+  "prerequisites": ["quiz-sel-055"],
+  "xpReward": 250,
+  "coinReward": 50
+}

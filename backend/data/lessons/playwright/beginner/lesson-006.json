@@ -1,0 +1,105 @@
+{
+  "id": "pw-beginner-006",
+  "title": "Assertions and Expectations",
+  "slug": "assertions-and-expectations",
+  "track": "playwright",
+  "category": "beginner",
+  "order": 6,
+  "duration": 30,
+  "description": "Master Playwright's powerful assertion library with auto-waiting capabilities to create reliable test verifications.",
+  "objectives": [
+    "Understand auto-retrying assertions",
+    "Learn different assertion types for various scenarios",
+    "Master element state and visibility checks",
+    "Handle soft assertions and custom error messages"
+  ],
+  "prerequisites": ["pw-beginner-005"],
+  "content": {
+    "sections": [
+      {
+        "title": "Understanding Assertions",
+        "type": "text",
+        "content": "# Playwright Assertions\n\nPlaywright's assertions are special - they **auto-retry** until the condition is met or timeout occurs. This eliminates flaky tests caused by timing issues.\n\n## Auto-Retrying Behavior\n\nWhen you write:\n```typescript\nawait expect(page.locator('.status')).toHaveText('Success');\n```\n\nPlaywright will:\n1. Check if text is 'Success'\n2. If not, wait 50ms and check again\n3. Repeat until timeout (5 seconds default)\n4. Pass if condition met, fail if timeout\n\nThis means your tests automatically handle dynamic content and async operations\!\n\n## Two Types of Assertions\n\n**Web-First Assertions** (auto-retry):\n- `expect(locator).toBeVisible()`\n- `expect(page).toHaveTitle()`\n- Always use with `await`\n\n**Generic Assertions** (no retry):\n- `expect(value).toBe(expected)`\n- `expect(array).toHaveLength(3)`\n- Regular Jest assertions"
+      },
+      {
+        "title": "Visibility and State Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "import { test, expect } from '@playwright/test';\n\ntest('visibility assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Element is visible\n  await expect(page.locator('.header')).toBeVisible();\n  \n  // Element is hidden\n  await expect(page.locator('.modal')).toBeHidden();\n  await expect(page.locator('.modal')).not.toBeVisible();\n  \n  // Element is attached to DOM (even if not visible)\n  await expect(page.locator('.hidden-element')).toBeAttached();\n  \n  // Element is enabled/disabled\n  await expect(page.locator('button')).toBeEnabled();\n  await expect(page.locator('button')).toBeDisabled();\n  \n  // Element is editable\n  await expect(page.locator('input')).toBeEditable();\n  \n  // Element is focused\n  await page.focus('input');\n  await expect(page.locator('input')).toBeFocused();\n  \n  // Checkbox/radio is checked\n  await expect(page.locator('#agree')).toBeChecked();\n  await expect(page.locator('#disagree')).not.toBeChecked();\n});\n\ntest('element state', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Empty input\n  await expect(page.locator('input')).toBeEmpty();\n  \n  // Input has value\n  await page.fill('input', 'test');\n  await expect(page.locator('input')).not.toBeEmpty();\n});"
+      },
+      {
+        "title": "Text and Content Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('text assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Exact text match\n  await expect(page.locator('h1')).toHaveText('Welcome');\n  \n  // Partial text match\n  await expect(page.locator('h1')).toContainText('Wel');\n  \n  // Text with regex\n  await expect(page.locator('h1')).toHaveText(/Welcome.*/i);\n  \n  // Multiple elements text\n  await expect(page.locator('li')).toHaveText([\n    'Item 1',\n    'Item 2',\n    'Item 3'\n  ]);\n  \n  // Array with regex\n  await expect(page.locator('li')).toHaveText([\n    /Item \\d+/,\n    /Item \\d+/\n  ]);\n  \n  // Inner text vs text content\n  await expect(page.locator('div')).toHaveText('Visible text');\n  \n  // Contains text (substring)\n  await expect(page.locator('p')).toContainText('important');\n});\n\ntest('value assertions', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Input value\n  await page.fill('input[name=\"email\"]', 'test@example.com');\n  await expect(page.locator('input[name=\"email\"]')).toHaveValue('test@example.com');\n  \n  // Value with regex\n  await expect(page.locator('input[name=\"email\"]')).toHaveValue(/@example\\.com$/);\n  \n  // Select value\n  await page.selectOption('select', 'option2');\n  await expect(page.locator('select')).toHaveValue('option2');\n});"
+      },
+      {
+        "title": "Attribute and CSS Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('attribute assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Has attribute\n  await expect(page.locator('a')).toHaveAttribute('href', '/about');\n  \n  // Attribute with regex\n  await expect(page.locator('a')).toHaveAttribute('href', /\\/about/);\n  \n  // Has any value for attribute\n  await expect(page.locator('img')).toHaveAttribute('src');\n  \n  // Multiple attributes\n  const link = page.locator('a');\n  await expect(link).toHaveAttribute('href', '/about');\n  await expect(link).toHaveAttribute('target', '_blank');\n  \n  // Class attribute\n  await expect(page.locator('button')).toHaveClass('btn btn-primary');\n  await expect(page.locator('button')).toHaveClass(/btn-primary/);\n  \n  // Has specific class (among others)\n  await expect(page.locator('div')).toHaveClass(/active/);\n  \n  // ID attribute\n  await expect(page.locator('div')).toHaveId('main-content');\n});\n\ntest('CSS assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // CSS property\n  await expect(page.locator('button')).toHaveCSS('color', 'rgb(255, 0, 0)');\n  await expect(page.locator('button')).toHaveCSS('font-size', '16px');\n  \n  // CSS with regex\n  await expect(page.locator('button')).toHaveCSS('background-color', /rgb\\(/);\n  \n  // Note: CSS values are computed values (e.g., 'red' becomes 'rgb(255, 0, 0)')\n});"
+      },
+      {
+        "title": "Count and Collection Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('count assertions', async ({ page }) => {\n  await page.goto('https://example.com/list');\n  \n  // Exact count\n  await expect(page.locator('li')).toHaveCount(5);\n  \n  // Greater than/less than\n  const items = await page.locator('li').count();\n  expect(items).toBeGreaterThan(0);\n  expect(items).toBeLessThan(10);\n  expect(items).toBeGreaterThanOrEqual(5);\n  expect(items).toBeLessThanOrEqual(5);\n  \n  // No elements\n  await expect(page.locator('.error')).toHaveCount(0);\n  \n  // At least one element\n  const count = await page.locator('button').count();\n  expect(count).toBeGreaterThan(0);\n});\n\ntest('array and collection checks', async ({ page }) => {\n  await page.goto('https://example.com/list');\n  \n  // Get all text content\n  const texts = await page.locator('li').allTextContents();\n  expect(texts).toHaveLength(5);\n  expect(texts).toContain('Item 1');\n  expect(texts).toEqual(['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5']);\n  \n  // Check if array contains item\n  expect(texts).toContain('Item 3');\n  expect(texts).not.toContain('Item 6');\n});"
+      },
+      {
+        "title": "Page and URL Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('page assertions', async ({ page }) => {\n  await page.goto('https://example.com/about');\n  \n  // Page title\n  await expect(page).toHaveTitle('About Us');\n  await expect(page).toHaveTitle(/About/);\n  \n  // Page URL\n  await expect(page).toHaveURL('https://example.com/about');\n  await expect(page).toHaveURL(/\\/about/);\n  \n  // URL contains\n  await expect(page).toHaveURL(/example/);\n  \n  // After navigation\n  await page.click('a[href=\"/contact\"]');\n  await expect(page).toHaveURL(/\\/contact/);\n});\n\ntest('screenshot comparison', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Visual regression testing\n  await expect(page).toHaveScreenshot('homepage.png');\n  \n  // Element screenshot\n  await expect(page.locator('.header')).toHaveScreenshot('header.png');\n  \n  // With options\n  await expect(page).toHaveScreenshot('homepage.png', {\n    maxDiffPixels: 100,\n    threshold: 0.2\n  });\n});"
+      },
+      {
+        "title": "Negative Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('negative assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Not visible\n  await expect(page.locator('.modal')).not.toBeVisible();\n  \n  // Does not have text\n  await expect(page.locator('h1')).not.toHaveText('Wrong text');\n  \n  // Does not have class\n  await expect(page.locator('button')).not.toHaveClass('disabled');\n  \n  // URL does not match\n  await expect(page).not.toHaveURL(/\\/admin/);\n  \n  // Element not present\n  await expect(page.locator('.error-message')).not.toBeAttached();\n  \n  // Count is not\n  await expect(page.locator('li')).not.toHaveCount(0);\n});"
+      },
+      {
+        "title": "Soft Assertions",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('soft assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Regular assertion - test stops here if it fails\n  await expect(page.locator('h1')).toBeVisible();\n  \n  // Soft assertions - test continues even if they fail\n  await expect.soft(page.locator('h1')).toHaveText('Welcome');\n  await expect.soft(page.locator('.subtitle')).toBeVisible();\n  await expect.soft(page.locator('button')).toHaveText('Click Me');\n  \n  // All soft assertions are reported at the end\n  // Test fails if any soft assertion failed\n  \n  // Use case: Check multiple things on a page\n  await expect.soft(page.locator('.header')).toBeVisible();\n  await expect.soft(page.locator('.footer')).toBeVisible();\n  await expect.soft(page.locator('.sidebar')).toBeVisible();\n  await expect.soft(page.locator('.content')).toBeVisible();\n});\n\ntest('when to use soft assertions', async ({ page }) => {\n  await page.goto('https://example.com/form');\n  \n  // Fill form\n  await page.fill('#email', 'invalid-email');\n  await page.fill('#password', '123');\n  await page.click('#submit');\n  \n  // Check all validation messages (don't stop at first failure)\n  await expect.soft(page.locator('.email-error')).toBeVisible();\n  await expect.soft(page.locator('.password-error')).toBeVisible();\n  await expect.soft(page.locator('.terms-error')).toBeVisible();\n  \n  // Take screenshot of all errors\n  await page.screenshot({ path: 'all-errors.png' });\n});"
+      },
+      {
+        "title": "Custom Matchers and Timeouts",
+        "type": "code",
+        "language": "typescript",
+        "code": "test('custom timeout', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Default timeout is 5 seconds\n  await expect(page.locator('h1')).toBeVisible();\n  \n  // Custom timeout for slow operations\n  await expect(page.locator('.slow-loading')).toBeVisible({ timeout: 10000 });\n  \n  // Short timeout for elements that should appear quickly\n  await expect(page.locator('.instant')).toBeVisible({ timeout: 1000 });\n});\n\ntest('custom error messages', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Add context to failures\n  await expect(page.locator('h1'), 'Header should be visible on homepage').toBeVisible();\n  \n  await expect(\n    page.locator('.user-name'),\n    'User name should be displayed after login'\n  ).toHaveText('John Doe');\n  \n  // Helpful for debugging when tests fail\n});\n\ntest('polling assertions', async ({ page }) => {\n  await page.goto('https://example.com');\n  \n  // Wait for condition with custom check\n  await expect.poll(async () => {\n    const count = await page.locator('li').count();\n    return count;\n  }).toBe(5);\n  \n  // Wait for value to change\n  await expect.poll(async () => {\n    return await page.locator('.counter').textContent();\n  }).toBe('10');\n  \n  // With custom interval and timeout\n  await expect.poll(async () => {\n    return await page.locator('.status').textContent();\n  }, {\n    intervals: [100, 250, 500],\n    timeout: 10000\n  }).toBe('Complete');\n});"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "# Assertion Best Practices\n\n## 1. Always Use await with Web-First Assertions\n\n```typescript\n// ❌ Wrong - will fail\nexpect(page.locator('h1')).toBeVisible();\n\n// ✅ Correct\nawait expect(page.locator('h1')).toBeVisible();\n```\n\n## 2. Use Specific Assertions\n\n```typescript\n// ❌ Too generic\nconst text = await page.locator('h1').textContent();\nexpect(text).toBe('Welcome');\n\n// ✅ Use web-first assertion\nawait expect(page.locator('h1')).toHaveText('Welcome');\n```\n\n## 3. Prefer Multiple Specific Assertions\n\n```typescript\n// ❌ One assertion, less information on failure\nawait expect(page.locator('form')).toBeVisible();\n\n// ✅ Multiple assertions, better debugging\nawait expect(page.locator('form')).toBeVisible();\nawait expect(page.locator('form input[name=\"email\"]')).toBeVisible();\nawait expect(page.locator('form button[type=\"submit\"]')).toBeEnabled();\n```\n\n## 4. Use Soft Assertions for Multiple Checks\n\n```typescript\n// When checking multiple things that should all be present\nawait expect.soft(page.locator('.header')).toBeVisible();\nawait expect.soft(page.locator('.content')).toBeVisible();\nawait expect.soft(page.locator('.footer')).toBeVisible();\n// See all failures at once\n```\n\n## 5. Add Context to Assertions\n\n```typescript\nawait expect(\n  page.locator('.success-message'),\n  'Success message should appear after form submission'\n).toBeVisible();\n```\n\n## 6. Use Negative Assertions Appropriately\n\n```typescript\n// Check modal is not present\nawait expect(page.locator('.modal')).not.toBeVisible();\n\n// Check no error messages\nawait expect(page.locator('.error')).toHaveCount(0);\n```\n\n## 7. Adjust Timeouts for Specific Needs\n\n```typescript\n// Fast operation\nawait expect(page.locator('.instant')).toBeVisible({ timeout: 1000 });\n\n// Slow operation\nawait expect(page.locator('.slow-load')).toBeVisible({ timeout: 30000 });\n```"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Playwright assertions auto-retry until timeout, eliminating timing issues",
+    "Always use 'await' with web-first assertions like toBeVisible(), toHaveText()",
+    "Use negative assertions with .not for checking element absence",
+    "Soft assertions (expect.soft) continue test execution after failures",
+    "Custom timeouts can be set for specific assertions that need more/less time",
+    "Web-first assertions are preferred over manual value checks",
+    "Multiple specific assertions provide better debugging information than single generic ones",
+    "expect.poll() allows custom polling logic for complex conditions"
+  ],
+  "resources": [
+    {
+      "title": "Assertions Documentation",
+      "url": "https://playwright.dev/docs/test-assertions",
+      "type": "documentation"
+    },
+    {
+      "title": "Auto-Waiting",
+      "url": "https://playwright.dev/docs/actionability",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-beginner-quiz-006",
+  "nextLesson": "pw-beginner-007",
+  "estimatedXP": 200,
+  "tags": ["playwright", "assertions", "expect", "testing", "auto-retry"]
+}

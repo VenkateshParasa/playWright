@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-024",
+  "title": "Custom Fixtures",
+  "slug": "custom-fixtures",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 40,
+  "description": "Master custom fixtures in Playwright",
+  "objectives": [
+    "Create fixtures",
+    "Fixture options",
+    "Fixture dependencies",
+    "Worker fixtures",
+    "Reusable setup"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Create fixtures\n2. Fixture options\n3. Fixture dependencies\n4. Worker fixtures\n5. Reusable setup",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('custom-fixtures', async ({ page }) => {\n  // TODO: Implement Custom Fixtures\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_custom_fixtures(page: Page):\n    # TODO: Implement Custom Fixtures\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('custom-fixtures', async ({ page }) => {\n  // TODO: Implement Custom Fixtures\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Custom Fixtures\ntest('custom-fixtures', async ({ page }) => {\n  // Implementation demonstrates create fixtures\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Custom Fixtures\ndef test_custom_fixtures(page: Page):\n    # Implementation demonstrates create fixtures\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Custom Fixtures\ntest('custom-fixtures', async ({ page }) => {\n  // Implementation demonstrates create fixtures\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by create fixtures",
+    "Remember to fixture options",
+    "Use appropriate methods for fixture dependencies",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Create fixtures",
+      "input": null,
+      "expectedBehavior": "Create fixtures works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Fixture options",
+      "input": null,
+      "expectedBehavior": "Fixture options works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Fixture dependencies",
+      "input": null,
+      "expectedBehavior": "Fixture dependencies works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Custom Fixtures Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-024",
+    "lesson-025"
+  ],
+  "xpReward": 400,
+  "coinReward": 100,
+  "tags": [
+    "fixtures",
+    "setup",
+    "teardown",
+    "reusability"
+  ]
+}

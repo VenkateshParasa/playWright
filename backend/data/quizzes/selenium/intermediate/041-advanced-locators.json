@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-041",
+  "title": "Advanced Locators",
+  "slug": "advanced-locators",
+  "track": "selenium",
+  "category": "intermediate",
+  "description": "Master Advanced Locators in Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q411", "type": "multiple-choice", "question": "What is Advanced Locators used for?", "options": ["Basic testing", "Advanced scenarios", "Configuration", "All purposes"], "correctAnswer": 1, "explanation": "Advanced Locators is essential for handling advanced testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["intermediate", "advanced-locators"]},
+    {"id": "quiz-sel-q412", "type": "code-completion", "question": "Implement Advanced Locators:", "codeTemplate": "// Implementation template", "correctAnswer": "// Correct solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates proper Advanced Locators usage.", "difficulty": "medium", "points": 15, "tags": ["code", "implementation"]},
+    {"id": "quiz-sel-q413", "type": "true-false", "question": "Advanced Locators is part of Selenium WebDriver.", "correctAnswer": true, "explanation": "Advanced Locators is a built-in WebDriver feature.", "difficulty": "medium", "points": 5, "tags": ["webdriver", "features"]},
+    {"id": "quiz-sel-q414", "type": "multiple-choice", "question": "When should you use Advanced Locators?", "options": ["Always", "For specific scenarios", "Never", "Only in production"], "correctAnswer": 1, "explanation": "Advanced Locators is best suited for specific testing needs.", "difficulty": "medium", "points": 10, "tags": ["best-practices", "usage"]},
+    {"id": "quiz-sel-q415", "type": "code-completion", "question": "Complete the Advanced Locators pattern:", "codeTemplate": "// Pattern code", "correctAnswer": "// Complete pattern", "acceptedAnswers": ["pattern"], "explanation": "This is a common Advanced Locators pattern.", "difficulty": "medium", "points": 15, "tags": ["patterns", "code"]},
+    {"id": "quiz-sel-q416", "type": "multiple-choice", "question": "What are Advanced Locators limitations?", "options": ["Performance", "Browser support", "Complexity", "Varies by context"], "correctAnswer": 3, "explanation": "Advanced Locators limitations depend on the specific use case.", "difficulty": "medium", "points": 10, "tags": ["limitations", "considerations"]},
+    {"id": "quiz-sel-q417", "type": "debugging", "question": "Fix this Advanced Locators issue:", "code": "// Code with issue", "options": ["Syntax fix", "Logic fix", "Configuration fix", "Multiple fixes needed"], "correctAnswer": 1, "explanation": "The main issue is with Advanced Locators logic.", "difficulty": "medium", "points": 20, "tags": ["debugging", "troubleshooting"]},
+    {"id": "quiz-sel-q418", "type": "true-false", "question": "Advanced Locators works across all browsers.", "correctAnswer": true, "explanation": "Advanced Locators is supported by all major browsers.", "difficulty": "medium", "points": 5, "tags": ["compatibility", "browsers"]},
+    {"id": "quiz-sel-q419", "type": "multiple-choice", "question": "How do you optimize Advanced Locators?", "options": ["Caching", "Parallel execution", "Smart waits", "All techniques"], "correctAnswer": 3, "explanation": "Multiple optimization techniques can improve Advanced Locators.", "difficulty": "medium", "points": 10, "tags": ["optimization", "performance"]},
+    {"id": "quiz-sel-q410", "type": "code-output", "question": "What is the result of this Advanced Locators code?", "code": "// Code example", "options": ["Output A", "Output B", "Exception", "Depends on state"], "correctAnswer": 1, "explanation": "This code produces a specific result for Advanced Locators.", "difficulty": "medium", "points": 15, "tags": ["behavior", "output"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-041",
+  "prerequisites": ["quiz-sel-040"],
+  "xpReward": 200,
+  "coinReward": 40
+}

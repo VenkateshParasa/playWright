@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-030",
+  "title": "Test Reporters",
+  "slug": "test-reporters",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 35,
+  "description": "Master test reporters in Playwright",
+  "objectives": [
+    "Use built-in reporters",
+    "HTML reporter",
+    "JSON reporter",
+    "Custom reporters",
+    "Multi-reporters"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Use built-in reporters\n2. HTML reporter\n3. JSON reporter\n4. Custom reporters\n5. Multi-reporters",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('test-reporters', async ({ page }) => {\n  // TODO: Implement Test Reporters\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_test_reporters(page: Page):\n    # TODO: Implement Test Reporters\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('test-reporters', async ({ page }) => {\n  // TODO: Implement Test Reporters\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Test Reporters\ntest('test-reporters', async ({ page }) => {\n  // Implementation demonstrates use built-in reporters\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Test Reporters\ndef test_test_reporters(page: Page):\n    # Implementation demonstrates use built-in reporters\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Test Reporters\ntest('test-reporters', async ({ page }) => {\n  // Implementation demonstrates use built-in reporters\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by use built-in reporters",
+    "Remember to html reporter",
+    "Use appropriate methods for json reporter",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Use built-in reporters",
+      "input": null,
+      "expectedBehavior": "Use built-in reporters works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "HTML reporter",
+      "input": null,
+      "expectedBehavior": "HTML reporter works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "JSON reporter",
+      "input": null,
+      "expectedBehavior": "JSON reporter works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Test Reporters Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-030",
+    "lesson-031"
+  ],
+  "xpReward": 350,
+  "coinReward": 85,
+  "tags": [
+    "reporters",
+    "reporting",
+    "results",
+    "output"
+  ]
+}

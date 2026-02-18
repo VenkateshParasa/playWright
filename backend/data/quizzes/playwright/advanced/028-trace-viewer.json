@@ -1,0 +1,27 @@
+{
+  "id": "quiz-pw-028",
+  "title": "Trace Viewer",
+  "slug": "trace-viewer",
+  "track": "playwright",
+  "category": "advanced",
+  "description": "Advanced Trace Viewer techniques and patterns",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-pw-q281", "type": "multiple-choice", "question": "What is Trace Viewer in Playwright?", "options": ["A testing approach", "A configuration option", "A best practice", "All of the above"], "correctAnswer": 3, "explanation": "Trace Viewer encompasses multiple aspects of advanced testing.", "difficulty": "hard", "points": 10, "tags": ["advanced", "trace-viewer"]},
+    {"id": "quiz-pw-q282", "type": "code-completion", "question": "Implement Trace Viewer:", "codeTemplate": "// Advanced implementation", "correctAnswer": "// Solution", "acceptedAnswers": ["solution"], "explanation": "This is an advanced pattern for Trace Viewer.", "difficulty": "hard", "points": 15, "tags": ["advanced", "code"]},
+    {"id": "quiz-pw-q283", "type": "true-false", "question": "Trace Viewer requires deep Playwright knowledge.", "correctAnswer": true, "explanation": "Trace Viewer is an advanced topic requiring solid fundamentals.", "difficulty": "hard", "points": 5, "tags": ["advanced", "concepts"]},
+    {"id": "quiz-pw-q284", "type": "multiple-choice", "question": "When is Trace Viewer most valuable?", "options": ["Early development", "Production testing", "Complex applications", "All stages"], "correctAnswer": 3, "explanation": "Trace Viewer provides value throughout the development lifecycle.", "difficulty": "hard", "points": 10, "tags": ["advanced", "strategy"]},
+    {"id": "quiz-pw-q285", "type": "code-completion", "question": "Optimize Trace Viewer:", "codeTemplate": "// Optimization code", "correctAnswer": "// Optimized solution", "acceptedAnswers": ["optimized"], "explanation": "This optimization improves Trace Viewer performance.", "difficulty": "hard", "points": 15, "tags": ["advanced", "optimization"]},
+    {"id": "quiz-pw-q286", "type": "multiple-choice", "question": "What are Trace Viewer challenges?", "options": ["Complexity", "Maintenance", "Performance", "All of the above"], "correctAnswer": 3, "explanation": "Trace Viewer involves managing multiple concerns.", "difficulty": "hard", "points": 10, "tags": ["advanced", "challenges"]},
+    {"id": "quiz-pw-q287", "type": "debugging", "question": "Debug this Trace Viewer issue:", "code": "// Complex code with issue", "options": ["Configuration error", "Logic error", "Performance issue", "Could be multiple"], "correctAnswer": 3, "explanation": "Advanced debugging requires considering multiple factors.", "difficulty": "hard", "points": 20, "tags": ["advanced", "debugging"]},
+    {"id": "quiz-pw-q288", "type": "true-false", "question": "Trace Viewer scales well for large test suites.", "correctAnswer": true, "explanation": "Trace Viewer is designed to handle enterprise-scale testing.", "difficulty": "hard", "points": 5, "tags": ["advanced", "scalability"]},
+    {"id": "quiz-pw-q289", "type": "multiple-choice", "question": "How do you architect Trace Viewer?", "options": ["Modular approach", "Centralized approach", "Hybrid approach", "Depends on context"], "correctAnswer": 3, "explanation": "Architecture decisions depend on specific requirements.", "difficulty": "hard", "points": 10, "tags": ["advanced", "architecture"]},
+    {"id": "quiz-pw-q280", "type": "code-output", "question": "Analyze this Trace Viewer pattern:", "code": "// Advanced pattern", "options": ["Pattern A", "Pattern B", "Anti-pattern", "Best practice"], "correctAnswer": 3, "explanation": "This demonstrates an advanced best practice.", "difficulty": "hard", "points": 15, "tags": ["advanced", "patterns"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-028",
+  "prerequisites": ["quiz-pw-027"],
+  "xpReward": 250,
+  "coinReward": 50
+}

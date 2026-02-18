@@ -1,0 +1,69 @@
+{
+  "id": "sel-intermediate-004",
+  "title": "Actions Class (mouse, keyboard)",
+  "slug": "actions-class",
+  "track": "selenium",
+  "category": "intermediate",
+  "order": 4,
+  "duration": 30,
+  "description": "Use Actions class for complex mouse and keyboard interactions.",
+  "objectives": [
+    "Build action chains",
+    "Perform keyboard combos",
+    "Create mouse gestures",
+    "Combine multiple actions"
+  ],
+  "prerequisites": [
+    "sel-intermediate-003"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Actions Class (mouse, keyboard)",
+        "type": "text",
+        "content": "# Actions Class (mouse, keyboard)\n\nMaster the Actions API for complex user simulations.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Actions Class (mouse, keyboard)\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Actions Class (mouse, keyboard) concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, actions class (mouse, keyboard) is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Actions Class (mouse, keyboard)\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Actions Class (mouse, keyboard) is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Actions Class (mouse, keyboard) for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Actions Class (mouse, keyboard) Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-intermediate-quiz-004",
+  "nextLesson": "sel-intermediate-005",
+  "estimatedXP": 200,
+  "tags": [
+    "selenium",
+    "intermediate",
+    "actions",
+    "automation",
+    "testing"
+  ]
+}

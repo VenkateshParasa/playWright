@@ -1,0 +1,27 @@
+{
+  "id": "quiz-sel-043",
+  "title": "Handling Alerts",
+  "slug": "alerts",
+  "track": "selenium",
+  "category": "intermediate",
+  "description": "Master Handling Alerts in Selenium automation",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {"id": "quiz-sel-q431", "type": "multiple-choice", "question": "What is Handling Alerts used for?", "options": ["Basic testing", "Advanced scenarios", "Configuration", "All purposes"], "correctAnswer": 1, "explanation": "Handling Alerts is essential for handling advanced testing scenarios.", "difficulty": "medium", "points": 10, "tags": ["intermediate", "alerts"]},
+    {"id": "quiz-sel-q432", "type": "code-completion", "question": "Implement Handling Alerts:", "codeTemplate": "// Implementation template", "correctAnswer": "// Correct solution", "acceptedAnswers": ["solution"], "explanation": "This demonstrates proper Handling Alerts usage.", "difficulty": "medium", "points": 15, "tags": ["code", "implementation"]},
+    {"id": "quiz-sel-q433", "type": "true-false", "question": "Handling Alerts is part of Selenium WebDriver.", "correctAnswer": true, "explanation": "Handling Alerts is a built-in WebDriver feature.", "difficulty": "medium", "points": 5, "tags": ["webdriver", "features"]},
+    {"id": "quiz-sel-q434", "type": "multiple-choice", "question": "When should you use Handling Alerts?", "options": ["Always", "For specific scenarios", "Never", "Only in production"], "correctAnswer": 1, "explanation": "Handling Alerts is best suited for specific testing needs.", "difficulty": "medium", "points": 10, "tags": ["best-practices", "usage"]},
+    {"id": "quiz-sel-q435", "type": "code-completion", "question": "Complete the Handling Alerts pattern:", "codeTemplate": "// Pattern code", "correctAnswer": "// Complete pattern", "acceptedAnswers": ["pattern"], "explanation": "This is a common Handling Alerts pattern.", "difficulty": "medium", "points": 15, "tags": ["patterns", "code"]},
+    {"id": "quiz-sel-q436", "type": "multiple-choice", "question": "What are Handling Alerts limitations?", "options": ["Performance", "Browser support", "Complexity", "Varies by context"], "correctAnswer": 3, "explanation": "Handling Alerts limitations depend on the specific use case.", "difficulty": "medium", "points": 10, "tags": ["limitations", "considerations"]},
+    {"id": "quiz-sel-q437", "type": "debugging", "question": "Fix this Handling Alerts issue:", "code": "// Code with issue", "options": ["Syntax fix", "Logic fix", "Configuration fix", "Multiple fixes needed"], "correctAnswer": 1, "explanation": "The main issue is with Handling Alerts logic.", "difficulty": "medium", "points": 20, "tags": ["debugging", "troubleshooting"]},
+    {"id": "quiz-sel-q438", "type": "true-false", "question": "Handling Alerts works across all browsers.", "correctAnswer": true, "explanation": "Handling Alerts is supported by all major browsers.", "difficulty": "medium", "points": 5, "tags": ["compatibility", "browsers"]},
+    {"id": "quiz-sel-q439", "type": "multiple-choice", "question": "How do you optimize Handling Alerts?", "options": ["Caching", "Parallel execution", "Smart waits", "All techniques"], "correctAnswer": 3, "explanation": "Multiple optimization techniques can improve Handling Alerts.", "difficulty": "medium", "points": 10, "tags": ["optimization", "performance"]},
+    {"id": "quiz-sel-q430", "type": "code-output", "question": "What is the result of this Handling Alerts code?", "code": "// Code example", "options": ["Output A", "Output B", "Exception", "Depends on state"], "correctAnswer": 1, "explanation": "This code produces a specific result for Handling Alerts.", "difficulty": "medium", "points": 15, "tags": ["behavior", "output"]}
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-sel-043",
+  "prerequisites": ["quiz-sel-042"],
+  "xpReward": 200,
+  "coinReward": 40
+}

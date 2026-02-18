@@ -1,0 +1,444 @@
+[
+  {
+    "rewardId": "avatar_ninja",
+    "name": "Ninja Avatar",
+    "description": "Show off your coding ninja skills with this exclusive avatar",
+    "type": "avatar",
+    "rarity": "rare",
+    "cost": 500,
+    "icon": "🥷",
+    "preview": "/assets/avatars/ninja.png",
+    "isLimited": false,
+    "metadata": {
+      "avatarUrl": "/assets/avatars/ninja.png"
+    }
+  },
+  {
+    "rewardId": "avatar_wizard",
+    "name": "Wizard Avatar",
+    "description": "Become a code wizard with this magical avatar",
+    "type": "avatar",
+    "rarity": "rare",
+    "cost": 500,
+    "icon": "🧙",
+    "preview": "/assets/avatars/wizard.png",
+    "isLimited": false,
+    "metadata": {
+      "avatarUrl": "/assets/avatars/wizard.png"
+    }
+  },
+  {
+    "rewardId": "avatar_robot",
+    "name": "Robot Avatar",
+    "description": "Embrace automation with this robot avatar",
+    "type": "avatar",
+    "rarity": "common",
+    "cost": 200,
+    "icon": "🤖",
+    "preview": "/assets/avatars/robot.png",
+    "isLimited": false,
+    "metadata": {
+      "avatarUrl": "/assets/avatars/robot.png"
+    }
+  },
+  {
+    "rewardId": "avatar_dragon",
+    "name": "Dragon Avatar",
+    "description": "Legendary dragon avatar for true masters",
+    "type": "avatar",
+    "rarity": "legendary",
+    "cost": 2000,
+    "icon": "🐉",
+    "preview": "/assets/avatars/dragon.png",
+    "isLimited": false,
+    "requirementLevel": 50,
+    "metadata": {
+      "avatarUrl": "/assets/avatars/dragon.png"
+    }
+  },
+  {
+    "rewardId": "frame_gold",
+    "name": "Gold Frame",
+    "description": "Elegant gold frame for your profile picture",
+    "type": "frame",
+    "rarity": "epic",
+    "cost": 800,
+    "icon": "🖼️",
+    "preview": "/assets/frames/gold.png",
+    "isLimited": false,
+    "requirementLevel": 25,
+    "metadata": {
+      "frameUrl": "/assets/frames/gold.png"
+    }
+  },
+  {
+    "rewardId": "frame_platinum",
+    "name": "Platinum Frame",
+    "description": "Exclusive platinum frame for elite learners",
+    "type": "frame",
+    "rarity": "legendary",
+    "cost": 1500,
+    "icon": "🖼️",
+    "preview": "/assets/frames/platinum.png",
+    "isLimited": false,
+    "requirementLevel": 50,
+    "metadata": {
+      "frameUrl": "/assets/frames/platinum.png"
+    }
+  },
+  {
+    "rewardId": "frame_rainbow",
+    "name": "Rainbow Frame",
+    "description": "Colorful rainbow frame that shows your vibrant personality",
+    "type": "frame",
+    "rarity": "rare",
+    "cost": 600,
+    "icon": "🌈",
+    "preview": "/assets/frames/rainbow.png",
+    "isLimited": false,
+    "metadata": {
+      "frameUrl": "/assets/frames/rainbow.png"
+    }
+  },
+  {
+    "rewardId": "badge_beginner",
+    "name": "Beginner Badge",
+    "description": "Your first steps in learning",
+    "type": "badge",
+    "rarity": "common",
+    "cost": 100,
+    "icon": "🎯",
+    "isLimited": false,
+    "metadata": {}
+  },
+  {
+    "rewardId": "badge_intermediate",
+    "name": "Intermediate Badge",
+    "description": "Making great progress!",
+    "type": "badge",
+    "rarity": "rare",
+    "cost": 400,
+    "icon": "⭐",
+    "isLimited": false,
+    "requirementLevel": 15,
+    "metadata": {}
+  },
+  {
+    "rewardId": "badge_advanced",
+    "name": "Advanced Badge",
+    "description": "You're becoming an expert!",
+    "type": "badge",
+    "rarity": "epic",
+    "cost": 800,
+    "icon": "💫",
+    "isLimited": false,
+    "requirementLevel": 30,
+    "metadata": {}
+  },
+  {
+    "rewardId": "badge_master",
+    "name": "Master Badge",
+    "description": "True mastery achieved",
+    "type": "badge",
+    "rarity": "legendary",
+    "cost": 2000,
+    "icon": "✨",
+    "isLimited": false,
+    "requirementLevel": 75,
+    "metadata": {}
+  },
+  {
+    "rewardId": "title_newbie",
+    "name": "Title: Newbie",
+    "description": "Display 'Newbie' title on your profile",
+    "type": "title",
+    "rarity": "common",
+    "cost": 50,
+    "icon": "📛",
+    "isLimited": false,
+    "metadata": {
+      "titleText": "Newbie",
+      "titleColor": "#9CA3AF"
+    }
+  },
+  {
+    "rewardId": "title_apprentice",
+    "name": "Title: Apprentice",
+    "description": "Display 'Apprentice' title on your profile",
+    "type": "title",
+    "rarity": "common",
+    "cost": 200,
+    "icon": "📛",
+    "isLimited": false,
+    "metadata": {
+      "titleText": "Apprentice",
+      "titleColor": "#3B82F6"
+    }
+  },
+  {
+    "rewardId": "title_expert",
+    "name": "Title: Expert",
+    "description": "Display 'Expert' title on your profile",
+    "type": "title",
+    "rarity": "rare",
+    "cost": 500,
+    "icon": "📛",
+    "isLimited": false,
+    "requirementLevel": 25,
+    "metadata": {
+      "titleText": "Expert",
+      "titleColor": "#8B5CF6"
+    }
+  },
+  {
+    "rewardId": "title_master",
+    "name": "Title: Master",
+    "description": "Display 'Master' title on your profile",
+    "type": "title",
+    "rarity": "epic",
+    "cost": 1000,
+    "icon": "📛",
+    "isLimited": false,
+    "requirementLevel": 50,
+    "metadata": {
+      "titleText": "Master",
+      "titleColor": "#F59E0B"
+    }
+  },
+  {
+    "rewardId": "title_legend",
+    "name": "Title: Legend",
+    "description": "Display 'Legend' title on your profile",
+    "type": "title",
+    "rarity": "legendary",
+    "cost": 3000,
+    "icon": "📛",
+    "isLimited": false,
+    "requirementLevel": 75,
+    "requirementAchievements": ["completionist"],
+    "metadata": {
+      "titleText": "Legend",
+      "titleColor": "#EF4444"
+    }
+  },
+  {
+    "rewardId": "theme_dark_purple",
+    "name": "Dark Purple Theme",
+    "description": "Stylish dark purple color scheme",
+    "type": "theme",
+    "rarity": "rare",
+    "cost": 600,
+    "icon": "🎨",
+    "isLimited": false,
+    "metadata": {
+      "themeColors": {
+        "primary": "#8B5CF6",
+        "secondary": "#6D28D9",
+        "accent": "#A78BFA"
+      }
+    }
+  },
+  {
+    "rewardId": "theme_ocean_blue",
+    "name": "Ocean Blue Theme",
+    "description": "Calming ocean blue color scheme",
+    "type": "theme",
+    "rarity": "rare",
+    "cost": 600,
+    "icon": "🎨",
+    "isLimited": false,
+    "metadata": {
+      "themeColors": {
+        "primary": "#0EA5E9",
+        "secondary": "#0284C7",
+        "accent": "#38BDF8"
+      }
+    }
+  },
+  {
+    "rewardId": "theme_sunset_orange",
+    "name": "Sunset Orange Theme",
+    "description": "Warm sunset orange color scheme",
+    "type": "theme",
+    "rarity": "rare",
+    "cost": 600,
+    "icon": "🎨",
+    "isLimited": false,
+    "metadata": {
+      "themeColors": {
+        "primary": "#F97316",
+        "secondary": "#EA580C",
+        "accent": "#FB923C"
+      }
+    }
+  },
+  {
+    "rewardId": "theme_forest_green",
+    "name": "Forest Green Theme",
+    "description": "Natural forest green color scheme",
+    "type": "theme",
+    "rarity": "rare",
+    "cost": 600,
+    "icon": "🎨",
+    "isLimited": false,
+    "metadata": {
+      "themeColors": {
+        "primary": "#10B981",
+        "secondary": "#059669",
+        "accent": "#34D399"
+      }
+    }
+  },
+  {
+    "rewardId": "emoji_pack_animals",
+    "name": "Animal Emoji Pack",
+    "description": "Collection of cute animal emojis",
+    "type": "emoji",
+    "rarity": "common",
+    "cost": 150,
+    "icon": "🐾",
+    "isLimited": false,
+    "metadata": {
+      "emojiPack": ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯"]
+    }
+  },
+  {
+    "rewardId": "emoji_pack_tech",
+    "name": "Tech Emoji Pack",
+    "description": "Collection of tech-themed emojis",
+    "type": "emoji",
+    "rarity": "common",
+    "cost": 150,
+    "icon": "💻",
+    "isLimited": false,
+    "metadata": {
+      "emojiPack": ["💻", "⌨️", "🖥️", "🖱️", "🔌", "💾", "💿", "📱", "⚙️", "🔧"]
+    }
+  },
+  {
+    "rewardId": "emoji_pack_celebration",
+    "name": "Celebration Emoji Pack",
+    "description": "Collection of celebration emojis",
+    "type": "emoji",
+    "rarity": "rare",
+    "cost": 250,
+    "icon": "🎉",
+    "isLimited": false,
+    "metadata": {
+      "emojiPack": ["🎉", "🎊", "🎈", "🎁", "🏆", "🥇", "🥈", "🥉", "👏", "🙌"]
+    }
+  },
+  {
+    "rewardId": "xp_booster_small",
+    "name": "Small XP Booster",
+    "description": "1.5x XP for 24 hours",
+    "type": "booster",
+    "rarity": "common",
+    "cost": 300,
+    "icon": "⚡",
+    "isLimited": false,
+    "metadata": {
+      "boosterMultiplier": 1.5,
+      "boosterDuration": 24
+    }
+  },
+  {
+    "rewardId": "xp_booster_medium",
+    "name": "Medium XP Booster",
+    "description": "2x XP for 24 hours",
+    "type": "booster",
+    "rarity": "rare",
+    "cost": 600,
+    "icon": "⚡",
+    "isLimited": false,
+    "metadata": {
+      "boosterMultiplier": 2.0,
+      "boosterDuration": 24
+    }
+  },
+  {
+    "rewardId": "xp_booster_large",
+    "name": "Large XP Booster",
+    "description": "3x XP for 24 hours",
+    "type": "booster",
+    "rarity": "epic",
+    "cost": 1200,
+    "icon": "⚡",
+    "isLimited": false,
+    "metadata": {
+      "boosterMultiplier": 3.0,
+      "boosterDuration": 24
+    }
+  },
+  {
+    "rewardId": "xp_booster_mega",
+    "name": "Mega XP Booster",
+    "description": "5x XP for 12 hours",
+    "type": "booster",
+    "rarity": "legendary",
+    "cost": 2000,
+    "icon": "⚡",
+    "isLimited": false,
+    "requirementLevel": 40,
+    "metadata": {
+      "boosterMultiplier": 5.0,
+      "boosterDuration": 12
+    }
+  },
+  {
+    "rewardId": "streak_freeze",
+    "name": "Streak Freeze",
+    "description": "Protect your streak for one missed day",
+    "type": "skip",
+    "rarity": "rare",
+    "cost": 400,
+    "icon": "🧊",
+    "isLimited": false,
+    "metadata": {
+      "skipCount": 1
+    }
+  },
+  {
+    "rewardId": "card_skip_pack",
+    "name": "Card Skip Pack",
+    "description": "Skip 10 difficult flashcards",
+    "type": "skip",
+    "rarity": "common",
+    "cost": 200,
+    "icon": "⏭️",
+    "isLimited": false,
+    "metadata": {
+      "skipCount": 10
+    }
+  },
+  {
+    "rewardId": "limited_halloween_avatar",
+    "name": "Halloween Avatar 2024",
+    "description": "Limited edition Halloween avatar (available until Nov 1)",
+    "type": "avatar",
+    "rarity": "legendary",
+    "cost": 1500,
+    "icon": "🎃",
+    "preview": "/assets/avatars/halloween2024.png",
+    "isLimited": true,
+    "stock": 1000,
+    "metadata": {
+      "avatarUrl": "/assets/avatars/halloween2024.png"
+    }
+  },
+  {
+    "rewardId": "limited_winter_frame",
+    "name": "Winter Frame 2024",
+    "description": "Limited edition winter frame (available Dec-Jan)",
+    "type": "frame",
+    "rarity": "legendary",
+    "cost": 1000,
+    "icon": "❄️",
+    "preview": "/assets/frames/winter2024.png",
+    "isLimited": true,
+    "stock": 500,
+    "metadata": {
+      "frameUrl": "/assets/frames/winter2024.png"
+    }
+  }
+]

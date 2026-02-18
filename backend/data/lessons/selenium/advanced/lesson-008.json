@@ -1,0 +1,69 @@
+{
+  "id": "sel-advanced-008",
+  "title": "Selenium with Cucumber/BDD",
+  "slug": "selenium-bdd",
+  "track": "selenium",
+  "category": "advanced",
+  "order": 8,
+  "duration": 35,
+  "description": "Combine Selenium with Cucumber for behavior-driven development.",
+  "objectives": [
+    "Write Gherkin scenarios",
+    "Implement step definitions",
+    "Create feature files",
+    "Run BDD tests"
+  ],
+  "prerequisites": [
+    "sel-advanced-007"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Selenium with Cucumber/BDD",
+        "type": "text",
+        "content": "# Selenium with Cucumber/BDD\n\nBridge communication gap with BDD approach.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Selenium with Cucumber/BDD\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Selenium with Cucumber/BDD concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, selenium with cucumber/bdd is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Selenium with Cucumber/BDD\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Selenium with Cucumber/BDD is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Selenium with Cucumber/BDD for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Selenium with Cucumber/BDD Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-advanced-quiz-008",
+  "nextLesson": "sel-advanced-009",
+  "estimatedXP": 250,
+  "tags": [
+    "selenium",
+    "advanced",
+    "selenium",
+    "automation",
+    "testing"
+  ]
+}

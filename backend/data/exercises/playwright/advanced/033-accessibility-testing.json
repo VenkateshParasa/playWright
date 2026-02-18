@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-033",
+  "title": "Accessibility Testing",
+  "slug": "accessibility-testing",
+  "track": "playwright",
+  "category": "advanced",
+  "difficulty": "hard",
+  "estimatedTime": 45,
+  "description": "Master accessibility testing in Playwright",
+  "objectives": [
+    "ARIA violations",
+    "Axe integration",
+    "Keyboard navigation",
+    "Screen reader testing",
+    "WCAG compliance"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. ARIA violations\n2. Axe integration\n3. Keyboard navigation\n4. Screen reader testing\n5. WCAG compliance",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('accessibility-testing', async ({ page }) => {\n  // TODO: Implement Accessibility Testing\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_accessibility_testing(page: Page):\n    # TODO: Implement Accessibility Testing\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('accessibility-testing', async ({ page }) => {\n  // TODO: Implement Accessibility Testing\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Accessibility Testing\ntest('accessibility-testing', async ({ page }) => {\n  // Implementation demonstrates aria violations\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Accessibility Testing\ndef test_accessibility_testing(page: Page):\n    # Implementation demonstrates aria violations\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Accessibility Testing\ntest('accessibility-testing', async ({ page }) => {\n  // Implementation demonstrates aria violations\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by aria violations",
+    "Remember to axe integration",
+    "Use appropriate methods for keyboard navigation",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "ARIA violations",
+      "input": null,
+      "expectedBehavior": "ARIA violations works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Axe integration",
+      "input": null,
+      "expectedBehavior": "Axe integration works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Keyboard navigation",
+      "input": null,
+      "expectedBehavior": "Keyboard navigation works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Accessibility Testing Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-033",
+    "lesson-034"
+  ],
+  "xpReward": 450,
+  "coinReward": 115,
+  "tags": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "aria"
+  ]
+}

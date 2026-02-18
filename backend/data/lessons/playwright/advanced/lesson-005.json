@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-005",
+  "title": "Mobile Emulation",
+  "slug": "mobile-emulation",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 5,
+  "duration": 35,
+  "description": "Test mobile experiences with device emulation and real device testing.",
+  "objectives": [
+    "Emulate mobile devices",
+    "Test responsive design",
+    "Handle touch events",
+    "Test mobile-specific features"
+  ],
+  "prerequisites": [
+    "pw-advanced-004"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Mobile Emulation",
+        "type": "text",
+        "content": "# Mobile Emulation\n\nEnsure flawless mobile experiences with comprehensive testing.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for Mobile Emulation\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Mobile Emulation concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, mobile emulation is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Mobile Emulation\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Mobile Emulation is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Mobile Emulation for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Mobile Emulation Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-005",
+  "nextLesson": "pw-advanced-006",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "mobile",
+    "automation",
+    "testing"
+  ]
+}

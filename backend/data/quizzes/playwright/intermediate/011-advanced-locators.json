@@ -1,0 +1,165 @@
+{
+  "id": "quiz-pw-011",
+  "title": "Advanced Locators",
+  "slug": "advanced-locators",
+  "track": "playwright",
+  "category": "intermediate",
+  "description": "Master advanced locator strategies and filtering techniques",
+  "timeLimit": 600,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "quiz-pw-q101",
+      "type": "multiple-choice",
+      "question": "Which method filters locators by text content?",
+      "options": [
+        "locator.filter({ text: 'value' })",
+        "locator.filter({ hasText: 'value' })",
+        "locator.filterByText('value')",
+        "Both A and B"
+      ],
+      "correctAnswer": 3,
+      "explanation": "You can use filter() with either 'text' for exact match or 'hasText' for substring match.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["locators", "filtering"]
+    },
+    {
+      "id": "quiz-pw-q102",
+      "type": "code-completion",
+      "question": "Complete the code to find a button within a specific section:",
+      "codeTemplate": "await page.getByRole('region').____().getByRole('button').click();",
+      "correctAnswer": "await page.getByRole('region').locator('css-selector').getByRole('button').click();",
+      "acceptedAnswers": [
+        "locator",
+        "filter"
+      ],
+      "explanation": "You can chain locators to narrow down selections within specific containers.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["locators", "chaining", "code"]
+    },
+    {
+      "id": "quiz-pw-q103",
+      "type": "true-false",
+      "question": "Playwright locators support CSS and XPath selectors.",
+      "correctAnswer": true,
+      "explanation": "Playwright supports CSS selectors, XPath, and its own recommended getBy* methods.",
+      "difficulty": "easy",
+      "points": 5,
+      "tags": ["locators", "selectors"]
+    },
+    {
+      "id": "quiz-pw-q104",
+      "type": "multiple-choice",
+      "question": "What does the nth() method do?",
+      "options": [
+        "Returns all elements",
+        "Returns the nth element from a locator",
+        "Counts elements",
+        "Filters elements by position"
+      ],
+      "correctAnswer": 1,
+      "explanation": "nth(index) returns a specific element by its index from a locator that matches multiple elements.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["locators", "methods"]
+    },
+    {
+      "id": "quiz-pw-q105",
+      "type": "code-completion",
+      "question": "Complete the code to get the first element:",
+      "codeTemplate": "await page.locator('button').____().click();",
+      "correctAnswer": "await page.locator('button').first().click();",
+      "acceptedAnswers": [
+        "first",
+        "nth(0)"
+      ],
+      "explanation": "first() returns the first matching element, equivalent to nth(0).",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["locators", "code", "methods"]
+    },
+    {
+      "id": "quiz-pw-q106",
+      "type": "multiple-choice",
+      "question": "How do you locate an element that has a specific child element?",
+      "options": [
+        "locator.has(childLocator)",
+        "locator.hasChild(childLocator)",
+        "locator.filter({ has: childLocator })",
+        "Both A and C"
+      ],
+      "correctAnswer": 3,
+      "explanation": "Use filter({ has: childLocator }) or the shorthand has(childLocator) method.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["locators", "filtering", "relationships"]
+    },
+    {
+      "id": "quiz-pw-q107",
+      "type": "debugging",
+      "question": "What's the issue with this locator chain?",
+      "code": "await page.locator('div').locator('span').locator('button').first();",
+      "options": [
+        "Too many chained locators",
+        "Should use getByRole instead",
+        "Nothing wrong, but could be optimized",
+        "Missing await"
+      ],
+      "correctAnswer": 2,
+      "explanation": "While this works, using more specific locators like getByRole would be more maintainable and semantic.",
+      "difficulty": "medium",
+      "points": 20,
+      "tags": ["locators", "debugging", "best-practices"]
+    },
+    {
+      "id": "quiz-pw-q108",
+      "type": "true-false",
+      "question": "The locator.or() method creates a union of multiple locators.",
+      "correctAnswer": true,
+      "explanation": "or() creates a locator that matches elements from either of the combined locators.",
+      "difficulty": "medium",
+      "points": 5,
+      "tags": ["locators", "union"]
+    },
+    {
+      "id": "quiz-pw-q109",
+      "type": "multiple-choice",
+      "question": "What is the difference between locator.all() and locator.count()?",
+      "options": [
+        "all() returns array, count() returns number",
+        "all() is async, count() is sync",
+        "all() waits for elements, count() doesn't",
+        "No difference"
+      ],
+      "correctAnswer": 0,
+      "explanation": "all() returns an array of Locators, while count() returns the number of matching elements.",
+      "difficulty": "medium",
+      "points": 10,
+      "tags": ["locators", "methods", "difference"]
+    },
+    {
+      "id": "quiz-pw-q110",
+      "type": "code-output",
+      "question": "What does this code select?",
+      "code": "page.locator('article').filter({ hasText: 'Playwright' }).getByRole('button')",
+      "options": [
+        "All buttons in articles with 'Playwright' text",
+        "The button with 'Playwright' text",
+        "First article with a button",
+        "All articles with buttons"
+      ],
+      "correctAnswer": 0,
+      "explanation": "This locates buttons within articles that contain the text 'Playwright'.",
+      "difficulty": "medium",
+      "points": 15,
+      "tags": ["locators", "filtering", "chaining"]
+    }
+  ],
+  "totalPoints": 115,
+  "relatedLesson": "lesson-pw-011",
+  "prerequisites": ["quiz-pw-010"],
+  "xpReward": 200,
+  "coinReward": 40
+}

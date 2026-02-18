@@ -1,0 +1,69 @@
+{
+  "id": "pw-advanced-006",
+  "title": "CI/CD Integration",
+  "slug": "cicd-integration",
+  "track": "playwright",
+  "category": "advanced",
+  "order": 6,
+  "duration": 35,
+  "description": "Integrate Playwright tests into continuous integration pipelines.",
+  "objectives": [
+    "Set up GitHub Actions",
+    "Configure Jenkins/GitLab CI",
+    "Manage test artifacts",
+    "Handle flaky tests in CI"
+  ],
+  "prerequisites": [
+    "pw-advanced-005"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to CI/CD Integration",
+        "type": "text",
+        "content": "# CI/CD Integration\n\nBuild robust CI/CD pipelines with automated testing.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "typescript",
+        "code": "// Example code for CI/CD Integration\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of CI/CD Integration concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, ci/cd integration is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for CI/CD Integration\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "CI/CD Integration is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master CI/CD Integration for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "CI/CD Integration Documentation",
+      "url": "https://playwright.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "pw-advanced-quiz-006",
+  "nextLesson": "pw-advanced-007",
+  "estimatedXP": 250,
+  "tags": [
+    "playwright",
+    "advanced",
+    "cicd",
+    "automation",
+    "testing"
+  ]
+}

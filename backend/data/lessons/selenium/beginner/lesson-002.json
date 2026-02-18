@@ -1,0 +1,69 @@
+{
+  "id": "sel-beginner-002",
+  "title": "Setup (Java/Python/JavaScript)",
+  "slug": "selenium-setup",
+  "track": "selenium",
+  "category": "beginner",
+  "order": 2,
+  "duration": 25,
+  "description": "Install and configure Selenium WebDriver for your preferred programming language.",
+  "objectives": [
+    "Install Selenium",
+    "Configure browser drivers",
+    "Set up project structure",
+    "Verify installation"
+  ],
+  "prerequisites": [
+    "sel-beginner-001"
+  ],
+  "content": {
+    "sections": [
+      {
+        "title": "Introduction to Setup (Java/Python/JavaScript)",
+        "type": "text",
+        "content": "# Setup (Java/Python/JavaScript)\n\nComplete setup guide for Selenium across Java, Python, and JavaScript.\n\nThis lesson covers essential concepts and practical techniques you need to master this topic."
+      },
+      {
+        "title": "Code Example",
+        "type": "code",
+        "language": "java",
+        "code": "// Example code for Setup (Java/Python/JavaScript)\n// This demonstrates the key concepts covered in this lesson\n\n// TODO: Implement specific examples based on the lesson topic",
+        "explanation": "This example demonstrates practical usage of Setup (Java/Python/JavaScript) concepts."
+      },
+      {
+        "title": "Real-World Application",
+        "type": "text",
+        "content": "## Practical Use Cases\n\nIn real-world scenarios, setup (java/python/javascript) is essential for:\n\n- Solving common testing challenges\n- Improving test reliability and maintainability\n- Enhancing test execution efficiency\n- Building robust automation frameworks"
+      },
+      {
+        "title": "Best Practices",
+        "type": "text",
+        "content": "## Best Practices for Setup (Java/Python/JavaScript)\n\n1. Always follow industry standards\n2. Write maintainable and readable code\n3. Consider performance implications\n4. Document your test logic\n5. Handle edge cases appropriately"
+      }
+    ]
+  },
+  "keyTakeaways": [
+    "Setup (Java/Python/JavaScript) is essential for effective test automation",
+    "Understanding these concepts improves test quality and reliability",
+    "Apply these techniques to solve real-world testing challenges",
+    "Follow best practices for maintainable test code",
+    "Master Setup (Java/Python/JavaScript) for professional test automation"
+  ],
+  "resources": [
+    {
+      "title": "Setup (Java/Python/JavaScript) Documentation",
+      "url": "https://selenium.dev/docs",
+      "type": "documentation"
+    }
+  ],
+  "quiz": "sel-beginner-quiz-002",
+  "nextLesson": "sel-beginner-003",
+  "estimatedXP": 150,
+  "tags": [
+    "selenium",
+    "beginner",
+    "selenium",
+    "automation",
+    "testing"
+  ]
+}

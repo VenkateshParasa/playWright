@@ -1,0 +1,79 @@
+{
+  "id": "exercise-pl-026",
+  "title": "Geolocation and Permissions",
+  "slug": "geolocation-permissions",
+  "track": "playwright",
+  "category": "intermediate",
+  "difficulty": "medium",
+  "estimatedTime": 30,
+  "description": "Master geolocation and permissions in Playwright",
+  "objectives": [
+    "Set geolocation",
+    "Grant permissions",
+    "Test location features",
+    "Camera/microphone",
+    "Notifications"
+  ],
+  "instructions": "Write tests that demonstrate:\n1. Set geolocation\n2. Grant permissions\n3. Test location features\n4. Camera/microphone\n5. Notifications",
+  "starterCode": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\ntest('geolocation-permissions', async ({ page }) => {\n  // TODO: Implement Geolocation and Permissions\n});",
+    "python": "from playwright.sync_api import Page, expect\n\ndef test_geolocation_permissions(page: Page):\n    # TODO: Implement Geolocation and Permissions\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\ntest('geolocation-permissions', async ({ page }) => {\n  // TODO: Implement Geolocation and Permissions\n});"
+  },
+  "solution": {
+    "javascript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Geolocation and Permissions\ntest('geolocation-permissions', async ({ page }) => {\n  // Implementation demonstrates set geolocation\n  // Full working solution provided\n});",
+    "python": "from playwright.sync_api import Page, expect\n\n# Complete solution for Geolocation and Permissions\ndef test_geolocation_permissions(page: Page):\n    # Implementation demonstrates set geolocation\n    # Full working solution provided\n    pass",
+    "typescript": "import { test, expect } from '@playwright/test';\n\n// Complete solution for Geolocation and Permissions\ntest('geolocation-permissions', async ({ page }) => {\n  // Implementation demonstrates set geolocation\n  // Full working solution provided\n});"
+  },
+  "hints": [
+    "Start by set geolocation",
+    "Remember to grant permissions",
+    "Use appropriate methods for test location features",
+    "Check the documentation for best practices"
+  ],
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Set geolocation",
+      "input": null,
+      "expectedBehavior": "Set geolocation works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-2",
+      "name": "Grant permissions",
+      "input": null,
+      "expectedBehavior": "Grant permissions works correctly",
+      "points": 35
+    },
+    {
+      "id": "test-3",
+      "name": "Test location features",
+      "input": null,
+      "expectedBehavior": "Test location features works correctly",
+      "points": 30
+    }
+  ],
+  "resources": [
+    {
+      "title": "Geolocation and Permissions Guide",
+      "url": "https://playwright.dev/docs"
+    },
+    {
+      "title": "Best Practices",
+      "url": "https://playwright.dev/docs/best-practices"
+    }
+  ],
+  "relatedLessons": [
+    "lesson-026",
+    "lesson-027"
+  ],
+  "xpReward": 300,
+  "coinReward": 75,
+  "tags": [
+    "geolocation",
+    "permissions",
+    "location",
+    "media"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-17",
+  "totalLessons": 60,
+  "tracks": {
+    "playwright": {
+      "name": "Playwright",
+      "description": "Modern end-to-end testing framework by Microsoft",
+      "totalLessons": 30,
+      "categories": {
+        "beginner": {
+          "count": 10,
+          "estimatedHours": 4,
+          "description": "Learn Playwright fundamentals"
+        },
+        "intermediate": {
+          "count": 10,
+          "estimatedHours": 5,
+          "description": "Advanced Playwright features"
+        },
+        "advanced": {
+          "count": 10,
+          "estimatedHours": 6,
+          "description": "Expert Playwright techniques"
+        }
+      }
+    },
+    "selenium": {
+      "name": "Selenium WebDriver",
+      "description": "Industry-standard browser automation tool",
+      "totalLessons": 30,
+      "categories": {
+        "beginner": {
+          "count": 10,
+          "estimatedHours": 4,
+          "description": "Learn Selenium fundamentals"
+        },
+        "intermediate": {
+          "count": 10,
+          "estimatedHours": 5,
+          "description": "Advanced Selenium features"
+        },
+        "advanced": {
+          "count": 10,
+          "estimatedHours": 6,
+          "description": "Expert Selenium techniques"
+        }
+      }
+    }
+  },
+  "categories": [
+    {
+      "id": "beginner",
+      "name": "Beginner",
+      "description": "Foundation concepts and basic skills",
+      "difficulty": 1
+    },
+    {
+      "id": "intermediate",
+      "name": "Intermediate",
+      "description": "Advanced features and patterns",
+      "difficulty": 2
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced",
+      "description": "Expert techniques and best practices",
+      "difficulty": 3
+    }
+  ],
+  "statistics": {
+    "totalEstimatedHours": 30,
+    "totalXP": 10500,
+    "tracksAvailable": 2,
+    "categoriesPerTrack": 3
+  }
+}
