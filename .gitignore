@@ -74,3 +74,4 @@ k8s/secrets/
 *.key
 !public.key
 config/secrets/
+config
