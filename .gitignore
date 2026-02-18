@@ -67,3 +67,10 @@ sw.js
 sw.js.map
 workbox-*.js
 workbox-*.js.map
+# Additional secret patterns
+k8s/secrets/
+**/secrets/
+*.pem
+*.key
+!public.key
+config/secrets/
