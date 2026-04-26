@@ -1,0 +1,97 @@
+{
+  "id": "ex-14-debounce",
+  "title": "Implement Debounce",
+  "description": "Implement a debounce function that delays execution of a callback until after a specified wait time has elapsed since the last invocation. This is a crucial optimization technique for handling high-frequency events like scroll, resize, and search input.",
+  "difficulty": "advanced",
+  "category": "Async/Timing",
+  "estimatedTime": 25,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `debounce` that takes a callback function and wait time in milliseconds",
+    "Return a new debounced function that delays execution",
+    "Each call should reset the timer if called before wait time expires",
+    "Only execute the callback after the wait time has passed without new calls",
+    "Preserve the context (this) and arguments from the original call",
+    "The debounced function should use clearTimeout to cancel pending executions"
+  ],
+  "learningObjectives": [
+    "Master closures and their practical applications",
+    "Understand asynchronous timing with setTimeout and clearTimeout",
+    "Learn performance optimization techniques",
+    "Practice preserving function context and arguments",
+    "Understand the difference between debounce and throttle"
+  ],
+  "tags": ["async", "timing", "closures", "advanced", "optimization", "performance"],
+  "starterCode": "// Write your function here\nfunction debounce(func, wait) {\n  // Your code here\n}\n\n// Example usage:\n// const logMessage = (msg) => console.log(msg);\n// const debouncedLog = debounce(logMessage, 1000);\n//\n// debouncedLog('First call');  // Scheduled\n// debouncedLog('Second call'); // Cancels first, schedules this\n// debouncedLog('Third call');  // Cancels second, schedules this\n// // After 1000ms of no calls, logs: 'Third call'\n",
+  "solution": "function debounce(func, wait) {\n  let timeoutId;\n  \n  return function debounced(...args) {\n    // Clear the previous timeout if it exists\n    if (timeoutId) {\n      clearTimeout(timeoutId);\n    }\n    \n    // Set a new timeout\n    timeoutId = setTimeout(() => {\n      func.apply(this, args);\n    }, wait);\n  };\n}\n\n// Alternative solution with immediate option:\n// function debounce(func, wait, immediate = false) {\n//   let timeoutId;\n//   \n//   return function debounced(...args) {\n//     const callNow = immediate && !timeoutId;\n//     \n//     clearTimeout(timeoutId);\n//     \n//     timeoutId = setTimeout(() => {\n//       timeoutId = null;\n//       if (!immediate) {\n//         func.apply(this, args);\n//       }\n//     }, wait);\n//     \n//     if (callNow) {\n//       func.apply(this, args);\n//     }\n//   };\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Basic debounce execution",
+      "input": [["call", "call", "call", "wait"], [[100], [100], [100], [150]]],
+      "expectedOutput": 1,
+      "description": "Should execute only once after all calls"
+    },
+    {
+      "id": "test-2",
+      "name": "Multiple separate debounce windows",
+      "input": [["call", "wait", "call", "wait"], [[100], [150], [100], [150]]],
+      "expectedOutput": 2,
+      "description": "Should execute twice for two separate windows"
+    },
+    {
+      "id": "test-3",
+      "name": "Arguments preservation",
+      "input": [["call", "call", "wait"], [[100, "first"], [100, "second"], [150]]],
+      "expectedOutput": "second",
+      "description": "Should use arguments from the last call"
+    },
+    {
+      "id": "test-4",
+      "name": "Rapid successive calls",
+      "input": [["call", "call", "call", "call", "call", "wait"], [[50], [50], [50], [50], [50], [100]]],
+      "expectedOutput": 1,
+      "description": "Should execute only once despite many rapid calls"
+    },
+    {
+      "id": "test-5",
+      "name": "Context preservation",
+      "input": [["contextCall", "wait"], [[100], [150]]],
+      "expectedOutput": "correct-context",
+      "description": "Should preserve this context"
+    },
+    {
+      "id": "test-6",
+      "name": "Long wait time with early calls",
+      "input": [["call", "call", "wait", "call", "wait"], [[500], [500], [300], [500], [600]]],
+      "expectedOutput": 1,
+      "hidden": true,
+      "description": "Should only execute after final wait period"
+    },
+    {
+      "id": "test-7",
+      "name": "Debounce with zero wait",
+      "input": [["call", "call", "wait"], [[0], [0], [10]]],
+      "expectedOutput": 1,
+      "hidden": true,
+      "description": "Should work with zero wait time"
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use a closure to store the timeout ID. Each time the debounced function is called, clear any existing timeout and set a new one. This ensures only the last call executes after the wait period."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Store the timeout ID in the outer scope: let timeoutId. In the returned function, use clearTimeout(timeoutId) to cancel pending execution, then use setTimeout to schedule the new execution. Use rest parameters (...args) to capture arguments."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete pattern: let timeoutId; return function(...args) { clearTimeout(timeoutId); timeoutId = setTimeout(() => func.apply(this, args), wait); }. The apply method preserves the this context and passes all arguments."
+    }
+  ]
+}

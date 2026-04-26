@@ -1,0 +1,169 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-19",
+  "category": "JavaScript Fundamentals",
+  "totalExercises": 14,
+  "difficultyBreakdown": {
+    "beginner": 4,
+    "intermediate": 8,
+    "advanced": 2
+  },
+  "exercises": [
+    {
+      "id": "ex-1-array-sum",
+      "title": "Sum of Array Elements",
+      "difficulty": "beginner",
+      "category": "Arrays",
+      "estimatedTime": 10,
+      "language": "javascript",
+      "tags": ["arrays", "loops", "reduce", "fundamentals"],
+      "file": "ex-1-array-sum.json"
+    },
+    {
+      "id": "ex-2-palindrome",
+      "title": "Palindrome Checker",
+      "difficulty": "beginner",
+      "category": "Strings",
+      "estimatedTime": 15,
+      "language": "javascript",
+      "tags": ["strings", "algorithms", "two-pointers"],
+      "file": "ex-2-palindrome.json"
+    },
+    {
+      "id": "ex-3-fizzbuzz",
+      "title": "FizzBuzz",
+      "difficulty": "beginner",
+      "category": "Logic",
+      "estimatedTime": 15,
+      "language": "javascript",
+      "tags": ["logic", "conditionals", "arrays", "classic-problems"],
+      "file": "ex-3-fizzbuzz.json"
+    },
+    {
+      "id": "ex-4-find-max",
+      "title": "Find Maximum Number",
+      "difficulty": "beginner",
+      "category": "Arrays",
+      "estimatedTime": 10,
+      "language": "javascript",
+      "tags": ["arrays", "algorithms", "loops"],
+      "file": "ex-4-find-max.json"
+    },
+    {
+      "id": "ex-5-array-methods",
+      "title": "Array Filter, Map, and Reduce",
+      "difficulty": "intermediate",
+      "category": "Arrays",
+      "estimatedTime": 20,
+      "language": "javascript",
+      "tags": ["arrays", "filter", "map", "reduce", "functional-programming"],
+      "file": "ex-5-array-methods.json"
+    },
+    {
+      "id": "ex-6-object-transformation",
+      "title": "Nested Object Transformation",
+      "difficulty": "intermediate",
+      "category": "Objects",
+      "estimatedTime": 25,
+      "language": "javascript",
+      "tags": ["objects", "data-transformation", "nested-structures", "sorting"],
+      "file": "ex-6-object-transformation.json"
+    },
+    {
+      "id": "ex-7-string-algorithms",
+      "title": "Find All Anagrams",
+      "difficulty": "intermediate",
+      "category": "Strings",
+      "estimatedTime": 30,
+      "language": "javascript",
+      "tags": ["strings", "algorithms", "sliding-window", "hash-map"],
+      "file": "ex-7-string-algorithms.json"
+    },
+    {
+      "id": "ex-8-recursion",
+      "title": "Generate All Subsets (Power Set)",
+      "difficulty": "intermediate",
+      "category": "Recursion",
+      "estimatedTime": 25,
+      "language": "javascript",
+      "tags": ["recursion", "backtracking", "combinations", "algorithms"],
+      "file": "ex-8-recursion.json"
+    },
+    {
+      "id": "ex-9-stack-implementation",
+      "title": "Implement a Min Stack",
+      "difficulty": "intermediate",
+      "category": "Data Structures",
+      "estimatedTime": 30,
+      "language": "javascript",
+      "tags": ["data-structures", "stack", "optimization", "classes"],
+      "file": "ex-9-stack-implementation.json"
+    },
+    {
+      "id": "ex-10-function-composition",
+      "title": "Function Composition and Pipe",
+      "difficulty": "intermediate",
+      "category": "Functions",
+      "estimatedTime": 25,
+      "language": "javascript",
+      "tags": ["functions", "functional-programming", "higher-order-functions", "composition"],
+      "file": "ex-10-function-composition.json"
+    },
+    {
+      "id": "ex-11-higher-order-functions",
+      "title": "Higher-Order Functions",
+      "difficulty": "intermediate",
+      "category": "Functions",
+      "estimatedTime": 20,
+      "language": "javascript",
+      "tags": ["functions", "higher-order", "intermediate"],
+      "file": "ex-11-higher-order-functions.json"
+    },
+    {
+      "id": "ex-12-binary-search",
+      "title": "Binary Search Implementation",
+      "difficulty": "intermediate",
+      "category": "Algorithms",
+      "estimatedTime": 15,
+      "language": "javascript",
+      "tags": ["algorithms", "binary-search", "searching", "intermediate"],
+      "file": "ex-12-binary-search.json"
+    },
+    {
+      "id": "ex-13-linked-list",
+      "title": "Linked List Operations",
+      "difficulty": "advanced",
+      "category": "Data Structures",
+      "estimatedTime": 30,
+      "language": "javascript",
+      "tags": ["data-structures", "linked-list", "advanced", "algorithms", "pointers"],
+      "file": "ex-13-linked-list.json"
+    },
+    {
+      "id": "ex-14-debounce",
+      "title": "Implement Debounce",
+      "difficulty": "advanced",
+      "category": "Async/Timing",
+      "estimatedTime": 25,
+      "language": "javascript",
+      "tags": ["async", "timing", "closures", "advanced", "optimization", "performance"],
+      "file": "ex-14-debounce.json"
+    }
+  ],
+  "statistics": {
+    "totalExercises": 14,
+    "totalEstimatedTime": 295,
+    "averageTime": 21,
+    "categoryCounts": {
+      "Arrays": 3,
+      "Strings": 2,
+      "Objects": 1,
+      "Functions": 3,
+      "Data Structures": 2,
+      "Algorithms": 1,
+      "Logic": 1,
+      "Recursion": 1,
+      "Async/Timing": 1
+    }
+  }
+}

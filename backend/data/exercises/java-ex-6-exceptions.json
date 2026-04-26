@@ -1,0 +1,89 @@
+{
+  "id": "java-ex-6",
+  "title": "Exception Handling in Java",
+  "description": "Master exception handling by implementing a test execution framework with proper try-catch-finally blocks, custom exceptions, and error recovery. Exception handling is critical for robust test automation frameworks that need to handle failures gracefully.",
+  "difficulty": "intermediate",
+  "category": "Error Handling",
+  "estimatedTime": 20,
+  "language": "java",
+  "instructions": [
+    "Create a custom exception class `TestExecutionException` that extends Exception",
+    "Create a class `TestExecutor` with a method `executeTest(String testName, boolean shouldFail)` that throws TestExecutionException",
+    "Implement proper try-catch-finally blocks to handle exceptions and cleanup resources",
+    "Create a method `executeTestSuite(String[] testNames)` that catches exceptions and continues execution",
+    "Implement a method `getExecutionSummary()` that returns statistics about passed, failed, and skipped tests",
+    "Ensure cleanup operations run in finally blocks regardless of exceptions"
+  ],
+  "learningObjectives": [
+    "Understand try-catch-finally flow control",
+    "Learn to create and throw custom exceptions",
+    "Master exception propagation and handling strategies",
+    "Practice resource cleanup with finally blocks",
+    "Understand checked vs unchecked exceptions"
+  ],
+  "tags": ["java", "exceptions", "error-handling", "intermediate"],
+  "starterCode": "// Custom exception class\nclass TestExecutionException extends Exception {\n    // Your code here\n}\n\npublic class TestExecutor {\n    private int passedTests = 0;\n    private int failedTests = 0;\n    private int skippedTests = 0;\n    \n    public TestExecutor() {\n        // Initialize counters\n    }\n    \n    public void executeTest(String testName, boolean shouldFail) throws TestExecutionException {\n        // Your code here\n        // Throw TestExecutionException if shouldFail is true\n    }\n    \n    public void executeTestSuite(String[] testNames, boolean[] shouldFail) {\n        // Your code here\n        // Use try-catch-finally to handle exceptions\n    }\n    \n    public String getExecutionSummary() {\n        // Your code here\n    }\n    \n    public int getPassedTests() {\n        return passedTests;\n    }\n    \n    public int getFailedTests() {\n        return failedTests;\n    }\n    \n    public static void main(String[] args) {\n        TestExecutor executor = new TestExecutor();\n        String[] tests = {\"LoginTest\", \"LogoutTest\", \"SearchTest\"};\n        boolean[] failures = {false, true, false};\n        \n        executor.executeTestSuite(tests, failures);\n        System.out.println(executor.getExecutionSummary());\n    }\n}",
+  "solution": "// Custom exception class\nclass TestExecutionException extends Exception {\n    public TestExecutionException(String message) {\n        super(message);\n    }\n    \n    public TestExecutionException(String message, Throwable cause) {\n        super(message, cause);\n    }\n}\n\npublic class TestExecutor {\n    private int passedTests = 0;\n    private int failedTests = 0;\n    private int skippedTests = 0;\n    \n    public TestExecutor() {\n        this.passedTests = 0;\n        this.failedTests = 0;\n        this.skippedTests = 0;\n    }\n    \n    public void executeTest(String testName, boolean shouldFail) throws TestExecutionException {\n        System.out.println(\"Executing: \" + testName);\n        \n        if (shouldFail) {\n            throw new TestExecutionException(\"Test failed: \" + testName);\n        }\n        \n        System.out.println(\"Test passed: \" + testName);\n    }\n    \n    public void executeTestSuite(String[] testNames, boolean[] shouldFail) {\n        if (testNames == null || shouldFail == null || testNames.length != shouldFail.length) {\n            System.out.println(\"Invalid test suite configuration\");\n            return;\n        }\n        \n        for (int i = 0; i < testNames.length; i++) {\n            try {\n                executeTest(testNames[i], shouldFail[i]);\n                passedTests++;\n            } catch (TestExecutionException e) {\n                System.out.println(\"Caught exception: \" + e.getMessage());\n                failedTests++;\n            } finally {\n                System.out.println(\"Cleanup for: \" + testNames[i]);\n            }\n        }\n    }\n    \n    public String getExecutionSummary() {\n        int total = passedTests + failedTests + skippedTests;\n        double passRate = total > 0 ? (passedTests * 100.0) / total : 0.0;\n        return String.format(\"Total: %d, Passed: %d, Failed: %d, Skipped: %d, Pass Rate: %.2f%%\",\n                           total, passedTests, failedTests, skippedTests, passRate);\n    }\n    \n    public int getPassedTests() {\n        return passedTests;\n    }\n    \n    public int getFailedTests() {\n        return failedTests;\n    }\n    \n    public int getSkippedTests() {\n        return skippedTests;\n    }\n    \n    public static void main(String[] args) {\n        TestExecutor executor = new TestExecutor();\n        String[] tests = {\"LoginTest\", \"LogoutTest\", \"SearchTest\", \"CheckoutTest\"};\n        boolean[] failures = {false, true, false, true};\n        \n        executor.executeTestSuite(tests, failures);\n        System.out.println(\"\\n\" + executor.getExecutionSummary());\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Execute passing test successfully",
+      "input": ["LoginTest", false],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-2",
+      "name": "Throw exception for failing test",
+      "input": ["FailingTest", true],
+      "expectedOutput": "TestExecutionException"
+    },
+    {
+      "id": "test-3",
+      "name": "Count passed tests correctly",
+      "input": [2, 0],
+      "expectedOutput": 2
+    },
+    {
+      "id": "test-4",
+      "name": "Count failed tests correctly",
+      "input": [1, 1],
+      "expectedOutput": 1
+    },
+    {
+      "id": "test-5",
+      "name": "Execute suite with mixed results",
+      "input": [3, 1],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-6",
+      "name": "Execution summary contains all statistics",
+      "input": [],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-7",
+      "name": "Handle null test suite gracefully",
+      "input": [null, null],
+      "expectedOutput": 0,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Custom exceptions extend Exception class and should have constructors: public TestExecutionException(String message) { super(message); }. Use throw new TestExecutionException(\"message\") to raise the exception."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "In executeTestSuite(), use try-catch-finally: try { executeTest(); passedTests++; } catch (TestExecutionException e) { failedTests++; } finally { /* cleanup */ }. The finally block always executes."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "For getExecutionSummary(), use String.format() with statistics: String.format(\"Total: %d, Passed: %d, Failed: %d, Pass Rate: %.2f%%\", total, passedTests, failedTests, passRate). Calculate passRate as (passedTests * 100.0) / total."
+    }
+  ]
+}

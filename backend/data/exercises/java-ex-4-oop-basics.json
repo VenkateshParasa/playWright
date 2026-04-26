@@ -1,0 +1,82 @@
+{
+  "id": "java-ex-4",
+  "title": "OOP Basics - Classes and Objects",
+  "description": "Learn Object-Oriented Programming fundamentals by creating a TestCase class with properties and methods. Understanding OOP is essential for building maintainable test automation frameworks using the Page Object Model pattern.",
+  "difficulty": "beginner",
+  "category": "Object-Oriented Programming",
+  "estimatedTime": 25,
+  "language": "java",
+  "instructions": [
+    "Create a class named `TestCase` with private fields: testId (String), testName (String), status (String), and executionTime (int)",
+    "Implement a constructor that accepts all four parameters",
+    "Create getter methods for all fields",
+    "Create a method `isPass()` that returns true if status equals \"PASS\"",
+    "Create a method `getDetails()` that returns a formatted string with all test information",
+    "Follow proper encapsulation principles"
+  ],
+  "learningObjectives": [
+    "Understand class structure and object creation",
+    "Master encapsulation with private fields and public methods",
+    "Learn constructor usage and initialization",
+    "Practice getter methods and data access",
+    "Understand instance methods vs static methods"
+  ],
+  "tags": ["java", "oop", "classes", "objects", "encapsulation", "constructors"],
+  "starterCode": "public class TestCase {\n    // Declare private fields here\n    \n    // Create constructor\n    public TestCase(String testId, String testName, String status, int executionTime) {\n        // Your code here\n    }\n    \n    // Create getter methods\n    \n    // Create isPass() method\n    public boolean isPass() {\n        // Your code here\n    }\n    \n    // Create getDetails() method\n    public String getDetails() {\n        // Your code here\n    }\n    \n    public static void main(String[] args) {\n        // Test your class\n        TestCase test = new TestCase(\"TC001\", \"Login Test\", \"PASS\", 150);\n        System.out.println(test.getDetails());\n    }\n}",
+  "solution": "public class TestCase {\n    // Private fields (encapsulation)\n    private String testId;\n    private String testName;\n    private String status;\n    private int executionTime;\n    \n    // Constructor to initialize all fields\n    public TestCase(String testId, String testName, String status, int executionTime) {\n        this.testId = testId;\n        this.testName = testName;\n        this.status = status;\n        this.executionTime = executionTime;\n    }\n    \n    // Getter methods\n    public String getTestId() {\n        return testId;\n    }\n    \n    public String getTestName() {\n        return testName;\n    }\n    \n    public String getStatus() {\n        return status;\n    }\n    \n    public int getExecutionTime() {\n        return executionTime;\n    }\n    \n    // Method to check if test passed\n    public boolean isPass() {\n        return \"PASS\".equals(status);\n    }\n    \n    // Method to get formatted test details\n    public String getDetails() {\n        return String.format(\"Test ID: %s, Name: %s, Status: %s, Execution Time: %d ms\",\n                           testId, testName, status, executionTime);\n    }\n    \n    public static void main(String[] args) {\n        // Create test case objects\n        TestCase test1 = new TestCase(\"TC001\", \"Login Test\", \"PASS\", 150);\n        TestCase test2 = new TestCase(\"TC002\", \"Logout Test\", \"FAIL\", 200);\n        \n        System.out.println(test1.getDetails());\n        System.out.println(\"Test passed: \" + test1.isPass());\n        \n        System.out.println(test2.getDetails());\n        System.out.println(\"Test passed: \" + test2.isPass());\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Create TestCase object",
+      "input": ["TC001", "Login Test", "PASS", 150],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-2",
+      "name": "getTestId() returns correct value",
+      "input": ["TC001", "Login Test", "PASS", 150],
+      "expectedOutput": "TC001"
+    },
+    {
+      "id": "test-3",
+      "name": "isPass() returns true for PASS status",
+      "input": ["TC001", "Login Test", "PASS", 150],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-4",
+      "name": "isPass() returns false for FAIL status",
+      "input": ["TC002", "Logout Test", "FAIL", 200],
+      "expectedOutput": false
+    },
+    {
+      "id": "test-5",
+      "name": "getDetails() contains test ID",
+      "input": ["TC001", "Login Test", "PASS", 150],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-6",
+      "name": "getExecutionTime() returns correct value",
+      "input": ["TC001", "Login Test", "PASS", 150],
+      "expectedOutput": 150
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use the 'this' keyword in the constructor to distinguish between instance variables and parameters: this.testId = testId;"
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Getter methods follow the naming convention: public ReturnType getFieldName() { return fieldName; }. Use String.equals() for comparing strings in isPass()."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "For getDetails(), use String.format() with placeholders: String.format(\"Test ID: %s, Name: %s, Status: %s, Execution Time: %d ms\", testId, testName, status, executionTime);"
+    }
+  ]
+}

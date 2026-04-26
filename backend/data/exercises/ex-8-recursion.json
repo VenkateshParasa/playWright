@@ -1,0 +1,84 @@
+{
+  "id": "ex-8-recursion",
+  "title": "Generate All Subsets (Power Set)",
+  "description": "Write a recursive function that generates all possible subsets of a given array. This is also known as the power set problem and is a classic example of recursive problem-solving.",
+  "difficulty": "intermediate",
+  "category": "Recursion",
+  "estimatedTime": 25,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `generateSubsets` that accepts an array of numbers",
+    "Return an array of all possible subsets (including the empty set)",
+    "Use recursion to build the subsets",
+    "Each subset should be a unique combination of elements",
+    "The order of subsets doesn't matter"
+  ],
+  "learningObjectives": [
+    "Master recursive problem-solving",
+    "Understand backtracking techniques",
+    "Practice building combinations",
+    "Learn about power set generation"
+  ],
+  "tags": ["recursion", "backtracking", "combinations", "algorithms"],
+  "starterCode": "// Write your function here\nfunction generateSubsets(nums) {\n  // Your code here\n}\n\n// Example usage:\n// generateSubsets([1, 2, 3]) should return:\n// [[], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]]\n",
+  "solution": "function generateSubsets(nums) {\n  const result = [];\n\n  function backtrack(start, current) {\n    // Add current subset to result\n    result.push([...current]);\n\n    // Try adding each remaining element\n    for (let i = start; i < nums.length; i++) {\n      current.push(nums[i]);       // Include nums[i]\n      backtrack(i + 1, current);   // Recurse with next elements\n      current.pop();                // Backtrack: remove nums[i]\n    }\n  }\n\n  backtrack(0, []);\n  return result;\n}\n\n// Alternative solution using bit manipulation:\n// function generateSubsets(nums) {\n//   const result = [];\n//   const n = nums.length;\n//   const totalSubsets = 2 ** n;\n//\n//   for (let i = 0; i < totalSubsets; i++) {\n//     const subset = [];\n//     for (let j = 0; j < n; j++) {\n//       if (i & (1 << j)) {\n//         subset.push(nums[j]);\n//       }\n//     }\n//     result.push(subset);\n//   }\n//\n//   return result;\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Basic subset generation",
+      "input": [[1, 2, 3]],
+      "expectedOutput": [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+    },
+    {
+      "id": "test-2",
+      "name": "Two elements",
+      "input": [[1, 2]],
+      "expectedOutput": [[], [1], [2], [1, 2]]
+    },
+    {
+      "id": "test-3",
+      "name": "Single element",
+      "input": [[1]],
+      "expectedOutput": [[], [1]]
+    },
+    {
+      "id": "test-4",
+      "name": "Empty array",
+      "input": [[]],
+      "expectedOutput": [[]]
+    },
+    {
+      "id": "test-5",
+      "name": "Four elements",
+      "input": [[1, 2, 3, 4]],
+      "expectedOutput": [
+        [], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3],
+        [4], [1, 4], [2, 4], [1, 2, 4], [3, 4], [1, 3, 4], [2, 3, 4], [1, 2, 3, 4]
+      ]
+    },
+    {
+      "id": "test-6",
+      "name": "Negative numbers",
+      "input": [[-1, 0, 1]],
+      "expectedOutput": [[], [-1], [0], [-1, 0], [1], [-1, 1], [0, 1], [-1, 0, 1]],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use backtracking: at each step, you have two choices for each element - include it or exclude it from the current subset. This creates a decision tree."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Create a helper function that takes the current position and current subset. Add the current subset to results, then recursively try adding each remaining element."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Pattern: result.push([...current]); then for each element from start to end: add element, recurse with next index, remove element (backtrack). Start with backtrack(0, [])."
+    }
+  ]
+}

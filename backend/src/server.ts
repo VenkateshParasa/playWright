@@ -17,6 +17,7 @@ import adminRolesRoutes from './routes/admin/roles.js';
 import analyticsRoutes from './routes/admin/analytics.js';
 import communityRoutes from './routes/community/index.js';
 import aiRoutes from './routes/ai/index.js';
+import exercisesRoutes from './routes/exercises.js';
 
 // Load environment variables
 dotenv.config();
@@ -73,6 +74,7 @@ app.use('/api/achievements', achievementsRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/progress', progressRoutes);
+app.use('/api/exercises', exercisesRoutes);
 app.use('/api/admin/users', adminUsersRoutes);
 app.use('/api/admin/roles', adminRolesRoutes);
 app.use('/api/admin/analytics', analyticsRoutes);

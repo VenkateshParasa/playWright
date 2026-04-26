@@ -1,0 +1,86 @@
+{
+  "id": "ex-2-palindrome",
+  "title": "Palindrome Checker",
+  "description": "Write a function that determines if a given string is a palindrome. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward (ignoring spaces, punctuation, and capitalization).",
+  "difficulty": "beginner",
+  "category": "Strings",
+  "estimatedTime": 15,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `isPalindrome` that accepts a string parameter",
+    "Remove all non-alphanumeric characters and convert to lowercase",
+    "Check if the cleaned string reads the same forwards and backwards",
+    "Return true if it is a palindrome, false otherwise"
+  ],
+  "learningObjectives": [
+    "Practice string manipulation in JavaScript",
+    "Learn about regular expressions",
+    "Understand string comparison techniques",
+    "Master the two-pointer technique"
+  ],
+  "tags": ["strings", "algorithms", "two-pointers"],
+  "starterCode": "// Write your function here\nfunction isPalindrome(str) {\n  // Your code here\n}\n\n// Example usage:\n// isPalindrome(\"racecar\") should return true\n// isPalindrome(\"hello\") should return false\n// isPalindrome(\"A man, a plan, a canal: Panama\") should return true\n",
+  "solution": "function isPalindrome(str) {\n  // Remove non-alphanumeric characters and convert to lowercase\n  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');\n\n  // Compare with reversed string\n  const reversed = cleaned.split('').reverse().join('');\n\n  return cleaned === reversed;\n}\n\n// Alternative solution using two pointers:\n// function isPalindrome(str) {\n//   const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');\n//   let left = 0;\n//   let right = cleaned.length - 1;\n//\n//   while (left < right) {\n//     if (cleaned[left] !== cleaned[right]) {\n//       return false;\n//     }\n//     left++;\n//     right--;\n//   }\n//\n//   return true;\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Simple palindrome",
+      "input": ["racecar"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-2",
+      "name": "Not a palindrome",
+      "input": ["hello"],
+      "expectedOutput": false
+    },
+    {
+      "id": "test-3",
+      "name": "Single character",
+      "input": ["a"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-4",
+      "name": "Palindrome with spaces",
+      "input": ["race car"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-5",
+      "name": "Palindrome with punctuation",
+      "input": ["A man, a plan, a canal: Panama"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-6",
+      "name": "Mixed case palindrome",
+      "input": ["RaceCar"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-7",
+      "name": "Empty string",
+      "input": [""],
+      "expectedOutput": true,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "First, clean the string by removing spaces, punctuation, and converting to lowercase. You can use the replace() method with a regular expression."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "After cleaning, you can reverse the string and compare it with the original. Use split(\"\").reverse().join(\"\") to reverse a string."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Use /[^a-z0-9]/g regex to remove non-alphanumeric characters. Then compare: cleaned === cleaned.split(\"\").reverse().join(\"\")"
+    }
+  ]
+}

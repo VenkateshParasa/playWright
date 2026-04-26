@@ -1,0 +1,81 @@
+{
+  "id": "ex-4-find-max",
+  "title": "Find Maximum Number",
+  "description": "Write a function that finds the maximum number in an array. Do not use Math.max() or array methods like sort(). Implement the algorithm yourself using a loop.",
+  "difficulty": "beginner",
+  "category": "Arrays",
+  "estimatedTime": 10,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `findMax` that accepts an array of numbers",
+    "Handle the edge case of an empty array (return null or undefined)",
+    "Use a loop to iterate through the array",
+    "Keep track of the maximum value found",
+    "Return the maximum value"
+  ],
+  "learningObjectives": [
+    "Understand array traversal",
+    "Practice variable tracking in loops",
+    "Learn algorithm implementation",
+    "Handle edge cases"
+  ],
+  "tags": ["arrays", "algorithms", "loops"],
+  "starterCode": "// Write your function here\nfunction findMax(numbers) {\n  // Your code here\n}\n\n// Example usage:\n// findMax([3, 1, 4, 1, 5, 9]) should return 9\n// findMax([-5, -2, -10]) should return -2\n// findMax([]) should return null\n",
+  "solution": "function findMax(numbers) {\n  // Handle empty array\n  if (numbers.length === 0) {\n    return null;\n  }\n\n  // Start with the first element as max\n  let max = numbers[0];\n\n  // Iterate through the rest of the array\n  for (let i = 1; i < numbers.length; i++) {\n    if (numbers[i] > max) {\n      max = numbers[i];\n    }\n  }\n\n  return max;\n}\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Positive numbers",
+      "input": [[3, 1, 4, 1, 5, 9]],
+      "expectedOutput": 9
+    },
+    {
+      "id": "test-2",
+      "name": "Negative numbers",
+      "input": [[-5, -2, -10, -1]],
+      "expectedOutput": -1
+    },
+    {
+      "id": "test-3",
+      "name": "Mixed numbers",
+      "input": [[-5, 0, 5, -10, 3]],
+      "expectedOutput": 5
+    },
+    {
+      "id": "test-4",
+      "name": "Single element",
+      "input": [[42]],
+      "expectedOutput": 42
+    },
+    {
+      "id": "test-5",
+      "name": "Empty array",
+      "input": [[]],
+      "expectedOutput": null
+    },
+    {
+      "id": "test-6",
+      "name": "All same values",
+      "input": [[7, 7, 7, 7]],
+      "expectedOutput": 7,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Initialize a variable to hold the maximum value. A good starting point is the first element of the array."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Loop through the array starting from index 1. Compare each element with your max variable and update it if you find a larger number."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Remember to check if the array is empty at the beginning and return null. Then use: let max = numbers[0]; for (let i = 1; i < numbers.length; i++) { if (numbers[i] > max) max = numbers[i]; }"
+    }
+  ]
+}

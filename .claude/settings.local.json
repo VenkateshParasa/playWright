@@ -7,7 +7,28 @@
       "Bash(chmod:*)",
       "Bash(node generate-remaining-quizzes.js:*)",
       "Bash(python3:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run seed:exercises:*)",
+      "Bash(npm run build:*)",
+      "Bash(node dist/scripts/seedExercises.js:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(lsof:*)",
+      "Bash(timeout 15 npm run dev)",
+      "Bash(npm run type-check:*)",
+      "Bash(npx vite build:*)",
+      "Bash(test:*)",
+      "Bash(npm ls:*)",
+      "Bash(for f in src/pages/Exercises.tsx src/components/exercises/*.tsx src/types/exercise.ts src/stores/exerciseStore.ts)",
+      "Bash(do)",
+      "Bash(if [ ! -f \"$f\" ])",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(head:*)",
+      "Bash(pkill:*)"
     ]
   }
 }

@@ -1,0 +1,82 @@
+{
+  "id": "java-ex-2",
+  "title": "Arrays and Loops",
+  "description": "Master array manipulation and iteration in Java by finding the maximum value in an integer array. This fundamental skill is essential for test data processing and result validation in test automation.",
+  "difficulty": "beginner",
+  "category": "Arrays & Loops",
+  "estimatedTime": 20,
+  "language": "java",
+  "instructions": [
+    "Create a method `findMax()` that accepts an int array as parameter",
+    "Use a for loop or enhanced for loop to iterate through the array",
+    "Track the maximum value found during iteration",
+    "Return the maximum value",
+    "Handle edge case: empty array should throw IllegalArgumentException"
+  ],
+  "learningObjectives": [
+    "Understand Java array syntax and initialization",
+    "Master different loop types (for, enhanced for)",
+    "Learn array traversal techniques",
+    "Practice exception handling basics",
+    "Understand primitive data types in arrays"
+  ],
+  "tags": ["java", "arrays", "loops", "iteration", "algorithms"],
+  "starterCode": "public class ArrayOperations {\n    public static int findMax(int[] numbers) {\n        // Your code here\n        // Remember to handle empty arrays\n    }\n\n    public static void main(String[] args) {\n        // Test your method\n        int[] testArray = {5, 12, 3, 19, 7};\n        System.out.println(\"Maximum value: \" + findMax(testArray));\n    }\n}",
+  "solution": "public class ArrayOperations {\n    public static int findMax(int[] numbers) {\n        // Handle empty array\n        if (numbers == null || numbers.length == 0) {\n            throw new IllegalArgumentException(\"Array cannot be empty\");\n        }\n\n        // Initialize max with first element\n        int max = numbers[0];\n\n        // Iterate through array to find maximum\n        for (int i = 1; i < numbers.length; i++) {\n            if (numbers[i] > max) {\n                max = numbers[i];\n            }\n        }\n\n        return max;\n    }\n\n    // Alternative solution using enhanced for loop:\n    // public static int findMax(int[] numbers) {\n    //     if (numbers == null || numbers.length == 0) {\n    //         throw new IllegalArgumentException(\"Array cannot be empty\");\n    //     }\n    //     int max = numbers[0];\n    //     for (int num : numbers) {\n    //         if (num > max) {\n    //             max = num;\n    //         }\n    //     }\n    //     return max;\n    // }\n\n    public static void main(String[] args) {\n        int[] testArray = {5, 12, 3, 19, 7};\n        System.out.println(\"Maximum value: \" + findMax(testArray));\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Find max in positive numbers",
+      "input": [[5, 12, 3, 19, 7]],
+      "expectedOutput": 19
+    },
+    {
+      "id": "test-2",
+      "name": "Find max with negative numbers",
+      "input": [[-5, -12, -3, -1, -7]],
+      "expectedOutput": -1
+    },
+    {
+      "id": "test-3",
+      "name": "Find max with mixed values",
+      "input": [[-10, 0, 15, -20, 8]],
+      "expectedOutput": 15
+    },
+    {
+      "id": "test-4",
+      "name": "Single element array",
+      "input": [[42]],
+      "expectedOutput": 42
+    },
+    {
+      "id": "test-5",
+      "name": "Array with duplicates",
+      "input": [[7, 7, 7, 7]],
+      "expectedOutput": 7
+    },
+    {
+      "id": "test-6",
+      "name": "Large numbers",
+      "input": [[1000, 5000, 3000, 9999, 2000]],
+      "expectedOutput": 9999,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Start by initializing a variable 'max' with the first element of the array. Then compare each subsequent element with this max value."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Use a for loop: for (int i = 1; i < numbers.length; i++). Start from index 1 since you already used index 0 for initialization. Update max if numbers[i] > max."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete approach: First check if array is empty (throw exception), initialize max = numbers[0], loop through remaining elements updating max when a larger value is found, then return max."
+    }
+  ]
+}

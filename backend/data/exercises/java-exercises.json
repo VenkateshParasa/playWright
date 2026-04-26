@@ -1,0 +1,130 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-19",
+  "category": "Java Fundamentals",
+  "totalExercises": 10,
+  "difficultyBreakdown": {
+    "beginner": 3,
+    "intermediate": 4,
+    "advanced": 3
+  },
+  "exercises": [
+    {
+      "id": "java-ex-1",
+      "title": "Hello World & Basic Syntax",
+      "difficulty": "beginner",
+      "category": "Java Basics",
+      "estimatedTime": 15,
+      "language": "java",
+      "tags": ["java", "basics", "syntax", "hello-world", "fundamentals"],
+      "file": "java-ex-1-hello-world.json"
+    },
+    {
+      "id": "java-ex-2",
+      "title": "Arrays and Loops",
+      "difficulty": "beginner",
+      "category": "Arrays & Loops",
+      "estimatedTime": 20,
+      "language": "java",
+      "tags": ["java", "arrays", "loops", "iteration", "algorithms"],
+      "file": "java-ex-2-arrays-loops.json"
+    },
+    {
+      "id": "java-ex-3",
+      "title": "String Operations",
+      "difficulty": "beginner",
+      "category": "String Manipulation",
+      "estimatedTime": 20,
+      "language": "java",
+      "tags": ["java", "strings", "algorithms", "palindrome", "string-manipulation"],
+      "file": "java-ex-3-string-operations.json"
+    },
+    {
+      "id": "java-ex-4",
+      "title": "OOP Basics - Classes and Objects",
+      "difficulty": "beginner",
+      "category": "Object-Oriented Programming",
+      "estimatedTime": 25,
+      "language": "java",
+      "tags": ["java", "oop", "classes", "objects", "encapsulation", "constructors"],
+      "file": "java-ex-4-oop-basics.json"
+    },
+    {
+      "id": "java-ex-5",
+      "title": "Collections Framework - ArrayList and HashMap",
+      "difficulty": "intermediate",
+      "category": "Collections",
+      "estimatedTime": 30,
+      "language": "java",
+      "tags": ["java", "collections", "arraylist", "hashmap", "data-structures", "intermediate"],
+      "file": "java-ex-5-collections-framework.json"
+    },
+    {
+      "id": "java-ex-6",
+      "title": "Exception Handling in Java",
+      "difficulty": "intermediate",
+      "category": "Error Handling",
+      "estimatedTime": 20,
+      "language": "java",
+      "tags": ["java", "exceptions", "error-handling", "intermediate"],
+      "file": "java-ex-6-exceptions.json"
+    },
+    {
+      "id": "java-ex-7",
+      "title": "File Input/Output in Java",
+      "difficulty": "intermediate",
+      "category": "File Operations",
+      "estimatedTime": 25,
+      "language": "java",
+      "tags": ["java", "file-io", "streams", "intermediate"],
+      "file": "java-ex-7-file-io.json"
+    },
+    {
+      "id": "java-ex-8",
+      "title": "Java Multithreading Basics",
+      "difficulty": "advanced",
+      "category": "Concurrency",
+      "estimatedTime": 30,
+      "language": "java",
+      "tags": ["java", "multithreading", "concurrency", "advanced", "synchronization"],
+      "file": "java-ex-8-multithreading.json"
+    },
+    {
+      "id": "java-ex-9",
+      "title": "Selenium WebDriver Basics",
+      "difficulty": "advanced",
+      "category": "Test Automation",
+      "estimatedTime": 25,
+      "language": "java",
+      "tags": ["java", "selenium", "webdriver", "test-automation", "advanced"],
+      "file": "java-ex-9-selenium-setup.json"
+    },
+    {
+      "id": "java-ex-10",
+      "title": "Writing JUnit Tests",
+      "difficulty": "advanced",
+      "category": "Unit Testing",
+      "estimatedTime": 20,
+      "language": "java",
+      "tags": ["java", "junit", "unit-testing", "advanced", "tdd"],
+      "file": "java-ex-10-junit-tests.json"
+    }
+  ],
+  "statistics": {
+    "totalExercises": 10,
+    "totalEstimatedTime": 230,
+    "averageTime": 23,
+    "categoryCounts": {
+      "Java Basics": 1,
+      "Arrays & Loops": 1,
+      "String Manipulation": 1,
+      "Object-Oriented Programming": 1,
+      "Collections": 1,
+      "Error Handling": 1,
+      "File Operations": 1,
+      "Concurrency": 1,
+      "Test Automation": 1,
+      "Unit Testing": 1
+    }
+  }
+}

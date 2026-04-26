@@ -1,0 +1,88 @@
+{
+  "id": "ex-11-higher-order-functions",
+  "title": "Higher-Order Functions",
+  "description": "Implement your own versions of JavaScript's built-in higher-order array methods: map, filter, and reduce. This exercise deepens your understanding of how these fundamental functions work under the hood.",
+  "difficulty": "intermediate",
+  "category": "Functions",
+  "estimatedTime": 20,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `myMap` that mimics Array.prototype.map()",
+    "Create a function named `myFilter` that mimics Array.prototype.filter()",
+    "Create a function named `myReduce` that mimics Array.prototype.reduce()",
+    "Each function should accept an array and appropriate callback/parameters",
+    "Implement the logic without using the built-in array methods"
+  ],
+  "learningObjectives": [
+    "Understand how higher-order functions work internally",
+    "Master callback function patterns",
+    "Learn to pass functions as arguments",
+    "Practice implementing functional programming concepts"
+  ],
+  "tags": ["functions", "higher-order", "intermediate"],
+  "starterCode": "// Write your functions here\nfunction myMap(array, callback) {\n  // Your code here\n}\n\nfunction myFilter(array, callback) {\n  // Your code here\n}\n\nfunction myReduce(array, callback, initialValue) {\n  // Your code here\n}\n\n// Example usage:\n// myMap([1, 2, 3], x => x * 2); // Should return [2, 4, 6]\n// myFilter([1, 2, 3, 4], x => x % 2 === 0); // Should return [2, 4]\n// myReduce([1, 2, 3, 4], (acc, x) => acc + x, 0); // Should return 10\n",
+  "solution": "function myMap(array, callback) {\n  const result = [];\n  for (let i = 0; i < array.length; i++) {\n    result.push(callback(array[i], i, array));\n  }\n  return result;\n}\n\nfunction myFilter(array, callback) {\n  const result = [];\n  for (let i = 0; i < array.length; i++) {\n    if (callback(array[i], i, array)) {\n      result.push(array[i]);\n    }\n  }\n  return result;\n}\n\nfunction myReduce(array, callback, initialValue) {\n  let accumulator = initialValue;\n  let startIndex = 0;\n\n  // If no initial value provided, use first element\n  if (accumulator === undefined) {\n    if (array.length === 0) {\n      throw new TypeError('Reduce of empty array with no initial value');\n    }\n    accumulator = array[0];\n    startIndex = 1;\n  }\n\n  for (let i = startIndex; i < array.length; i++) {\n    accumulator = callback(accumulator, array[i], i, array);\n  }\n\n  return accumulator;\n}\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "myMap doubles numbers",
+      "input": [[[1, 2, 3, 4]], "x => x * 2"],
+      "expectedOutput": [2, 4, 6, 8]
+    },
+    {
+      "id": "test-2",
+      "name": "myFilter keeps even numbers",
+      "input": [[[1, 2, 3, 4, 5, 6]], "x => x % 2 === 0"],
+      "expectedOutput": [2, 4, 6]
+    },
+    {
+      "id": "test-3",
+      "name": "myReduce sums array with initial value",
+      "input": [[[1, 2, 3, 4]], "(acc, x) => acc + x", 0],
+      "expectedOutput": 10
+    },
+    {
+      "id": "test-4",
+      "name": "myMap on empty array",
+      "input": [[[]], "x => x * 2"],
+      "expectedOutput": []
+    },
+    {
+      "id": "test-5",
+      "name": "myFilter with no matches",
+      "input": [[[1, 3, 5]], "x => x % 2 === 0"],
+      "expectedOutput": []
+    },
+    {
+      "id": "test-6",
+      "name": "myReduce without initial value",
+      "input": [[[5, 10, 15]], "(acc, x) => acc + x"],
+      "expectedOutput": 30,
+      "hidden": true
+    },
+    {
+      "id": "test-7",
+      "name": "myMap with index parameter",
+      "input": [[[10, 20, 30]], "(x, i) => x + i"],
+      "expectedOutput": [10, 21, 32],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "For myMap and myFilter, create a result array and iterate through the input array with a for loop. Call the callback function for each element."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "For myReduce, use an accumulator variable. If initialValue is provided, start with that; otherwise use the first array element and start iterating from index 1."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Remember to pass all parameters to callbacks: myMap/myFilter callbacks receive (element, index, array), and myReduce callback receives (accumulator, element, index, array)."
+    }
+  ]
+}

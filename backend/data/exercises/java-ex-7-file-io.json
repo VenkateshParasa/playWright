@@ -1,0 +1,89 @@
+{
+  "id": "java-ex-7",
+  "title": "File Input/Output in Java",
+  "description": "Learn file I/O operations by implementing a test report generator that reads test data from files and writes formatted reports. File operations are essential for test automation frameworks that need to read test data, write logs, and generate reports.",
+  "difficulty": "intermediate",
+  "category": "File Operations",
+  "estimatedTime": 25,
+  "language": "java",
+  "instructions": [
+    "Create a class `FileProcessor` with methods to read from and write to text files",
+    "Implement `readTestData(String filename)` that reads test cases from a file and returns an ArrayList of test names",
+    "Implement `writeTestReport(String filename, ArrayList<String> tests, ArrayList<String> results)` to write formatted reports",
+    "Implement proper exception handling for FileNotFoundException and IOException",
+    "Use BufferedReader for efficient file reading and BufferedWriter for writing",
+    "Ensure all file streams are properly closed using try-with-resources or finally blocks"
+  ],
+  "learningObjectives": [
+    "Understand file I/O operations with FileReader and FileWriter",
+    "Master BufferedReader and BufferedWriter for efficient file operations",
+    "Learn to handle file-related exceptions (IOException, FileNotFoundException)",
+    "Practice try-with-resources for automatic resource management",
+    "Understand file paths and file system operations"
+  ],
+  "tags": ["java", "file-io", "streams", "intermediate"],
+  "starterCode": "import java.io.*;\nimport java.util.ArrayList;\n\npublic class FileProcessor {\n    \n    public ArrayList<String> readTestData(String filename) {\n        // Your code here\n        // Use BufferedReader to read file line by line\n        // Handle FileNotFoundException and IOException\n    }\n    \n    public void writeTestReport(String filename, ArrayList<String> tests, ArrayList<String> results) {\n        // Your code here\n        // Use BufferedWriter to write formatted report\n        // Handle IOException\n    }\n    \n    public int countLines(String filename) {\n        // Your code here\n        // Count total lines in file\n    }\n    \n    public boolean appendToFile(String filename, String content) {\n        // Your code here\n        // Append content to existing file\n    }\n    \n    public static void main(String[] args) {\n        FileProcessor processor = new FileProcessor();\n        \n        // Create sample test data\n        ArrayList<String> tests = new ArrayList<>();\n        tests.add(\"LoginTest\");\n        tests.add(\"LogoutTest\");\n        \n        ArrayList<String> results = new ArrayList<>();\n        results.add(\"PASS\");\n        results.add(\"FAIL\");\n        \n        processor.writeTestReport(\"test_report.txt\", tests, results);\n        System.out.println(\"Report written successfully\");\n    }\n}",
+  "solution": "import java.io.*;\nimport java.util.ArrayList;\n\npublic class FileProcessor {\n    \n    public ArrayList<String> readTestData(String filename) {\n        ArrayList<String> testData = new ArrayList<>();\n        BufferedReader reader = null;\n        \n        try {\n            reader = new BufferedReader(new FileReader(filename));\n            String line;\n            \n            while ((line = reader.readLine()) != null) {\n                if (!line.trim().isEmpty()) {\n                    testData.add(line.trim());\n                }\n            }\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found: \" + filename);\n        } catch (IOException e) {\n            System.out.println(\"Error reading file: \" + e.getMessage());\n        } finally {\n            try {\n                if (reader != null) {\n                    reader.close();\n                }\n            } catch (IOException e) {\n                System.out.println(\"Error closing reader: \" + e.getMessage());\n            }\n        }\n        \n        return testData;\n    }\n    \n    public void writeTestReport(String filename, ArrayList<String> tests, ArrayList<String> results) {\n        if (tests == null || results == null || tests.size() != results.size()) {\n            System.out.println(\"Invalid test data\");\n            return;\n        }\n        \n        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {\n            writer.write(\"=== Test Execution Report ===\");\n            writer.newLine();\n            writer.write(\"Total Tests: \" + tests.size());\n            writer.newLine();\n            writer.newLine();\n            \n            int passCount = 0;\n            for (int i = 0; i < tests.size(); i++) {\n                String status = results.get(i);\n                writer.write(String.format(\"%d. %s - %s\", (i + 1), tests.get(i), status));\n                writer.newLine();\n                \n                if (\"PASS\".equals(status)) {\n                    passCount++;\n                }\n            }\n            \n            writer.newLine();\n            writer.write(\"Summary: \" + passCount + \" passed, \" + (tests.size() - passCount) + \" failed\");\n            writer.newLine();\n            double passRate = (passCount * 100.0) / tests.size();\n            writer.write(String.format(\"Pass Rate: %.2f%%\", passRate));\n            \n        } catch (IOException e) {\n            System.out.println(\"Error writing file: \" + e.getMessage());\n        }\n    }\n    \n    public int countLines(String filename) {\n        int count = 0;\n        \n        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {\n            while (reader.readLine() != null) {\n                count++;\n            }\n        } catch (FileNotFoundException e) {\n            System.out.println(\"File not found: \" + filename);\n            return -1;\n        } catch (IOException e) {\n            System.out.println(\"Error reading file: \" + e.getMessage());\n            return -1;\n        }\n        \n        return count;\n    }\n    \n    public boolean appendToFile(String filename, String content) {\n        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {\n            writer.write(content);\n            writer.newLine();\n            return true;\n        } catch (IOException e) {\n            System.out.println(\"Error appending to file: \" + e.getMessage());\n            return false;\n        }\n    }\n    \n    public static void main(String[] args) {\n        FileProcessor processor = new FileProcessor();\n        \n        // Create sample test data\n        ArrayList<String> tests = new ArrayList<>();\n        tests.add(\"LoginTest\");\n        tests.add(\"LogoutTest\");\n        tests.add(\"SearchTest\");\n        tests.add(\"CheckoutTest\");\n        \n        ArrayList<String> results = new ArrayList<>();\n        results.add(\"PASS\");\n        results.add(\"FAIL\");\n        results.add(\"PASS\");\n        results.add(\"PASS\");\n        \n        // Write report\n        processor.writeTestReport(\"test_report.txt\", tests, results);\n        System.out.println(\"Report written successfully\");\n        \n        // Count lines\n        int lines = processor.countLines(\"test_report.txt\");\n        System.out.println(\"Total lines in report: \" + lines);\n        \n        // Append additional info\n        processor.appendToFile(\"test_report.txt\", \"\\n--- End of Report ---\");\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Write test report successfully",
+      "input": ["report.txt", ["Test1", "Test2"], ["PASS", "FAIL"]],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-2",
+      "name": "Read test data from file",
+      "input": ["testdata.txt"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-3",
+      "name": "Handle FileNotFoundException gracefully",
+      "input": ["nonexistent.txt"],
+      "expectedOutput": 0
+    },
+    {
+      "id": "test-4",
+      "name": "Count lines in file correctly",
+      "input": ["test_report.txt"],
+      "expectedOutput": 10
+    },
+    {
+      "id": "test-5",
+      "name": "Append content to existing file",
+      "input": ["report.txt", "Additional line"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-6",
+      "name": "Handle null or mismatched arrays",
+      "input": [null, null],
+      "expectedOutput": false
+    },
+    {
+      "id": "test-7",
+      "name": "Read empty lines are filtered",
+      "input": ["data_with_empty_lines.txt"],
+      "expectedOutput": true,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use BufferedReader with FileReader for reading: BufferedReader reader = new BufferedReader(new FileReader(filename)). Read line by line with reader.readLine() in a while loop until it returns null."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "For writing, use try-with-resources for automatic closing: try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) { writer.write(line); writer.newLine(); }. Catch IOException for error handling."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "To append to a file, use FileWriter with append flag: new FileWriter(filename, true). For counting lines, use a counter variable and increment in the while loop: while ((line = reader.readLine()) != null) { count++; }. Always handle FileNotFoundException separately from IOException."
+    }
+  ]
+}

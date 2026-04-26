@@ -1,0 +1,80 @@
+{
+  "id": "ex-3-fizzbuzz",
+  "title": "FizzBuzz",
+  "description": "Implement the classic FizzBuzz problem. Write a function that returns an array of strings from 1 to n, but for multiples of 3 return \"Fizz\", for multiples of 5 return \"Buzz\", and for multiples of both 3 and 5 return \"FizzBuzz\".",
+  "difficulty": "beginner",
+  "category": "Logic",
+  "estimatedTime": 15,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `fizzBuzz` that accepts a number n",
+    "Generate an array with n elements",
+    "For each position (1 to n): if divisible by 3 and 5, add \"FizzBuzz\"",
+    "If only divisible by 3, add \"Fizz\"",
+    "If only divisible by 5, add \"Buzz\"",
+    "Otherwise, add the number as a string"
+  ],
+  "learningObjectives": [
+    "Practice conditional logic",
+    "Understand modulo operator",
+    "Learn array construction",
+    "Master the order of conditions"
+  ],
+  "tags": ["logic", "conditionals", "arrays", "classic-problems"],
+  "starterCode": "// Write your function here\nfunction fizzBuzz(n) {\n  // Your code here\n}\n\n// Example usage:\n// fizzBuzz(15) should return [\"1\", \"2\", \"Fizz\", \"4\", \"Buzz\", \"Fizz\", \"7\", \"8\", \"Fizz\", \"Buzz\", \"11\", \"Fizz\", \"13\", \"14\", \"FizzBuzz\"]\n",
+  "solution": "function fizzBuzz(n) {\n  const result = [];\n\n  for (let i = 1; i <= n; i++) {\n    if (i % 3 === 0 && i % 5 === 0) {\n      result.push(\"FizzBuzz\");\n    } else if (i % 3 === 0) {\n      result.push(\"Fizz\");\n    } else if (i % 5 === 0) {\n      result.push(\"Buzz\");\n    } else {\n      result.push(String(i));\n    }\n  }\n\n  return result;\n}\n\n// More concise alternative:\n// function fizzBuzz(n) {\n//   return Array.from({ length: n }, (_, i) => {\n//     i++;\n//     if (i % 15 === 0) return \"FizzBuzz\";\n//     if (i % 3 === 0) return \"Fizz\";\n//     if (i % 5 === 0) return \"Buzz\";\n//     return String(i);\n//   });\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "FizzBuzz for 15",
+      "input": [15],
+      "expectedOutput": ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"]
+    },
+    {
+      "id": "test-2",
+      "name": "FizzBuzz for 5",
+      "input": [5],
+      "expectedOutput": ["1", "2", "Fizz", "4", "Buzz"]
+    },
+    {
+      "id": "test-3",
+      "name": "FizzBuzz for 3",
+      "input": [3],
+      "expectedOutput": ["1", "2", "Fizz"]
+    },
+    {
+      "id": "test-4",
+      "name": "FizzBuzz for 1",
+      "input": [1],
+      "expectedOutput": ["1"]
+    },
+    {
+      "id": "test-5",
+      "name": "FizzBuzz for 30 (hidden)",
+      "input": [30],
+      "expectedOutput": [
+        "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz",
+        "11", "Fizz", "13", "14", "FizzBuzz", "16", "17", "Fizz", "19", "Buzz",
+        "Fizz", "22", "23", "Fizz", "Buzz", "26", "Fizz", "28", "29", "FizzBuzz"
+      ],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use a for loop from 1 to n. For each number, check divisibility using the modulo operator (%). Remember to check the condition for both 3 AND 5 first!"
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "The order of conditions matters! Check for divisibility by both 3 and 5 first (i % 3 === 0 && i % 5 === 0), then check for 3 only, then 5 only."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Tip: A number divisible by both 3 and 5 is divisible by 15. You can check (i % 15 === 0) as a shortcut for the first condition."
+    }
+  ]
+}

@@ -1,8 +1,59 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-17",
-  "totalExercises": 80,
+  "lastUpdated": "2026-02-19",
+  "totalExercises": 104,
   "tracks": {
+    "fundamentals": {
+      "total": 24,
+      "beginner": 7,
+      "intermediate": 11,
+      "advanced": 6,
+      "languages": ["javascript", "java"],
+      "categories": {
+        "javascript": {
+          "count": 14,
+          "beginner": 4,
+          "intermediate": 8,
+          "advanced": 2,
+          "topics": ["Arrays", "Strings", "Objects", "Functions", "Data Structures", "Algorithms", "Async/Timing"],
+          "exercises": [
+            "ex-1-array-sum",
+            "ex-2-palindrome",
+            "ex-3-fizzbuzz",
+            "ex-4-find-max",
+            "ex-5-array-methods",
+            "ex-6-object-transformation",
+            "ex-7-string-algorithms",
+            "ex-8-recursion",
+            "ex-9-stack-implementation",
+            "ex-10-function-composition",
+            "ex-11-higher-order-functions",
+            "ex-12-binary-search",
+            "ex-13-linked-list",
+            "ex-14-debounce"
+          ]
+        },
+        "java": {
+          "count": 10,
+          "beginner": 3,
+          "intermediate": 4,
+          "advanced": 3,
+          "topics": ["Java Basics", "Arrays & Loops", "Strings", "OOP", "Collections", "Error Handling", "File I/O", "Concurrency", "Test Automation", "Unit Testing"],
+          "exercises": [
+            "java-ex-1-hello-world",
+            "java-ex-2-arrays-loops",
+            "java-ex-3-string-operations",
+            "java-ex-4-oop-basics",
+            "java-ex-5-collections-framework",
+            "java-ex-6-exceptions",
+            "java-ex-7-file-io",
+            "java-ex-8-multithreading",
+            "java-ex-9-selenium-setup",
+            "java-ex-10-junit-tests"
+          ]
+        }
+      }
+    },
     "playwright": {
       "total": 40,
       "beginner": 15,
@@ -133,17 +184,51 @@
     }
   },
   "statistics": {
-    "totalExercises": 80,
-    "totalXP": 26850,
-    "totalCoins": 6710,
-    "averageTimeMinutes": 32,
+    "totalExercises": 104,
+    "totalXP": 32850,
+    "totalCoins": 8210,
+    "averageTimeMinutes": 28,
     "difficultyDistribution": {
-      "easy": 30,
-      "medium": 30,
-      "hard": 20
+      "beginner": 40,
+      "intermediate": 41,
+      "advanced": 23
+    },
+    "languageDistribution": {
+      "javascript": 54,
+      "java": 50,
+      "python": 0,
+      "typescript": 0
     }
   },
   "learningPaths": [
+    {
+      "name": "JavaScript Fundamentals Path",
+      "trackId": "fundamentals",
+      "language": "javascript",
+      "exercises": [
+        "ex-1-array-sum",
+        "ex-2-palindrome",
+        "ex-3-fizzbuzz",
+        "ex-4-find-max",
+        "ex-5-array-methods",
+        "ex-6-object-transformation",
+        "ex-7-string-algorithms"
+      ],
+      "estimatedHours": 3
+    },
+    {
+      "name": "Java Fundamentals Path",
+      "trackId": "fundamentals",
+      "language": "java",
+      "exercises": [
+        "java-ex-1-hello-world",
+        "java-ex-2-arrays-loops",
+        "java-ex-3-string-operations",
+        "java-ex-4-oop-basics",
+        "java-ex-5-collections-framework"
+      ],
+      "estimatedHours": 3
+    },
     {
       "name": "Playwright Beginner Path",
       "exercises": ["exercise-pw-001", "exercise-pw-002", "exercise-pw-003", "exercise-pw-004", "exercise-pw-005"],
@@ -174,6 +259,9 @@
     "navigation", "click", "locators", "assertions", "forms",
     "waits", "pom", "api", "network", "authentication",
     "visual-regression", "accessibility", "performance", "cicd",
-    "selenium-grid", "cucumber", "docker", "cloud-testing"
+    "selenium-grid", "cucumber", "docker", "cloud-testing",
+    "arrays", "strings", "objects", "functions", "algorithms",
+    "data-structures", "recursion", "oop", "collections",
+    "exceptions", "file-io", "multithreading", "junit", "testing"
   ]
 }

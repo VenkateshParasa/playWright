@@ -1,0 +1,89 @@
+{
+  "id": "java-ex-5",
+  "title": "Collections Framework - ArrayList and HashMap",
+  "description": "Master Java Collections Framework by implementing a test result manager using ArrayList and HashMap. Collections are fundamental for managing test data, results, and configurations in automation frameworks.",
+  "difficulty": "intermediate",
+  "category": "Collections",
+  "estimatedTime": 30,
+  "language": "java",
+  "instructions": [
+    "Create a class `TestResultManager` with an ArrayList to store test names and a HashMap to store test results",
+    "Implement `addTestResult(String testName, String result)` to store a test and its result",
+    "Implement `getTestResult(String testName)` to retrieve a specific test result",
+    "Implement `getAllPassedTests()` to return an ArrayList of all tests with 'PASS' status",
+    "Implement `getTestCount()` to return the total number of tests",
+    "Implement `getPassRate()` to return the percentage of passed tests"
+  ],
+  "learningObjectives": [
+    "Understand ArrayList operations (add, get, size, iteration)",
+    "Master HashMap operations (put, get, containsKey, values)",
+    "Learn when to use List vs Map data structures",
+    "Practice generic types in Java",
+    "Understand collection iteration techniques"
+  ],
+  "tags": ["java", "collections", "arraylist", "hashmap", "data-structures", "intermediate"],
+  "starterCode": "import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic class TestResultManager {\n    // Declare ArrayList and HashMap fields\n    \n    public TestResultManager() {\n        // Initialize collections\n    }\n    \n    public void addTestResult(String testName, String result) {\n        // Your code here\n    }\n    \n    public String getTestResult(String testName) {\n        // Your code here\n    }\n    \n    public ArrayList<String> getAllPassedTests() {\n        // Your code here\n    }\n    \n    public int getTestCount() {\n        // Your code here\n    }\n    \n    public double getPassRate() {\n        // Your code here\n    }\n    \n    public static void main(String[] args) {\n        TestResultManager manager = new TestResultManager();\n        manager.addTestResult(\"LoginTest\", \"PASS\");\n        manager.addTestResult(\"LogoutTest\", \"PASS\");\n        manager.addTestResult(\"SearchTest\", \"FAIL\");\n        \n        System.out.println(\"Total tests: \" + manager.getTestCount());\n        System.out.println(\"Pass rate: \" + manager.getPassRate() + \"%\");\n    }\n}",
+  "solution": "import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic class TestResultManager {\n    private ArrayList<String> testNames;\n    private HashMap<String, String> testResults;\n    \n    public TestResultManager() {\n        testNames = new ArrayList<>();\n        testResults = new HashMap<>();\n    }\n    \n    public void addTestResult(String testName, String result) {\n        if (!testNames.contains(testName)) {\n            testNames.add(testName);\n        }\n        testResults.put(testName, result);\n    }\n    \n    public String getTestResult(String testName) {\n        return testResults.get(testName);\n    }\n    \n    public ArrayList<String> getAllPassedTests() {\n        ArrayList<String> passedTests = new ArrayList<>();\n        for (Map.Entry<String, String> entry : testResults.entrySet()) {\n            if (\"PASS\".equals(entry.getValue())) {\n                passedTests.add(entry.getKey());\n            }\n        }\n        return passedTests;\n    }\n    \n    public int getTestCount() {\n        return testNames.size();\n    }\n    \n    public double getPassRate() {\n        if (testNames.isEmpty()) {\n            return 0.0;\n        }\n        int passCount = getAllPassedTests().size();\n        return (passCount * 100.0) / testNames.size();\n    }\n    \n    public static void main(String[] args) {\n        TestResultManager manager = new TestResultManager();\n        manager.addTestResult(\"LoginTest\", \"PASS\");\n        manager.addTestResult(\"LogoutTest\", \"PASS\");\n        manager.addTestResult(\"SearchTest\", \"FAIL\");\n        manager.addTestResult(\"CheckoutTest\", \"PASS\");\n        \n        System.out.println(\"Total tests: \" + manager.getTestCount());\n        System.out.println(\"Pass rate: \" + manager.getPassRate() + \"%\");\n        System.out.println(\"Passed tests: \" + manager.getAllPassedTests());\n        System.out.println(\"Search test result: \" + manager.getTestResult(\"SearchTest\"));\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Add and retrieve test result",
+      "input": ["LoginTest", "PASS"],
+      "expectedOutput": "PASS"
+    },
+    {
+      "id": "test-2",
+      "name": "Get test count",
+      "input": [3],
+      "expectedOutput": 3
+    },
+    {
+      "id": "test-3",
+      "name": "Get all passed tests",
+      "input": [],
+      "expectedOutput": 2
+    },
+    {
+      "id": "test-4",
+      "name": "Calculate pass rate - 75%",
+      "input": [3, 3],
+      "expectedOutput": 75.0
+    },
+    {
+      "id": "test-5",
+      "name": "Calculate pass rate - 100%",
+      "input": [2, 2],
+      "expectedOutput": 100.0
+    },
+    {
+      "id": "test-6",
+      "name": "Empty manager returns 0% pass rate",
+      "input": [],
+      "expectedOutput": 0.0
+    },
+    {
+      "id": "test-7",
+      "name": "Update existing test result",
+      "input": ["LoginTest", "FAIL"],
+      "expectedOutput": "FAIL",
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Initialize ArrayList with new ArrayList<>() and HashMap with new HashMap<>(). Use add() for ArrayList and put(key, value) for HashMap."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "To get all passed tests, iterate through the HashMap using entrySet(): for (Map.Entry<String, String> entry : testResults.entrySet()). Check if entry.getValue().equals(\"PASS\")."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Calculate pass rate using: (getAllPassedTests().size() * 100.0) / testNames.size(). Use 100.0 (double) to ensure floating-point division. Handle empty list edge case by checking if testNames.isEmpty()."
+    }
+  ]
+}

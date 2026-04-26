@@ -1,0 +1,85 @@
+{
+  "id": "java-ex-9",
+  "title": "Selenium WebDriver Basics",
+  "description": "Build your first Selenium WebDriver automation test. Learn to initialize WebDriver, navigate to web pages, locate elements using various strategies, interact with page elements, and verify content. This is the foundation of web test automation.",
+  "difficulty": "advanced",
+  "category": "Test Automation",
+  "estimatedTime": 25,
+  "language": "java",
+  "instructions": [
+    "Create a class `SeleniumTest` with a WebDriver field and setup/teardown methods",
+    "Implement `setUp()` method to initialize ChromeDriver with WebDriverManager",
+    "Implement `navigateToPage(String url)` to navigate to a given URL",
+    "Implement `getPageTitle()` to return the current page title",
+    "Implement `findElementById(String id)` to locate and return an element by ID",
+    "Implement `clickElement(WebElement element)` to click on a given element",
+    "Implement `getElementText(WebElement element)` to retrieve element text content",
+    "Implement `tearDown()` method to close the browser and quit the driver"
+  ],
+  "learningObjectives": [
+    "Understand WebDriver initialization and browser setup",
+    "Master element location strategies (ID, CSS, XPath)",
+    "Learn basic WebDriver operations (navigate, click, getText)",
+    "Practice proper test lifecycle with setUp and tearDown",
+    "Understand implicit waits and WebDriver management"
+  ],
+  "tags": ["java", "selenium", "webdriver", "test-automation", "advanced"],
+  "starterCode": "import org.openqa.selenium.By;\nimport org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport io.github.bonigarcia.wdm.WebDriverManager;\nimport java.time.Duration;\n\npublic class SeleniumTest {\n    private WebDriver driver;\n    \n    public void setUp() {\n        // Set up ChromeDriver using WebDriverManager\n        // Initialize driver with implicit wait of 10 seconds\n        // Your code here\n    }\n    \n    public void navigateToPage(String url) {\n        // Navigate to the specified URL\n        // Your code here\n    }\n    \n    public String getPageTitle() {\n        // Return the current page title\n        // Your code here\n    }\n    \n    public WebElement findElementById(String id) {\n        // Find and return element by ID\n        // Your code here\n    }\n    \n    public void clickElement(WebElement element) {\n        // Click the given element\n        // Your code here\n    }\n    \n    public String getElementText(WebElement element) {\n        // Get and return element text\n        // Your code here\n    }\n    \n    public void tearDown() {\n        // Quit the driver\n        // Your code here\n    }\n    \n    public static void main(String[] args) {\n        SeleniumTest test = new SeleniumTest();\n        test.setUp();\n        test.navigateToPage(\"https://example.com\");\n        System.out.println(\"Page title: \" + test.getPageTitle());\n        test.tearDown();\n    }\n}",
+  "solution": "import org.openqa.selenium.By;\nimport org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.chrome.ChromeDriver;\nimport io.github.bonigarcia.wdm.WebDriverManager;\nimport java.time.Duration;\n\npublic class SeleniumTest {\n    private WebDriver driver;\n    \n    public void setUp() {\n        WebDriverManager.chromedriver().setup();\n        driver = new ChromeDriver();\n        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));\n        driver.manage().window().maximize();\n    }\n    \n    public void navigateToPage(String url) {\n        driver.get(url);\n    }\n    \n    public String getPageTitle() {\n        return driver.getTitle();\n    }\n    \n    public WebElement findElementById(String id) {\n        return driver.findElement(By.id(id));\n    }\n    \n    public void clickElement(WebElement element) {\n        element.click();\n    }\n    \n    public String getElementText(WebElement element) {\n        return element.getText();\n    }\n    \n    public void tearDown() {\n        if (driver != null) {\n            driver.quit();\n        }\n    }\n    \n    public static void main(String[] args) {\n        SeleniumTest test = new SeleniumTest();\n        try {\n            test.setUp();\n            test.navigateToPage(\"https://example.com\");\n            System.out.println(\"Page title: \" + test.getPageTitle());\n            \n            WebElement heading = test.findElementById(\"example-heading\");\n            System.out.println(\"Heading text: \" + test.getElementText(heading));\n        } finally {\n            test.tearDown();\n        }\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "WebDriver initializes successfully",
+      "input": [],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-2",
+      "name": "Navigate to URL works",
+      "input": ["https://example.com"],
+      "expectedOutput": "https://example.com"
+    },
+    {
+      "id": "test-3",
+      "name": "Get page title returns correct value",
+      "input": [],
+      "expectedOutput": "Example Domain"
+    },
+    {
+      "id": "test-4",
+      "name": "Find element by ID locates element",
+      "input": ["example-id"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-5",
+      "name": "Get element text retrieves content",
+      "input": [],
+      "expectedOutput": "More information..."
+    },
+    {
+      "id": "test-6",
+      "name": "TearDown closes browser properly",
+      "input": [],
+      "expectedOutput": true,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use WebDriverManager.chromedriver().setup() to configure the driver, then initialize with 'driver = new ChromeDriver()'. Set implicit wait using driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10))."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Navigate using driver.get(url), get title with driver.getTitle(), and find elements with driver.findElement(By.id(id)). Element interactions use element.click() and element.getText()."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete solution: In tearDown(), always check if driver is not null before calling driver.quit(). Use try-finally blocks in main to ensure tearDown() runs even if tests fail. This prevents orphaned browser processes."
+    }
+  ]
+}

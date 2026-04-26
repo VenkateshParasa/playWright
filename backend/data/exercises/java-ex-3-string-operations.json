@@ -1,0 +1,88 @@
+{
+  "id": "java-ex-3",
+  "title": "String Operations",
+  "description": "Practice essential string manipulation techniques in Java by checking if a string is a palindrome. String handling is crucial for validating text in web elements and processing test data in automation frameworks.",
+  "difficulty": "beginner",
+  "category": "String Manipulation",
+  "estimatedTime": 20,
+  "language": "java",
+  "instructions": [
+    "Create a method `isPalindrome()` that accepts a String parameter",
+    "Convert the string to lowercase for case-insensitive comparison",
+    "Remove all spaces and special characters (keep only letters and digits)",
+    "Check if the string reads the same forwards and backwards",
+    "Return true if it's a palindrome, false otherwise"
+  ],
+  "learningObjectives": [
+    "Master String class methods in Java",
+    "Understand string immutability",
+    "Practice string comparison techniques",
+    "Learn StringBuilder usage for string manipulation",
+    "Handle edge cases with strings"
+  ],
+  "tags": ["java", "strings", "algorithms", "palindrome", "string-manipulation"],
+  "starterCode": "public class StringOperations {\n    public static boolean isPalindrome(String str) {\n        // Your code here\n        // Remember to handle null and empty strings\n    }\n\n    public static void main(String[] args) {\n        // Test your method\n        System.out.println(isPalindrome(\"racecar\")); // true\n        System.out.println(isPalindrome(\"A man a plan a canal Panama\")); // true\n        System.out.println(isPalindrome(\"hello\")); // false\n    }\n}",
+  "solution": "public class StringOperations {\n    public static boolean isPalindrome(String str) {\n        // Handle null or empty string\n        if (str == null || str.isEmpty()) {\n            return true; // Consider empty/null as palindrome\n        }\n\n        // Clean the string: lowercase, remove spaces and special chars\n        String cleaned = str.toLowerCase().replaceAll(\"[^a-z0-9]\", \"\");\n\n        // Check if cleaned string is empty\n        if (cleaned.isEmpty()) {\n            return true;\n        }\n\n        // Compare string with its reverse\n        int left = 0;\n        int right = cleaned.length() - 1;\n\n        while (left < right) {\n            if (cleaned.charAt(left) != cleaned.charAt(right)) {\n                return false;\n            }\n            left++;\n            right--;\n        }\n\n        return true;\n    }\n\n    // Alternative solution using StringBuilder:\n    // public static boolean isPalindrome(String str) {\n    //     if (str == null || str.isEmpty()) {\n    //         return true;\n    //     }\n    //     String cleaned = str.toLowerCase().replaceAll(\"[^a-z0-9]\", \"\");\n    //     String reversed = new StringBuilder(cleaned).reverse().toString();\n    //     return cleaned.equals(reversed);\n    // }\n\n    public static void main(String[] args) {\n        System.out.println(isPalindrome(\"racecar\")); // true\n        System.out.println(isPalindrome(\"A man a plan a canal Panama\")); // true\n        System.out.println(isPalindrome(\"hello\")); // false\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Simple palindrome",
+      "input": ["racecar"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-2",
+      "name": "Not a palindrome",
+      "input": ["hello"],
+      "expectedOutput": false
+    },
+    {
+      "id": "test-3",
+      "name": "Palindrome with spaces",
+      "input": ["A man a plan a canal Panama"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-4",
+      "name": "Single character",
+      "input": ["a"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-5",
+      "name": "Empty string",
+      "input": [""],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-6",
+      "name": "Palindrome with punctuation",
+      "input": ["Madam, I'm Adam"],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-7",
+      "name": "Mixed case palindrome",
+      "input": ["RaceCar"],
+      "expectedOutput": true,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use String methods: toLowerCase() to handle case-insensitivity and replaceAll(\"[^a-z0-9]\", \"\") to remove non-alphanumeric characters using regex."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Use two pointers approach: start from both ends (left=0, right=length-1) and compare characters while moving towards the center. If any mismatch is found, return false."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete solution: Clean the string, use a while loop with two pointers (left < right), compare charAt(left) with charAt(right), increment left and decrement right. Return true if loop completes without finding mismatches."
+    }
+  ]
+}

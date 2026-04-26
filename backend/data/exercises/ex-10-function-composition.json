@@ -1,0 +1,95 @@
+{
+  "id": "ex-10-function-composition",
+  "title": "Function Composition and Pipe",
+  "description": "Implement compose and pipe functions that take multiple functions as arguments and return a new function that is the composition of those functions. This exercise teaches functional programming concepts and higher-order functions.",
+  "difficulty": "intermediate",
+  "category": "Functions",
+  "estimatedTime": 25,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `compose` that takes multiple functions as arguments",
+    "Return a new function that applies the functions from right to left",
+    "Create a function named `pipe` that applies functions from left to right",
+    "Both should work with any number of functions",
+    "The composed function should pass the result of each function to the next"
+  ],
+  "learningObjectives": [
+    "Master higher-order functions",
+    "Understand function composition",
+    "Learn functional programming patterns",
+    "Practice with reduceRight and reduce methods"
+  ],
+  "tags": ["functions", "functional-programming", "higher-order-functions", "composition"],
+  "starterCode": "// Write your functions here\nfunction compose(...fns) {\n  // Your code here\n}\n\nfunction pipe(...fns) {\n  // Your code here\n}\n\n// Example usage:\n// const add5 = x => x + 5;\n// const multiply3 = x => x * 3;\n// const subtract2 = x => x - 2;\n//\n// const composedFn = compose(subtract2, multiply3, add5);\n// composedFn(10); // Returns 43: (10 + 5) * 3 - 2 = 43\n//\n// const pipedFn = pipe(add5, multiply3, subtract2);\n// pipedFn(10); // Returns 43: (10 + 5) * 3 - 2 = 43\n",
+  "solution": "function compose(...fns) {\n  // Return a function that takes an initial value\n  return function(initialValue) {\n    // Apply functions from right to left\n    return fns.reduceRight((acc, fn) => fn(acc), initialValue);\n  };\n}\n\nfunction pipe(...fns) {\n  // Return a function that takes an initial value\n  return function(initialValue) {\n    // Apply functions from left to right\n    return fns.reduce((acc, fn) => fn(acc), initialValue);\n  };\n}\n\n// Alternative implementation with more explicit approach:\n// function compose(...fns) {\n//   return function(value) {\n//     let result = value;\n//     for (let i = fns.length - 1; i >= 0; i--) {\n//       result = fns[i](result);\n//     }\n//     return result;\n//   };\n// }\n//\n// function pipe(...fns) {\n//   return function(value) {\n//     let result = value;\n//     for (let i = 0; i < fns.length; i++) {\n//       result = fns[i](result);\n//     }\n//     return result;\n//   };\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Compose basic operations",
+      "input": ["compose", [10]],
+      "expectedOutput": 43,
+      "setup": "const add5 = x => x + 5; const multiply3 = x => x * 3; const subtract2 = x => x - 2; const fn = compose(subtract2, multiply3, add5);"
+    },
+    {
+      "id": "test-2",
+      "name": "Pipe basic operations",
+      "input": ["pipe", [10]],
+      "expectedOutput": 43,
+      "setup": "const add5 = x => x + 5; const multiply3 = x => x * 3; const subtract2 = x => x - 2; const fn = pipe(add5, multiply3, subtract2);"
+    },
+    {
+      "id": "test-3",
+      "name": "Single function compose",
+      "input": ["compose", [5]],
+      "expectedOutput": 10,
+      "setup": "const double = x => x * 2; const fn = compose(double);"
+    },
+    {
+      "id": "test-4",
+      "name": "Single function pipe",
+      "input": ["pipe", [5]],
+      "expectedOutput": 10,
+      "setup": "const double = x => x * 2; const fn = pipe(double);"
+    },
+    {
+      "id": "test-5",
+      "name": "Compose with strings",
+      "input": ["compose", ["hello"]],
+      "expectedOutput": "HELLO!",
+      "setup": "const addExclamation = s => s + '!'; const toUpperCase = s => s.toUpperCase(); const fn = compose(addExclamation, toUpperCase);"
+    },
+    {
+      "id": "test-6",
+      "name": "Pipe order verification",
+      "input": ["pipe", [2]],
+      "expectedOutput": 14,
+      "setup": "const square = x => x * x; const add10 = x => x + 10; const fn = pipe(square, add10);",
+      "hidden": true
+    },
+    {
+      "id": "test-7",
+      "name": "Compose order verification",
+      "input": ["compose", [2]],
+      "expectedOutput": 144,
+      "setup": "const square = x => x * x; const add10 = x => x + 10; const fn = compose(square, add10);",
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Both compose and pipe return a new function. The difference is the order: compose applies functions right-to-left, pipe applies left-to-right."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Use reduce for pipe (left-to-right) and reduceRight for compose (right-to-left). The accumulator is the result passed from one function to the next."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Pattern for compose: return (initialValue) => fns.reduceRight((acc, fn) => fn(acc), initialValue). For pipe, use reduce instead of reduceRight."
+    }
+  ]
+}

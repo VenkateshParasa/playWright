@@ -1,0 +1,88 @@
+{
+  "id": "ex-5-array-methods",
+  "title": "Array Filter, Map, and Reduce",
+  "description": "Write a function that takes an array of numbers and returns the sum of squares of only the even numbers. This exercise combines multiple array methods to perform complex data transformations.",
+  "difficulty": "intermediate",
+  "category": "Arrays",
+  "estimatedTime": 20,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `sumOfEvenSquares` that accepts an array of numbers",
+    "Filter the array to keep only even numbers",
+    "Map each even number to its square",
+    "Use reduce to sum all the squared values",
+    "Return the final sum (return 0 for empty arrays or arrays with no even numbers)"
+  ],
+  "learningObjectives": [
+    "Master array method chaining",
+    "Understand filter, map, and reduce operations",
+    "Learn functional programming concepts",
+    "Practice data transformation pipelines"
+  ],
+  "tags": ["arrays", "filter", "map", "reduce", "functional-programming"],
+  "starterCode": "// Write your function here\nfunction sumOfEvenSquares(numbers) {\n  // Your code here\n}\n\n// Example usage:\n// sumOfEvenSquares([1, 2, 3, 4, 5]) should return 20 (2^2 + 4^2 = 4 + 16)\n// sumOfEvenSquares([1, 3, 5]) should return 0\n",
+  "solution": "function sumOfEvenSquares(numbers) {\n  return numbers\n    .filter(num => num % 2 === 0)  // Keep only even numbers\n    .map(num => num * num)          // Square each number\n    .reduce((sum, num) => sum + num, 0);  // Sum all squares\n}\n\n// Alternative solution without chaining:\n// function sumOfEvenSquares(numbers) {\n//   let sum = 0;\n//   for (let num of numbers) {\n//     if (num % 2 === 0) {\n//       sum += num * num;\n//     }\n//   }\n//   return sum;\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Mixed odd and even numbers",
+      "input": [[1, 2, 3, 4, 5]],
+      "expectedOutput": 20
+    },
+    {
+      "id": "test-2",
+      "name": "Only odd numbers",
+      "input": [[1, 3, 5, 7]],
+      "expectedOutput": 0
+    },
+    {
+      "id": "test-3",
+      "name": "Only even numbers",
+      "input": [[2, 4, 6]],
+      "expectedOutput": 56
+    },
+    {
+      "id": "test-4",
+      "name": "Empty array",
+      "input": [[]],
+      "expectedOutput": 0
+    },
+    {
+      "id": "test-5",
+      "name": "Array with zero",
+      "input": [[0, 2, 4]],
+      "expectedOutput": 20
+    },
+    {
+      "id": "test-6",
+      "name": "Negative even numbers",
+      "input": [[-2, -4, 1, 3]],
+      "expectedOutput": 20,
+      "hidden": true
+    },
+    {
+      "id": "test-7",
+      "name": "Large even numbers",
+      "input": [[10, 20, 30]],
+      "expectedOutput": 1400,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "You can chain array methods together: array.filter().map().reduce(). Start by filtering even numbers (num % 2 === 0)."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "After filtering even numbers, use map() to square each number (num => num * num), then use reduce() to sum them up."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete solution: return numbers.filter(num => num % 2 === 0).map(num => num * num).reduce((sum, num) => sum + num, 0);"
+    }
+  ]
+}

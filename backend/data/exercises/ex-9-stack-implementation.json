@@ -1,0 +1,89 @@
+{
+  "id": "ex-9-stack-implementation",
+  "title": "Implement a Min Stack",
+  "description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. This exercise teaches you how to implement data structures with optimal time complexity.",
+  "difficulty": "intermediate",
+  "category": "Data Structures",
+  "estimatedTime": 30,
+  "language": "javascript",
+  "instructions": [
+    "Create a class named `MinStack` with the following methods:",
+    "push(val): Push element val onto the stack",
+    "pop(): Remove the element on top of the stack",
+    "top(): Get the top element",
+    "getMin(): Retrieve the minimum element in the stack in O(1) time",
+    "All operations should work in O(1) time complexity"
+  ],
+  "learningObjectives": [
+    "Understand stack data structure implementation",
+    "Learn to optimize for time complexity",
+    "Practice class-based programming in JavaScript",
+    "Master the concept of auxiliary data structures"
+  ],
+  "tags": ["data-structures", "stack", "optimization", "classes"],
+  "starterCode": "// Write your class here\nclass MinStack {\n  constructor() {\n    // Your code here\n  }\n\n  push(val) {\n    // Your code here\n  }\n\n  pop() {\n    // Your code here\n  }\n\n  top() {\n    // Your code here\n  }\n\n  getMin() {\n    // Your code here\n  }\n}\n\n// Example usage:\n// const stack = new MinStack();\n// stack.push(-2);\n// stack.push(0);\n// stack.push(-3);\n// stack.getMin(); // returns -3\n// stack.pop();\n// stack.top();    // returns 0\n// stack.getMin(); // returns -2\n",
+  "solution": "class MinStack {\n  constructor() {\n    this.stack = [];\n    this.minStack = [];  // Auxiliary stack to track minimum values\n  }\n\n  push(val) {\n    this.stack.push(val);\n    \n    // Push to minStack if it's empty or val is <= current minimum\n    if (this.minStack.length === 0 || val <= this.minStack[this.minStack.length - 1]) {\n      this.minStack.push(val);\n    }\n  }\n\n  pop() {\n    const popped = this.stack.pop();\n    \n    // If popped value was the minimum, remove it from minStack\n    if (popped === this.minStack[this.minStack.length - 1]) {\n      this.minStack.pop();\n    }\n    \n    return popped;\n  }\n\n  top() {\n    return this.stack[this.stack.length - 1];\n  }\n\n  getMin() {\n    return this.minStack[this.minStack.length - 1];\n  }\n}\n\n// Alternative solution storing pairs:\n// class MinStack {\n//   constructor() {\n//     this.stack = [];  // Each element is [value, currentMin]\n//   }\n//\n//   push(val) {\n//     const currentMin = this.stack.length === 0 \n//       ? val \n//       : Math.min(val, this.stack[this.stack.length - 1][1]);\n//     this.stack.push([val, currentMin]);\n//   }\n//\n//   pop() {\n//     return this.stack.pop()[0];\n//   }\n//\n//   top() {\n//     return this.stack[this.stack.length - 1][0];\n//   }\n//\n//   getMin() {\n//     return this.stack[this.stack.length - 1][1];\n//   }\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Basic operations",
+      "input": [["push", "push", "push", "getMin", "pop", "top", "getMin"], [[-2], [0], [-3], [], [], [], []]],
+      "expectedOutput": [null, null, null, -3, null, 0, -2]
+    },
+    {
+      "id": "test-2",
+      "name": "Single element",
+      "input": [["push", "getMin", "top"], [[5], [], []]],
+      "expectedOutput": [null, 5, 5]
+    },
+    {
+      "id": "test-3",
+      "name": "Ascending order",
+      "input": [["push", "push", "push", "getMin"], [[1], [2], [3], []]],
+      "expectedOutput": [null, null, null, 1]
+    },
+    {
+      "id": "test-4",
+      "name": "Descending order",
+      "input": [["push", "push", "push", "getMin"], [[3], [2], [1], []]],
+      "expectedOutput": [null, null, null, 1]
+    },
+    {
+      "id": "test-5",
+      "name": "Multiple same minimums",
+      "input": [["push", "push", "push", "getMin", "pop", "getMin"], [[1], [1], [1], [], [], []]],
+      "expectedOutput": [null, null, null, 1, null, 1]
+    },
+    {
+      "id": "test-6",
+      "name": "Complex sequence",
+      "input": [["push", "push", "push", "getMin", "pop", "getMin", "pop", "getMin"], [[0], [1], [0], [], [], [], [], []]],
+      "expectedOutput": [null, null, null, 0, null, 0, null, 0],
+      "hidden": true
+    },
+    {
+      "id": "test-7",
+      "name": "Negative numbers",
+      "input": [["push", "push", "push", "getMin", "pop", "getMin"], [[-5], [-3], [-7], [], [], []]],
+      "expectedOutput": [null, null, null, -7, null, -5],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "To track the minimum in O(1) time, you need an auxiliary data structure. Consider using a second stack that keeps track of minimum values."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Maintain two stacks: one for all elements and one for minimums. When pushing, add to minStack only if the value is <= current minimum. When popping, remove from minStack if the value equals current minimum."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Implementation: this.stack for values, this.minStack for minimums. Push to minStack when val <= minStack.top. Pop from minStack when popped value === minStack.top. getMin returns minStack.top."
+    }
+  ]
+}

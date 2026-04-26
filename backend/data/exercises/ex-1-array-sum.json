@@ -1,0 +1,80 @@
+{
+  "id": "ex-1-array-sum",
+  "title": "Sum of Array Elements",
+  "description": "Write a function that takes an array of numbers and returns the sum of all elements. This is a fundamental array operation that you will use frequently in programming.",
+  "difficulty": "beginner",
+  "category": "Arrays",
+  "estimatedTime": 10,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `sumArray` that accepts an array of numbers as a parameter",
+    "Use a loop or array method to iterate through all elements",
+    "Calculate and return the sum of all numbers in the array",
+    "Handle edge cases like empty arrays (should return 0)"
+  ],
+  "learningObjectives": [
+    "Practice working with arrays in JavaScript",
+    "Understand array iteration methods",
+    "Learn to handle edge cases",
+    "Master the reduce() method"
+  ],
+  "tags": ["arrays", "loops", "reduce", "fundamentals"],
+  "starterCode": "// Write your function here\nfunction sumArray(numbers) {\n  // Your code here\n}\n\n// Example usage:\n// sumArray([1, 2, 3, 4, 5]) should return 15\n// sumArray([]) should return 0\n",
+  "solution": "function sumArray(numbers) {\n  // Handle empty array\n  if (numbers.length === 0) {\n    return 0;\n  }\n\n  // Use reduce to sum all elements\n  return numbers.reduce((sum, num) => sum + num, 0);\n}\n\n// Alternative solution using a for loop:\n// function sumArray(numbers) {\n//   let sum = 0;\n//   for (let i = 0; i < numbers.length; i++) {\n//     sum += numbers[i];\n//   }\n//   return sum;\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Sum of positive numbers",
+      "input": [[1, 2, 3, 4, 5]],
+      "expectedOutput": 15
+    },
+    {
+      "id": "test-2",
+      "name": "Sum with negative numbers",
+      "input": [[-5, 10, -3, 8]],
+      "expectedOutput": 10
+    },
+    {
+      "id": "test-3",
+      "name": "Empty array",
+      "input": [[]],
+      "expectedOutput": 0
+    },
+    {
+      "id": "test-4",
+      "name": "Single element",
+      "input": [[42]],
+      "expectedOutput": 42
+    },
+    {
+      "id": "test-5",
+      "name": "Array with zeros",
+      "input": [[0, 0, 0, 5]],
+      "expectedOutput": 5
+    },
+    {
+      "id": "test-6",
+      "name": "Large numbers",
+      "input": [[1000, 2000, 3000]],
+      "expectedOutput": 6000,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "You can use the array reduce() method to accumulate values. It takes a callback function and an initial value."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "The reduce() method signature is: array.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue). The initial value should be 0 for summing."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete solution approach: Check if the array is empty first, then use reduce with 0 as the initial value: return numbers.reduce((sum, num) => sum + num, 0);"
+    }
+  ]
+}

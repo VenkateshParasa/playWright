@@ -1,0 +1,92 @@
+{
+  "id": "java-ex-10",
+  "title": "Writing JUnit Tests",
+  "description": "Master JUnit testing framework by writing comprehensive unit tests with various assertion methods, test annotations (@Test, @Before, @After), and test lifecycle management. Learn to verify expected outcomes, handle exceptions, and organize test suites effectively.",
+  "difficulty": "advanced",
+  "category": "Unit Testing",
+  "estimatedTime": 20,
+  "language": "java",
+  "instructions": [
+    "Create a `Calculator` class with methods: add, subtract, multiply, divide",
+    "Create a `CalculatorTest` class with JUnit test methods",
+    "Implement @Before method `setUp()` to initialize a Calculator instance",
+    "Write test method `testAddition()` to verify add(5, 3) returns 8",
+    "Write test method `testSubtraction()` to verify subtract(10, 4) returns 6",
+    "Write test method `testMultiplication()` to verify multiply(6, 7) returns 42",
+    "Write test method `testDivision()` to verify divide(20, 4) returns 5",
+    "Write test method `testDivisionByZero()` to verify ArithmeticException is thrown",
+    "Use appropriate JUnit assertions: assertEquals, assertTrue, assertThrows"
+  ],
+  "learningObjectives": [
+    "Understand JUnit test structure and annotations",
+    "Master various assertion methods (assertEquals, assertTrue, assertFalse)",
+    "Learn test lifecycle with @Before, @After annotations",
+    "Practice exception testing with assertThrows",
+    "Understand the importance of test independence and isolation"
+  ],
+  "tags": ["java", "junit", "unit-testing", "advanced", "tdd"],
+  "starterCode": "import org.junit.Before;\nimport org.junit.Test;\nimport static org.junit.Assert.*;\n\nclass Calculator {\n    public int add(int a, int b) {\n        // Your code here\n    }\n    \n    public int subtract(int a, int b) {\n        // Your code here\n    }\n    \n    public int multiply(int a, int b) {\n        // Your code here\n    }\n    \n    public int divide(int a, int b) {\n        // Your code here\n    }\n}\n\npublic class CalculatorTest {\n    private Calculator calculator;\n    \n    @Before\n    public void setUp() {\n        // Initialize calculator before each test\n        // Your code here\n    }\n    \n    @Test\n    public void testAddition() {\n        // Test add method: 5 + 3 = 8\n        // Your code here\n    }\n    \n    @Test\n    public void testSubtraction() {\n        // Test subtract method: 10 - 4 = 6\n        // Your code here\n    }\n    \n    @Test\n    public void testMultiplication() {\n        // Test multiply method: 6 × 7 = 42\n        // Your code here\n    }\n    \n    @Test\n    public void testDivision() {\n        // Test divide method: 20 ÷ 4 = 5\n        // Your code here\n    }\n    \n    @Test(expected = ArithmeticException.class)\n    public void testDivisionByZero() {\n        // Test that division by zero throws exception\n        // Your code here\n    }\n}",
+  "solution": "import org.junit.Before;\nimport org.junit.Test;\nimport static org.junit.Assert.*;\n\nclass Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n    \n    public int subtract(int a, int b) {\n        return a - b;\n    }\n    \n    public int multiply(int a, int b) {\n        return a * b;\n    }\n    \n    public int divide(int a, int b) {\n        if (b == 0) {\n            throw new ArithmeticException(\"Cannot divide by zero\");\n        }\n        return a / b;\n    }\n}\n\npublic class CalculatorTest {\n    private Calculator calculator;\n    \n    @Before\n    public void setUp() {\n        calculator = new Calculator();\n    }\n    \n    @Test\n    public void testAddition() {\n        int result = calculator.add(5, 3);\n        assertEquals(8, result);\n    }\n    \n    @Test\n    public void testSubtraction() {\n        int result = calculator.subtract(10, 4);\n        assertEquals(6, result);\n    }\n    \n    @Test\n    public void testMultiplication() {\n        int result = calculator.multiply(6, 7);\n        assertEquals(42, result);\n    }\n    \n    @Test\n    public void testDivision() {\n        int result = calculator.divide(20, 4);\n        assertEquals(5, result);\n    }\n    \n    @Test(expected = ArithmeticException.class)\n    public void testDivisionByZero() {\n        calculator.divide(10, 0);\n    }\n    \n    @Test\n    public void testAdditionWithNegativeNumbers() {\n        int result = calculator.add(-5, -3);\n        assertEquals(-8, result);\n    }\n    \n    @Test\n    public void testMultiplicationByZero() {\n        int result = calculator.multiply(5, 0);\n        assertEquals(0, result);\n    }\n}",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Calculator add method works correctly",
+      "input": [5, 3],
+      "expectedOutput": 8
+    },
+    {
+      "id": "test-2",
+      "name": "Calculator subtract method works correctly",
+      "input": [10, 4],
+      "expectedOutput": 6
+    },
+    {
+      "id": "test-3",
+      "name": "Calculator multiply method works correctly",
+      "input": [6, 7],
+      "expectedOutput": 42
+    },
+    {
+      "id": "test-4",
+      "name": "Calculator divide method works correctly",
+      "input": [20, 4],
+      "expectedOutput": 5
+    },
+    {
+      "id": "test-5",
+      "name": "Division by zero throws ArithmeticException",
+      "input": [10, 0],
+      "expectedOutput": "ArithmeticException"
+    },
+    {
+      "id": "test-6",
+      "name": "setUp method initializes calculator",
+      "input": [],
+      "expectedOutput": true
+    },
+    {
+      "id": "test-7",
+      "name": "All test methods have @Test annotation",
+      "input": [],
+      "expectedOutput": true,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "JUnit test methods must be public void and annotated with @Test. Use @Before to initialize objects before each test: 'calculator = new Calculator();'. This ensures test independence."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Use assertEquals(expected, actual) to verify results: 'assertEquals(8, calculator.add(5, 3));'. For exceptions, use @Test(expected = ExceptionClass.class) annotation or assertThrows in JUnit 5."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Complete solution: In divide method, check if b == 0 and throw new ArithmeticException(\"Cannot divide by zero\"). Test it with @Test(expected = ArithmeticException.class) annotation. Each arithmetic operation should be a simple return statement with the operation."
+    }
+  ]
+}

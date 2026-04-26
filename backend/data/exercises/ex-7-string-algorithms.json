@@ -1,0 +1,94 @@
+{
+  "id": "ex-7-string-algorithms",
+  "title": "Find All Anagrams",
+  "description": "Write a function that finds all starting indices of anagram substrings in a given string. An anagram is a word formed by rearranging the letters of another word. This exercise combines string manipulation with algorithmic thinking.",
+  "difficulty": "intermediate",
+  "category": "Strings",
+  "estimatedTime": 30,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `findAnagrams` that accepts two strings: s (text) and p (pattern)",
+    "Find all starting indices where an anagram of p appears as a substring in s",
+    "An anagram means the substring contains the same characters with the same frequency",
+    "Return an array of starting indices (0-indexed)",
+    "Both strings will only contain lowercase letters"
+  ],
+  "learningObjectives": [
+    "Master sliding window technique",
+    "Work with character frequency maps",
+    "Optimize string search algorithms",
+    "Practice efficient substring matching"
+  ],
+  "tags": ["strings", "algorithms", "sliding-window", "hash-map"],
+  "starterCode": "// Write your function here\nfunction findAnagrams(s, p) {\n  // Your code here\n}\n\n// Example usage:\n// findAnagrams('cbaebabacd', 'abc') should return [0, 6]\n// At index 0: 'cba' is an anagram of 'abc'\n// At index 6: 'bac' is an anagram of 'abc'\n",
+  "solution": "function findAnagrams(s, p) {\n  const result = [];\n  if (s.length < p.length) return result;\n\n  // Create frequency map for pattern\n  const pMap = {};\n  for (let char of p) {\n    pMap[char] = (pMap[char] || 0) + 1;\n  }\n\n  // Create frequency map for sliding window\n  const sMap = {};\n  const windowSize = p.length;\n\n  // Initialize first window\n  for (let i = 0; i < windowSize; i++) {\n    sMap[s[i]] = (sMap[s[i]] || 0) + 1;\n  }\n\n  // Helper function to compare maps\n  const mapsEqual = (map1, map2) => {\n    if (Object.keys(map1).length !== Object.keys(map2).length) return false;\n    for (let key in map1) {\n      if (map1[key] !== map2[key]) return false;\n    }\n    return true;\n  };\n\n  // Check first window\n  if (mapsEqual(sMap, pMap)) result.push(0);\n\n  // Slide the window\n  for (let i = windowSize; i < s.length; i++) {\n    // Add new character to window\n    sMap[s[i]] = (sMap[s[i]] || 0) + 1;\n\n    // Remove old character from window\n    const oldChar = s[i - windowSize];\n    sMap[oldChar]--;\n    if (sMap[oldChar] === 0) delete sMap[oldChar];\n\n    // Check if current window is an anagram\n    if (mapsEqual(sMap, pMap)) {\n      result.push(i - windowSize + 1);\n    }\n  }\n\n  return result;\n}\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Basic anagram search",
+      "input": ["cbaebabacd", "abc"],
+      "expectedOutput": [0, 6]
+    },
+    {
+      "id": "test-2",
+      "name": "Multiple consecutive anagrams",
+      "input": ["abab", "ab"],
+      "expectedOutput": [0, 1, 2]
+    },
+    {
+      "id": "test-3",
+      "name": "No anagrams found",
+      "input": ["hello", "xyz"],
+      "expectedOutput": []
+    },
+    {
+      "id": "test-4",
+      "name": "Pattern longer than text",
+      "input": ["a", "abc"],
+      "expectedOutput": []
+    },
+    {
+      "id": "test-5",
+      "name": "Single character pattern",
+      "input": ["aaa", "a"],
+      "expectedOutput": [0, 1, 2]
+    },
+    {
+      "id": "test-6",
+      "name": "Exact match",
+      "input": ["abc", "abc"],
+      "expectedOutput": [0]
+    },
+    {
+      "id": "test-7",
+      "name": "Complex anagram pattern",
+      "input": ["bpbpaaab", "aab"],
+      "expectedOutput": [3, 5],
+      "hidden": true
+    },
+    {
+      "id": "test-8",
+      "name": "Long string with pattern",
+      "input": ["ababababab", "aab"],
+      "expectedOutput": [0, 2, 4, 6],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use a sliding window approach with a frequency map. Create a map of character counts for the pattern, then slide a window of the same size across the text."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "For each window position, maintain a frequency map of characters in the current window. Compare this map with the pattern's frequency map to check if they match."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Create helper function to compare two maps. As you slide the window, add the new character and remove the leftmost character efficiently. Store the starting index when maps match."
+    }
+  ]
+}

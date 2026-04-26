@@ -1,0 +1,109 @@
+{
+  "id": "ex-6-object-transformation",
+  "title": "Nested Object Transformation",
+  "description": "Write a function that transforms a nested object of users with their scores into a sorted array of user summaries. This exercise teaches you how to work with complex nested data structures.",
+  "difficulty": "intermediate",
+  "category": "Objects",
+  "estimatedTime": 25,
+  "language": "javascript",
+  "instructions": [
+    "Create a function named `transformUsers` that accepts an object where keys are user IDs and values are user objects",
+    "Each user object has: name (string), scores (array of numbers), and active (boolean)",
+    "Calculate the average score for each user",
+    "Return an array of objects with: id, name, averageScore, and isActive",
+    "Sort the result by averageScore in descending order",
+    "Only include active users in the result"
+  ],
+  "learningObjectives": [
+    "Master object manipulation and transformation",
+    "Work with nested data structures",
+    "Practice array sorting and filtering",
+    "Calculate aggregate values from arrays"
+  ],
+  "tags": ["objects", "data-transformation", "nested-structures", "sorting"],
+  "starterCode": "// Write your function here\nfunction transformUsers(users) {\n  // Your code here\n}\n\n// Example usage:\n// const users = {\n//   '1': { name: 'Alice', scores: [85, 90, 92], active: true },\n//   '2': { name: 'Bob', scores: [70, 75], active: false },\n//   '3': { name: 'Charlie', scores: [95, 98, 96], active: true }\n// };\n// transformUsers(users) should return:\n// [\n//   { id: '3', name: 'Charlie', averageScore: 96.33, isActive: true },\n//   { id: '1', name: 'Alice', averageScore: 89, isActive: true }\n// ]\n",
+  "solution": "function transformUsers(users) {\n  return Object.entries(users)\n    .filter(([id, user]) => user.active)  // Only active users\n    .map(([id, user]) => ({\n      id: id,\n      name: user.name,\n      averageScore: user.scores.reduce((sum, score) => sum + score, 0) / user.scores.length,\n      isActive: user.active\n    }))\n    .sort((a, b) => b.averageScore - a.averageScore);  // Sort by average descending\n}\n\n// Alternative solution with more explicit steps:\n// function transformUsers(users) {\n//   const result = [];\n//   \n//   for (const [id, user] of Object.entries(users)) {\n//     if (user.active) {\n//       const sum = user.scores.reduce((acc, score) => acc + score, 0);\n//       const avg = sum / user.scores.length;\n//       result.push({\n//         id,\n//         name: user.name,\n//         averageScore: avg,\n//         isActive: user.active\n//       });\n//     }\n//   }\n//   \n//   return result.sort((a, b) => b.averageScore - a.averageScore);\n// }\n",
+  "testCases": [
+    {
+      "id": "test-1",
+      "name": "Basic transformation",
+      "input": [{
+        "1": { "name": "Alice", "scores": [85, 90, 92], "active": true },
+        "2": { "name": "Bob", "scores": [70, 75], "active": false },
+        "3": { "name": "Charlie", "scores": [95, 98, 96], "active": true }
+      }],
+      "expectedOutput": [
+        { "id": "3", "name": "Charlie", "averageScore": 96.33333333333333, "isActive": true },
+        { "id": "1", "name": "Alice", "averageScore": 89, "isActive": true }
+      ]
+    },
+    {
+      "id": "test-2",
+      "name": "All inactive users",
+      "input": [{
+        "1": { "name": "Alice", "scores": [85, 90], "active": false },
+        "2": { "name": "Bob", "scores": [70, 75], "active": false }
+      }],
+      "expectedOutput": []
+    },
+    {
+      "id": "test-3",
+      "name": "Single user",
+      "input": [{
+        "1": { "name": "Alice", "scores": [100], "active": true }
+      }],
+      "expectedOutput": [
+        { "id": "1", "name": "Alice", "averageScore": 100, "isActive": true }
+      ]
+    },
+    {
+      "id": "test-4",
+      "name": "Multiple scores same average",
+      "input": [{
+        "1": { "name": "Alice", "scores": [80, 80, 80], "active": true },
+        "2": { "name": "Bob", "scores": [80], "active": true }
+      }],
+      "expectedOutput": [
+        { "id": "1", "name": "Alice", "averageScore": 80, "isActive": true },
+        { "id": "2", "name": "Bob", "averageScore": 80, "isActive": true }
+      ]
+    },
+    {
+      "id": "test-5",
+      "name": "Empty object",
+      "input": [{}],
+      "expectedOutput": []
+    },
+    {
+      "id": "test-6",
+      "name": "Mixed active and inactive",
+      "input": [{
+        "1": { "name": "Alice", "scores": [90, 95], "active": true },
+        "2": { "name": "Bob", "scores": [100, 100], "active": false },
+        "3": { "name": "Charlie", "scores": [85, 90], "active": true }
+      }],
+      "expectedOutput": [
+        { "id": "1", "name": "Alice", "averageScore": 92.5, "isActive": true },
+        { "id": "3", "name": "Charlie", "averageScore": 87.5, "isActive": true }
+      ],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    {
+      "id": "hint-1",
+      "level": 1,
+      "content": "Use Object.entries() to convert the object into an array of [id, user] pairs. Then you can use array methods to filter, map, and sort."
+    },
+    {
+      "id": "hint-2",
+      "level": 2,
+      "content": "Chain the operations: filter for active users, map to create new objects with calculated averageScore, then sort by averageScore in descending order (b.averageScore - a.averageScore)."
+    },
+    {
+      "id": "hint-3",
+      "level": 3,
+      "content": "Calculate average with: user.scores.reduce((sum, score) => sum + score, 0) / user.scores.length. Remember to filter active users first, then transform and sort."
+    }
+  ]
+}
