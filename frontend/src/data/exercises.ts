@@ -467,4 +467,104 @@ function findMax(numbers) {
       },
     ],
   },
+  {
+    id: 'java-ex-1-hello-world',
+    title: 'Java Hello World & Basic Syntax',
+    description:
+      'Create your first Java program that prints a greeting message. This exercise introduces you to Java\'s basic syntax, class structure, and the main method that serves as the entry point for Java applications.',
+    difficulty: 'beginner',
+    category: 'Java Basics',
+    estimatedTime: 15,
+    language: 'java',
+    instructions: [
+      'Create a class named `HelloWorld` with a main method',
+      'Implement a static method `greet()` that returns a greeting message',
+      'The greeting should be "Hello, Test Automation Academy!"',
+      'Print the greeting message from the main method',
+      'Ensure proper Java syntax with semicolons and curly braces',
+    ],
+    learningObjectives: [
+      'Understand Java class structure and syntax',
+      'Learn the purpose of the main method',
+      'Practice creating static methods',
+      'Master basic string operations in Java',
+      'Understand method return types and void methods',
+    ],
+    tags: ['java', 'basics', 'syntax', 'hello-world', 'fundamentals'],
+    starterCode: `public class HelloWorld {
+    // Create a static method that returns a greeting
+    public static String greet() {
+        // Your code here
+    }
+
+    public static void main(String[] args) {
+        // Call the greet method and print the result
+        // Your code here
+    }
+}`,
+    solution: `public class HelloWorld {
+    // Static method that returns a greeting message
+    public static String greet() {
+        return "Hello, Test Automation Academy!";
+    }
+
+    public static void main(String[] args) {
+        // Call the greet method and print the result
+        String greeting = greet();
+        System.out.println(greeting);
+    }
+}`,
+    testCases: [
+      {
+        id: 'test-1',
+        name: 'greet() returns correct message',
+        input: [],
+        expectedOutput: 'Hello, Test Automation Academy!',
+      },
+      {
+        id: 'test-2',
+        name: 'Method is static',
+        input: [],
+        expectedOutput: true,
+      },
+      {
+        id: 'test-3',
+        name: 'Return type is String',
+        input: [],
+        expectedOutput: true,
+      },
+      {
+        id: 'test-4',
+        name: 'Main method exists',
+        input: [],
+        expectedOutput: true,
+      },
+      {
+        id: 'test-5',
+        name: 'Message contains "Test Automation"',
+        input: [],
+        expectedOutput: true,
+      },
+    ],
+    hints: [
+      {
+        id: 'hint-1',
+        level: 1,
+        content:
+          'The main method signature in Java is: public static void main(String[] args). This is the entry point of any Java application.',
+      },
+      {
+        id: 'hint-2',
+        level: 2,
+        content:
+          'A static method can be called without creating an instance of the class. Use "public static String greet()" to define your method that returns a String.',
+      },
+      {
+        id: 'hint-3',
+        level: 3,
+        content:
+          'Complete solution: Return the string "Hello, Test Automation Academy!" from the greet() method using return "Hello, Test Automation Academy!"; and call it in main with System.out.println(greet());',
+      },
+    ],
+  },
 ];

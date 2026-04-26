@@ -79,9 +79,18 @@ interface AchievementsState {
   fetchLeaderboard: (type?: 'xp' | 'level' | 'streak') => Promise<void>;
   markAchievementsSeen: (achievementIds: string[]) => Promise<void>;
   updateActivity: (activityType: string, data?: any) => Promise<void>;
+
+  // Exercise-specific achievement checks
+  checkExerciseAchievements: (exerciseData: {
+    exerciseId: string;
+    score: number;
+    timeSpent: number;
+    completed: boolean;
+  }) => void;
+  awardExerciseXP: (score: number, completed: boolean) => void;
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 export const useAchievementsStore = create<AchievementsState>()(
   persist(
@@ -238,6 +247,76 @@ export const useAchievementsStore = create<AchievementsState>()(
         } catch (error) {
           console.error('Failed to update activity:', error);
         }
+      },
+
+      // ====================================================================
+      // Exercise Achievement Checks
+      // ====================================================================
+      checkExerciseAchievements: (exerciseData) => {
+        const { completed, score } = exerciseData;
+
+        // Update activity to trigger server-side achievement checks
+        if (completed) {
+          get().updateActivity('exercise_completed', {
+            exerciseId: exerciseData.exerciseId,
+            score,
+            timeSpent: exerciseData.timeSpent,
+          });
+        }
+
+        // Update local user progress for immediate feedback
+        const currentProgress = get().userProgress;
+        if (currentProgress) {
+          const newProgress = {
+            ...currentProgress,
+            exercisesCompleted: currentProgress.exercisesCompleted + (completed ? 1 : 0),
+          };
+          set({ userProgress: newProgress });
+        }
+      },
+
+      // ====================================================================
+      // Award Exercise XP
+      // ====================================================================
+      awardExerciseXP: (score, completed) => {
+        const currentProgress = get().userProgress;
+        if (!currentProgress) return;
+
+        // Calculate XP based on score and completion
+        let xpGained = 0;
+
+        if (completed) {
+          // Base XP for completion
+          xpGained = 50;
+
+          // Bonus XP for perfect score
+          if (score === 100) {
+            xpGained += 50;
+          } else if (score >= 90) {
+            xpGained += 30;
+          } else if (score >= 80) {
+            xpGained += 20;
+          }
+        } else {
+          // Partial XP for attempts
+          xpGained = Math.floor(score / 10);
+        }
+
+        // Update user progress with new XP
+        const newProgress = {
+          ...currentProgress,
+          totalXP: currentProgress.totalXP + xpGained,
+        };
+
+        set({ userProgress: newProgress });
+
+        // Optionally update activity to sync with server
+        get().updateActivity('xp_gained', {
+          source: 'exercise',
+          amount: xpGained,
+          score,
+          completed,
+        });
       },
     }),
     {

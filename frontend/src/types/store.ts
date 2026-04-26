@@ -99,6 +99,7 @@ export interface ProgressActions {
   toggleBookmark: (lessonId: string) => void;
   addQuizAttempt: (quizId: string, attempt: Omit<QuizAttempt, 'quizId'>) => void;
   updateExerciseProgress: (exerciseId: string, progress: Partial<ExerciseProgress>) => void;
+  completeExercise: (exerciseId: string, score: number, timeSpent: number) => void;
   calculateOverallProgress: () => void;
   updateStreak: () => void;
   syncProgress: () => Promise<void>;

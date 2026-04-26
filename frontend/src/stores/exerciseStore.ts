@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Exercise, ExerciseProgress, ExerciseAttempt, TestResult, ConsoleLog } from '../types/exercise';
+import { getAllExercises, getExerciseById, ExerciseQueryParams } from '../lib/api/exercises';
 
 interface ExerciseStore {
   // Current exercise state
@@ -10,6 +11,11 @@ interface ExerciseStore {
   testResults: TestResult[];
   consoleLogs: ConsoleLog[];
   timeSpent: number;
+
+  // Exercises list
+  exercises: Exercise[];
+  isLoading: boolean;
+  error: string | null;
 
   // Progress tracking
   progress: Record<string, ExerciseProgress>;
@@ -23,6 +29,10 @@ interface ExerciseStore {
   clearConsoleLogs: () => void;
   incrementTimeSpent: () => void;
   resetTimeSpent: () => void;
+
+  // API Actions
+  loadExercises: (params?: ExerciseQueryParams) => Promise<void>;
+  loadExerciseById: (id: string) => Promise<Exercise | null>;
 
   // Progress management
   getExerciseProgress: (exerciseId: string) => ExerciseProgress | undefined;
@@ -45,6 +55,9 @@ export const useExerciseStore = create<ExerciseStore>()(
       testResults: [],
       consoleLogs: [],
       timeSpent: 0,
+      exercises: [],
+      isLoading: false,
+      error: null,
       progress: {},
 
       // Set current exercise
@@ -96,6 +109,45 @@ export const useExerciseStore = create<ExerciseStore>()(
       // Reset time spent
       resetTimeSpent: () => {
         set({ timeSpent: 0 });
+      },
+
+      // Load exercises from API
+      loadExercises: async (params?: ExerciseQueryParams) => {
+        set({ isLoading: true, error: null });
+        try {
+          const response = await getAllExercises(params);
+          set({
+            exercises: response.exercises,
+            isLoading: false,
+            error: null
+          });
+        } catch (error) {
+          console.error('Failed to load exercises:', error);
+          set({
+            isLoading: false,
+            error: error instanceof Error ? error.message : 'Failed to load exercises'
+          });
+        }
+      },
+
+      // Load specific exercise by ID from API
+      loadExerciseById: async (id: string) => {
+        set({ isLoading: true, error: null });
+        try {
+          const exercise = await getExerciseById(id);
+          set({
+            isLoading: false,
+            error: null
+          });
+          return exercise;
+        } catch (error) {
+          console.error('Failed to load exercise:', error);
+          set({
+            isLoading: false,
+            error: error instanceof Error ? error.message : 'Failed to load exercise'
+          });
+          return null;
+        }
       },
 
       // Get exercise progress
@@ -209,6 +261,7 @@ export const useExerciseStore = create<ExerciseStore>()(
         };
 
         const newBestScore = Math.max(existingProgress.bestScore, attempt.score);
+        const isNewlyCompleted = attempt.passed && !existingProgress.completed;
 
         set({
           progress: {
@@ -219,8 +272,38 @@ export const useExerciseStore = create<ExerciseStore>()(
               bestScore: newBestScore,
               totalTimeSpent: existingProgress.totalTimeSpent + timeSpent,
               lastAttemptDate: new Date(),
+              completed: attempt.passed || existingProgress.completed,
+              completedDate: isNewlyCompleted ? new Date() : existingProgress.completedDate,
             },
           },
+        });
+
+        // ====================================================================
+        // Integration with progressStore
+        // ====================================================================
+        // Import progressStore dynamically to avoid circular dependency
+        import('./progressStore').then(({ useProgressStore }) => {
+          const { completeExercise } = useProgressStore.getState();
+          completeExercise(currentExercise.id, attempt.score, timeSpent);
+        });
+
+        // ====================================================================
+        // Integration with achievementsStore
+        // ====================================================================
+        // Import achievementsStore dynamically to avoid circular dependency
+        import('./achievementsStore').then(({ useAchievementsStore }) => {
+          const { checkExerciseAchievements, awardExerciseXP } = useAchievementsStore.getState();
+
+          if (isNewlyCompleted) {
+            checkExerciseAchievements({
+              exerciseId: currentExercise.id,
+              score: attempt.score,
+              timeSpent,
+              completed: true,
+            });
+          }
+
+          awardExerciseXP(attempt.score, isNewlyCompleted);
         });
 
         // Reset time spent after saving attempt
@@ -243,6 +326,8 @@ export const useExerciseStore = create<ExerciseStore>()(
         const existingProgress = progress[currentExercise.id];
         if (!existingProgress) return;
 
+        const isNewlyCompleted = !existingProgress.completed;
+
         set({
           progress: {
             ...progress,
@@ -253,6 +338,33 @@ export const useExerciseStore = create<ExerciseStore>()(
             },
           },
         });
+
+        // ====================================================================
+        // Integration with progressStore
+        // ====================================================================
+        if (isNewlyCompleted) {
+          import('./progressStore').then(({ useProgressStore }) => {
+            const { completeExercise } = useProgressStore.getState();
+            completeExercise(
+              currentExercise.id,
+              existingProgress.bestScore,
+              existingProgress.totalTimeSpent
+            );
+          });
+
+          // ====================================================================
+          // Integration with achievementsStore
+          // ====================================================================
+          import('./achievementsStore').then(({ useAchievementsStore }) => {
+            const { checkExerciseAchievements } = useAchievementsStore.getState();
+            checkExerciseAchievements({
+              exerciseId: currentExercise.id,
+              score: existingProgress.bestScore,
+              timeSpent: existingProgress.totalTimeSpent,
+              completed: true,
+            });
+          });
+        }
       },
 
       // Reset exercise

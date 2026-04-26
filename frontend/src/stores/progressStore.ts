@@ -186,6 +186,56 @@ export const useProgressStore = create<ProgressStore>()(
         },
 
         // ====================================================================
+        // Complete Exercise
+        // ====================================================================
+        completeExercise: (exerciseId: string, score: number, timeSpent: number) => {
+          const currentProgress = get().exercises[exerciseId] || {
+            exerciseId,
+            completed: false,
+            attempts: 0,
+            bestScore: 0,
+            timeSpent: 0,
+          };
+
+          // Increment attempts
+          const attempts = currentProgress.attempts + 1;
+
+          // Update best score if current is higher
+          const bestScore = Math.max(currentProgress.bestScore, score);
+
+          // Mark as completed if score is perfect (100) or all tests passed
+          const completed = score === 100 || currentProgress.completed;
+
+          set(
+            {
+              exercises: {
+                ...get().exercises,
+                [exerciseId]: {
+                  ...currentProgress,
+                  attempts,
+                  bestScore,
+                  completed,
+                  completedAt: completed && !currentProgress.completed
+                    ? new Date().toISOString()
+                    : currentProgress.completedAt,
+                  timeSpent: currentProgress.timeSpent + timeSpent,
+                },
+              },
+              totalStudyTime: get().totalStudyTime + timeSpent,
+              lastStudyDate: new Date().toISOString(),
+            },
+            false,
+            'progress/completeExercise'
+          );
+
+          // Recalculate progress and update streak if newly completed
+          if (completed && !currentProgress.completed) {
+            get().calculateOverallProgress();
+            get().updateStreak();
+          }
+        },
+
+        // ====================================================================
         // Calculate Overall Progress
         // ====================================================================
         calculateOverallProgress: () => {

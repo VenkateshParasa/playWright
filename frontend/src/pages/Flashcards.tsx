@@ -65,7 +65,7 @@ export const Flashcards: React.FC = () => {
               <div className="result-stat-value">
                 {Math.floor(
                   (currentSession.endTime
-                    ? currentSession.endTime.getTime() - currentSession.startTime.getTime()
+                    ? new Date(currentSession.endTime).getTime() - new Date(currentSession.startTime).getTime()
                     : 0) / 60000
                 )}m
               </div>

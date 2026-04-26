@@ -163,6 +163,20 @@ export default function ExerciseRunner({
           </div>
         </div>
 
+        {language === 'java' && (
+          <div className="flex items-start gap-2 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+            <div className="flex-1 text-sm">
+              <h4 className="font-semibold text-blue-900 dark:text-blue-300 mb-1">Java Execution Notice</h4>
+              <p className="text-blue-700 dark:text-blue-400">
+                Java code execution requires backend server support. When you click "Run Tests", your code will undergo
+                client-side syntax validation. In a production environment, the code would be compiled using javac and
+                executed in a secure, sandboxed Docker container on the server.
+              </p>
+            </div>
+          </div>
+        )}
+
         <div className="flex items-start gap-2 text-xs text-gray-500 dark:text-gray-400">
           <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
           <p>

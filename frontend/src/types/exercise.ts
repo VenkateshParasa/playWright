@@ -11,11 +11,12 @@ export interface TestCase {
 export interface TestResult {
   testId: string;
   testName: string;
-  passed: boolean;
+  passed: boolean | null; // null indicates test was not executed (e.g., Java requiring backend)
   actual?: any;
   expected?: any;
   error?: string;
   executionTime?: number;
+  message?: string; // Additional message for test results
 }
 
 export interface Hint {
@@ -72,6 +73,8 @@ export interface CodeExecutionResult {
   logs: string[];
   testResults?: TestResult[];
   executionTime: number;
+  requiresBackend?: boolean; // Indicates that backend execution is required
+  message?: string; // Additional execution message
 }
 
 export interface ConsoleLog {

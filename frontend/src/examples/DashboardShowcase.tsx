@@ -5,6 +5,7 @@
  * and can be used as a reference for implementation.
  */
 
+import { useMemo } from 'react';
 import WelcomeCard from '../components/dashboard/WelcomeCard';
 import ProgressOverview from '../components/dashboard/ProgressOverview';
 import StreakCounter from '../components/dashboard/StreakCounter';
@@ -12,6 +13,22 @@ import UpcomingReviews from '../components/dashboard/UpcomingReviews';
 import RecentAchievements from '../components/dashboard/RecentAchievements';
 import StudyTimeChart from '../components/dashboard/StudyTimeChart';
 import QuickActions from '../components/dashboard/QuickActions';
+import {
+  WelcomeCardSkeleton,
+  ProgressOverviewSkeleton,
+  StreakCounterSkeleton,
+  UpcomingReviewsSkeleton,
+  RecentAchievementsSkeleton,
+  StudyTimeChartSkeleton,
+  QuickActionsSkeleton,
+  DashboardSkeleton,
+} from '../components/dashboard/SkeletonLoaders';
+import { useProgressStore, getTotalCompletedLessons } from '../stores/progressStore';
+import { useAuthStore } from '../stores/authStore';
+import { useLessonsStore } from '../stores/lessonsStore';
+import { useAchievementsStore } from '../stores/achievementsStore';
+import { useSRSStore } from '../stores/srsStore';
+import { useExerciseStore } from '../stores/exerciseStore';
 
 // Example props for each component
 const showcaseData = {
@@ -115,7 +132,7 @@ const showcaseData = {
 
   // QuickActions example
   quickActions: {
-    nextLessonId: 'lesson-8',
+    nextLessonId: 'pw-beginner-008',
     nextLessonTitle: 'Advanced Locators in Playwright',
     reviewsAvailable: 15,
     exercisesAvailable: 3,
@@ -195,45 +212,109 @@ const QuickActionsExample = () => (
 );
 
 /**
- * Full Dashboard Layout Example
+ * Full Dashboard Layout Example — uses real store data
  */
-const DashboardLayoutExample = () => (
-  <div className="space-y-6">
-    {/* Welcome Section - Full Width */}
-    <WelcomeCard {...showcaseData.welcomeCard} />
+const DashboardLayoutExample = () => {
+  const { user } = useAuthStore();
+  const { lessons: progressLessons, currentStreak, longestStreak, overallProgress } = useProgressStore();
+  const { lessons } = useLessonsStore();
+  const { achievements } = useAchievementsStore();
+  const { dueCards, cards, reviews } = useSRSStore();
+  const { progress: exerciseProgress, exercises: allExercises } = useExerciseStore();
 
-    {/* Main Grid - 3 columns on large screens */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <ProgressOverview {...showcaseData.progressOverview} />
-      <StreakCounter {...showcaseData.streakCounter} />
-      <QuickActions {...showcaseData.quickActions} />
+  const data = useMemo(() => {
+    const completedLessons = getTotalCompletedLessons();
+    const totalLessons = lessons.length || 20;
+    const currentWeek = Math.ceil(completedLessons / 5) || 1;
+    const totalWeeks = Math.ceil(totalLessons / 5) || 4;
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+    const dueTomorrowCount = Object.entries(reviews).filter(([_, r]: any) =>
+      r.nextReviewDate?.split('T')[0] === tomorrowStr
+    ).length;
+
+    const upcomingReviewsList = dueCards.slice(0, 3).map((cardId: string) => {
+      const card = cards[cardId] as any;
+      const review = reviews[cardId] as any;
+      return {
+        id: cardId,
+        title: card?.front || 'Flashcard',
+        dueTime: review?.nextReviewDate ? new Date(review.nextReviewDate) : new Date(),
+        category: card?.tags?.[0] || 'General',
+      };
+    });
+
+    const last7Days = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date();
+      date.setDate(date.getDate() - (6 - i));
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+      const dayLessons = Object.values(progressLessons).filter((lesson: any) => {
+        if (!lesson.completedAt) return false;
+        return new Date(lesson.completedAt).toDateString() === date.toDateString();
+      }) as any[];
+      return {
+        day: dayName,
+        minutes: dayLessons.reduce((sum: number, l: any) => sum + (l.timeSpent / 60), 0),
+        lessons: dayLessons.length,
+      };
+    });
+
+    const nextLesson = lessons.find((l: any) => l.status === 'available' || l.status === 'in-progress');
+    const completedExercises = Object.values(exerciseProgress).filter((p: any) => p.completed).length;
+
+    const recentAchievements = achievements
+      .filter((a: any) => a.unlocked)
+      .slice(0, 3)
+      .map((a: any) => ({
+        id: a.id,
+        title: a.name,
+        description: a.description,
+        icon: (a.icon?.includes('⚡') ? 'zap' : a.icon?.includes('⭐') || a.icon?.includes('🌟') ? 'star' : 'award') as 'star' | 'zap' | 'award',
+        color: a.category || 'blue',
+        earnedAt: a.unlockedAt || new Date(),
+      }));
+
+    const fallbackAchievements = showcaseData.recentAchievements.achievements;
+
+    return {
+      user: { name: user?.fullName || user?.firstName || 'User', learningTrack: '30-day' as const, currentDay: completedLessons + 1 },
+      progress: { overallProgress: overallProgress || Math.round((completedLessons / totalLessons) * 100), currentWeek, totalWeeks, lessonsCompleted: completedLessons, totalLessons },
+      streak: { currentStreak: currentStreak || 0, longestStreak: longestStreak || 0 },
+      reviews: { totalDueToday: dueCards.length, totalDueTomorrow: dueTomorrowCount, upcomingReviews: upcomingReviewsList },
+      achievements: recentAchievements.length > 0 ? recentAchievements : fallbackAchievements,
+      totalAchievements: achievements.length || 0,
+      studyTime: last7Days,
+      quickActions: {
+        nextLessonId: nextLesson?.id || 'pw-beginner-001',
+        nextLessonTitle: nextLesson?.title || 'Start Your First Lesson',
+        reviewsAvailable: dueCards.length,
+        exercisesAvailable: allExercises.length - completedExercises,
+      },
+    };
+  }, [user, progressLessons, currentStreak, longestStreak, overallProgress, lessons, achievements, dueCards, cards, reviews, exerciseProgress, allExercises]);
+
+  return (
+    <div className="space-y-6">
+      <WelcomeCard userName={data.user.name} learningTrack={data.user.learningTrack} currentDay={data.user.currentDay} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ProgressOverview {...data.progress} />
+        <StreakCounter {...data.streak} />
+        <QuickActions {...data.quickActions} />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <StudyTimeChart data={data.studyTime} />
+        <UpcomingReviews {...data.reviews} />
+      </div>
+      <RecentAchievements achievements={data.achievements} totalAchievements={data.totalAchievements} />
     </div>
-
-    {/* Charts and Reviews - 2 columns on large screens */}
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <StudyTimeChart {...showcaseData.studyTimeChart} />
-      <UpcomingReviews {...showcaseData.upcomingReviews} />
-    </div>
-
-    {/* Recent Achievements - Full Width */}
-    <RecentAchievements {...showcaseData.recentAchievements} />
-  </div>
-);
+  );
+};
 
 /**
  * Loading States Example
  */
-import {
-  WelcomeCardSkeleton,
-  ProgressOverviewSkeleton,
-  StreakCounterSkeleton,
-  UpcomingReviewsSkeleton,
-  RecentAchievementsSkeleton,
-  StudyTimeChartSkeleton,
-  QuickActionsSkeleton,
-  DashboardSkeleton,
-} from '../components/dashboard/SkeletonLoaders';
-
 const LoadingStatesExample = () => (
   <div className="space-y-6">
     {/* Individual loading states */}

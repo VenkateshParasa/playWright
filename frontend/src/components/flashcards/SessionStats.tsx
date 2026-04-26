@@ -16,8 +16,8 @@ export const SessionStats: React.FC<SessionStatsProps> = ({ session, currentTime
   const elapsedTime = currentTime > 0
     ? currentTime
     : session.endTime
-    ? Math.floor((session.endTime.getTime() - session.startTime.getTime()) / 1000)
-    : Math.floor((new Date().getTime() - session.startTime.getTime()) / 1000);
+    ? Math.floor((new Date(session.endTime).getTime() - new Date(session.startTime).getTime()) / 1000)
+    : Math.floor((new Date().getTime() - new Date(session.startTime).getTime()) / 1000);
 
   const formatTime = (totalSeconds: number) => {
     const mins = Math.floor(totalSeconds / 60);

@@ -98,7 +98,17 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       hmr: {
         overlay: true
-      }
+      },
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3001',
+          changeOrigin: true,
+        },
+        '/data': {
+          target: 'http://localhost:3001',
+          changeOrigin: true,
+        },
+      },
     },
 
     build: {

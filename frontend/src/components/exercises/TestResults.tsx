@@ -8,8 +8,9 @@ interface TestResultsProps {
 }
 
 export default function TestResults({ results, totalTests, showDetails = true }: TestResultsProps) {
-  const passedCount = results.filter((r) => r.passed).length;
-  const failedCount = results.filter((r) => !r.passed).length;
+  const passedCount = results.filter((r) => r.passed === true).length;
+  const failedCount = results.filter((r) => r.passed === false).length;
+  const notExecutedCount = results.filter((r) => r.passed === null).length;
   const totalExecutionTime = results.reduce((sum, r) => sum + (r.executionTime || 0), 0);
   const averageExecutionTime = results.length > 0 ? totalExecutionTime / results.length : 0;
   const passRate = totalTests > 0 ? Math.round((passedCount / totalTests) * 100) : 0;
@@ -47,6 +48,14 @@ export default function TestResults({ results, totalTests, showDetails = true }:
             </div>
           )}
         </div>
+
+        {notExecutedCount > 0 && (
+          <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <p className="text-sm text-blue-800 dark:text-blue-400">
+              <strong>{notExecutedCount}</strong> test{notExecutedCount !== 1 ? 's' : ''} could not be executed and require{notExecutedCount === 1 ? 's' : ''} backend support.
+            </p>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
@@ -103,10 +112,14 @@ export default function TestResults({ results, totalTests, showDetails = true }:
               <div key={result.testId} className="p-6 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 mt-1">
-                    {result.passed ? (
+                    {result.passed === true ? (
                       <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
-                    ) : (
+                    ) : result.passed === false ? (
                       <XCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
+                    ) : (
+                      <div className="w-6 h-6 rounded-full border-2 border-gray-400 dark:border-gray-500 flex items-center justify-center">
+                        <span className="text-xs text-gray-600 dark:text-gray-400">?</span>
+                      </div>
                     )}
                   </div>
 
@@ -123,8 +136,23 @@ export default function TestResults({ results, totalTests, showDetails = true }:
                       )}
                     </div>
 
-                    {result.passed ? (
+                    {result.passed === true ? (
                       <p className="text-sm text-green-700 dark:text-green-400 font-medium">✓ Test passed</p>
+                    ) : result.passed === null ? (
+                      <div className="space-y-2">
+                        <p className="text-sm text-blue-700 dark:text-blue-400 font-medium">○ Test not executed</p>
+                        {result.message && (
+                          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded p-3">
+                            <p className="text-xs text-blue-800 dark:text-blue-400">{result.message}</p>
+                          </div>
+                        )}
+                        <div className="mt-2">
+                          <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">Expected Output:</p>
+                          <pre className="text-xs bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded p-2 font-mono overflow-x-auto">
+                            {JSON.stringify(result.expected, null, 2)}
+                          </pre>
+                        </div>
+                      </div>
                     ) : (
                       <div className="space-y-3">
                         {result.error && (

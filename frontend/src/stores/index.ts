@@ -10,6 +10,7 @@ export { useSRSStore, getNextDueCard, isDailyLimitReached, getTotalCardsCount } 
 export { useSettingsStore, getEffectiveTheme, isDarkMode, isNotificationEnabled, getDailyReviewLimit, areKeyboardShortcutsEnabled, exportSettings, importSettings } from './settingsStore';
 export { useUIStore, showSuccessToast, showErrorToast, showInfoToast, showWarningToast, openConfirmModal, isOnline, isSyncing } from './uiStore';
 export { useSearchStore, selectQuery, selectResults, selectSuggestions, selectRecentSearches, selectFilters, selectIsLoading, selectIsOpen, selectSelectedIndex, selectSelectedResult } from './searchStore';
+export { useExerciseStore } from './exerciseStore';
 
 // Types
 export type * from '../types/store';

@@ -1,4 +1,4 @@
-import { TestCase, TestResult, CodeExecutionResult } from '../../types/exercise';
+import { TestCase, TestResult, CodeExecutionResult, ProgrammingLanguage } from '../../types/exercise';
 
 class CodeExecutor {
   private worker: Worker | null = null;
@@ -21,7 +21,8 @@ class CodeExecutor {
   async executeWithTests(
     code: string,
     testCases: TestCase[],
-    functionName: string
+    functionName: string,
+    language: ProgrammingLanguage = 'javascript'
   ): Promise<CodeExecutionResult> {
     if (!this.worker) {
       return {
@@ -62,6 +63,7 @@ class CodeExecutor {
         code,
         testCases,
         functionName,
+        language,
       });
     });
   }
@@ -69,7 +71,7 @@ class CodeExecutor {
   /**
    * Execute code without tests (simple execution)
    */
-  async executeSimple(code: string): Promise<CodeExecutionResult> {
+  async executeSimple(code: string, language: ProgrammingLanguage = 'javascript'): Promise<CodeExecutionResult> {
     if (!this.worker) {
       return {
         success: false,
@@ -107,6 +109,7 @@ class CodeExecutor {
       this.worker!.postMessage({
         type: 'execute',
         code,
+        language,
       });
     });
   }

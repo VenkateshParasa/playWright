@@ -175,15 +175,15 @@ export const ProgressChart: React.FC<ProgressChartProps> = ({
       case 'pie':
         const pieData = data as CategoryProgress[];
         return (
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={280}>
             <PieChart>
               <Pie
                 data={pieData}
                 cx="50%"
-                cy="50%"
+                cy="45%"
                 labelLine={false}
                 label={renderCustomLabel}
-                outerRadius={100}
+                outerRadius={90}
                 fill="#8884d8"
                 dataKey="completed"
                 onMouseEnter={(_, index) => setActiveIndex(index)}
@@ -198,14 +198,6 @@ export const ProgressChart: React.FC<ProgressChartProps> = ({
                 ))}
               </Pie>
               <Tooltip content={<CustomTooltip />} />
-              <Legend
-                verticalAlign="bottom"
-                height={36}
-                formatter={(value, entry: any) => {
-                  const item = pieData.find((d) => d.category === value);
-                  return `${value} (${item?.completed}/${item?.total})`;
-                }}
-              />
             </PieChart>
           </ResponsiveContainer>
         );
@@ -226,25 +218,30 @@ export const ProgressChart: React.FC<ProgressChartProps> = ({
       {/* Chart */}
       <div className="w-full">{renderChart()}</div>
 
-      {/* Legend for Pie Chart */}
+      {/* Custom Legend for Pie Chart */}
       {type === 'pie' && (
-        <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="mt-6 space-y-2">
           {(data as CategoryProgress[]).map((item, index) => (
             <div
               key={item.category}
-              className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
             >
-              <div
-                className="w-4 h-4 rounded-full flex-shrink-0"
-                style={{ backgroundColor: item.color || PIE_COLORS[index % PIE_COLORS.length] }}
-              />
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">{item.category}</p>
-                <p className="text-xs text-gray-600">
-                  {item.completed}/{item.total} ({item.percentage}%)
-                </p>
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div
+                  className="w-4 h-4 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: item.color || PIE_COLORS[index % PIE_COLORS.length] }}
+                />
+                <span className="text-sm font-medium text-gray-900">{item.category}</span>
+              </div>
+              <div className="flex items-center gap-4 flex-shrink-0">
+                <span className="text-sm text-gray-600">
+                  {item.completed}/{item.total}
+                </span>
+                <span className="text-sm font-semibold text-gray-900 min-w-[3rem] text-right">
+                  {item.percentage}%
+                </span>
               </div>
             </div>
           ))}

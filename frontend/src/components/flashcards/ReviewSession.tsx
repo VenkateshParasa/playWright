@@ -38,7 +38,7 @@ export const ReviewSession: React.FC<ReviewSessionProps> = ({ onComplete }) => {
     // Update session time every second
     if (!isPaused && currentSession) {
       const interval = setInterval(() => {
-        const elapsed = Math.floor((new Date().getTime() - currentSession.startTime.getTime()) / 1000);
+        const elapsed = Math.floor((new Date().getTime() - new Date(currentSession.startTime).getTime()) / 1000);
         setSessionTime(elapsed);
       }, 1000);
 

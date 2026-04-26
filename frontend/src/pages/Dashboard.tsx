@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import WelcomeCard from '../components/dashboard/WelcomeCard';
 import ProgressOverview from '../components/dashboard/ProgressOverview';
 import StreakCounter from '../components/dashboard/StreakCounter';
@@ -7,9 +7,15 @@ import RecentAchievements from '../components/dashboard/RecentAchievements';
 import StudyTimeChart from '../components/dashboard/StudyTimeChart';
 import QuickActions from '../components/dashboard/QuickActions';
 import { DashboardSkeleton } from '../components/dashboard/SkeletonLoaders';
+import { useProgressStore, getTotalCompletedLessons } from '../stores/progressStore';
+import { useAuthStore } from '../stores/authStore';
+import { useLessonsStore } from '../stores/lessonsStore';
+import { useAchievementsStore } from '../stores/achievementsStore';
+import { useSRSStore, getTotalCardsCount } from '../stores/srsStore';
+import { useExerciseStore } from '../stores/exerciseStore';
 
-// Mock data - Replace with API calls in production
-const mockDashboardData = {
+// Fallback mock data for when stores are empty
+const fallbackMockData = {
   user: {
     name: 'John Doe',
     learningTrack: '30-day' as const,
@@ -87,7 +93,7 @@ const mockDashboardData = {
     { day: 'Sun', minutes: 40, lessons: 2 },
   ],
   quickActions: {
-    nextLessonId: 'lesson-8',
+    nextLessonId: 'pw-beginner-008',
     nextLessonTitle: 'Advanced Locators in Playwright',
     reviewsAvailable: 15,
     exercisesAvailable: 3,
@@ -96,29 +102,155 @@ const mockDashboardData = {
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
-  const [dashboardData, setDashboardData] = useState(mockDashboardData);
+  
+  // Get data from stores
+  const { user } = useAuthStore();
+  const {
+    lessons: progressLessons,
+    currentStreak,
+    longestStreak,
+    totalStudyTime,
+    overallProgress
+  } = useProgressStore();
+  
+  const { lessons, stats } = useLessonsStore();
+  const { achievements } = useAchievementsStore();
+  const {
+    reviewedToday,
+    dueCards,
+    cards,
+    reviews
+  } = useSRSStore();
+  const { progress: exerciseProgress, exercises: allExercises, loadExercises } = useExerciseStore();
+
+  // Load exercises on mount if not already loaded
+  useEffect(() => {
+    if (allExercises.length === 0) {
+      loadExercises();
+    }
+  }, [allExercises.length, loadExercises]);
+
+  // Calculate real dashboard data
+  const dashboardData = useMemo(() => {
+    const completedLessons = getTotalCompletedLessons();
+    const totalLessons = lessons.length || 20;
+    const currentWeek = Math.ceil(completedLessons / 5) || 1;
+    const totalWeeks = Math.ceil(totalLessons / 5) || 4;
+    
+    // Calculate flashcard stats
+    const totalCards = getTotalCardsCount();
+    const dueTodayCount = dueCards.length;
+    
+    // Calculate due tomorrow (cards with nextReview date of tomorrow)
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+    
+    const dueTomorrowCount = Object.entries(reviews).filter(([_, review]) => {
+      return review.nextReviewDate?.split('T')[0] === tomorrowStr;
+    }).length;
+    
+    // Get upcoming reviews (next 3 due cards)
+    const upcomingReviewsList = dueCards.slice(0, 3).map(cardId => {
+      const card = cards[cardId];
+      const review = reviews[cardId];
+      return {
+        id: cardId,
+        title: card?.front || 'Flashcard',
+        dueTime: review?.nextReviewDate ? new Date(review.nextReviewDate) : new Date(),
+        category: card?.tags?.[0] || 'General',
+      };
+    });
+
+    // Calculate study time for last 7 days
+    const last7Days = Array.from({ length: 7 }, (_, i) => {
+      const date = new Date();
+      date.setDate(date.getDate() - (6 - i));
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+      
+      // Get lessons completed on this day
+      const dayLessons = Object.values(progressLessons).filter(lesson => {
+        if (!lesson.completedAt) return false;
+        const completedDate = new Date(lesson.completedAt);
+        return completedDate.toDateString() === date.toDateString();
+      });
+
+      return {
+        day: dayName,
+        minutes: dayLessons.reduce((sum, l) => sum + (l.timeSpent / 60), 0),
+        lessons: dayLessons.length,
+      };
+    });
+
+    // Get next lesson
+    const nextLesson = lessons.find(l => l.status === 'available' || l.status === 'in-progress');
+
+    // Calculate exercise statistics using real data from store
+    const totalExercises = allExercises.length;
+    const completedExercises = Object.values(exerciseProgress).filter(p => p.completed).length;
+    const exercisesAvailableCount = totalExercises - completedExercises;
+
+    // Get recent achievements (last 3 unlocked)
+    const recentAchievements = achievements
+      .filter(a => a.unlocked)
+      .sort((a, b) => {
+        // Sort by unlock date if available, otherwise by id
+        return 0; // Keep original order for now
+      })
+      .slice(0, 3)
+      .map(a => ({
+        id: a.id,
+        title: a.name, // Achievement type uses 'name' not 'title'
+        description: a.description,
+        icon: (a.icon.includes('⚡') ? 'zap' : a.icon.includes('⭐') || a.icon.includes('🌟') ? 'star' : 'award') as 'star' | 'zap' | 'award',
+        color: a.category,
+        earnedAt: a.unlockedAt || new Date(),
+      }));
+
+    return {
+      user: {
+        name: user?.fullName || user?.firstName || 'User',
+        learningTrack: '30-day' as const,
+        currentDay: completedLessons + 1,
+      },
+      progress: {
+        overallProgress: overallProgress || Math.round((completedLessons / totalLessons) * 100),
+        currentWeek,
+        totalWeeks,
+        lessonsCompleted: completedLessons,
+        totalLessons,
+      },
+      streak: {
+        currentStreak: currentStreak || 0,
+        longestStreak: longestStreak || 0,
+      },
+      reviews: {
+        totalDueToday: dueTodayCount,
+        totalDueTomorrow: dueTomorrowCount,
+        upcomingReviews: upcomingReviewsList,
+      },
+      achievements: recentAchievements.length > 0 ? recentAchievements : fallbackMockData.achievements,
+      totalAchievements: achievements.length || 0,
+      studyTime: last7Days,
+      quickActions: {
+        nextLessonId: nextLesson?.id || 'pw-beginner-001',
+        nextLessonTitle: nextLesson?.title || 'Start Your First Lesson',
+        reviewsAvailable: dueTodayCount,
+        exercisesAvailable: exercisesAvailableCount, // Real exercise data from store
+      },
+    };
+  }, [user, progressLessons, currentStreak, longestStreak, overallProgress, lessons, achievements, reviewedToday, dueCards, cards, reviews, exerciseProgress, allExercises]);
 
   useEffect(() => {
-    // Simulate API call
-    const fetchDashboardData = async () => {
+    // Simulate initial load
+    const loadDashboard = async () => {
       setIsLoading(true);
-      try {
-        // TODO: Replace with actual API call
-        // const response = await fetch('/api/dashboard');
-        // const data = await response.json();
-        // setDashboardData(data);
-
-        // Simulate network delay
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        setDashboardData(mockDashboardData);
-      } catch (error) {
-        console.error('Failed to fetch dashboard data:', error);
-      } finally {
-        setIsLoading(false);
-      }
+      // Small delay for smooth transition
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setIsLoading(false);
     };
 
-    fetchDashboardData();
+    loadDashboard();
   }, []);
 
   if (isLoading) {

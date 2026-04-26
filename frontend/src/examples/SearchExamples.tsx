@@ -182,7 +182,7 @@ export function AnalyticsExample() {
 
   return (
     <div>
-      <button onClick={() => handleSearchComplete('test', 'lesson-1')}>
+      <button onClick={() => handleSearchComplete('test', 'pw-beginner-001')}>
         Track Search
       </button>
       <button onClick={viewAnalytics}>
@@ -327,7 +327,7 @@ export function RouterIntegrationExample() {
   };
 
   return (
-    <button onClick={() => handleResultClick('/lessons/lesson-1')}>
+    <button onClick={() => handleResultClick('/lessons/pw-beginner-001')}>
       Navigate to Result
     </button>
   );
