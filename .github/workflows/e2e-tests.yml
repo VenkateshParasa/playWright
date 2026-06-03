@@ -138,7 +138,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: playwright-results-${{ matrix.project }}-${{ matrix.shard }}
           path: |
@@ -148,7 +148,7 @@ jobs:
 
       - name: Upload trace
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: playwright-trace-${{ matrix.project }}-${{ matrix.shard }}
           path: frontend/test-results/**/trace.zip
@@ -187,7 +187,7 @@ jobs:
 
       - name: Upload API test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: api-test-results
           path: frontend/playwright-report/
@@ -233,7 +233,7 @@ jobs:
 
       - name: Upload lighthouse report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: lighthouse-report
           path: frontend/.lighthouseci/
@@ -267,7 +267,7 @@ jobs:
 
       - name: Upload snapshots
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: visual-diff
           path: frontend/test-results/
@@ -287,7 +287,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Download all artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: all-results
 
@@ -296,7 +296,7 @@ jobs:
           npx playwright merge-reports --reporter=html ./all-results
 
       - name: Upload merged report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: merged-playwright-report
           path: playwright-report/

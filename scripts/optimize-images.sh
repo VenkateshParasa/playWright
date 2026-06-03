@@ -125,7 +125,14 @@ echo "Files processed: $total_files"
 echo "Files optimized: $optimized_files"
 echo "Original size:   $(numfmt --to=iec $original_size)"
 echo "Optimized size:  $(numfmt --to=iec $optimized_size)"
-echo "Total savings:   $((100 - (optimized_size * 100 / original_size)))%"
+
+if [ "$original_size" -gt 0 ]; then
+    savings=$((100 - (optimized_size * 100 / original_size)))
+    echo "Total savings:   ${savings}%"
+else
+    savings=0
+    echo "Total savings:   N/A (no images processed)"
+fi
 
 # Create image manifest
 cat > "$OUTPUT_DIR/manifest.json" <<EOF
@@ -134,7 +141,7 @@ cat > "$OUTPUT_DIR/manifest.json" <<EOF
   "totalFiles": $total_files,
   "originalSize": $original_size,
   "optimizedSize": $optimized_size,
-  "savings": "$((100 - (optimized_size * 100 / original_size)))%"
+  "savings": "${savings}%"
 }
 EOF
 

@@ -18,20 +18,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache: 'pnpm'
+          cache-dependency-path: frontend/pnpm-lock.yaml
 
       - name: Install dependencies
         working-directory: ./frontend
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build application
         working-directory: ./frontend
-        run: npm run build
+        run: pnpm run build
 
       - name: Run Lighthouse CI
         working-directory: ./frontend
@@ -42,7 +47,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Upload Lighthouse results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lighthouse-results
@@ -57,21 +62,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
+          cache: 'pnpm'
+          cache-dependency-path: frontend/pnpm-lock.yaml
 
       - name: Install dependencies
         working-directory: ./frontend
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build and analyze bundle
         working-directory: ./frontend
         run: |
-          npm run build
+          pnpm run build
           npx vite-bundle-visualizer
 
       - name: Check bundle size
@@ -92,7 +102,7 @@ jobs:
           echo "✅ Bundle size within limits"
 
       - name: Upload bundle stats
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bundle-stats
           path: frontend/dist/stats.html
@@ -111,6 +121,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install frontend dependencies
         working-directory: ./frontend
@@ -249,7 +260,7 @@ jobs:
           "
 
       - name: Upload Web Vitals report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: web-vitals
@@ -292,7 +303,7 @@ jobs:
           "
 
       - name: Upload dependency analysis
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dependency-costs
           path: frontend/dependency-costs.json
@@ -306,7 +317,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       - name: Generate summary
         run: |
